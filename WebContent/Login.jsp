@@ -12,9 +12,10 @@
 	<div class="container">
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
-			<div class="jumbotron" style="padding-top: 20px;">
+			<div class="jumbotron" style="padding-top: 20px;" >
+				<img src="images/harulogo.png" >
 				<form method="post" action="loginAction.jsp">
-					<h3 style="text-align: center;">하루알바 로그인</h3>
+					<h3 style="text-align: center;"></h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="아이디"
 							name="userID" maxlength="25">
