@@ -3,7 +3,12 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-.btn-default,
+ .btn-xl{
+ 	width: 432px;
+ 	height: 706px;
+ 	border-radius: 10px;
+ }
+ .btn-default,
 .btn-primary,
 .btn-success,
 .btn-info,
