@@ -14,7 +14,7 @@
 		<div class="col-lg-6">
 			<div class="jumbotron" style="background-color:#FFF2BE;padding-top:30px;width:100%;align:center">
 				<center><img src="images/harulogo.png"></center>
-				<form method="post" action="LoginAction.jsp">
+				<form method="post" action="LoginCheck.jsp">
 					<div class="form-group">
 						<p style="line-height:1"></p>
 						<input type="text" class="form-control" placeholder="아이디"
@@ -25,11 +25,11 @@
 							name="userPASSWORD" maxlength="20">
 				
 					</div>
-					<input type="submit" style="background-color:#FD7401" class="btn btn-primary form-control" value="로그인">
+					<input type="submit" style="background-color:#FD7401;height:60px;font-weight:bold" class="btn btn-primary form-control" value="로그인">
 					</form>
 					<hr style="background-color:gray;border:none;width:100%;height:2px;">
-					<form method="post" action="register.jsp">
-						<input type="submit" style="background-color:#FD7401" class="btn btn-primary form-control" value="회원가입">
+					<form method="post" action="ResisterAction.jsp">
+						<input type="submit" style="background-color:#FFF2BE;height:60px;border-color:#FD7401;color:#FD7401;font-weight:bold;border-width:medium" class="btn btn-primary form-control" value="회원가입">
 					</form>
 			</div>
 		</div>

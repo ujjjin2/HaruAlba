@@ -15,7 +15,7 @@
 			<div class="jumbotron"
 				style="background-color: #FFF2BE; padding-top: 30px; width: 100%; align: center">
 				<center>
-					<img src="images/harulogo.png" style="width: 150px; height: 160px;">
+					<img src="images/harulogo.png" style="width: 120px; height: 130px;">
 				</center>
 				<div>
 				<form style="display:inline;" method="post" action="EmployerResister.jsp">
