@@ -15,7 +15,9 @@
 			<div class="jumbotron"
 				style="background-color: #FFF2BE; padding-top: 30px; width: 100%; align: center">
 				<center>
-					<img src="images/harulogo.png" style="width: 110px; height: 120px;">
+					<A href="Login.jsp">
+						<img src="images/harulogo.png" style="width: 110px; height: 120px;">
+					</A>
 				</center>
 				<div>
 					<form style="display:inline;" method="post" action="Login.jsp">

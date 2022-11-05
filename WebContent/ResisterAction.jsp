@@ -15,20 +15,22 @@
 			<div class="jumbotron"
 				style="background-color: #FFF2BE; padding-top: 30px; width: 100%; align: center">
 				<center>
-					<img src="images/harulogo.png" style="width: 120px; height: 130px;">
+					<A href="Login.jsp">
+					<img src="images/harulogo.png" style="width: 130px; height: 140px;">
+					</A>
 				</center>
 				<div>
 				<form style="display:inline;" method="post" action="EmployerResister.jsp">
 						<center>
 							<button type="submit" 
-								style="background-color: #FEFFF2; width: 310px; height: 380px;border:0;">
+								style="background-color: #FEFFF2; width: 310px; height: 380px;border:0;border-radius:30px">
 									<img src="images/employer.png">
 									<p style="font-size:30px;line-height:45px;text-align:center">사장님</p>
 							</button>
 				</form>
 				<form style="display:inline;" method="post" action="EmployeeResister.jsp">
 							<button type="submit" 
-								style="background-color: #FEFFF2; width: 310px; height: 380px;border:0;">
+								style="background-color: #FEFFF2; width: 310px; height: 380px;border:0;border-radius:30px">
 									<img src="images/employee.png">
 									<p style="font-size:30px;line-height:45px;text-align:center">아르바이트생</p>
 							</button>

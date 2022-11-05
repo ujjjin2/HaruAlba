@@ -14,7 +14,9 @@
 		<div class="col-lg-6">
 			<div class="jumbotron jumbotron-fluid" style="background-color:#FFF2BE;padding-top:30px;height:100%;align:center">
 				<center>
-					<img src="images/harulogo.png">
+					<A href="Login.jsp">
+						<img src="images/harulogo.png">
+					</A>
 				</center>
 					<form method="post" action="Login.jsp">
 						<div class="form-group">
