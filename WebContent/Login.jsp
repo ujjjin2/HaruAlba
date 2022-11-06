@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="./css/bootstrap.css">
 <title>Login</title>
 </head>
-<body>
+<body style="background-color:#525CDE">
 	<div class="container-fluid" style="background-color:#525CDE">
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6">

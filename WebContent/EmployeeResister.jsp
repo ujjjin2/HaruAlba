@@ -37,19 +37,19 @@
 								name="userNAME" maxlength="20">
 						</div>
 						<div class="form-group" style="width:100%;">
-							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">주소</p>
+							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">지역</p>
 							<input type="text" class="form-control" placeholder="Adress"
-								name="userADDRESS" maxlength="20">
+								name="userLOCATION" maxlength="20">
+						</div>
+						<div class="form-group" style="width:100%;">
+							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">나이</p>
+							<input type="text" class="form-control" placeholder="Age"
+								name="userAGE" maxlength="20">
 						</div>
 						<div class="form-group" style="width:100%;">
 							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">전화번호</p>
 							<input type="text" class="form-control" placeholder="000-0000-0000"
 								name="userPHONE" maxlength="20">
-						</div>
-						<div class="form-group" style="width:100%">
-							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">생년월일</p>
-							<input type="date" class="form-control"
-								name="userBIRTH" maxlength="20">
 						</div>
 					<input type="submit" style="background-color:#FD7401;height:60px;font-size:16px;width:100%" class="btn btn-primary form-control" value="회원가입">
 					</form>
@@ -59,6 +59,7 @@
 		<div class="col-log-3"></div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="Resister.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
 </html>
