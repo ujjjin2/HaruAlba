@@ -20,7 +20,7 @@
 #menu{
     float: right ;
     text-align: right;
-    margin: 0 30px 0 0;
+    margin: 10px 30px 0 0;
 }
 #menu li{
     display: inline-block;
