@@ -1,3 +1,4 @@
+<%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,6 +29,15 @@
 #top_menu li{
     margin: 5px 0 0 10px;
 }
+table{
+	margin:auto;
+	text-align: center;
+}
+
+
+table > thead > tr > td{
+text-align: center;
+}
 
 
 </style>
@@ -38,6 +48,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+<script type="text/javascript">
+<!-- 
+	function modify(new_text){
+	var t1 = document.getElementById("t1");
+	t1.firestChild.nodeValue = new_text;
+}
+
+//-->
+</script>
+
 <!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#525CDE">
 
@@ -50,8 +70,8 @@
 				<nav id="menu">
 		            <ul id = "top_menu">
 		                <li>허유진(ujin7339)</li><li>|</li>
-		                <li>마이페이지</li><li>|</li>
-		                <li>logout</li>
+		                <li><a href="Mypage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
+		                <li><a href="Login.jsp"  style="text-decoration: none; color: black">logout</a></li>
 		            </ul>
 		        </nav>
 			<div class="header"> 
@@ -67,32 +87,42 @@
 			
 			<!-- 테이블 부분  -->
 			<center>
-	    			<div class="container" style="width: 80%; height: 100%;">
-					  <h2>Striped Rows</h2>
+	    			<div class="container" style="width: 85%; height: 100%;">
+					  <h2>알바리스트</h2>
 					  <p>The .table-striped class adds zebra-stripes to a table:</p>            
-					  <table class="table table-striped">
+					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
 					    <thead>
 					      <tr>
-					        <th>Firstname</th>
-					        <th>Lastname</th>
-					        <th>Email</th>
+					        <th  style="text-align: center">글번호</th>
+					        <th style="text-align: center">제목</th>
+					        <th style="text-align: center">일시</th>
+					        <th style="text-align: center">작성자</th>
 					      </tr>
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td>John</td>
+					        <td id="t1">John</td>
 					        <td>Doe</td>
 					        <td>john@example.com</td>
+					        <td>돈</td>
 					      </tr>
 					      <tr>
-					        <td>Mary</td>
+					        <td id="t2">Mary</td>
 					        <td>Moe</td>
 					        <td>mary@example.com</td>
+					        <td>존</td>
 					      </tr>
 					      <tr>
-					        <td>July</td>
+					        <td id="t3">July</td>
 					        <td>Dooley</td>
 					        <td>july@example.com</td>
+					        <td>으</td>
+					      </tr>
+					      <tr>
+					        <td id="t4">Dully</td>
+					        <td>Dooley</td>
+					        <td>jsdf@example.com</td>
+					        <td>잉</td>
 					      </tr>
 					    </tbody>
 					  </table>
