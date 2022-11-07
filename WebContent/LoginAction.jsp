@@ -13,13 +13,13 @@
 <title>LoginAction</title>
 </head>
 <body>
-    <% // 자바 코드 삽입 
+    <% // 스크립트릿
         UserDAO userDAO = new UserDAO();
         int result = userDAO.login(user.getUserID(), user.getUserPASSWORD());
         if (result ==1){
             PrintWriter script = response.getWriter();
             script.println("<script>");
-            script.println("location.href = 'main.jsp'");
+            script.println("location.href = 'Main.jsp'"); //메인 페이지 이동
             script.println("</script>");
         }
         else if (result == 0){

@@ -18,7 +18,7 @@
 						<img src="images/harulogo.png">
 					</A>
 				</center>
-				<form method="post" action="LoginCheck.jsp">
+				<form method="post" action="LoginAction.jsp">
 					<div class="form-group">
 						<p style="line-height:1"></p>
 						<input type="text" class="form-control" placeholder="아이디"

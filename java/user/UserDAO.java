@@ -23,7 +23,7 @@ public class UserDAO {
 	}
 	// 로그인 기능 
 	public int login(String userID, String userPASSWORD) {
-		String SQL = "SELECT userPASSWORD FROM USER WHERE userID = ?";
+		String SQL = "SELECT userPASSWORD FROM user WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID); 
@@ -41,4 +41,7 @@ public class UserDAO {
 		}
 		return -2; //DB 오류 
 	}
+	
+	//이후 기능 구현
+	
 }
