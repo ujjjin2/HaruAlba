@@ -35,11 +35,6 @@ table{
 }
 
 
-table > thead > tr > td{
-text-align: center;
-}
-
-
 </style>
 <meta charset="UTF-8">
 <title>메인</title>

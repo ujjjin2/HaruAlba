@@ -81,7 +81,7 @@ text-align: center;
 	    			<div class="container" style="width: 85%; height: 100%;">
 	    			<hr>
 					  	<h3><b>자기 자신을 PR하세요</b></h3>
-					  	<a href="write.jsp">					  		
+					  	<a href="Write.jsp">					  		
 					  		<!-- 글쓰기 버튼  -->
 					   		<img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
 					  		</a>	
