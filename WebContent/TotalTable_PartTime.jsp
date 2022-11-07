@@ -42,7 +42,7 @@ text-align: center;
 
 </style>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>단기알바 전체리스트</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -80,14 +80,8 @@ text-align: center;
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
 	    			<hr>
+					  	<h3><b>단기알바구인</b></h3>	
 	    			<hr>
-					<b style="float: left;">단기 알바 구인</b>
-					  		<a href="TotalTable_PartTime.jsp">
-					  		
-					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 0 10px 10px 0">       
-					  		</a>
-					  		
 					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
 					    <thead>
 					      <tr>
@@ -133,62 +127,7 @@ text-align: center;
 					</div>
 	    		</center>
 	    		
-	    		<!-- 자기 PR 테이블 부분  -->
-			<center>
-	    			<div class="container" style="width: 85%; height: 100%;">
-	    			<hr>
-	    			<hr>
-					<b style="float: left;">자기 PR</b>
-					  		<a href="TotalTable_PR.jsp">
-					  		
-					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 0 10px 10px 0">       
-					  		</a>
-					  		
-					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
-					    <thead>
-					      <tr>
-					        <th  style="text-align: center">글번호</th>
-					        <th style="text-align: center">제목</th>
-					        <th style="text-align: center">일시</th>
-					        <th style="text-align: center">작성자</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					      <tr>
-					        <td id="t1">John</td>
-					        <td>Doe</td>
-					        <td>john@example.com</td>
-					        <td>돈</td>
-					      </tr>
-					      <tr>
-					        <td id="t2">Mary</td>
-					        <td>Moe</td>
-					        <td>mary@example.com</td>
-					        <td>존</td>
-					      </tr>
-					      <tr>
-					        <td id="t3">July</td>
-					        <td>Dooley</td>
-					        <td>july@example.com</td>
-					        <td>으</td>
-					      </tr>
-					      <tr>
-					        <td id="t4">Dully</td>
-					        <td>Dooley</td>
-					        <td>jsdf@example.com</td>
-					        <td>잉</td>
-					      </tr>
-					      <tr>
-					        <td id="t5">Dully2</td>
-					        <td>Dooley2</td>
-					        <td>jsdf22@example.com</td>
-					        <td>잉</td>
-					      </tr>
-					    </tbody>
-					  </table>
-					</div>
-	    		</center>
+	    		
 	   		 </div>
 			
 			<!-- 흰색 부분 끝나는 div -->
