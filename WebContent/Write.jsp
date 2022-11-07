@@ -21,9 +21,10 @@
 }
 
 .header{
-	margin: 0px 0 0 0px;
-	
-
+	margin: 30px 0 30px 0px;
+	width: 100%;
+	height:100%; 
+}
 
 
 </style>
@@ -44,12 +45,13 @@
 	    
 	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
 	    <div class="center" style="background: #FFF2BE;">
-				<div class="center_write" style="width: 80%; height:90%; background:#FFFFFF">
-					<div class="header"> 
+				<div class="center_write" style="width: 80%; height:90%; background:#FFFFFF;">
+				<!-- 공간을 나눠줘야지만 그림의 센터값이 먹음/ 안하면 세로로 배치가 되서 왼쪽에만 붙어있음 -->
+					<div class="header">
 						<center>
-							<A href="Main.jsp">
+							<a href="Main.jsp">
 								<img src="images/harulogo.png" style="width: 150px; height: 150px;">
-							</A>
+							</a>
 						</center>
 					</div>
 				</div>
