@@ -25,6 +25,13 @@
 	width: 100%;
 	height:100%; 
 }
+.btn{
+	background: #FA4E29;
+	color: #FFFFFF;
+	width: 60%;
+	height: 5%;
+	margin-top: 3%;
+}
 
 
 </style>
@@ -53,10 +60,29 @@
 								<img src="images/harulogo.png" style="width: 150px; height: 150px;">
 							</a>
 						</center>
-						<h4 id="title">제목</h4><p>
-						<h4 id="PR">자기 소개 </h4>
-						<
-						
+						<center>
+							<div style="width: 80%; height: 80%; margin-top: 3%">
+								 <form action="TotalTable_PR">
+								    <div class="form-group">
+								      <label for="title" style="float: left; margin: 1% 0 3% 0 ">제목 </label>
+								      <input type="text" class="form-control" id="title" placeholder="제목을 입력해주세요" name="title" >
+								    </div>
+								    <div class="form-group">
+								      <label for="self_PR" style="float: left; margin: 1% 0 3% 0 ">자기 PR</label>
+								      <textarea class="form-control" name="self_PR" rows="7" cols="100" placeholder="자기소개를 해주세요"></textarea>
+								      
+								    </div>
+								    <div class="form-group">
+								      <label for="simpleresume" style="float: left; margin: 1% 0 3% 0 ">간편 이력서</label>
+								      <textarea class="form-control" name="simpleresume" rows="7" cols="100" placeholder="지금까지 했던 경력을 적어주세요"></textarea>
+								      
+								    </div>
+								    
+								     
+								    <button type="submit" class="btn">글쓰기</button>
+								  </form>
+							</div>
+						</center>
 					</div>
 				</div>
 			

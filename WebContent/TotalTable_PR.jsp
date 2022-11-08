@@ -79,13 +79,11 @@ text-align: center;
 			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
-	    			<hr>
-					  	<h3><b>자기 자신을 PR하세요</b></h3>
+					  	<h3 style="margin: 5% 0 0 0;"><b>자기 자신을 PR하세요</b></h3>
 					  	<a href="Write_PR.jsp">					  		
 					  		<!-- 글쓰기 버튼  -->
 					   		<img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
 					  		</a>	
-	    			<hr>
 					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
 					    <thead>
 					      <tr>
