@@ -47,7 +47,7 @@
 		
 		<!-- 노란색 -->
 		<div class="center" style="background: #FFF2BE;">
-		<!--  흰색 -->
+		<!-- 흰색 -->
 			<div class="center_write" style="width: 80%; height: 90%; background: #FFFFFF">
 					<div class="header">
 						<center>
@@ -56,7 +56,6 @@
 							</a>
 						</center>
 					</div>
-				<div class="center_text" style="width: 100px; height: 100px; background: #111111"></div>
 				
 			</div> <!-- 흰색 끝 --> 
 			
