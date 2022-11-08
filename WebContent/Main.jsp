@@ -95,10 +95,10 @@ table{
 					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
 					  		</a>
 					  		
-					  <table class="table table-striped" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
+					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
-					        <th  style="text-align: center">글번호</th>
+					        <th style="text-align: center">글번호</th>
 					        <th style="text-align: center">제목</th>
 					        <th style="text-align: center">일시</th>
 					        <th style="text-align: center">작성자</th>
@@ -106,34 +106,34 @@ table{
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td id="t1">John</td>
-					        <td>Doe</td>
-					        <td>john@example.com</td>
+					        <td onclick="location.href='Deatail.jsp'">John</td>
+					        <td onclick="location.href='Deatail.jsp'">Doe</td>
+					        <td onclick="location.href='Deatail.jsp'">john@example.com</td>
 					        <td>돈</td>
 					      </tr>
 					      <tr>
-					        <td id="t2">Mary</td>
-					        <td>Moe</td>
-					        <td>mary@example.com</td>
-					        <td>존</td>
+					        <td onclick="location.href='Deatail.jsp'">Mary</td>
+					        <td onclick="location.href='Deatail.jsp'">Moe</td>
+					        <td onclick="location.href='Deatail.jsp'">mary@example.com</td>
+					        <td onclick="location.href='Deatail.jsp'">존</td>
 					      </tr>
 					      <tr>
-					        <td id="t3">July</td>
-					        <td>Dooley</td>
-					        <td>july@example.com</td>
-					        <td>으</td>
+					        <td onclick="location.href='Deatail.jsp'">July</td>
+					        <td onclick="location.href='Deatail.jsp'">Dooley</td>
+					        <td onclick="location.href='Deatail.jsp'">july@example.com</td>
+					        <td onclick="location.href='Deatail.jsp'">으</td>
 					      </tr>
 					      <tr>
-					        <td id="t4">Dully</td>
-					        <td>Dooley</td>
-					        <td>jsdf@example.com</td>
-					        <td>잉</td>
+					        <td onclick="location.href='Deatail.jsp'">Dully</td>
+					        <td onclick="location.href='Deatail.jsp'">Dooley</td>
+					        <td onclick="location.href='Deatail.jsp'">jsdf@example.com</td>
+					        <td onclick="location.href='Deatail.jsp'">잉</td>
 					      </tr>
 					      <tr>
-					        <td id="t5">Dully2</td>
-					        <td>Dooley2</td>
-					        <td>jsdf22@example.com</td>
-					        <td>잉</td>
+					        <td onclick="location.href='Deatail.jsp'">Dully2</td>
+					        <td onclick="location.href='Deatail.jsp'">Dooley2</td>
+					        <td onclick="location.href='Deatail.jsp'">jsdf22@example.com</td>
+					        <td onclick="location.href='Deatail.jsp'">잉</td>
 					      </tr>
 					    </tbody>
 					  </table>
@@ -151,7 +151,7 @@ table{
 					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
 					  		</a>
 					  		
-					  <table class="table table-striped" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
+					  <table class="table table-striped"   style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
 					        <th  style="text-align: center">글번호</th>
