@@ -53,6 +53,10 @@
 								<img src="images/harulogo.png" style="width: 150px; height: 150px;">
 							</a>
 						</center>
+						<h4 id="title">제목</h4><p>
+						<h4 id="PR">자기 소개 </h4>
+						<
+						
 					</div>
 				</div>
 			

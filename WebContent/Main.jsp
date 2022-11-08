@@ -74,16 +74,15 @@ table{
 			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
-	    			<hr>
-	    			<hr>
-					<b style="float: left;">단기 알바 구인</b>
+	    			
+					<b style="float: left; margin: 5% 0 0 0;">단기 알바 구인</b>
 					  		<a href="TotalTable_PartTime.jsp">
 					  		
 					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 0 10px 10px 0">       
+					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
 					  		</a>
 					  		
-					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
+					  <table class="table table-striped" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
 					        <th  style="text-align: center">글번호</th>
@@ -131,16 +130,15 @@ table{
 	    		<!-- 자기 PR 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
-	    			<hr>
-	    			<hr>
-					<b style="float: left;">자기 PR</b>
+	    			
+					<b style="float: left; margin: 5% 0 0 0;">자기 PR</b>
 					  		<a href="TotalTable_PR.jsp">
 					  		
 					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 0 10px 10px 0">       
+					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
 					  		</a>
 					  		
-					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
+					  <table class="table table-striped" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
 					        <th  style="text-align: center">글번호</th>
