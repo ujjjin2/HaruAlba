@@ -47,6 +47,14 @@ table{
 <!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#525CDE">
 
+<% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄
+	String userid = (String)session.getAttribute("userid");
+
+	if(session.getAttribute("userid")==null){ 
+        response.sendRedirect("Login.jsp");
+	}
+%>
+
 <!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 930px; background: #585858;">
 	    <div class="background" style="background: #525CDE;"></div>
@@ -55,9 +63,9 @@ table{
 	    <div class="center" style="background: #ffffff;">
 				<nav id="menu">
 		            <ul id = "top_menu">
-		                <li>허유진(ujin7339)</li><li>|</li>
+		                <li><% out.println("아이디:" + userid);%></li><li>|</li>
 		                <li><a href="Mypage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
-		                <li><a href="Login.jsp"  style="text-decoration: none; color: black">logout</a></li>
+		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">logout</a></li>
 		            </ul>
 		        </nav>
 			<div class="header"> 

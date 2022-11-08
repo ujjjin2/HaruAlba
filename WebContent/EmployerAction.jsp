@@ -21,7 +21,7 @@
 <body>
     <%
     	if (user.getUserID() == null || user.getUserPASSWORD() == null || user.getUserNAME() == null 
-    		|| user.getUserGENDER() == null || Integer.toString(user.getUserPHONE()) == null || Integer.toString(user.getUserAGE()) ==null || user.getUserNICKNAME()==null
+    		|| user.getUserGENDER() == null || user.getUserPHONE() == null || Integer.toString(user.getUserAGE()) ==null || user.getUserNICKNAME()==null
     		
     			){
     		PrintWriter script = response.getWriter();
