@@ -43,7 +43,7 @@
 						</div>
 							<div class="form-group" style="width:100%;">
 								<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">지역 & 성별</p>
-            					<select style="width:200px;height:40px;color:gray" >
+            					<select name="userLOCATION" style="width:200px;height:40px;color:gray" >
                						<option selected disabled>지역을 선택하세요.</option>
                 					<option value="서울">서울</option>
                 					<option value="인천">인천</option>
@@ -67,7 +67,6 @@
 								name="userAGE" maxlength="5" style="width:60px;height:30px">
 						</div>						
 					<input type="submit" style="background-color:#FD7401;height:60px;font-size:16px;width:100%" class="btn btn-primary form-control" value="회원가입">
-					<input type="submit" style="background-color:#FD7401;height:60px;font-size:16px;width:100%" class="btn btn-primary form-control" value="회원가입">
 					</form>
 				</div>
 			</div>
@@ -75,7 +74,6 @@
 		<div class="col-log-3"></div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="Resister.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
 </html>

@@ -21,7 +21,8 @@
 <body>
     <%
     	if (user.getUserID() == null || user.getUserPASSWORD() == null || user.getUserNAME() == null 
-    		|| user.getUserGENDER() == null || user.getUserPHONE() == null || Integer.toString(user.getUserAGE()) ==null || user.getUserNICKNAME()==null
+    		|| user.getUserGENDER() == null || user.getUserPHONE() == null ||
+    		Integer.toString(user.getUserAGE()) ==null || user.getUserNICKNAME()==null
     		
     			){
     		PrintWriter script = response.getWriter();
@@ -39,6 +40,7 @@
                 script.println("history.back()");    // 이전 페이지로 사용자를 이동
                 script.println("</script>");
             }else{ // 회원가입 성공
+                session.setAttribute("userid", user.getUserID()); // 유저 아이디 받아서 세션 변수 설정
                 PrintWriter script = response.getWriter();
                 script.println("<script>");
                 script.println("location.href = 'Main.jsp'");    // 메인 페이지로 이동
