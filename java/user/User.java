@@ -8,7 +8,7 @@ public class User {
 	private String userLOCATION;
 	private int userAGE;
 	private String userGENDER;
-	private int userPHONE;
+	private String userPHONE;
 	private String userNICKNAME;
 	private int userRATING;
 	private String storeLOCATION;
@@ -49,10 +49,10 @@ public class User {
 	public void setUserGENDER(String userGENDER) {
 		this.userGENDER = userGENDER;
 	}
-	public int getUserPHONE() {
+	public String getUserPHONE() {
 		return userPHONE;
 	}
-	public void setUserPHONE(int userPHONE) {
+	public void setUserPHONE(String userPHONE) {
 		this.userPHONE = userPHONE;
 	}
 	public String getUserNICKNAME() {

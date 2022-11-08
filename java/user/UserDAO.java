@@ -52,7 +52,7 @@ public class UserDAO {
 			pstmt.setString(4, user.getUserLOCATION());
 			pstmt.setInt(5, user.getUserAGE());
 			pstmt.setString(6, user.getUserGENDER());
-			pstmt.setInt(7, user.getUserPHONE());
+			pstmt.setString(7, user.getUserPHONE());
 			pstmt.setString(8, user.getUserNICKNAME());
 			pstmt.setInt(9, 36);
 			pstmt.setString(10, " ");
