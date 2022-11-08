@@ -11,8 +11,15 @@ public class User {
 	private String userPHONE;
 	private String userNICKNAME;
 	private int userRATING;
-	private String storeLOCATION;
+	private String role;
 	
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getUserID() {
 		return userID;
 	}
@@ -66,12 +73,6 @@ public class User {
 	}
 	public void setUserRATING(int userRATING) {
 		this.userRATING = userRATING;
-	}
-	public String getStoreLOCATION() {
-		return storeLOCATION;
-	}
-	public void setStoreLOCATION(String storeLOCATION) {
-		this.storeLOCATION = storeLOCATION;
 	}
 
 }

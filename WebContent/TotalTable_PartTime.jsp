@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -56,7 +57,11 @@ text-align: center;
 	String userid = (String)session.getAttribute("userid");
 
 	if(session.getAttribute("userid")==null){ 
-        response.sendRedirect("Login.jsp");
+		PrintWriter script = response.getWriter();
+        script.println("<script>");
+        script.println("alert('권한이 없습니다.')");
+        script.println("history.back()");    // 이전 페이지로 사용자를 이동
+        script.println("</script>");
 	}
 %>
 

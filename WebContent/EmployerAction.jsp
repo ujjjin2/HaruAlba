@@ -31,7 +31,7 @@
             script.println("</script>");
     	}else{
     		UserDAO userDAO = new UserDAO(); // 성공
-            int result = userDAO.join(user);
+            int result = userDAO.joinEmployer(user);
             if (result == -1){ // 회원가입 실패
                 PrintWriter script = response.getWriter();
                 script.println("<script>");

@@ -15,9 +15,6 @@
 <body>
     <% // 스크립트릿
     
-    	//String userID = request.getParameter("userID");
-  	    //String userPASSWORD = request.getParameter("userPASSWORD");	
-    
         UserDAO userDAO = new UserDAO();
         int result = userDAO.login(user.getUserID(), user.getUserPASSWORD());
         if (result ==1){
