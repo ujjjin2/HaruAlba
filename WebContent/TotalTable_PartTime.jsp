@@ -43,7 +43,7 @@ text-align: center;
 
 </style>
 <meta charset="UTF-8">
-<title>단기알바 전체리스트</title>
+<title>자기 PR 전체 테이블</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -89,12 +89,10 @@ text-align: center;
 			<!-- 노란색 부분  -->
 			<div class="mainfunction" style="background:#FFF2BE; width: 100%; height: 100%;">
 			
-			<!-- 자기 PR 테이블 부분  -->
+			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
-	    			<hr>
-					  	<h3><b>단기알바구인</b></h3>	
-	    			<hr>
+					  	<h3 style="margin: 5% 0 5% 0;"><b>단기알바구인</b></h3>
 					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
 					    <thead>
 					      <tr>

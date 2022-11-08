@@ -89,7 +89,7 @@ text-align: center;
 			<!-- 노란색 부분  -->
 			<div class="mainfunction" style="background:#FFF2BE; width: 100%; height: 100%;">
 			
-			<!-- 단기 알바 구인 테이블 부분  -->
+			<!-- 자기 PR 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
 					  	<h3 style="margin: 5% 0 0 0;"><b>자기 자신을 PR하세요</b></h3>

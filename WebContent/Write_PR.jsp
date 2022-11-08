@@ -62,7 +62,7 @@
 						</center>
 						<center>
 							<div style="width: 80%; height: 80%; margin-top: 3%">
-								 <form action="TotalTable_PR">
+								 <form action="TotalTable_PR.jsp" method="get">
 								    <div class="form-group">
 								      <label for="title" style="float: left; margin: 1% 0 3% 0 ">제목 </label>
 								      <input type="text" class="form-control" id="title" placeholder="제목을 입력해주세요" name="title" >
