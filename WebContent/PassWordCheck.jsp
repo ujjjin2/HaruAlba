@@ -26,11 +26,12 @@
 						</div>
 						<div class="form-group">
 							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">전화번호</p>
-							<input type="text" class="form-control" placeholder="000-0000-0000"
-							name="userPHONE" maxlength="20">
+							<input type="text" class="form-control" placeholder="-를 제외하고 작성"
+								name="userPHONE" maxlength="20">
 						</div>
 			
 				<input type="submit" style="background-color:#FD7401;height:60px;font-weight:bold;margin-bottom:100px" class="btn btn-primary form-control" value="비밀번호찾기">
+				<input type="button" style="background-color:#FD7401;height:60px;font-weight:bold;margin-bottom:100px" onclick="history.back()" value="취소">
 		</div>
 		<div class="col-log-3"></div>
 		</div>

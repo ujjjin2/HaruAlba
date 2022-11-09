@@ -30,7 +30,7 @@
 				
 					</div>
 						<div style="float:right">
-							<A href="PassWordCheck.jsp" style="font-weight:bold;height:30px;font-size:12px;">비밀번호 찾기</A>
+							<a href="PassWordCheck.jsp" style="font-weight:bold;height:30px;font-size:12px;">비밀번호 찾기</a>
 						</div>
 					<input type="submit" style="background-color:#FD7401;height:60px;font-weight:bold" class="btn btn-primary form-control" value="로그인">
 					</form>
