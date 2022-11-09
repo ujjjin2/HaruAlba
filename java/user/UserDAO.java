@@ -1,13 +1,9 @@
 package user;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet; // 단축키 : ctrl + shift + 'o'
-import java.io.PrintWriter;
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-import javax.xml.ws.Response;
 
 public class UserDAO {
 	private Connection conn; //db 접근 객체 
@@ -106,6 +102,47 @@ public class UserDAO {
 			return null;
 		}
 	
+	public String findId(String userNAME, String userPHONE) { // ID 찾기 메서드
+		String userid = null;
+		
+		try {
+			String SQL = "SELECT userID FROM user WHERE userNAME= ? and userPHONE= ? ";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userNAME);
+			pstmt.setString(2, userPHONE);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userid = rs.getString("userID");
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userid;
+	}
+	
+	public String findPW(String userID, String userPHONE) { // PW 찾기 메서드
+		String userpw = null;
+		
+		try {
+			String SQL = "SELECT userPASSWORD FROM user WHERE userID= ? and userPHONE= ? ";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, userPHONE);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userpw = rs.getString("userPASSWORD");
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userpw;
+	}
 	
 	//이후 기능 구현
 	
