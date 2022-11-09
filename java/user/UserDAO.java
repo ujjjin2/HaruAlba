@@ -1,9 +1,13 @@
 package user;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet; // 단축키 : ctrl + shift + 'o'
+import java.io.PrintWriter;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.xml.ws.Response;
 
 public class UserDAO {
 	private Connection conn; //db 접근 객체 
@@ -85,7 +89,24 @@ public class UserDAO {
 		}
 		return -1; //DB 오류 
 	}
+
+	public String sessionname(String userid) {
+		String SQL = "SELECT userNAME, userID FROM user WHERE userID = ?";
+		
+			try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid); 
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				  return rs.getString(1) + "님" +"("+ rs.getString(2)+")";
+			}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+	
 	
 	//이후 기능 구현
 	
-}
+	}

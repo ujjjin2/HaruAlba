@@ -1,7 +1,11 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "user.UserDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +72,12 @@ table{
 	    <div class="center" style="background: #ffffff;">
 				<nav id="menu">
 		            <ul id = "top_menu">
-		                <li><% out.println("아이디:" + userid);%></li><li>|</li>
+		                <li>
+		                <% 		                
+		                UserDAO userDAO = new UserDAO();
+		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
+        				%>
+        				</li><li>|</li>
 		                <li><a href="Mypage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">logout</a></li>
 		            </ul>
