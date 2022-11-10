@@ -54,67 +54,7 @@
 
 <!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#525CDE">
-<%
-	String title = request.getParameter("title");
-	String category = request.getParameter("category");
-	String pay = request.getParameter("pay");
-	String [] checkbox = request.getParameterValues("checkbox");
-	String self_PR = request.getParameter("self_PR");
-	String simpleresume = request.getParameter("simpleresume");
-	
-	String str_checkbox = Arrays.toString(checkbox);
 
-	if(title==null) title="";
-	if(category==null) category="";
-	if(pay==null) pay="";
-	if(str_checkbox==null) str_checkbox="";
-	if(self_PR == null) self_PR="";
-	if(simpleresume == null) simpleresume = "";
-	
-	int readCount = 0;
-	
-	Timestamp date = new Timestamp(System.currentTimeMillis());
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	
-	int prID = 0;
-	String SQL = "SELECT MAX(prID) FROM pr";
-	PreparedStatement pstmt = conn.prepareStatement(SQL);
-	
-	ResultSet rs = pstmt.executeQuery();
-	if(rs.next()){
-	prID = rs.getInt("max(prID)")+1;
-	}
-	
-	SQL ="insert into pr(prID, userID, prTITLE, prRESUME, prCONTENT, prJOB, prDATE, prDAY, prMONEY) values(?,?,?,?,?,?,?,?,?)";
-
-	pstmt=conn.prepareStatement(SQL);
-
-	pstmt.setInt(1, prID);
-
-	pstmt.setString(2, "dd");
-
-	pstmt.setString(3, title);
-
-	pstmt.setString(4, simpleresume);
-
-	pstmt.setString(5, self_PR);
-
-	pstmt.setString(6, category);
-
-	pstmt.setTimestamp(7, date);
-	
-	pstmt.setString(8, str_checkbox);
-	
-	pstmt.setString(9, pay);
-	
-	pstmt.executeUpdate();
-	
-	
-	pstmt.close();
-	conn.close();
-	
-%>
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 300%; background: #585858;">
@@ -132,7 +72,7 @@
 						</center>
 						<center>
 							<div style="width: 80%; height: 80%; margin-top: 3%">
-								 <form action="Write_PR.jsp" method="get">
+								 <form action="Write_PR_Action.jsp" method="get">
 								  <!-- 제목 div -->
 								    <div class="form-group">
 								      <label for="title" style="float: left; margin: 1% 0 2% 0 ">제목 </label>
