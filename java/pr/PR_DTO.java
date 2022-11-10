@@ -3,7 +3,6 @@ package pr;
 import java.sql.Date;
 
 public class PR_DTO {
-	private int prID;
 	private String userID;
 	private String prTITLE;
 	private String prRESUME;
@@ -13,13 +12,6 @@ public class PR_DTO {
 	private String prDAY;
 	private String prMONEY;
 	
-	
-	public int getPrID() {
-		return prID;
-	}
-	public void setPrID(int prID) {
-		this.prID = prID;
-	}
 
 	public String getUserID() {
 		return userID;
