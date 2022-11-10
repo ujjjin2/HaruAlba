@@ -35,7 +35,7 @@
 						</div>
 					<input type="submit" style="background-color:#FD7401;height:60px;font-weight:bold" class="btn btn-primary form-control" value="로그인">
 					</form>
-					<hr style="background-color:gray;border:none;width:100%;height:2px;">
+					<hr style="background-color:#c0c0c0;border:none;width:100%;height:2px;">
 					<form method="post" action="ResisterAction.jsp">
 						<input type="submit" style="background-color:#FFF2BE;height:60px;border-color:#FD7401;color:#FD7401;font-weight:bold;border-width:medium" class="btn btn-primary form-control" value="회원가입">
 					</form>

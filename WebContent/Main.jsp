@@ -7,6 +7,14 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
 <!DOCTYPE html>
+
+<% // 로그아웃 버튼 후 캐시 삭제
+
+response.setHeader("Pragma", "no-cache"); 
+response.setHeader("Cache-Control", "no-store"); 
+
+%>
+
 <html>
 <head>
 <style type="text/css">
@@ -53,19 +61,13 @@ table{
 <body style="background-color:#525CDE">
 
 <% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄
-
-	response.setHeader("Pragma", "no-cache"); 
-	response.setHeader("Cache-Control", "no-cache"); 
-	response.setHeader("Cache-Control", "no-store"); 
-	response.setDateHeader("Expires", 0L); 
-
 	String userid = (String)session.getAttribute("userid");
 
 	if(session.getAttribute("userid")==null){ 
 		PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('권한이 없습니다.')");
-        script.println("history.back()");    // 이전 페이지로 사용자를 이동
+        script.println("location.href='Login.jsp'");    
         script.println("</script>");
 	}
 %>
