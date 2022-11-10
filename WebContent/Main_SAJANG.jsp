@@ -50,7 +50,7 @@ table{
 
 </style>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>메인_사장님</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -64,29 +64,11 @@ table{
 	String userid = (String)session.getAttribute("userid");
 	String role = (String)session.getAttribute("role");
 
-	if(session.getAttribute("userid")==null){ 
-		PrintWriter script = response.getWriter();
-        script.println("<script>");
-        script.println("alert('권한이 없습니다.')");
-        script.println("location.href='Login.jsp'");    
-        script.println("</script>");
-	}
-	
-	if(role.equals("사장")){
-		PrintWriter script = response.getWriter();
-        script.println("<script>");
-        script.println("alert('사장님 환영합니다.')");
-        script.println("location.href='Main_SAJANG.jsp'");    
-        script.println("</script>");
-	}
-
-	
 %>
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 930px; background: #585858;">
 	    <div class="background" style="background: #525CDE;"></div>
-	    
 	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
 	    <div class="center" style="background: #ffffff;">
 				<nav id="menu">
@@ -117,7 +99,7 @@ table{
 	    			<div class="container" style="width: 85%; height: 100%;">
 	    			
 					<b style="float: left; margin: 5% 0 0 0;">단기 알바 구인</b>
-					  		<a href="TotalTable_PartTime.jsp">
+					  		<a href="TotalTable_PartTime_SAJANG.jsp">
 					  		
 					  		<!-- +버튼  -->
 					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
@@ -173,7 +155,7 @@ table{
 	    			<div class="container" style="width: 85%; height: 100%;">
 	    			
 					<b style="float: left; margin: 5% 0 0 0;">자기 PR</b>
-					  		<a href="TotalTable_PR.jsp">
+					  		<a href="TotalTable_PR_SAJANG.jsp">
 					  		
 					  		<!-- +버튼  -->
 					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
@@ -214,10 +196,10 @@ table{
 					        <td onclick="location.href='Detail_PR.jsp'">잉</td>
 					      </tr>
 					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">Dully2</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Dooley2</td>
-					        <td onclick="location.href='Detail_PR.jsp'">jsdf22@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">잉</td>
+					        <td onclick="location.href='Detail_PR_SAJANG.jsp'"">Dully2</td>
+					        <td onclick="location.href='Detail_PR_SAJANG.jsp'">Dooley2</td>
+					        <td onclick="location.href='Detail_PR_SAJANG.jsp'">jsdf22@example.com</td>
+					        <td onclick="location.href='Detail_PR_SAJANG.jsp'">잉</td>
 					      </tr>
 					    </tbody>
 					  </table>

@@ -176,7 +176,7 @@ input:focus{outline:none;}
 
 </style>
 <meta charset="UTF-8">
-<title>상세정보</title>
+<title>상세정보_단기알바</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

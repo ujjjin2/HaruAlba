@@ -1,6 +1,3 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -48,9 +45,14 @@ table{
 }
 
 
+table > thead > tr > td{
+text-align: center;
+}
+
+
 </style>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>자기 파트타임  전체 테이블_사장님</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -60,27 +62,17 @@ table{
 <!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#525CDE">
 
-<% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄 and 사장님일 경우 다른 페이지 이동
+<% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄
+
 	String userid = (String)session.getAttribute("userid");
-	String role = (String)session.getAttribute("role");
 
 	if(session.getAttribute("userid")==null){ 
 		PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('권한이 없습니다.')");
-        script.println("location.href='Login.jsp'");    
+        script.println("location.href='Login.jsp'");   
         script.println("</script>");
 	}
-	
-	if(role.equals("사장")){
-		PrintWriter script = response.getWriter();
-        script.println("<script>");
-        script.println("alert('사장님 환영합니다.')");
-        script.println("location.href='Main_SAJANG.jsp'");    
-        script.println("</script>");
-	}
-
-	
 %>
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
@@ -115,18 +107,16 @@ table{
 			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
-	    			
-					<b style="float: left; margin: 5% 0 0 0;">단기 알바 구인</b>
-					  		<a href="TotalTable_PartTime.jsp">
-					  		
-					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
-					  		</a>
-					  		
-					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
+					  	<h3 style="margin: 5% 0 0 0;"><b>단기알바구인</b></h3>
+					  	
+					  	<a href="Write_PR.jsp">					  		
+					  		<!-- 글쓰기 버튼  -->
+					   		<img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
+					  		</a>	
+					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
 					    <thead>
 					      <tr>
-					        <th style="text-align: center">글번호</th>
+					        <th  style="text-align: center">글번호</th>
 					        <th style="text-align: center">제목</th>
 					        <th style="text-align: center">일시</th>
 					        <th style="text-align: center">작성자</th>
@@ -134,7 +124,7 @@ table{
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">John</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'"">John</td>
 					        <td onclick="location.href='Detail_PartTime.jsp'">Doe</td>
 					        <td onclick="location.href='Detail_PartTime.jsp'">john@example.com</td>
 					        <td onclick="location.href='Detail_PartTime.jsp'">돈</td>
@@ -168,61 +158,7 @@ table{
 					</div>
 	    		</center>
 	    		
-	    		<!-- 자기 PR 테이블 부분  -->
-			<center>
-	    			<div class="container" style="width: 85%; height: 100%;">
-	    			
-					<b style="float: left; margin: 5% 0 0 0;">자기 PR</b>
-					  		<a href="TotalTable_PR.jsp">
-					  		
-					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
-					  		</a>
-					  		
-					  <table class="table table-striped"   style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
-					    <thead>
-					      <tr>
-					        <th  style="text-align: center">글번호</th>
-					        <th style="text-align: center">제목</th>
-					        <th style="text-align: center">일시</th>
-					        <th style="text-align: center">작성자</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">John</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Doe</td>
-					        <td onclick="location.href='Detail_PR.jsp'">john@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">돈</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">Mary</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Moe</td>
-					        <td onclick="location.href='Detail_PR.jsp'">mary@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">존</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">July</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Dooley</td>
-					        <td onclick="location.href='Detail_PR.jsp'">july@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">으</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">Dully</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Dooley</td>
-					        <td onclick="location.href='Detail_PR.jsp'">jsdf@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">잉</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">Dully2</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Dooley2</td>
-					        <td onclick="location.href='Detail_PR.jsp'">jsdf22@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">잉</td>
-					      </tr>
-					    </tbody>
-					  </table>
-					</div>
-	    		</center>
+	    		
 	   		 </div>
 			
 			<!-- 흰색 부분 끝나는 div -->
