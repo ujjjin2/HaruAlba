@@ -115,34 +115,34 @@ table{
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td onclick="location.href='Deatail.jsp'">John</td>
-					        <td onclick="location.href='Deatail.jsp'">Doe</td>
-					        <td onclick="location.href='Deatail.jsp'">john@example.com</td>
-					        <td>돈</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">John</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Doe</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">john@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">돈</td>
 					      </tr>
 					      <tr>
-					        <td onclick="location.href='Deatail.jsp'">Mary</td>
-					        <td onclick="location.href='Deatail.jsp'">Moe</td>
-					        <td onclick="location.href='Deatail.jsp'">mary@example.com</td>
-					        <td onclick="location.href='Deatail.jsp'">존</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Mary</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Moe</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">mary@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">존</td>
 					      </tr>
 					      <tr>
-					        <td onclick="location.href='Deatail.jsp'">July</td>
-					        <td onclick="location.href='Deatail.jsp'">Dooley</td>
-					        <td onclick="location.href='Deatail.jsp'">july@example.com</td>
-					        <td onclick="location.href='Deatail.jsp'">으</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">July</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">july@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">으</td>
 					      </tr>
 					      <tr>
-					        <td onclick="location.href='Deatail.jsp'">Dully</td>
-					        <td onclick="location.href='Deatail.jsp'">Dooley</td>
-					        <td onclick="location.href='Deatail.jsp'">jsdf@example.com</td>
-					        <td onclick="location.href='Deatail.jsp'">잉</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dully</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
 					      </tr>
 					      <tr>
-					        <td onclick="location.href='Deatail.jsp'">Dully2</td>
-					        <td onclick="location.href='Deatail.jsp'">Dooley2</td>
-					        <td onclick="location.href='Deatail.jsp'">jsdf22@example.com</td>
-					        <td onclick="location.href='Deatail.jsp'">잉</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dully2</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley2</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf22@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
 					      </tr>
 					    </tbody>
 					  </table>

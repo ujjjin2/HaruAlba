@@ -110,34 +110,34 @@ text-align: center;
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td id="t1">John</td>
-					        <td>Doe</td>
-					        <td>john@example.com</td>
-					        <td>돈</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'"">John</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Doe</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">john@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">돈</td>
 					      </tr>
 					      <tr>
-					        <td id="t2">Mary</td>
-					        <td>Moe</td>
-					        <td>mary@example.com</td>
-					        <td>존</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Mary</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Moe</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">mary@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">존</td>
 					      </tr>
 					      <tr>
-					        <td id="t3">July</td>
-					        <td>Dooley</td>
-					        <td>july@example.com</td>
-					        <td>으</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">July</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">july@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">으</td>
 					      </tr>
 					      <tr>
-					        <td id="t4">Dully</td>
-					        <td>Dooley</td>
-					        <td>jsdf@example.com</td>
-					        <td>잉</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dully</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
 					      </tr>
 					      <tr>
-					        <td id="t5">Dully2</td>
-					        <td>Dooley2</td>
-					        <td>jsdf22@example.com</td>
-					        <td>잉</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dully2</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley2</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf22@example.com</td>
+					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
 					      </tr>
 					    </tbody>
 					  </table>
