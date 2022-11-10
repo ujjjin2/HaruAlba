@@ -55,6 +55,12 @@ text-align: center;
 <body style="background-color:#525CDE">
 
 <% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄
+
+	response.setHeader("Pragma", "no-cache"); 
+	response.setHeader("Cache-Control", "no-cache"); 
+	response.setHeader("Cache-Control", "no-store"); 
+	response.setDateHeader("Expires", 0L); 
+	
 	String userid = (String)session.getAttribute("userid");
 
 	if(session.getAttribute("userid")==null){ 
