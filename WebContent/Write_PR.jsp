@@ -62,7 +62,7 @@
 						</center>
 						<center>
 							<div style="width: 80%; height: 80%; margin-top: 3%">
-								 <form action="TotalTable_PR.jsp" method="get">
+								 <form action="Write_PR_Action.jsp" method="get">
 								  <!-- 제목 div -->
 								    <div class="form-group">
 								      <label for="title" style="float: left; margin: 1% 0 2% 0 ">제목 </label>
