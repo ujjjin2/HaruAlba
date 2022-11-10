@@ -83,13 +83,13 @@
 								      <label for="date" style="float: left; margin: 2% 0 3% 0 ">근무 가능 요일 </label>
 									      <div class="from-checkbox" >
 										      <div class="checkbox" style="margin: 10% 0 0 0;">
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="월">월</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="화 ">화</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="수 ">수</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="목 ">목</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="금 ">금</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="토 ">토</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="일 ">일</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="월" name="checkbox">월</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="화 " name="checkbox">화</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="수 " name="checkbox">수</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="목 " name="checkbox">목</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="금 " name="checkbox">금</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="토 " name="checkbox">토</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="일 " name="checkbox">일</label>
 											    </div>
 										</div>
 								    </div>

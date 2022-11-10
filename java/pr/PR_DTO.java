@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class PR_DTO {
 	private int prID;
-	private String prUESRID;
+	private String userID;
 	private String prTITLE;
 	private String prRESUME;
 	private String prCONTENT;
@@ -13,17 +13,19 @@ public class PR_DTO {
 	private String prDAY;
 	private String prMONEY;
 	
+	
 	public int getPrID() {
 		return prID;
 	}
 	public void setPrID(int prID) {
 		this.prID = prID;
 	}
-	public String getPrUESRID() {
-		return prUESRID;
+
+	public String getUserID() {
+		return userID;
 	}
-	public void setPrUESRID(String prUESRID) {
-		this.prUESRID = prUESRID;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 	public String getPrTITLE() {
 		return prTITLE;
@@ -56,6 +58,7 @@ public class PR_DTO {
 	public void setPrDATE(Date prDATE) {
 		this.prDATE = prDATE;
 	}
+
 	public String getPrDAY() {
 		return prDAY;
 	}
