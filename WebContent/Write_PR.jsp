@@ -47,7 +47,7 @@
 <body style="background-color:#525CDE">
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
-	<div class="parent" style="width: 100%; height: 930px; background: #585858;">
+	<div class="parent" style="width: 100%; height: 300%; background: #585858;">
 	    <div class="background" style="background: #525CDE;"></div>
 	    
 	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
@@ -63,18 +63,45 @@
 						<center>
 							<div style="width: 80%; height: 80%; margin-top: 3%">
 								 <form action="TotalTable_PR.jsp" method="get">
+								  <!-- 제목 div -->
 								    <div class="form-group">
-								      <label for="title" style="float: left; margin: 1% 0 3% 0 ">제목 </label>
+								      <label for="title" style="float: left; margin: 1% 0 2% 0 ">제목 </label>
 								      <input type="text" class="form-control" id="title" placeholder="제목을 입력해주세요" name="title" >
 								    </div>
-								    <div class="form-group">
-								      <label for="self_PR" style="float: left; margin: 1% 0 3% 0 ">자기 PR</label>
-								      <textarea class="form-control" name="self_PR" rows="7" cols="100" placeholder="자기소개를 해주세요"></textarea>
-								      
+								  <!-- 업직종 div -->
+								     <div class="form-group">
+								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">업직종 </label>
+								      <input type="text" class="form-control" id="category" placeholder="원하는 직종을 적어주세요" name="category" >
 								    </div>
+								  <!-- 시급  div -->
+								    <div class="form-group">
+								      <label for="pay" style="float: left; margin: 1% 0 2% 0 ">시급 </label>
+								      <input type="text" class="form-control" id="pay" placeholder="원하시는 시급을 적어주세요" name="pay" >
+								    </div>
+								  <!-- 근무가능 요일  div -->
+								    <div class="form-group" style="display: block;  width:100%; float: left">
+								      <label for="date" style="float: left; margin: 2% 0 3% 0 ">근무 가능 요일 </label>
+									      <div class="from-checkbox" >
+										      <div class="checkbox" style="margin: 10% 0 0 0;">
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="월">월</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="화 ">화</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="수 ">수</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="목 ">목</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="금 ">금</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="토 ">토</label>
+											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="일 ">일</label>
+											    </div>
+										</div>
+								    </div>
+								    <!-- 자기 PR -->
+								    <div class="form-group" style="display: inline-block;">
+								      <label for="self_PR" style="float: left; margin: 1% 0 3% 0 ">자기 PR</label>
+								      <textarea class="form-control" name="self_PR" rows="4" cols="100" placeholder="자기소개를 해주세요"></textarea> 
+								    </div>
+								     <!-- 간편 이력서 -->
 								    <div class="form-group">
 								      <label for="simpleresume" style="float: left; margin: 1% 0 3% 0 ">간편 이력서</label>
-								      <textarea class="form-control" name="simpleresume" rows="7" cols="100" placeholder="지금까지 했던 경력을 적어주세요"></textarea>
+								      <textarea class="form-control" name="simpleresume" rows="4" cols="100" placeholder="지금까지 했던 경력을 적어주세요"></textarea>
 								      
 								    </div>
 								    
