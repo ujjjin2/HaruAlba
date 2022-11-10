@@ -144,6 +144,25 @@ public class UserDAO {
 		return userpw;
 	}
 	
+	public String findrole(String userID) { // PW 찾기 메서드
+		String userrole = null;
+		
+		try {
+			String SQL = "SELECT role FROM user WHERE userID= ? ";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userrole = rs.getString("role");
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userrole;
+	}
+	
 	//이후 기능 구현
 	
 	}

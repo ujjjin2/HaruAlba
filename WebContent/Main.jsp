@@ -60,8 +60,9 @@ table{
 <!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#525CDE">
 
-<% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄
+<% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄 and 사장님일 경우 다른 페이지 이동
 	String userid = (String)session.getAttribute("userid");
+	String role = (String)session.getAttribute("role");
 
 	if(session.getAttribute("userid")==null){ 
 		PrintWriter script = response.getWriter();
@@ -70,6 +71,16 @@ table{
         script.println("location.href='Login.jsp'");    
         script.println("</script>");
 	}
+	
+	if(role.equals("사장")){
+		PrintWriter script = response.getWriter();
+        script.println("<script>");
+        script.println("alert('사장님 환영합니다.')");
+        script.println("location.href='Main2.jsp'");    
+        script.println("</script>");
+	}
+
+	
 %>
 
 <!-- 2022-11-06 허유진 헤더 부분  -->

@@ -17,9 +17,12 @@
     
         UserDAO userDAO = new UserDAO();
         int result = userDAO.login(user.getUserID(), user.getUserPASSWORD());
+        String role = userDAO.findrole(user.getUserID());
+        // ID가 사장 OR 알바
         if (result ==1){
             PrintWriter script = response.getWriter();
             session.setAttribute("userid", user.getUserID()); // 유저 아이디 받아서 세션 변수 설정
+            session.setAttribute("role", role); // 유저 아이디 역할 변수 설정
 			response.sendRedirect("Main.jsp");
         }
         else if (result == 0){
