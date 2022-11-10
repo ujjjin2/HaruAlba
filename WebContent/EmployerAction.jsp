@@ -43,7 +43,8 @@
                 session.setAttribute("userid", user.getUserID()); // 유저 아이디 받아서 세션 변수 설정
                 PrintWriter script = response.getWriter();
                 script.println("<script>");
-                script.println("location.href = 'Main.jsp'");    // 메인 페이지로 이동
+                script.println("alert('가입이 완료되었습니다.')");
+                script.println("location.href = 'Login.jsp'");    // 메인 페이지로 이동
                 script.println("</script>");
             }
     	}
