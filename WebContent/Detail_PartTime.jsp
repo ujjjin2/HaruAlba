@@ -3,15 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
+<style>
 .parent{
     display: flex;
-    	overflow: auto;
+    overflow: auto;
 }
 .center_write{
     display: flex;
     flex-direction: column;
     margin: 5% 10% 5% 10%;
+    width: 80%;
+    height: 90%;
 }
 
 .article{
@@ -39,6 +41,9 @@
 	overflow: auto;
 }
 
+.article-info{
+	padding: 24px 16px 0px 16px;
+}
 .article-content{
     width: 100%;
     box-sizing: border-box;
@@ -145,11 +150,10 @@
 }
 .center {
     flex: 3;
-    
 }
 
 .header{
-	margin: 0px 0 0 0px;
+	margin: 30px 0 0 0px;
 	width: 100%;
 	height: 20%;
 }
@@ -163,6 +167,10 @@
     float: right;
     display: flex;
     margin: 3% 0 0 0 ;
+}
+
+.space {
+  border-bottom: 10px solid #ffffff;
 }
 input:focus{outline:none;}
 
@@ -201,12 +209,38 @@ input:focus{outline:none;}
 							<div class="article-location">인천</div>
 						</div>	
 						<div class="article-content-wrap">
+							<div class="article-info">
+								<table>
+								<colgroup>
+									<col style="width: 80px;">
+								</colgroup>
+									<tbody>
+										<tr>
+											<th>매장정보</th>
+											<td>매장 정보 정보</td>
+										</tr>
+										<tr class="space"></tr>										
+										<tr>
+											<th>역할</th>
+											<td>택배, 배송기사, 화물,운송이사, 쿠팡친구</td>
+										</tr>
+										<tr class="space"></tr>	
+										<tr>
+											<th>일시</th>
+											<td>2022년 12월 1일 ~ 2022년 12월 8일</td>
+										</tr>
+										<tr class="space"></tr>	
+										<tr>
+											<th>시급</th>
+											<td>15000원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 							<div class="article-content">
 								<p>알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.
 								알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.
-								알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.
-								알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.
-								알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.</p>							
+								알바할사람 구해요.알바할사람 구해요.</p>							
 							</div>
 						</div>
 					</div>
