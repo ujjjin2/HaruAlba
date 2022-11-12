@@ -1,3 +1,4 @@
+<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -10,8 +11,25 @@
 
 <% // 로그아웃 버튼 후 캐시 삭제
 
-response.setHeader("Pragma", "no-cache"); 
-response.setHeader("Cache-Control", "no-store"); 
+	response.setHeader("Pragma", "no-cache"); 
+	response.setHeader("Cache-Control", "no-store"); 
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
+	String sql = "SELECT * FROM pr ORDER BY prid DESC LIMIT 5";
+	pstmt = conn.prepareStatement(sql);
+	int prid = 0;
+	String prtitle ="";
+	String prday ="";
+	String userid_1 = "";
+	
+
+	
+	rs = pstmt.executeQuery();
 
 %>
 
@@ -189,13 +207,19 @@ table{
 					      </tr>
 					    </thead>
 					    <tbody>
+					    <%
+					     while(rs.next()){
+					    %>
 					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">John</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Doe</td>
-					        <td onclick="location.href='Detail_PR.jsp'">john@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">돈</td>
+					        <td onclick="location.href='Detail_PR.jsp'"><%=rs.getInt("prid") %></td>
+					        <td onclick="location.href='Detail_PR.jsp'"><%= rs.getString("prtitle") %></td>
+					        <td onclick="location.href='Detail_PR.jsp'"><%= rs.getString("prday")%></td>
+					        <td onclick="location.href='Detail_PR.jsp'"><%= rs.getString("userid") %></td>
 					      </tr>
-					      <tr>
+					      <%
+					    	 }
+					      %>
+					      <!--  <tr>
 					        <td onclick="location.href='Detail_PR.jsp'">Mary</td>
 					        <td onclick="location.href='Detail_PR.jsp'">Moe</td>
 					        <td onclick="location.href='Detail_PR.jsp'">mary@example.com</td>
@@ -218,7 +242,7 @@ table{
 					        <td onclick="location.href='Detail_PR.jsp'">Dooley2</td>
 					        <td onclick="location.href='Detail_PR.jsp'">jsdf22@example.com</td>
 					        <td onclick="location.href='Detail_PR.jsp'">잉</td>
-					      </tr>
+					      </tr>-->
 					    </tbody>
 					  </table>
 					</div>

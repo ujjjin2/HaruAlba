@@ -10,11 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <%
+	request.setCharacterEncoding("UTF-8");
 	String title = request.getParameter("title");
 	String category = request.getParameter("category");
 	String pay = request.getParameter("pay");
@@ -35,7 +35,8 @@
 	
 	Timestamp date = new Timestamp(System.currentTimeMillis());
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC"+
+			"&useUnicode=true&characterEncoding=UTF-8", "haru", "haru");
 	
 	int prID = 0;
 	String SQL = "SELECT MAX(prID) FROM pr";
