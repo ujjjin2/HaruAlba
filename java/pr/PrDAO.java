@@ -38,16 +38,32 @@ public class PrDAO {
 		}
 		return getDate();
 	}
+	
+	public int getNext() {
+		String SQL = "SELECT MAX(prID) FROM pr";
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("max(prID)") + 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+		
+	}
 
 	
 	// 글쓰기 기능
 	public int writePR(Pr pr) {
-		String SQL = 
-				"INSERT INTO pr VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO pr VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			pstmt = conn.prepareStatement(SQL);
-
+			
 			pstmt.setString(1, pr.getUserID());
 			pstmt.setString(2, pr.getPrTITLE());
 			pstmt.setString(3, pr.getPrRESUME());
@@ -56,7 +72,6 @@ public class PrDAO {
 			pstmt.setTimestamp(6, pr.getPrDATE());
 			pstmt.setString(7, pr.getPrDAY());
 			pstmt.setString(8, pr.getPrMONEY());
-			
 			return pstmt.executeUpdate();
 			
 		} catch(SQLException e) {
