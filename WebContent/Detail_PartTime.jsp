@@ -12,8 +12,6 @@
     display: flex;
     flex-direction: column;
     margin: 5% 10% 5% 10%;
-    width: 80%;
-    height: 90%;
 }
 
 .article{
@@ -129,19 +127,17 @@
 	border-radius: 4px;
 	box-sizing: border-box;
 	border: 0;
-	width: 90%;
-    background: #fff;
+	width: 85%;
     font-size: 14px;
     padding: 12px 62px 11px 12px;
-    margin: 3% 0% 0% 0%;
-   	float: left;
-   	display:flex;
+    margin: 3% 3% 0% 0%;
+    flex-grow: 5;
 }
 
 
 .write-wrap{
 	margin: 0% 5% 5% 5%;
-	
+	height: 100%;
 }
 
 .background {
@@ -161,16 +157,21 @@
 .btn{	
 	background: #FA4E29;
 	color: #FFFFFF;
-    font-size: 14px;
     outline: 0;
     height: 40px;
-    float: right;
-    display: flex;
     margin: 3% 0 0 0 ;
+    float: right;
+    flex-grow: 1;
 }
 
 .space {
   border-bottom: 10px solid #ffffff;
+}
+
+.ex{
+	height: 100%;
+	display: flex;
+	flex-direction: row;
 }
 input:focus{outline:none;}
 
@@ -277,8 +278,10 @@ input:focus{outline:none;}
 					<!-- 댓글 입력 창 -->
 					<div class="write-wrap">
 						<form action="Main.jsp" method="get">
-							<input type="text"  class="comment-write" name="userName" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
-							<button type="submit" class="btn">글쓰기</button>
+							<div class="ex">
+								<input type="text"  class="comment-write" name="userName" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
+								<button type="submit" class="btn">글쓰기</button>
+							</div>
 						</form>
 					</div>
 			

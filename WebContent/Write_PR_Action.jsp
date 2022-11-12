@@ -1,3 +1,4 @@
+<%@page import="user.UserDAO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.sql.DriverManager"%>
@@ -14,7 +15,13 @@
 </head>
 <body>
 <%
+	String userid = (String)session.getAttribute("userid");
+	String role = (String)session.getAttribute("role");
+	
+	
+	
 	request.setCharacterEncoding("UTF-8");
+	UserDAO userDAO = new UserDAO();
 	String title = request.getParameter("title");
 	String category = request.getParameter("category");
 	String pay = request.getParameter("pay");
@@ -53,7 +60,7 @@
 
 	pstmt.setInt(1, prID);
 
-	pstmt.setString(2, "dd");
+	pstmt.setString(2, userid);
 
 	pstmt.setString(3, title);
 

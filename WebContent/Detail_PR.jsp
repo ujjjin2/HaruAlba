@@ -1,6 +1,50 @@
+<%@page import="java.sql.Date"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<% // 로그아웃 버튼 후 캐시 삭제
+
+	response.setHeader("Pragma", "no-cache"); 
+	response.setHeader("Cache-Control", "no-store"); 
+
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
+	String sql = "SELECT pr.userID, prDATE, userAGE, userLOCATION, prTITLE, prRESUME, prCONTENT, prJOB, prDAY, prMONEY FROM pr, user where pr.userID = user.userID AND prID = ? ";
+	pstmt = conn.prepareStatement(sql);
+	
+	int prid = 0;
+	if(request.getParameter("prid") != null) {
+		prid = Integer.parseInt(request.getParameter("prid"));
+	}
+	pstmt.setInt(1, prid);
+	
+	rs = pstmt.executeQuery();
+	
+	if(rs.next()){
+		String userID = rs.getString("pr.userID");
+		Integer age = rs.getInt("userAGE");
+		String location = rs.getString("userLOCATION");
+		String title = rs.getString("prTITLE");
+		String resume = rs.getString("prRESUME");
+		String content = rs.getString("prCONTENT");
+		String job = rs.getString("prJOB");
+		String day = rs.getString("prDAY");
+		String money = rs.getString("prMONEY");
+		String date = String.valueOf(rs.getDate("prDATE"));
+	
+%>
+
 <html>
 <head>
 <style>
@@ -12,8 +56,6 @@
     display: flex;
     flex-direction: column;
     margin: 5% 10% 5% 10%;
-    width: 80%;
-    height: 90%;
 }
 
 .article{
@@ -42,12 +84,13 @@
 }
 
 .article-info{
-	padding: 24px 16px 0px 16px;
+	padding: 24px 16px 24px 16px;
+	border-bottom: 1px solid #EDF0F4;
 }
 .article-content{
     width: 100%;
     box-sizing: border-box;
-    padding: 24px 16px;
+    padding: 0 16px 0 16px;
     line-height: 24px;
     font-size: 16px;
     word-wrap: break-word;
@@ -129,19 +172,17 @@
 	border-radius: 4px;
 	box-sizing: border-box;
 	border: 0;
-	width: 90%;
-    background: #fff;
+	width: 85%;
     font-size: 14px;
     padding: 12px 62px 11px 12px;
-    margin: 3% 0% 0% 0%;
-   	float: left;
-   	display:flex;
+    margin: 3% 3% 0% 0%;
+    flex-grow: 5;
 }
 
 
 .write-wrap{
 	margin: 0% 5% 5% 5%;
-	
+	height: 100%;
 }
 
 .background {
@@ -161,16 +202,30 @@
 .btn{	
 	background: #FA4E29;
 	color: #FFFFFF;
-    font-size: 14px;
     outline: 0;
     height: 40px;
-    float: right;
-    display: flex;
     margin: 3% 0 0 0 ;
+    float: right;
+    flex-grow: 1;
 }
 
 .space {
   border-bottom: 10px solid #ffffff;
+}
+
+.content-title{	
+	padding: 8px 16px 0 16px;
+	font-weight: bold;
+}
+
+.bold-title{
+	font-weight: bold;
+}
+
+.ex{
+	height: 100%;
+	display: flex;
+	flex-direction: row;
 }
 input:focus{outline:none;}
 
@@ -203,10 +258,11 @@ input:focus{outline:none;}
 					</div>
 					<!-- 세부사항 내용 -->
 					<div class="article" style="background: #ffffff">
+
 						<div class="article-header">
-							<div class="article-title">[1-3개월 230-250만 고정급] 민족은행 농협 용산 고객센터</div>
-							<div class="article-user">작성자 이름</div>
-							<div class="article-location">인천</div>
+							<div class="article-title"><%= title %></div>
+							<div class="article-user"><%= userID %></div>
+							<div class="article-location"><%= location %></div>
 						</div>	
 						<div class="article-content-wrap">
 							<div class="article-info">
@@ -217,39 +273,51 @@ input:focus{outline:none;}
 									<tbody>
 										<tr>
 											<th>나이</th>
-											<td>21세</td>
+											<td><%= age %></td>
 										</tr>
 										<tr class="space"></tr>										
 										<tr>
 											<th>업직종</th>
-											<td>택배, 배송기사, 화물,운송이사, 쿠팡친구</td>
+											<td><%= job %></td>
 										</tr>
 										<tr class="space"></tr>	
 										<tr>
 											<th>근무가능기간</th>
-											<td>2022년 12월 1일 ~ 2022년 12월 8일</td>
+											<td><%=date %></td>
 										</tr>
 										<tr class="space"></tr>	
 										<tr>
 											<th>근무가능 요일</th>
-											<td>월화수목금</td>
+											<td><%=day%></td>
 										</tr>
 										<tr class="space"></tr>	
 											<th>시급</th>
-											<td>15000원</td>
+											<td><%=money%></td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
-							<div class="article-content">
-								<p>알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.
-								알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.
-								알바할사람 구해요.알바할사람 구해요.</p>							
+							<div class="content-title">
+								<h4 class="bold-title">
+									간편이력서
+								</h4>
 							</div>
 							<div class="article-content">
-								<p>알바하고싶습니다알바하고싶습니다알바하고싶습니다알바하고싶습니다알바하고싶습니다</p>							
+								<p><%=resume%>
+								</p>							
+							</div>
+							<div class="content-title">
+								<h4 class="bold-title">
+									자기PR
+								</h4>
+							</div>
+							<div class="article-content">
+								<p><%=content%></p>							
 							</div>
 						</div>
+						<%
+							}
+						%>
 					</div>
 					
 					<div class="comment-wrap" style="background: #FFFFFF">
@@ -284,8 +352,10 @@ input:focus{outline:none;}
 					<!-- 댓글 입력 창 -->
 					<div class="write-wrap">
 						<form action="Main.jsp" method="get">
-							<input type="text"  class="comment-write" name="userName" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
-							<button type="submit" class="btn">글쓰기</button>
+							<div class="ex">
+								<input type="text"  class="comment-write" name="userName" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
+								<button type="submit" class="btn">글쓰기</button>
+							</div>
 						</form>
 					</div>
 			

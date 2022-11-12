@@ -1,3 +1,7 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,6 +13,23 @@
 
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
+
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
+	String sql = "SELECT * FROM pr ORDER BY prid DESC";
+	pstmt = conn.prepareStatement(sql);
+	int prid = 0;
+	String prtitle ="";
+	String prday ="";
+	String userid_1 = "";
+	
+	
+	
+	rs = pstmt.executeQuery();
 
 %>
 
@@ -122,12 +143,19 @@ text-align: center;
 					      </tr>
 					    </thead>
 					    <tbody>
+					    <%
+					    	while(rs.next()){
+					    %>
 					      <tr>
-					        <td id="t1">John</td>
-					        <td>Doe</td>
-					        <td>john@example.com</td>
-					        <td>돈</td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getInt("prid") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prtitle") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prday") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("userid") %></td>
 					      </tr>
+					      <%
+					    	}
+					      %>
+					      <!--
 					      <tr>
 					        <td id="t2">Mary</td>
 					        <td>Moe</td>
@@ -152,6 +180,8 @@ text-align: center;
 					        <td>jsdf22@example.com</td>
 					        <td>잉</td>
 					      </tr>
+					      -->
+					  
 					    </tbody>
 					  </table>
 					</div>
