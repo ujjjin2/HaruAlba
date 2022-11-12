@@ -1,18 +1,25 @@
 package pr;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
-public class PR_DTO {
+public class Pr {
+	private int prID;
 	private String userID;
 	private String prTITLE;
 	private String prRESUME;
 	private String prCONTENT;
 	private String prJOB;
-	private Date prDATE;
+	private Timestamp prDATE;
 	private String prDAY;
 	private String prMONEY;
 	
 
+	public int getPrID() {
+		return prID;
+	}
+	public void setPrID(int prID) {
+		this.prID = prID;
+	}
 	public String getUserID() {
 		return userID;
 	}
@@ -43,14 +50,6 @@ public class PR_DTO {
 	public void setPrJOB(String prJOB) {
 		this.prJOB = prJOB;
 	}
-
-	public Date getPrDATE() {
-		return prDATE;
-	}
-	public void setPrDATE(Date prDATE) {
-		this.prDATE = prDATE;
-	}
-
 	public String getPrDAY() {
 		return prDAY;
 	}
@@ -62,6 +61,12 @@ public class PR_DTO {
 	}
 	public void setPrMONEY(String prMONEY) {
 		this.prMONEY = prMONEY;
+	}
+	public Timestamp getPrDATE() {
+		return prDATE;
+	}
+	public void setPrDATE(Timestamp prDATE) {
+		this.prDATE = prDATE;
 	}
 	
 }

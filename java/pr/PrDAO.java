@@ -7,13 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PR_DAO {
+public class PrDAO {
 	private Connection conn; //db 접근 객체 
+	private PreparedStatement pstmt;
 	private ResultSet rs; // db 결과를 담는 객체
 	
-	public PR_DAO() {
+	public PrDAO() {
 		try {
-			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC";
+			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
 			String dbID = "haru"; //계정
 			String dbPassword = "haru"; //비밀번호
 			Class.forName("com.mysql.cj.jdbc.Driver"); //mysql에 접속을 도와주는 라이브러리 
@@ -27,7 +28,7 @@ public class PR_DAO {
 		String SQL = "SELECT NOW()";
 		
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				return rs.getDate(1);
@@ -40,32 +41,29 @@ public class PR_DAO {
 
 	
 	// 글쓰기 기능
-	public int writePR(PR_DTO pr) {
-		String SQL = "INSERT INTO pr(userID, prTITLE, prRESUME, prCONTENT, prJOB, prDATE, prDAY, prMONEY) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+	public int writePR(Pr pr, String userid) {
+		String SQL = 
+				"INSERT INTO pr VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		int rs = 0;
-		PR_DTO dto = new PR_DTO();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, dto.getUserID());
-			pstmt.setString(2, dto.getPrTITLE());
-			pstmt.setString(3, dto.getPrRESUME());
-			pstmt.setString(4, dto.getPrCONTENT());
-			pstmt.setString(5, dto.getPrJOB());
-			pstmt.setDate(6, dto.getPrDATE());
-			pstmt.setString(7, dto.getPrDAY());
-			pstmt.setString(8, dto.getPrMONEY());
+
+			pstmt.setString(1, userid);
+			pstmt.setString(2, pr.getPrTITLE());
+			pstmt.setString(3, pr.getPrRESUME());
+			pstmt.setString(4, pr.getPrCONTENT());
+			pstmt.setString(5, pr.getPrJOB());
+			pstmt.setTimestamp(6, pr.getPrDATE());
+			pstmt.setString(7, pr.getPrDAY());
+			pstmt.setString(8, pr.getPrMONEY());
 			
-			pstmt.executeUpdate();
+			return pstmt.executeUpdate();
 			
 		} catch(SQLException e) {
 			System.out.println("글쓰기 실패");
 			e.printStackTrace();
 			
-		}
-		return rs; // DB오류
-	
+		}return -1;
 	}
 	
 
