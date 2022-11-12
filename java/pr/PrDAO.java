@@ -41,14 +41,14 @@ public class PrDAO {
 
 	
 	// 글쓰기 기능
-	public int writePR(Pr pr, String userid) {
+	public int writePR(Pr pr) {
 		String SQL = 
 				"INSERT INTO pr VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			pstmt = conn.prepareStatement(SQL);
 
-			pstmt.setString(1, userid);
+			pstmt.setString(1, pr.getUserID());
 			pstmt.setString(2, pr.getPrTITLE());
 			pstmt.setString(3, pr.getPrRESUME());
 			pstmt.setString(4, pr.getPrCONTENT());

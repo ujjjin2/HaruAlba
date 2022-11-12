@@ -52,7 +52,7 @@
 <body>
 <%
 	PrDAO prDAO = new PrDAO();
-    int result = prDAO.writePR(pr, userid);
+    int result = prDAO.writePR(pr);
     if (result == -1){ // 회원가입 실패
         PrintWriter script = response.getWriter();
         script.println("<script>");
