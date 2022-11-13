@@ -20,7 +20,7 @@
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT pr.userID, prDATE, userAGE, userLOCATION, prTITLE, prRESUME, prCONTENT, prJOB, prDAY, prMONEY FROM pr, user where pr.userID = user.userID AND prID = ? ";
+	String sql = "SELECT userNAME, prDATE, userAGE, userLOCATION, prTITLE, prRESUME, prCONTENT, prJOB, prDAY, prMONEY FROM pr, user where pr.userID = user.userID AND prID = ? ";
 	pstmt = conn.prepareStatement(sql);
 	
 	int prid = 0;
@@ -32,7 +32,7 @@
 	rs = pstmt.executeQuery();
 	
 	if(rs.next()){
-		String userID = rs.getString("pr.userID");
+		String userID = rs.getString("userNAME");
 		Integer age = rs.getInt("userAGE");
 		String location = rs.getString("userLOCATION");
 		String title = rs.getString("prTITLE");

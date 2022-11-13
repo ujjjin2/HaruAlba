@@ -211,10 +211,10 @@ table{
 					     while(rs.next()){
 					    %>
 					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'"><%=rs.getInt("prid") %></td>
-					        <td onclick="location.href='Detail_PR.jsp'"><%= rs.getString("prtitle") %></td>
-					        <td onclick="location.href='Detail_PR.jsp'"><%= rs.getString("prday")%></td>
-					        <td onclick="location.href='Detail_PR.jsp'"><%= rs.getString("userid") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%=rs.getInt("prid") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prtitle") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prday")%></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("userid") %></td>
 					      </tr>
 					      <%
 					    	 }
