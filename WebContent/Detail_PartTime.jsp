@@ -216,6 +216,7 @@ input:focus{outline:none;}
 							<div class="article-user">작성자 이름</div>
 							<div class="article-location">인천</div>
 						</div>	
+						
 						<div class="article-content-wrap">
 							<div class="article-info">
 								<table>
