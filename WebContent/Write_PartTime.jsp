@@ -95,7 +95,7 @@
 								     <div class="form-group">
 								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">일시 </label>
 								      <div>
-								      <input type="date" id="ptROLE" value="2022-11-14" style="width: 100%; height: 5%"></p>
+								      <input type="date" id="ptROLE" value="2022-11-14" style="width: 100%; height: 5%">
 								      </div>
 								    </div>
 								  <!-- 시급  div -->
