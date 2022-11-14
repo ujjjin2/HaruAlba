@@ -16,21 +16,30 @@
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
+	PreparedStatement pstmt2 = null;
 	ResultSet rs = null;
+	ResultSet rs2 = null;
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
 	String sql = "SELECT * FROM pr ORDER BY prid DESC LIMIT 5";
+	String sql2 = "SELECT * FROM pt ORDER BY ptid DESC LIMIT 5";
 	pstmt = conn.prepareStatement(sql);
+	pstmt2 = conn.prepareStatement(sql2);
 	int prid = 0;
 	String prtitle ="";
 	String prday ="";
 	String userid_1 = "";
 	
+	int ptid = 0;
+	String pttitle ="";
+	String ptperiod ="";
+	String ptstate = "";
+	
 	String sqlPartTime = "SELECT * FROM ";
 	
 	rs = pstmt.executeQuery(sql);
-
+	rs2 = pstmt2.executeQuery(sql2);
 %>
 
 <html>
@@ -148,9 +157,24 @@ table{
 					        <th style="text-align: center">제목</th>
 					        <th style="text-align: center">일시</th>
 					        <th style="text-align: center">작성자</th>
+					        <th style="text-align: center">상태</th>
 					      </tr>
 					    </thead>
 					    <tbody>
+					    <%
+					    	while(rs2.next()){
+					    	%>
+					      <tr>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getInt("ptid") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("pttitle") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("ptperiod") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("userid") %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("ptstate") %></td>
+					      </tr>
+					      <%
+					    	}
+					      %>
+					    <!--
 					      <tr>
 					        <td onclick="location.href='Detail_PartTime.jsp'">John</td>
 					        <td onclick="location.href='Detail_PartTime.jsp'">Doe</td>
@@ -181,6 +205,7 @@ table{
 					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf22@example.com</td>
 					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
 					      </tr>
+					       -->
 					    </tbody>
 					  </table>
 					</div>
