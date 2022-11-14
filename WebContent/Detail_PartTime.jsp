@@ -1,6 +1,45 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+	response.setHeader("Pragma", "no-cache"); 
+	response.setHeader("Cache-Control", "no-store"); 
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
+	String sql = "SELECT userLOCATION, ptTITLE, userNAME, ptINFO, ptROLE, ptPERIOD, ptMONEY, ptGIVE, ptCONTENT, ptSTATE FROM pt, user where pt.userID = user.userID AND ptID = ? ";
+	pstmt = conn.prepareStatement(sql);
+	
+	int ptid = 0;
+	if(request.getParameter("ptid") != null) {
+		ptid = Integer.parseInt(request.getParameter("ptid"));
+	}
+	pstmt.setInt(1, ptid);
+	
+	rs = pstmt.executeQuery();
+	
+	if(rs.next()){
+		String userName = rs.getString("userNAME");
+		String title = rs.getString("ptTITLE");
+		String info = rs.getString("ptINFO");
+		String role = rs.getString("ptROLE");
+		String period = rs.getString("ptPERIOD");
+		String money = rs.getString("ptMONEY");
+		String give = rs.getString("ptGIVE");
+		String content = rs.getString("ptCONTENT");
+		String state = rs.getString("ptSTATE");
+		String location = rs.getString("userLOCATION");
+%>
+
 <html>
 <head>
 <style>
@@ -211,10 +250,10 @@ input:focus{outline:none;}
 					<!-- 세부사항 내용 -->
 					<div class="article" style="background: #ffffff">
 						<div class="article-header">
-							<div class="article-state">모집중</div>
-							<div class="article-title">[1-3개월 230-250만 고정급] 민족은행 농협 용산 고객센터</div>
-							<div class="article-user">작성자 이름</div>
-							<div class="article-location">인천</div>
+							<div class="article-state"><%=state %></div>
+							<div class="article-title"><%=title %></div>
+							<div class="article-user"><%=userName %></div>
+							<div class="article-location"><%=location%></div>
 						</div>	
 						
 						<div class="article-content-wrap">
@@ -226,37 +265,38 @@ input:focus{outline:none;}
 									<tbody>
 										<tr>
 											<th>매장정보</th>
-											<td>매장 정보 정보</td>
+											<td><%=info %></td>
 										</tr>
 										<tr class="space"></tr>										
 										<tr>
 											<th>역할</th>
-											<td>택배, 배송기사, 화물,운송이사, 쿠팡친구</td>
+											<td><%=role %></td>
 										</tr>
 										<tr class="space"></tr>	
 										<tr>
 											<th>일시</th>
-											<td>2022년 12월 1일 ~ 2022년 12월 8일</td>
+											<td><%=period %></td>
 										</tr>
 										<tr class="space"></tr>	
 										<tr>
 											<th>시급</th>
-											<td>15000원</td>
+											<td><%=money %></td>
 										</tr>
 										<tr class="space"></tr>
 										<tr>
 											<th>지급방법</th>
-											<td>당일지급</td>
+											<td><%=give %></td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 							<div class="article-content">
-								<p>알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.
-								알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.알바할사람 구해요.
-								알바할사람 구해요.알바할사람 구해요.</p>							
+								<p><%=content %></p>							
 							</div>
 						</div>
+						<%
+							}
+						%>
 					</div>
 					
 					<div class="comment-wrap" style="background: #FFFFFF">
