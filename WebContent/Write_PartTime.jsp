@@ -10,6 +10,7 @@
 <%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +45,8 @@
 
 
 </style>
+
+
 <meta charset="UTF-8">
 <title>글쓰기</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,46 +79,55 @@
 								  <!-- 제목 div -->
 								    <div class="form-group">
 								      <label for="title" style="float: left; margin: 1% 0 2% 0 ">제목 </label>
-								      <input type="text" class="form-control" id="prTITLE" placeholder="제목을 입력해주세요" name="prTITLE" >
+								      <input type="text" class="form-control" id="ptTITLE" placeholder="제목을 입력해주세요" name="ptTITLE" >
 								    </div>
-								  <!-- 업직종 div -->
+								  <!-- 매장정보 div -->
 								     <div class="form-group">
-								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">업직종 </label>
-								      <input type="text" class="form-control" id="prJOB" placeholder="원하는 직종을 적어주세요" name="prJOB" >
+								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">매장정보 </label>
+								      <input type="text" class="form-control" id="ptINFO" placeholder="매장정보를 적어주세요" name="ptINFO" >
+								    </div>
+								   <!-- 역할 div -->
+								     <div class="form-group">
+								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">역할</label>
+								      <input type="text" class="form-control" id="ptROLE" placeholder="역할을 적어주세요" name="ptROLE" >
+								    </div>
+								   <!-- 일시 div -->
+								     <div class="form-group">
+								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">일시 </label>
+								      <div>
+								      <input type="date" id="ptROLE" value="2022-11-14" style="width: 100%; height: 5%"></p>
+								      </div>
 								    </div>
 								  <!-- 시급  div -->
 								    <div class="form-group">
 								      <label for="pay" style="float: left; margin: 1% 0 2% 0 ">시급 </label>
-								      <input type="text" class="form-control" id="prMONEY" placeholder="원하시는 시급을 적어주세요" name="prMONEY" >
+								      <input type="text" class="form-control" id="prMONEY" placeholder="급을 적어주세요" name="prMONEY" >
 								    </div>
-								  <!-- 근무가능 요일  div -->
-								    <div class="form-group" style="display: block;  width:100%; float: left">
-								      <label for="date" style="float: left; margin: 2% 0 3% 0 ">근무 가능 요일 </label>
-									      <div class="from-checkbox" >
-										      <div class="checkbox" style="margin: 10% 0 0 0;">
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="월" name="prDAY">월</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="화 " name="prDAY">화</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="수 " name="prDAY">수</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="목 " name="prDAY">목</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="금 " name="prDAY">금</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="토 " name="prDAY">토</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="일 " name="prDAY">일</label>
-											    </div>
-										</div>
-								    </div>
-								    <!-- 자기 PR -->
-								    <div class="form-group" style="display: inline-block;">
-								      <label for="self_PR" style="float: left; margin: 1% 0 3% 0 ">자기 PR</label>
-								      <textarea class="form-control" name="prCONTENT" id="prCONTENT" rows="4" cols="100" placeholder="자기소개를 해주세요"></textarea> 
-								    </div>
-								     <!-- 간편 이력서 -->
-								    <div class="form-group">
-								      <label for="simpleresume" style="float: left; margin: 1% 0 3% 0 ">간편 이력서</label>
-								      <textarea class="form-control" name="prRESUME" id="prRESUME" rows="4" cols="100" placeholder="지금까지 했던 경력을 적어주세요"></textarea>
+								   <!-- 지급방법 div -->
+								     <div class="form-group">
+								      <label for="category" style="float: left; margin: 1% 0 1% 0 ">지급 방법 </label>
+								     <div>
+								      <select style="width: 100%;height: 2%">
+								      		<option>당일 지급</option>
+								      		<option>추후 지급</option>
+								      </select>
 								      
 								    </div>
-								    
-								     
+								   <!-- 모집중 div -->
+								     <div class="form-group">
+								      <label for="category" style="float: left; margin: 1% 0 1% 0 ">지급 방법 </label>
+								     <div>
+								      <select style="width: 100%;height: 5%">
+								      		<option>모집중</option>
+								      		<option>모집 완료</option>
+								      </select>
+								      
+								    </div>
+								    <!-- 내용 -->
+								    <div class="form-group" style="display: inline-block;">
+								      <label for="self_PR" style="float: left; margin: 3% 0 3% 0 ">매장 업무 관련 내용</label>
+								      <textarea class="form-control" name="ptCONTENT" id="ptCONTENT" rows="4" cols="100" placeholder="내용을 입력해주세요"></textarea> 
+								    </div>
 								    <button type="submit" class="btn">글쓰기</button>
 								  </form>
 							</div>
