@@ -27,9 +27,9 @@
 	String prday ="";
 	String userid_1 = "";
 	
-
+	String sqlPartTime = "SELECT * FROM ";
 	
-	rs = pstmt.executeQuery();
+	rs = pstmt.executeQuery(sql);
 
 %>
 
