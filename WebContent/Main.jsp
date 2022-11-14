@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
+<%@ page import = "pt.PtDAO" %>
 <!DOCTYPE html>
 
 <% // 로그아웃 버튼 후 캐시 삭제
@@ -121,6 +122,7 @@ table{
 		                <li>
 		                <% 		                
 		                UserDAO userDAO = new UserDAO();
+		                PtDAO ptDAO = new PtDAO();
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
         				%>
         				</li><li>|</li>
@@ -168,7 +170,7 @@ table{
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getInt("ptid") %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("pttitle") %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("ptperiod") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("userid") %></td>
+							<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= ptDAO.ptusername(rs2.getString("userid")) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("ptstate") %></td>
 					      </tr>
 					      <%
@@ -239,7 +241,7 @@ table{
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%=rs.getInt("prid") %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prtitle") %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prday")%></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("userid") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= ptDAO.prusername(rs.getString("userid")) %></td>
 					      </tr>
 					      <%
 					    	 }
