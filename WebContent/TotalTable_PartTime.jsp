@@ -1,3 +1,7 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,6 +13,21 @@
 
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
+
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
+	String sql = "SELECT * FROM pt ORDER BY ptid DESC";
+	pstmt = conn.prepareStatement(sql);
+	int ptid = 0;
+	String pttitle ="";
+	String userid_1 = "";
+	String ptperiod ="";
+	String ptstate = "";
+	rs = pstmt.executeQuery();
 
 %>
 
@@ -52,7 +71,7 @@ text-align: center;
 
 </style>
 <meta charset="UTF-8">
-<title>자기 PR 전체 테이블</title>
+  <title>자기 PR 전체 테이블</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -111,13 +130,28 @@ text-align: center;
 					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
 					    <thead>
 					      <tr>
-					        <th  style="text-align: center">글번호</th>
+					        <th style="text-align: center">글번호</th>
 					        <th style="text-align: center">제목</th>
 					        <th style="text-align: center">일시</th>
 					        <th style="text-align: center">작성자</th>
+					        <th style="text-align: center">상태</th>
 					      </tr>
 					    </thead>
 					    <tbody>
+					    	<%
+					    	while(rs.next()){
+					    	%>
+					      <tr>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getInt("ptid") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("pttitle") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("ptperiod") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("userid") %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("ptstate") %></td>
+					      </tr>
+					      <%
+					    	}
+					      %>
+						 <!--
 					      <tr>
 					        <td onclick="location.href='Detail_PartTime.jsp'"">John</td>
 					        <td onclick="location.href='Detail_PartTime.jsp'">Doe</td>
@@ -148,6 +182,7 @@ text-align: center;
 					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf22@example.com</td>
 					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
 					      </tr>
+					      -->
 					    </tbody>
 					  </table>
 					</div>

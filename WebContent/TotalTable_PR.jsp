@@ -26,9 +26,6 @@ response.setHeader("Cache-Control", "no-store");
 	String prtitle ="";
 	String prday ="";
 	String userid_1 = "";
-	
-	
-	
 	rs = pstmt.executeQuery();
 
 %>
