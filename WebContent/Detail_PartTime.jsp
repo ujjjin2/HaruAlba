@@ -35,6 +35,12 @@
     overflow: auto;
 }
 
+.article-state{
+    font-size: 14px;
+    color: #0F52FC;
+    font-weight: bold;
+}
+
 .article-content-wrap{
 	overflow: auto;
 }
@@ -205,6 +211,7 @@ input:focus{outline:none;}
 					<!-- 세부사항 내용 -->
 					<div class="article" style="background: #ffffff">
 						<div class="article-header">
+							<div class="article-state">모집중</div>
 							<div class="article-title">[1-3개월 230-250만 고정급] 민족은행 농협 용산 고객센터</div>
 							<div class="article-user">작성자 이름</div>
 							<div class="article-location">인천</div>
@@ -234,6 +241,11 @@ input:focus{outline:none;}
 										<tr>
 											<th>시급</th>
 											<td>15000원</td>
+										</tr>
+										<tr class="space"></tr>
+										<tr>
+											<th>지급방법</th>
+											<td>당일지급</td>
 										</tr>
 									</tbody>
 								</table>
