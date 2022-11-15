@@ -109,7 +109,7 @@ text-align: center;
 	    			<div class="container" style="width: 85%; height: 100%;">
 					  	<h3 style="margin: 5% 0 0 0;"><b>단기알바구인</b></h3>
 					  	
-					  	<a href="Write_PR.jsp">					  		
+					  	<a href="Write_PartTime.jsp">					  		
 					  		<!-- 글쓰기 버튼  -->
 					   		<img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
 					  		</a>	
