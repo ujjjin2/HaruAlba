@@ -106,6 +106,7 @@ text-align: center;
 		                <% 		                
 		                UserDAO userDAO = new UserDAO();
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
+		                String role = (String)session.getAttribute("role");
         				%>
         				</li><li>|</li>
 		                <li><a href="Mypage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
@@ -127,6 +128,13 @@ text-align: center;
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
 					  	<h3 style="margin: 5% 0 5% 0;"><b>단기알바구인</b></h3>
+					  	
+					  	<% if(role.equals("사장")){ %>
+                       <a href="Write_PartTime.jsp">                       
+                       <!-- 글쓰기 버튼  -->
+                        <img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
+                       </a>
+                    <%} %>   
 					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
 					    <thead>
 					      <tr>

@@ -94,14 +94,15 @@
 								   <!-- 일시 div -->
 								     <div class="form-group">
 								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">일시 </label>
-								      <div>
-								      <input type="date" id="ptROLE" value="2022-11-14" style="width: 100%; height: 5%">
+								      <div style="display: inline;">
+								      	<input type="date" id="ptSDay" value="2022-11-14" style="width: 80%; height: 5%; position: relative;">
+								      	<input type="date" id="ptEDay" value="2022-11-14" style="width: 80%; height: 5%; position: relative;">
 								      </div>
 								    </div>
 								  <!-- 시급  div -->
 								    <div class="form-group">
 								      <label for="pay" style="float: left; margin: 1% 0 2% 0 ">시급 </label>
-								      <input type="text" class="form-control" id="prMONEY" placeholder="급을 적어주세요" name="prMONEY" >
+								      <input type="text" class="form-control" id="prMONEY" placeholder="시급을 적어주세요" name="prMONEY" >
 								    </div>
 								   <!-- 지급방법 div -->
 								     <div class="form-group">
@@ -111,13 +112,12 @@
 								      		<option>당일 지급</option>
 								      		<option>추후 지급</option>
 								      </select>
-								      
 								    </div>
 								   <!-- 모집중 div -->
 								     <div class="form-group">
-								      <label for="category" style="float: left; margin: 1% 0 1% 0 ">지급 방법 </label>
+								      <label for="category" style="float: left; margin: 1% 0 1% 0 ">모집상황 </label>
 								     <div>
-								      <select style="width: 100%;height: 5%">
+								      <select style="width: 100%;height: 10%">
 								      		<option>모집중</option>
 								      		<option>모집 완료</option>
 								      </select>

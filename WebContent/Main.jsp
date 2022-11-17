@@ -103,8 +103,7 @@ table{
 	if(role.equals("사장")){
 		PrintWriter script = response.getWriter();
         script.println("<script>");
-        script.println("alert('사장님 환영합니다.')");
-        script.println("location.href='Main_SAJANG.jsp'");    
+        script.println("alert('사장님 환영합니다.')");   
         script.println("</script>");
 	}
 
@@ -143,7 +142,7 @@ table{
 			
 			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
-	    			<div class="container" style="width: 85%; height: 100%;">
+	    			<div class="container" style="width: 85%; height: 50%;">
 	    			
 					<b style="float: left; margin: 5% 0 0 0;">단기 알바 구인</b>
 					  		<a href="TotalTable_PartTime.jsp">
@@ -215,7 +214,7 @@ table{
 	    		
 	    		<!-- 자기 PR 테이블 부분  -->
 			<center>
-	    			<div class="container" style="width: 85%; height: 100%;">
+	    			<div class="container" style="width: 85%; height: 50%;">
 	    			
 					<b style="float: left; margin: 5% 0 0 0;">자기 PR</b>
 					  		<a href="TotalTable_PR.jsp">
