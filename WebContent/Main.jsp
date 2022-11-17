@@ -125,7 +125,7 @@ table{
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
         				%>
         				</li><li>|</li>
-		                <li><a href="Mypage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
+		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">logout</a></li>
 		            </ul>
 		        </nav>
