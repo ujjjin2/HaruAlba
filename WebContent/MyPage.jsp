@@ -139,7 +139,6 @@ table{
 			</div>
 				<center>
 	    			<div class="container" style="width: 85%; height: 50%;">
-	    			
 					<b style="float: left; margin: 5% 0 0 0;">나의 글</b>
 					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
