@@ -16,7 +16,7 @@
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT userLOCATION, ptTITLE, userNAME, ptINFO, ptROLE, ptPERIOD, ptMONEY, ptGIVE, ptCONTENT, ptSTATE FROM pt, user where pt.userID = user.userID AND ptID = ? ";
+	String sql = "SELECT userLOCATION, ptTITLE, userNAME, ptINFO, ptROLE, ptSDAY, ptEDAY, ptMONEY, ptGIVE, ptCONTENT, ptSTATE FROM pt, user where pt.userID = user.userID AND ptID = ? ";
 	pstmt = conn.prepareStatement(sql);
 	
 	int ptid = 0;
@@ -32,7 +32,8 @@
 		String title = rs.getString("ptTITLE");
 		String info = rs.getString("ptINFO");
 		String role = rs.getString("ptROLE");
-		String period = rs.getString("ptPERIOD");
+		String sday = rs.getString("ptSDAY");
+		String eday = rs.getString("ptEDAY");
 		String money = rs.getString("ptMONEY");
 		String give = rs.getString("ptGIVE");
 		String content = rs.getString("ptCONTENT");
@@ -275,7 +276,7 @@ input:focus{outline:none;}
 										<tr class="space"></tr>	
 										<tr>
 											<th>일시</th>
-											<td><%=period %></td>
+											<td><%=sday %> ~ <%=eday %></td>
 										</tr>
 										<tr class="space"></tr>	
 										<tr>

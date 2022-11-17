@@ -168,7 +168,7 @@ table{
 					      <tr>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getInt("ptid") %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("pttitle") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("ptperiod") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("ptSDAY") %> ~ <%=rs2.getString("ptEDAY") %></td>
 							<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= ptDAO.ptusername(rs2.getString("userid")) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("ptstate") %></td>
 					      </tr>
