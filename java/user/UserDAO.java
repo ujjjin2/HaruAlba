@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList; // 단축키 : ctrl + shift + 'o'
 import java.util.List;
 
-import pt.Pt;
-
 public class UserDAO {
 	private Connection conn; //db 접근 객체 
 	private PreparedStatement pstmt;
