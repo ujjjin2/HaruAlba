@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PrDAO {
 	private Connection conn; //db 접근 객체 
@@ -81,5 +84,33 @@ public class PrDAO {
 		}return -1;
 	}
 	
+	public List<Pr> mypr(String userid) throws SQLException{
+		String SQL = "SELECT * FROM pr WHERE userID = ?";
+		
+		try {
+		pstmt = conn.prepareStatement(SQL);
+		pstmt.setString(1, userid); 
+		rs = pstmt.executeQuery();
+		
+		ArrayList<Pr> list3 = new ArrayList<Pr>();
+		
+		while(rs.next()) {
+			Pr pr = new Pr();
+			pr.setPrID(rs.getInt("prID"));
+			pr.setUserID(rs.getString("userID"));
+			pr.setPrTITLE(rs.getString("prTITLE"));
+			pr.setPrRESUME(rs.getString("prRESUME"));
+			pr.setPrCONTENT(rs.getString("prCONTENT"));
+			pr.setPrJOB(rs.getString("prJOB"));
+			pr.setPrDATE(rs.getTimestamp("prDATE"));
+			pr.setPrDAY(rs.getString("prDAY"));
+			pr.setPrMONEY(rs.getString("prMONEY"));			
+			list3.add(pr);
+		}
+		return list3;
+	}finally {
+		//여기 뭐 넣어야함? ㅋㅋ
+	}
+	}
 
 }

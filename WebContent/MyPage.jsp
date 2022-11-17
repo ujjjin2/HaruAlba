@@ -8,6 +8,8 @@
 <%@ page import = "user.User" %>
 <%@ page import = "pt.PtDAO" %>
 <%@ page import = "pt.Pt" %>
+<%@ page import = "pr.PrDAO" %>
+<%@ page import = "pr.Pr" %>
 <!DOCTYPE html>
 
 <% // 로그아웃 버튼 후 캐시 삭제
@@ -93,6 +95,8 @@ table{
 	List<User> list = userDAO.selectall(userid);
 	PtDAO ptDAO = new PtDAO();
 	List<Pt> list2 = ptDAO.mypt(userid);
+	PrDAO prDAO = new PrDAO();
+	List<Pr> list3 = prDAO.mypr(userid);
 	
 	
 %>
@@ -168,13 +172,21 @@ table{
 					    </thead>
 					    <tbody>
 					      <tr>
-					      <% for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
+					      <% 
+					      if(role.equals("사장")){
+					      	for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtPERIOD()%></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
-					      </tr>
-					      <% } %>
+					     </tr>
+					      <% 	} }else if(role.equals("알바")){
+					    	  		for(Pr pr : list3) { %>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrID() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrTITLE() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrDATE() %></td>
+					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= ptDAO.prusername(pr.getUserID()) %></td>
+					      <% } } %>
 					    </tbody>
 					  </table>
 					</div>

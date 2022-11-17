@@ -74,7 +74,8 @@ public class PtDAO {
 			pt.setPtTITLE(rs.getString("ptTITLE"));
 			pt.setPtINFO(rs.getString("ptINFO"));
 			pt.setPtROLE(rs.getString("ptROLE"));
-			pt.setPtPERIOD(rs.getString("ptPERIOD"));
+			pt.setPtSDAY(rs.getString("ptSDAY"));
+			pt.setPtEDAY(rs.getString("ptEDAY"));
 			pt.setPtMONEY(rs.getString("ptMONEY"));
 			pt.setPtGIVE(rs.getString("ptGIVE"));
 			pt.setPtCONTENT(rs.getString("ptCONTENT"));

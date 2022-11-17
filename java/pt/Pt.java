@@ -8,7 +8,8 @@ public class Pt {
 	private String ptTITLE;
 	private String ptINFO;
 	private String ptROLE;
-	private String ptPERIOD;
+	private String ptSDAY;
+	private String ptEDAY;
 	private String ptMONEY;
 	private String ptGIVE;
 	private String ptCONTENT;
@@ -44,12 +45,7 @@ public class Pt {
 	public void setPtROLE(String ptROLE) {
 		this.ptROLE = ptROLE;
 	}
-	public String getPtPERIOD() {
-		return ptPERIOD;
-	}
-	public void setPtPERIOD(String ptPERIOD) {
-		this.ptPERIOD = ptPERIOD;
-	}
+
 	public String getPtMONEY() {
 		return ptMONEY;
 	}
@@ -73,6 +69,18 @@ public class Pt {
 	}
 	public void setPtSTATE(String ptSTATE) {
 		this.ptSTATE = ptSTATE;
+	}
+	public String getPtSDAY() {
+		return ptSDAY;
+	}
+	public void setPtSDAY(String ptSDAY) {
+		this.ptSDAY = ptSDAY;
+	}
+	public String getPtEDAY() {
+		return ptEDAY;
+	}
+	public void setPtEDAY(String ptEDAY) {
+		this.ptEDAY = ptEDAY;
 	}
 	
 }
