@@ -94,9 +94,9 @@
 								   <!-- 일시 div -->
 								     <div class="form-group">
 								      <label for="date" style="float: left; margin: 1% 0 2% 0 ">일시 </label>
-								      <div class="form-date" style="display: inline; position: relative;">
-								      	<input type="date" id="ptSDay" value="시작일" style="width: 50%; height: 5%;">
-								      	<input type="date" id="ptEDay" value="종료일" style="width: 50%; height: 5%;">
+								      <div class="form-date" style="display: inlin-block;">
+								      	<input type="date" id="ptSDay" value="시작일" style="width: 100%; height: 5%;">
+								      	<input type="date" id="ptEDay" value="종료일" style="width: 100%; height: 5%;">
 								      </div>
 								    </div>
 								  <!-- 시급  div -->
@@ -126,7 +126,7 @@
 								    <!-- 내용 -->
 								    <div class="form-group" style="display: inline-block;">
 								      <label for="self_PR" style="float: left; margin: 3% 0 3% 0 ">매장 업무 관련 내용</label>
-								      <textarea class="form-control" name="ptCONTENT" id="ptCONTENT" rows="4" cols="100" placeholder="내용을 입력해주세요"></textarea> 
+								      <textarea class="form-control" name="ptCONTENT" id="ptCONTENT" rows="4" cols="1000" placeholder="내용을 입력해주세요"></textarea> 
 								    </div>
 								    <button type="submit" class="btn">글쓰기</button>
 								  </form>
