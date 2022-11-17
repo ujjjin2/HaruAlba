@@ -152,7 +152,7 @@ text-align: center;
 					      <tr>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getInt("ptid") %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("pttitle") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("ptperiod") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("ptSDAY") %> ~ <%= rs.getString("ptEDAY") %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("userid") %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("ptstate") %></td>
 					      </tr>
