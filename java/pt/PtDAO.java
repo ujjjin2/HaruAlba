@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PtDAO {
 	private Connection conn; //db 접근 객체 
@@ -54,6 +57,35 @@ public class PtDAO {
 		return null;
 	}
 	
+	public List<Pt> mypt(String userid) throws SQLException{
+		String SQL = "SELECT * FROM pt WHERE userID = ?";
+		
+		try {
+		pstmt = conn.prepareStatement(SQL);
+		pstmt.setString(1, userid); 
+		rs = pstmt.executeQuery();
+		
+		ArrayList<Pt> list2 = new ArrayList<Pt>();
+		
+		while(rs.next()) {
+			Pt pt = new Pt();
+			pt.setPtID(rs.getInt("ptID"));
+			pt.setUserID(rs.getString("userID"));
+			pt.setPtTITLE(rs.getString("ptTITLE"));
+			pt.setPtINFO(rs.getString("ptINFO"));
+			pt.setPtROLE(rs.getString("ptROLE"));
+			pt.setPtPERIOD(rs.getString("ptPERIOD"));
+			pt.setPtMONEY(rs.getString("ptMONEY"));
+			pt.setPtGIVE(rs.getString("ptGIVE"));
+			pt.setPtCONTENT(rs.getString("ptCONTENT"));
+			pt.setPtSTATE(rs.getString("ptSTATE"));
+			list2.add(pt);
+		}
+		return list2;
+	}finally {
+		//여기 뭐 넣어야함? ㅋㅋ
+	}
+	}
 	
 	
 }

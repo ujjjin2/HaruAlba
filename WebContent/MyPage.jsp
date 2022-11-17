@@ -1,7 +1,13 @@
+<%@page import="pt.PtDAO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "user.UserDAO" %>
+<%@ page import = "user.User" %>
+<%@ page import = "pt.PtDAO" %>
+<%@ page import = "pt.Pt" %>
 <!DOCTYPE html>
 
 <% // 로그아웃 버튼 후 캐시 삭제
@@ -13,6 +19,8 @@ response.setHeader("Cache-Control", "no-store");
 
 <html>
 <head>
+
+
 <style type="text/css">
 .parent {
     display: flex;
@@ -71,6 +79,7 @@ table{
 <% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄
 
 	String userid = (String)session.getAttribute("userid");
+	String role = (String)session.getAttribute("role");
 
 	if(session.getAttribute("userid")==null){ 
 		PrintWriter script = response.getWriter();
@@ -79,6 +88,13 @@ table{
         script.println("location.href='Login.jsp'");   
         script.println("</script>");
 	}
+	
+	UserDAO userDAO = new UserDAO();
+	List<User> list = userDAO.selectall(userid);
+	PtDAO ptDAO = new PtDAO();
+	List<Pt> list2 = ptDAO.mypt(userid);
+	
+	
 %>
 
 	<div class="parent" style="width: 100%; height: 930px; background: #585858;">
@@ -105,41 +121,42 @@ table{
 						<col style="width: 120px;">
 					</colgroup>
 						<tbody>
+						<% for(User user : list) { // 리스트 객체를 꺼내서 user dto에 너어주겠다 %>
 							<tr>
 								<th>이름</th>
-								<td>손윤호</td>
+								<td><%= user.getUserNAME() %></td>
 							</tr>
 							<tr class="space"></tr>										
 							<tr>
 								<th>위치</th>
-								<td>인천</td>
+								<td><%= user.getUserLOCATION() %></td>
 							</tr>
 							<tr class="space"></tr>	
 							<tr>
 								<th>나이</th>
-								<td>21</td>
+								<td><%= user.getUserAGE() %></td>
 							</tr>
 							<tr class="space"></tr>	
 							<tr>
 								<th>성별</th>
-								<td>남자</td>
+								<td><%= user.getUserGENDER() %></td>
 							</tr>
 							<tr class="space"></tr>	
 								<th>전화번호</th>
-								<td>01012345678</td>
+								<td><%= user.getUserPHONE() %></td>
 							</tr>
 							<tr class="space"></tr>	
 								<th>나의 평점</th>
-								<td>5.0</td>
+								<td><%= user.getUserRATING() %></td>
 							</tr>
-							
+							<% } %>
 						</tbody>
 					</table>
 					</div>
 			</div>
 				<center>
 	    			<div class="container" style="width: 85%; height: 50%;">
-					<b style="float: left; margin: 5% 0 0 0;">나의 글</b>
+					<b style="float: left; margin: 5% 0 0 0;">내가 작성한 글</b>
 					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
@@ -151,11 +168,13 @@ table{
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">1</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">자기PR</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">일</td>
-							<td onclick="location.href='Detail_PartTime.jsp'">작성자</td>
+					      <% for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtPERIOD()%></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getUserID() %></td>
 					      </tr>
+					      <% } %>
 					    </tbody>
 					  </table>
 					</div>

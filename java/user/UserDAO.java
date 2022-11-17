@@ -3,7 +3,12 @@ package user;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet; // 단축키 : ctrl + shift + 'o'
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList; // 단축키 : ctrl + shift + 'o'
+import java.util.List;
+
+import pt.Pt;
 
 public class UserDAO {
 	private Connection conn; //db 접근 객체 
@@ -163,6 +168,33 @@ public class UserDAO {
 		return userrole;
 	}
 	
-	//이후 기능 구현
-	
+	public List<User> selectall(String userid) throws SQLException{
+		String SQL = "SELECT userNAME, userLOCATION, userAGE, userGENDER, userPHONE, userRATING FROM user WHERE userID = ?";
+		
+		try {
+		pstmt = conn.prepareStatement(SQL);
+		pstmt.setString(1, userid); 
+		rs = pstmt.executeQuery();
+		
+		ArrayList<User> list = new ArrayList<User>();
+		
+		while(rs.next()) {
+			User user = new User();
+			user.setUserNAME(rs.getString("userNAME"));
+			user.setUserLOCATION(rs.getString("userLOCATION"));
+			user.setUserAGE(rs.getInt("userAGE"));
+			user.setUserGENDER(rs.getString("userGENDER"));
+			user.setUserPHONE(rs.getString("userPHONE"));
+			user.setUserRATING(rs.getInt("userRATING"));
+			list.add(user);
+		}
+		return list;
+	}finally {
+		//여기 뭐 넣어야함? ㅋㅋ
 	}
+	}
+	
+	
+	//이후 기능 구현
+}
+
