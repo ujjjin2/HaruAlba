@@ -13,7 +13,9 @@
 
 <!DOCTYPE html>
 
+
 <%
+	String userid = (String)session.getAttribute("userid");
 	response.setHeader("Pragma", "no-cache"); 
 	response.setHeader("Cache-Control", "no-store"); 
 	
@@ -26,16 +28,18 @@
 	String sql = "SELECT userLOCATION, ptTITLE, userNAME, ptINFO, ptROLE, ptSDAY, ptEDAY, ptMONEY, ptGIVE, ptCONTENT, ptSTATE FROM pt, user where pt.userID = user.userID AND ptID = ? ";
 	pstmt = conn.prepareStatement(sql);
 	
-	int ptid = 0;
+	int ptID = 0;
 	if(request.getParameter("ptid") != null) {
-		ptid = Integer.parseInt(request.getParameter("ptid"));
+		ptID = Integer.parseInt(request.getParameter("ptid"));
 	}
-	pstmt.setInt(1, ptid);
+	pstmt.setInt(1, ptID);
 	
 	rs = pstmt.executeQuery();
 	
 
 	PtDAO ptDAO = new PtDAO();
+	PtcommentDAO pt_comment = new PtcommentDAO();
+	List<Ptcomment> ptlist = pt_comment.selectptcmt(ptID);
 	
 	if(rs.next()){
 		String userName = rs.getString("userNAME");
@@ -316,13 +320,7 @@ input:focus{outline:none;}
 						<div class="comment-header" style="background: #EDF0F4" >
 							<div class="comment-title">댓글</div>
 						</div>
-						<%
-						PtcommentDAO ptcomment = new PtcommentDAO();
-						List<Ptcomment> ptlist = ptcomment.selectptcmt(ptid);
-
-							for(Ptcomment ptcomment : ptlist) {
-							
-						%>
+						
 						 
 						<div>
 							<!-- 댓글이 없을 때 
@@ -333,28 +331,33 @@ input:focus{outline:none;}
 						 댓글이 있을 때 -->
 							<ul class="ul">
 								<li>
+								<%
+								for(Ptcomment ptcomment : ptlist) {
+							
+								%>
 									<div class="comment">
 										<div class="comment-name">
-											<span><%= ptDAO%></span>
+											<span><%= ptDAO.ptusername(ptcomment.getUserID())%></span>
 										</div>
 										<div class="comment-content">
 											<p class="p"><%= ptcomment.getComment() %></p>
 										</div>
 									</div>
+									<%
+										}
+									%>
 								</li>
 							</ul>
 			
 						</div>	
 					</div> <!-- 댓글 창 끝 -->
-					<%
-							}
-					%>
 					
 					<!-- 댓글 입력 창 -->
 					<div class="write-wrap">
-						<form action="Comment_PR_Action.jsp?ptID=<%=ptid %>" method="get">
+						<form action="Comment_PR_Action.jsp" method="post">
 							<div class="ex">
-								<input type="text"  class="comment-write" name="userName" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
+								<input type="text"  class="comment-write" name="comment" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
+								<input type="hidden" name="ptID" value=<%=ptID %>>
 								<button type="submit" class="btn">글쓰기</button>
 							</div>
 						</form>

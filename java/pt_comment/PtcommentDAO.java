@@ -54,13 +54,12 @@ public class PtcommentDAO {
 	}
 	
 	public int joincomment(Ptcomment ptcomment) {
-		String SQL = "INSERT INTO pt_comment VALUES(?, ?, ?, ?)";
+		String SQL = "INSERT INTO pt_comment VALUES(null, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, ptcomment.getCmt_id());
-			pstmt.setInt(2, ptcomment.getPtID());
-			pstmt.setString(3, ptcomment.getUserID());
-			pstmt.setString(4, ptcomment.getComment());
+			pstmt.setInt(1, ptcomment.getPtID());
+			pstmt.setString(2, ptcomment.getUserID());
+			pstmt.setString(3, ptcomment.getComment());
 			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
 		}catch(Exception e) {
 			e.printStackTrace();
