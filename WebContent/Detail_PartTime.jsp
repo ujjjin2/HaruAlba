@@ -1,9 +1,16 @@
+<%@page import="pt.PtDAO"%>
+<%@page import="pt_comment.Ptcomment"%>
+<%@page import="java.util.List"%>
+<%@page import="pt_comment.PtcommentDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+
 <!DOCTYPE html>
 
 <%
@@ -26,6 +33,9 @@
 	pstmt.setInt(1, ptid);
 	
 	rs = pstmt.executeQuery();
+	
+
+	PtDAO ptDAO = new PtDAO();
 	
 	if(rs.next()){
 		String userName = rs.getString("userNAME");
@@ -232,7 +242,9 @@ input:focus{outline:none;}
 
 <!-- 파란색 배경 -->
 <body style="background-color:#525CDE">
-	
+
+
+
 	<!-- 헤더 -->
 	<div class="parent" style="width: 100%; height: 100%; background: #585858;">
 		<div class="background" style="background: #525CDE;"></div>
@@ -304,23 +316,29 @@ input:focus{outline:none;}
 						<div class="comment-header" style="background: #EDF0F4" >
 							<div class="comment-title">댓글</div>
 						</div>
-						
-						<div>
+						<%
+						PtcommentDAO ptcomment = new PtcommentDAO();
+						List<Ptcomment> ptlist = ptcomment.selectptcmt(ptid);
+
+							for(Ptcomment ptcomment : ptlist) {
 							
-							<!-- 댓글이 없을 때 -->
+						%>
+						 
+						<div>
+							<!-- 댓글이 없을 때 
 							<div class="comment-not">
 								<div>댓글이 없습니다.</div>						
 							</div>
 							
-							<!-- 댓글이 있을 때 -->
+						 댓글이 있을 때 -->
 							<ul class="ul">
 								<li>
 									<div class="comment">
 										<div class="comment-name">
-											<span>손윤호</span>
+											<span><%= ptDAO%></span>
 										</div>
 										<div class="comment-content">
-											<p class="p">여기에 댓글이 나타납니다.</p>
+											<p class="p"><%= ptcomment.getComment() %></p>
 										</div>
 									</div>
 								</li>
@@ -328,6 +346,9 @@ input:focus{outline:none;}
 			
 						</div>	
 					</div> <!-- 댓글 창 끝 -->
+					<%
+							}
+					%>
 					
 					<!-- 댓글 입력 창 -->
 					<div class="write-wrap">

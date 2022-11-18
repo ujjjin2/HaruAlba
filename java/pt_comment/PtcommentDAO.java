@@ -29,12 +29,12 @@ public class PtcommentDAO {
 	}
 	
 	//리스트 뽑기
-	public List<Ptcomment> selectptcmt(String ptid) throws SQLException{
+	public List<Ptcomment> selectptcmt(int ptid) throws SQLException{
 		String SQL = "SELECT * FROM pt_comment WHERE ptID = ?";
 		
 		try {
 		pstmt = conn.prepareStatement(SQL);
-		pstmt.setString(1, ptid); 
+		pstmt.setInt(1, ptid); 
 		rs = pstmt.executeQuery();
 		
 		ArrayList<Ptcomment> ptlist = new ArrayList<Ptcomment>();
