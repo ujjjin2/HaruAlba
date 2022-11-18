@@ -48,6 +48,7 @@ response.setHeader("Cache-Control", "no-store");
 
 .main-info{
 	padding: 24px 16px 0px 16px;
+	flow: left;
 }
 #menu{
     float: right ;
@@ -130,7 +131,12 @@ table{
 								<th>이름</th>
 								<td><%= user.getUserNAME() %></td>
 							</tr>
-							<tr class="space"></tr>										
+							<tr class="space"></tr>		
+							<tr>
+								<th>역할</th>
+								<td><%= user.getRole() %></td>
+							</tr>
+							<tr class="space"></tr>									
 							<tr>
 								<th>위치</th>
 								<td><%= user.getUserLOCATION() %></td>

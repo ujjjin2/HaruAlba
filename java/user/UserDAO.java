@@ -167,7 +167,7 @@ public class UserDAO {
 	}
 	
 	public List<User> selectall(String userid) throws SQLException{
-		String SQL = "SELECT userNAME, userLOCATION, userAGE, userGENDER, userPHONE, userRATING FROM user WHERE userID = ?";
+		String SQL = "SELECT userNAME, userLOCATION, userAGE, userGENDER, userPHONE, userRATING, role FROM user WHERE userID = ?";
 		
 		try {
 		pstmt = conn.prepareStatement(SQL);
@@ -184,6 +184,7 @@ public class UserDAO {
 			user.setUserGENDER(rs.getString("userGENDER"));
 			user.setUserPHONE(rs.getString("userPHONE"));
 			user.setUserRATING(rs.getInt("userRATING"));
+			user.setRole(rs.getString("role"));
 			list.add(user);
 		}
 		return list;
