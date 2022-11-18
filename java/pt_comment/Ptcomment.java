@@ -1,6 +1,6 @@
-package comment;
+package pt_comment;
 
-public class Comment {
+public class Ptcomment {
 	int cmt_id;
 	int ptID;
 	String userID;
