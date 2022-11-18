@@ -331,7 +331,7 @@ input:focus{outline:none;}
 					
 					<!-- 댓글 입력 창 -->
 					<div class="write-wrap">
-						<form action="Main.jsp" method="get">
+						<form action="Comment_PR_Action.jsp?ptID=<%=ptid %>" method="get">
 							<div class="ex">
 								<input type="text"  class="comment-write" name="userName" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
 								<button type="submit" class="btn">글쓰기</button>

@@ -109,7 +109,7 @@ text-align: center;
 		                String role = (String)session.getAttribute("role");
         				%>
         				</li><li>|</li>
-		                <li><a href="Mypage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
+		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">logout</a></li>
 		            </ul>
 		        </nav>

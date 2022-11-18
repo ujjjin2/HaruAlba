@@ -75,7 +75,7 @@
 						</center>
 						<center>
 							<div style="width: 80%; height: 80%; margin-top: 3%">
-								 <form action="Write_PR_Action.jsp" method="get" accept-charset="utf8">
+								 <form action="Write_PartTime_Action.jsp" method="get" accept-charset="utf8">
 								  <!-- 제목 div -->
 								    <div class="form-group">
 								      <label for="title" style="float: left; margin: 1% 0 2% 0 ">제목 </label>
@@ -95,20 +95,20 @@
 								     <div class="form-group">
 								      <label for="date" style="float: left; margin: 1% 0 2% 0 ">일시 </label>
 								      <div class="form-date" style="display: inlin-block;">
-								      	<input type="date" id="ptSDay" value="시작일" style="width: 100%; height: 5%;">
-								      	<input type="date" id="ptEDay" value="종료일" style="width: 100%; height: 5%;">
+								      	<input type="date" name="ptSDAY" value="시작일" style="width: 100%; height: 5%;">
+								      	<input type="date" name="ptEDAY" value="종료일" style="width: 100%; height: 5%;">
 								      </div>
 								    </div>
 								  <!-- 시급  div -->
 								    <div class="form-group">
 								      <label for="pay" style="float: left; margin: 1% 0 2% 0 ">시급 </label>
-								      <input type="text" class="form-control" id="prMONEY" placeholder="시급을 적어주세요" name="prMONEY" >
+								      <input type="text" class="form-control" placeholder="시급을 적어주세요" name="ptMONEY" >
 								    </div>
 								   <!-- 지급방법 div -->
 								     <div class="form-group" style="height: ">
 								      <label for="category" style="float: left; margin: 1% 0 1% 0 ">지급 방법 </label>
 								     <div>
-								      <select style="width: 100%;height: 5%; font-size: 18px">
+								      <select style="width: 100%;height: 5%; font-size: 18px" name="ptGIVE">
 								      		<option>당일 지급</option>
 								      		<option>추후 지급</option>
 								      </select>
@@ -117,7 +117,7 @@
 								     <div class="form-group">
 								      <label for="category" style="float: left; margin: 2% 0 1% 0 ">모집상황 </label>
 								     <div>
-								      <select style="width: 100%;height: 10%; font-size: 18px">
+								      <select style="width: 100%;height: 10%; font-size: 18px" name="ptSTATE">
 								      		<option>모집중</option>
 								      		<option>모집 완료</option>
 								      </select>

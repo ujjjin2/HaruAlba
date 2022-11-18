@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import pr.Pr;
+
 public class PtDAO {
 	private Connection conn; //db 접근 객체 
 	private PreparedStatement pstmt;
@@ -56,6 +58,33 @@ public class PtDAO {
 		}
 		return null;
 	}
+	
+	// 글쓰기 기능
+	public int writePT(Pt pt) {
+		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			
+			pstmt.setString(1, pt.getUserID());
+			pstmt.setString(2, pt.getPtTITLE());
+			pstmt.setString(3, pt.getPtINFO());
+			pstmt.setString(4, pt.getPtROLE());
+			pstmt.setString(5, pt.getPtSDAY());
+			pstmt.setString(6, pt.getPtEDAY());
+			pstmt.setString(7, pt.getPtMONEY());
+			pstmt.setString(8, pt.getPtGIVE());
+			pstmt.setString(9, pt.getPtCONTENT());
+			pstmt.setString(10, pt.getPtSTATE());
+			return pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("글쓰기 실패");
+			e.printStackTrace();
+			
+		}return -1;
+	}
+	
 	
 	public List<Pt> mypt(String userid) throws SQLException{
 		String SQL = "SELECT * FROM pt WHERE userID = ?";

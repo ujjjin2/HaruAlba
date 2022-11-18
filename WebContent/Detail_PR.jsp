@@ -14,7 +14,9 @@
 
 	Connection conn = null;
 	PreparedStatement pstmt = null;
+	PreparedStatement pstmt2 = null;
 	ResultSet rs = null;
+	ResultSet rs2 = null;
 	
 	
 	
