@@ -323,12 +323,8 @@ input:focus{outline:none;}
 						
 						 
 						<div>
-							<!-- 댓글이 없을 때 
-							<div class="comment-not">
-								<div>댓글이 없습니다.</div>						
-							</div>
 							
-						 댓글이 있을 때 -->
+							
 							<ul class="ul">
 								<li>
 								<%
@@ -342,6 +338,13 @@ input:focus{outline:none;}
 										<div class="comment-content">
 											<p class="p"><%= ptcomment.getComment() %></p>
 										</div>
+									</div>
+									<%
+										}
+										if(ptlist.size() == 0) {
+									%>
+									<div class="comment-not">
+										<div>댓글이 없습니다.</div>						
 									</div>
 									<%
 										}
