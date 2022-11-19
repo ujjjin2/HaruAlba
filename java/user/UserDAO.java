@@ -6,10 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList; // 단축키 : ctrl + shift + 'o'
+import java.util.ArrayList; 
 import java.util.List;
 
-import sun.security.provider.SHA;
 import util.SHA256;
 
 public class UserDAO {
@@ -132,7 +131,7 @@ public class UserDAO {
 		return userid;
 	}
 	
-	public String findPW(String userID, String userPHONE) { // PW 찾기 메서드
+	public String findPW(String userID, String userPHONE) { // 검증으로 쓰고
 		String userpw = null;
 		
 		try {
@@ -145,6 +144,7 @@ public class UserDAO {
 			
 			if(rs.next()) {
 				userpw = rs.getString("userPASSWORD");
+				
 			}
 				
 		} catch (Exception e) {
@@ -153,7 +153,23 @@ public class UserDAO {
 		return sha256.getSHA256(userpw);
 	}
 	
-	public String findrole(String userID) { // PW 찾기 메서드
+	public int changePW(String userID, String userPASSWORD) { // PW 수정
+		
+		try {
+			String SQL = "update user set userPASSWORD=?, WHERE userID= ? ";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, sha256.getSHA256(userPASSWORD));
+			pstmt.setString(2, userID);
+			
+			return pstmt.executeUpdate();
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // DB오류
+	}
+	
+	public String findrole(String userID) { 
 		String userrole = null;
 		
 		try {
