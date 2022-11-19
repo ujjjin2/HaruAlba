@@ -13,7 +13,7 @@
 }
 .background {
     flex: 1;
-}
+} 
 .center {
     flex: 3;
     
