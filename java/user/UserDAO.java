@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList; // 단축키 : ctrl + shift + 'o'
+import java.util.ArrayList; 
 import java.util.List;
 
 import util.SHA256;
@@ -158,7 +158,7 @@ public class UserDAO {
 		try {
 			String SQL = "update user set userPASSWORD=?, WHERE userID= ? ";
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userPASSWORD);
+			pstmt.setString(1, sha256.getSHA256(userPASSWORD));
 			pstmt.setString(2, userID);
 			
 			return pstmt.executeUpdate();
