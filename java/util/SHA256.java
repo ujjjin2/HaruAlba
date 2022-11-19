@@ -7,7 +7,7 @@ public class SHA256 {
 	public static String getSHA256(String input) {
 		StringBuffer result = new StringBuffer();
 		try {
-        		// 입력한 값에 Hash Algo 적용
+        		// 입력한 값에 해쉬 알고리즘 적용
 			
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 			

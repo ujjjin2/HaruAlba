@@ -8,12 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList; // 단축키 : ctrl + shift + 'o'
 import java.util.List;
+
+import sun.security.provider.SHA;
 import util.SHA256;
 
 public class UserDAO {
 	private Connection conn; //db 접근 객체 
 	private PreparedStatement pstmt;
 	private ResultSet rs; // db 결과를 담는 객체
+	
 	SHA256 sha256 = new SHA256();
 	
 	public UserDAO() { // dao 생성자에서 db connection 
@@ -147,7 +150,7 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return userpw;
+		return sha256.getSHA256(userpw);
 	}
 	
 	public String findrole(String userID) { // PW 찾기 메서드
