@@ -3,46 +3,68 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+.parent {
+    display: flex;
+}
+.background {
+    flex: 1;
+} 
+.center {
+    flex: 3;
+    
+}
+.header{
+	margin: 80px 0 0 0px;
+}
+
+
+
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <link rel="stylesheet" href="./css/bootstrap.css">
 <title>EmployeeResister</title>
 </head>
-<body>
-	<div class="container-fluid" style="background-color: #525CDE">
-		<div class="col-lg-3"></div>
-		<div class="col-lg-6">
+<!--파란 배경색  -->
+<body style="background-color:#525CDE">
+
+	<div class="parent" style="width: 100%; height: 1200px; background: #585858;">
+	    <div class="background" style="background: #525CDE;"></div>
+	    
+	    <!-- 노란새센터 부분 -->
+	    <div class="center" style="background: #FFF2BE;">
 			<div class="jumbotron"
 				style="background-color: #FFF2BE; padding-top: 30px; width: 100%; align: center">
 				<center>
 					<A href="Login.jsp">
-						<img src="images/harulogo.png" style="width: 110px; height: 120px;">
+						<img src="images/harulogo.png" style="width: 16%; height: 16%; margin: 3% 0 3% 0">
 					</A>
 				</center>
 				<div>
 					<form style="display:inline;" method="post" action="EmployeeAction.jsp">
-						<div class="form-group" style="width:100%">
-							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">아이디</p>
-							<input type="text" class="form-control" placeholder="abcde"
-								name="userID" maxlength="25">
+						<div class="form-group" style="width:90%; margin:2% 5% 2% 5%">
+							<p style="line-height:1;color:gray;font-size:20px;margin-bottom:1%;"><b>아이디</b></p>
+							<input type="text" class="form-control" placeholder="abcde" 
+								name="userID" maxlength="25" style="font-size: 20px; height: 5%">
 						</div>
-						<div class="form-group" style="width:100%">
-							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">비밀번호</p>
+						<div class="form-group" style="width:90%;  margin:2% 5% 2% 5%">
+							<p style="line-height:1;color:gray;font-size:20px;margin-bottom:1%;"><b>비밀번호</b></p>
 							<input type="password" class="form-control" placeholder="******"
-								name="userPASSWORD" maxlength="20">
+								name="userPASSWORD" maxlength="20" style="font-size: 20px; height: 5%">
 						</div>
-						<div class="form-group" style="width:100%;">
-							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">이름</p>						
+						<div class="form-group" style="width:90%;  margin:2% 5% 2% 5%">
+							<p style="line-height:1;color:gray;font-size:20px;margin-bottom:1%;"><b>이름</b></p>						
 							<input type="text" class="form-control" placeholder="홍길동"
-								name="userNAME" maxlength="20">
+								name="userNAME" maxlength="20"  style="font-size: 20px; height: 5%">
 						</div>
-						<div class="form-group" style="width:100%;">
-							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">닉네임</p>
+						<div class="form-group" style="width:90%;  margin:2% 5% 2% 5%">
+							<p style="line-height:1;color:gray;font-size:20px;margin-bottom:1%;"><b>닉네임</b></p>
 							<input type="text" class="form-control" placeholder="PINKIPPO"
-								name="userNICKNAME" maxlength="20">
+								name="userNICKNAME" maxlength="20" style="font-size: 20px; height: 5%">
 						</div>
-							<div class="form-group" style="width:100%;">
-								<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">지역 & 성별</p>
+							<div class="form-group" style="width:90%;  margin:2% 5% 2% 5%">
+								<p style="line-height:1;color:gray;font-size:20px;margin-bottom:1%;"><b>지역 & 성별</b></p>
             					<select name="userLOCATION" style="width:200px;height:40px;color:gray" >
                						<option selected disabled>지역을 선택하세요.</option>
                 					<option value="서울">서울</option>
@@ -51,28 +73,30 @@
             					</select>	
                     			<div class ="btn-group" style="padding:0 0 0 20px" class ="btn-group">
                     				<label class ="btn btn-primary active">
-                    					<input type ="radio" name ="userGENDER"  style="background-color:gray;accent-color:#525CDE" autocomplete ="off" value ="남자" checked>남자</label>
+                    					<input type ="radio" name ="userGENDER"  style="background-color:gray;accent-color:#525CDE;width: 30px " autocomplete ="off" value ="남자" checked>남자</label>
                     				<label class ="btn btn-primary">
-                    					<input type ="radio" name ="userGENDER"  style="background-color:gray;accent-color:#525CDE" autocomplete ="off" value ="여자" checked>여자</label>
+                    					<input type ="radio" name ="userGENDER"  style="background-color:gray;accent-color:#525CDE; width: 30px" autocomplete ="off" value ="여자" checked>여자</label>
 								</div>
 							</div>
-						<div class="form-group" style="width:100%;">
-							<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">전화번호</p>
+						<div class="form-group" style="width:90%;  margin:2% 5% 2% 5%">
+							<p style="line-height:1;color:gray;font-size:20px;margin-bottom:1%;"><b>전화번호</b></p>
 							<input type="text" class="form-control" placeholder="-를 제외하고 작성"
-								name="userPHONE" maxlength="20">
+								name="userPHONE" maxlength="20" style="font-size: 20px; height: 5%">
 						</div>
-						<div class="form-group" style="width:100%;">
-						<p style="line-height:1;color:gray;font-size:12px;margin-bottom:0;">나이 </p>
+						<div class="form-group" style="width:100%;  margin:2% 5% 2% 5%">
+						<p style="line-height:1;color:gray;font-size:20px;margin-bottom:1%;"><b>나이</b> </p>
 								<input type="text" class="form-control" placeholder="나이"
-								name="userAGE" maxlength="5" style="width:60px;height:30px">
+								name="userAGE" maxlength="5" style="width:10%; font-size: 20px; height: 5%">
 						</div>						
-					<input type="submit" style="background-color:#FD7401;height:60px;font-size:16px;width:100%" class="btn btn-primary form-control" value="회원가입">
+					<input type="submit" style="background-color:#FA4E29;height:60px;font-size:16px;width:90%;  margin:2% 5% 2% 5%" class="btn btn-primary form-control" value="회원가입">
 					</form>
 				</div>
 			</div>
-		</div>
-		<div class="col-log-3"></div>
+	    </div>
+	    
+	    <div class="background" style="background: #525CDE;"></div>
 	</div>
+	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
