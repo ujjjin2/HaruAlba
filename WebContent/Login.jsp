@@ -15,61 +15,65 @@
     flex: 1;
 } 
 .center {
-    flex: 3;
+    flex: 2;
     
 }
 .header{
 	margin: 80px 0 0 0px;
 }
-
+*{
+	font-family: 'Jua', sans-serif;
+}
 
 
 </style>
 <meta charset="UTF-8">
 <title>Login</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 
 <!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#525CDE">
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
-	<div class="parent" style="width: 100%; height: 1200px; background: #585858;">
+	<div class="parent" style="width: 100%; height: 1145px; background: #585858;">
 	    <div class="background" style="background: #525CDE;"></div>
 	    
-	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
 	    <div class="center" style="background: #FFF2BE;">
-				<div class="jumbotron jumbotron-fluid" style="background-color:#FFF2BE;width: 100%;height:100%; ">
+	    	<div class="color_white" style="width: 60%; height:75%; background:#FFFFFF; margin: 15% 20% 17% 20%;box-shadow: 7px 7px #9E9E9E;">
+				<div class="jumbotron jumbotron-fluid" style="background-color:#FFFFFF;width: 100%;height:100%; ">
 				<center>
 					<A href="Login.jsp">
-						<img src="images/harulogo.png" style="margin: 10% 0 5% 0; width: 260px; height: 260px" >
+						<img src="images/harulogo.png" style="margin: 5% 0 7% 0; width: 260px; height: 260px" >
 					</A>
 				</center>
-				<form method="post" action="LoginAction.jsp" style="margin: 4% 10% 0 10%">
+				<form method="post" action="LoginAction.jsp" style="margin: 4% 17% 0 17%">
 					<div class="form-group">
 						<p style="line-height:1"></p>
 						<input type="text" class="form-control" placeholder="아이디"
 							name="userID" maxlength="25" style="height: 60px; font-size: 20px">
 					</div>
-					<div class="form-group"style="margin: 5% 0% 0 0%">
+					<div class="form-group"style="margin: 7% 0% 0 0%">
 						<input type="password" class="form-control" placeholder="비밀번호"
 							name="userPASSWORD" maxlength="20" style="height: 60px;font-size: 20px">
 				
 					</div>
 						<div style="float:right; margin: 10% 0 3% 0%">
-						<a href="IdCheck.jsp" style="font-weight:bold;height:30px;font-size:12px;margin-right:10px;font-size: 15px">아이디 찾기</a>
-							<a href="PassWordCheck.jsp" style="font-weight:bold;height:30px;font-size:12px;font-size: 15px">비밀번호 찾기</a>
+						<a href="IdCheck.jsp" style="font-weight:bold;height:30px;font-size:12px;margin-right:10px;font-size: 17px">아이디 찾기</a>
+							<a href="PassWordCheck.jsp" style="font-weight:bold;height:30px;font-size:12px;font-size: 17px">비밀번호 찾기</a>
 						</div>
-					<input type="submit" style="background-color:#FD7401;height:60px;font-weight:bold" class="btn btn-primary form-control" value="로그인">
+					<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold; font-size: 25px" class="btn btn-primary form-control" value="로그인">
 					</form>
-					<hr style="background-color:#858697;border:none;width:80%;height:2px; margin: 3% 0 2% 10%">
-					<form method="post" action="ResisterAction.jsp" style="margin: 3% 10% 0 10%">
-						<input type="submit" style="background-color:#FFF2BE;height:60px;border-color:#FD7401;color:#FD7401;font-weight:bold;border-width:medium" class="btn btn-primary form-control" value="회원가입">
+					<hr style="background-color:#8C8C8C;border:none;width:60%%;height:2px; margin: 3% 17% 2% 17%;opacity: 0.6">
+					<form method="post" action="ResisterAction.jsp" style="margin: 3% 17% 0 17%">
+						<input type="submit" style="background-color:#FFFFFF;height:60px;border-color:#FA4E29;color:#FA4E29;font-weight:bold;border-width:medium;font-size: 25px" class="btn btn-primary form-control" value="회원가입">
 					</form>
+				</div>
 			</div>
-			
+		</div>
 			<!-- 흰색 부분 끝나는 div -->
-	    </div>
 	    
 	    <div class="background" style="background: #525CDE;"></div>
 	</div>
