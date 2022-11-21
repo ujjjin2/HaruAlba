@@ -26,7 +26,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <link rel="stylesheet" href="./css/bootstrap.css">
-<title>EmployeeResister</title>
+<title>EmployerResister</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
