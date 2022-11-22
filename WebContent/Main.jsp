@@ -74,10 +74,16 @@ table{
 	margin:auto;
 	text-align: center;
 }
+*{
+	font-family: 'Jua', sans-serif;
+}
 
 
 </style>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <title>메인</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -111,7 +117,7 @@ table{
 %>
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
-	<div class="parent" style="width: 100%; height: 930px; background: #585858;">
+	<div class="parent" style="width: 100%; height: 1145px; background: #585858;">
 	    <div class="background" style="background: #525CDE;"></div>
 	    
 	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
@@ -125,7 +131,7 @@ table{
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
         				%>
         				</li><li>|</li>
-		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
+		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">logout</a></li>
 		            </ul>
 		        </nav>
@@ -144,7 +150,7 @@ table{
 			<center>
 	    			<div class="container" style="width: 85%; height: 50%;">
 	    			
-					<b style="float: left; margin: 5% 0 0 0;">단기 알바 구인 </b>
+					<b style="float: left; margin: 5% 0 0 0;font-size: 20px">단기 알바 구인 </b>
 					  		<a href="TotalTable_PartTime.jsp">
 					  		
 					  		<!-- +버튼  -->
@@ -175,38 +181,7 @@ table{
 					      <%
 					    	}
 					      %>
-					    <!--
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">John</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Doe</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">john@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">돈</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Mary</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Moe</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">mary@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">존</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">July</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">july@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">으</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dully</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dully2</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley2</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf22@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
-					      </tr>
-					       -->
+					   
 					    </tbody>
 					  </table>
 					</div>
@@ -216,7 +191,7 @@ table{
 			<center>
 	    			<div class="container" style="width: 85%; height: 50%;">
 	    			
-					<b style="float: left; margin: 5% 0 0 0;">자기 PR</b>
+					<b style="float: left; margin: 5% 0 0 0;font-size: 20px">자기 PR</b>
 					  		<a href="TotalTable_PR.jsp">
 					  		
 					  		<!-- +버튼  -->
@@ -245,30 +220,6 @@ table{
 					      <%
 					    	 }
 					      %>
-					      <!--  <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">Mary</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Moe</td>
-					        <td onclick="location.href='Detail_PR.jsp'">mary@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">존</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">July</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Dooley</td>
-					        <td onclick="location.href='Detail_PR.jsp'">july@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">으</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">Dully</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Dooley</td>
-					        <td onclick="location.href='Detail_PR.jsp'">jsdf@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">잉</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp'">Dully2</td>
-					        <td onclick="location.href='Detail_PR.jsp'">Dooley2</td>
-					        <td onclick="location.href='Detail_PR.jsp'">jsdf22@example.com</td>
-					        <td onclick="location.href='Detail_PR.jsp'">잉</td>
-					      </tr>-->
 					    </tbody>
 					  </table>
 					</div>

@@ -72,10 +72,12 @@
 							<div style="background-color:#FFFFFF;padding:75px 0;border-style:solid;border-color:#525CDE;height:200px;font-weight:bold;text-align:center;margin-bottom:30px">
 								<center style="font-size:22px;">아이디는 [ <%= userid %> ] 입니다.</center>
 							</div>
+							
+							
+							<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold; margin:25% 30% 0 0%;font-size: 20px"
+							 class="btn btn-primary form-control" value="돌아가기 ">
 						</div>
 			
-				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold; margin:0% 30% 0 5%;weight:80%"
-				 class="btn btn-default" value="돌아가기 ">
 				</form>
 			</div>
 		</div>
