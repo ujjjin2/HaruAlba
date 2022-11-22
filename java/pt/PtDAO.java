@@ -27,24 +27,10 @@ public class PtDAO {
 		}
 	}
 	
-	public String prusername(String userID) { //pr테이블 외래키 userNAME select
-		String SQL = "SELECT userNAME FROM pr, user where pr.userID = user.userID AND user.userID = ? ";
-		
-		try {
-		pstmt = conn.prepareStatement(SQL);
-		pstmt.setString(1, userID); 
-		rs = pstmt.executeQuery();
-		while(rs.next()) {
-			  return rs.getString(1);
-		}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+
 	
 	public String ptusername(String userID) { //pt테이블 외래키 userNAME select
-		String SQL = "SELECT userNAME FROM pt, user where pt.userID = user.userID AND user.userID = ? ";
+		String SQL = "SELECT userNAME FROM user where userID = ? ";
 		
 		try {
 		pstmt = conn.prepareStatement(SQL);
@@ -53,6 +39,8 @@ public class PtDAO {
 		while(rs.next()) {
 			  return rs.getString(1);
 		}
+		conn.close();
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

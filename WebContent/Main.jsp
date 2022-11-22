@@ -1,3 +1,4 @@
+<%@page import="pr.PrDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -106,12 +107,6 @@ table{
         script.println("</script>");
 	}
 	
-	if(role.equals("사장")){
-		PrintWriter script = response.getWriter();
-        script.println("<script>");
-        script.println("alert('사장님 환영합니다.')");   
-        script.println("</script>");
-	}
 
 	
 %>
@@ -128,6 +123,7 @@ table{
 		                <% 		                
 		                UserDAO userDAO = new UserDAO();
 		                PtDAO ptDAO = new PtDAO();
+		                PrDAO prDAO = new PrDAO();
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
         				%>
         				</li><li>|</li>
@@ -215,7 +211,7 @@ table{
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%=rs.getInt("prid") %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prtitle") %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prday")%></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= ptDAO.prusername(rs.getString("userid")) %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= prDAO.prusername(rs.getString("userid")) %></td>
 					      </tr>
 					      <%
 					    	 }

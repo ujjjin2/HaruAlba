@@ -64,7 +64,9 @@ public class UserDAO {
 			pstmt.setString(8, user.getUserNICKNAME());
 			pstmt.setInt(9, 36);
 			pstmt.setString(10, "사장");
+			
 			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			
@@ -86,6 +88,7 @@ public class UserDAO {
 			pstmt.setString(8, user.getUserNICKNAME());
 			pstmt.setInt(9, 36);
 			pstmt.setString(10, "알바");
+			
 			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
 		}catch(Exception e) {
 			e.printStackTrace();

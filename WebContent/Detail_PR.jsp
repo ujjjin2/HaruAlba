@@ -1,3 +1,7 @@
+<%@page import="pr_comment.Prcomment"%>
+<%@page import="java.util.List"%>
+<%@page import="pr_comment.PrcommentDAO"%>
+<%@page import="pr.PrDAO"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -8,15 +12,14 @@
 <!DOCTYPE html>
 
 <% // 로그아웃 버튼 후 캐시 삭제
-
+	
+	String userid = (String)session.getAttribute("userid");
 	response.setHeader("Pragma", "no-cache"); 
 	response.setHeader("Cache-Control", "no-store"); 
 
 	Connection conn = null;
 	PreparedStatement pstmt = null;
-	PreparedStatement pstmt2 = null;
 	ResultSet rs = null;
-	ResultSet rs2 = null;
 	
 	
 	
@@ -25,13 +28,17 @@
 	String sql = "SELECT userNAME, prDATE, userAGE, userLOCATION, prTITLE, prRESUME, prCONTENT, prJOB, prDAY, prMONEY FROM pr, user where pr.userID = user.userID AND prID = ? ";
 	pstmt = conn.prepareStatement(sql);
 	
-	int prid = 0;
+	int prID = 0;
 	if(request.getParameter("prid") != null) {
-		prid = Integer.parseInt(request.getParameter("prid"));
+		prID = Integer.parseInt(request.getParameter("prid"));
 	}
-	pstmt.setInt(1, prid);
+	pstmt.setInt(1, prID);
 	
 	rs = pstmt.executeQuery();
+	PrDAO prDAO = new PrDAO();
+	PrcommentDAO pr_comment = new PrcommentDAO();
+	List<Prcomment> prlist = pr_comment.selectptcmt(prID);
+	
 	
 	if(rs.next()){
 		String userID = rs.getString("userNAME");
@@ -329,22 +336,33 @@ input:focus{outline:none;}
 						
 						<div>
 							
-							<!-- 댓글이 없을 때 -->
-							<div class="comment-not">
-								<div>댓글이 없습니다.</div>						
-							</div>
 							
 							<!-- 댓글이 있을 때 -->
 							<ul class="ul">
 								<li>
+								<%
+								for(Prcomment prcomment : prlist) {
+									
+								%>
 									<div class="comment">
 										<div class="comment-name">
-											<span>손윤호</span>
+											<span><%= prDAO.prusername(prcomment.getUserID()) %></span>
 										</div>
 										<div class="comment-content">
-											<p class="p">여기에 댓글이 나타납니다.</p>
+											<p class="p"><%= prcomment.getComment() %></p>
 										</div>
 									</div>
+									<%
+										}		
+										if(prlist.size() == 0) {
+									%>
+									<!-- 댓글이 없을 때 -->
+									<div class="comment-not">
+										<div>댓글이 없습니다.</div>						
+									</div>
+									<%
+										}
+									%>
 								</li>
 							</ul>
 			
@@ -353,9 +371,10 @@ input:focus{outline:none;}
 					
 					<!-- 댓글 입력 창 -->
 					<div class="write-wrap">
-						<form action="Main.jsp" method="get">
+						<form action="Comment_PR_Action.jsp" method="post">
 							<div class="ex">
-								<input type="text"  class="comment-write" name="userName" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
+								<input type="text"  class="comment-write" name="comment" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
+								<input type="hidden" name="prID" value=<%= prID %>>
 								<button type="submit" class="btn">글쓰기</button>
 							</div>
 						</form>
