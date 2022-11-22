@@ -44,11 +44,12 @@ response.setHeader("Cache-Control", "no-store");
 .my-info-title{
     padding: 24px 16px;
     border-bottom: 1px solid #000000;
+   	font-weight: bold;
+   	font-size: 20px;
 }
 
 .main-info{
 	padding: 24px 16px 0px 16px;
-	flow: left;
 }
 #menu{
     float: right ;
@@ -62,17 +63,63 @@ response.setHeader("Cache-Control", "no-store");
     margin: 5px 0 0 10px;
 }
 table{
-	margin:auto;
 	text-align: center;
 }
+th, td {
+	font-size: 16px;
+}
 
+.type03 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 4px solid #F53520;
+}
+.type03 th {
+  width: 160px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: center;
+  color: #F53520;
+  border-bottom: 2px solid #F53520;
 
+}
+.type03 td {
+  width: 349px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 2px solid #F53520;
+}
+
+.info-edit{
+   	font-weight: bold;
+   	font-size: 16px;
+}
+
+.btn{	
+	background: #FA4E29;
+	color: #FFFFFF;
+    outline: 0;
+    height: 40px;
+    margin: 3% 0 0 0 ;
+    float: right;
+    flex-grow: 1;
+}
+
+.btn-place{
+	padding: 0px 16px 0px 16px;
+}
+
+*{
+	font-family: 'Jua', sans-serif;
+}
 
 </style>
 <meta charset="UTF-8">
 <title>마이페이지</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -118,50 +165,61 @@ table{
 			<div class="mainfunction" style="background:#FFF2BE; width: 100%; height: 100%;">
 			<div class="my-info">
 				<div class="my-info-title">
-					내정보
+					마이페이지
 				</div>
 				<div class="main-info">
-				<table>
-					<colgroup>
-						<col style="width: 120px;">
-					</colgroup>
+				<div class="info-edit">개인정보 수정</div>
+				<table class="type03">
 						<tbody>
 						<% for(User user : list) { // 리스트 객체를 꺼내서 user dto에 너어주겠다 %>
 							<tr>
 								<th>이름</th>
-								<td><%= user.getUserNAME() %></td>
+								<td bgcolor="#FFFFFF"><%= user.getUserNAME() %></td>
+								<th>성별</th>
+								<td bgcolor="#FFFFFF"><%= user.getUserGENDER() %></td>
 							</tr>
-							<tr class="space"></tr>		
 							<tr>
 								<th>역할</th>
-								<td><%= user.getRole() %></td>
+								<td bgcolor="#FFFFFF"><%= user.getRole() %></td>
+								<th bgcolor="#FFFFFF"></th>
+								<td bgcolor="#FFFFFF"></td>
 							</tr>
-							<tr class="space"></tr>									
 							<tr>
 								<th>위치</th>
-								<td><%= user.getUserLOCATION() %></td>
+								<td bgcolor="#FFFFFF"><select name="userLOCATION" style="border: 1px solid #EDEFF1; width:200px;height:40px;color:gray" >
+               						<option selected disabled><%= user.getUserLOCATION() %></option>
+                					<option value="서울">서울</option>
+                					<option value="인천">인천</option>
+               						<option value="경기">경기</option>
+            					</select></td>
+            					<th bgcolor="#FFFFFF"></th>
+								<td bgcolor="#FFFFFF"></td>
 							</tr>
-							<tr class="space"></tr>	
 							<tr>
 								<th>나이</th>
-								<td><%= user.getUserAGE() %></td>
+								<td bgcolor="#FFFFFF"><input type="text" name="age" style="border: 1px solid #EDEFF1;" value=<%= user.getUserAGE() %>></td>
+								<th bgcolor="#FFFFFF"></th>
+								<td bgcolor="#FFFFFF"></td>
 							</tr>
-							<tr class="space"></tr>	
 							<tr>
-								<th>성별</th>
-								<td><%= user.getUserGENDER() %></td>
-							</tr>
-							<tr class="space"></tr>	
 								<th>전화번호</th>
-								<td><%= user.getUserPHONE() %></td>
+								<td bgcolor="#FFFFFF"><input type="text" class="form-control" placeholder="-를 제외하고 작성"
+								name="userPHONE" maxlength="20" value="<%= user.getUserPHONE() %>" style="border: 1px solid #EDEFF1; font-size: 20px; height: 5% "></td>
+								<th bgcolor="#FFFFFF"></th>
+								<td bgcolor="#FFFFFF"></td>
 							</tr>
-							<tr class="space"></tr>	
+							<tr>
 								<th>나의 평점</th>
-								<td><%= user.getUserRATING() %></td>
+								<td bgcolor="#FFFFFF"><%= user.getUserRATING() %></td>
+								<th bgcolor="#FFFFFF"></th>
+								<td bgcolor="#FFFFFF"></td>
 							</tr>
 							<% } %>
 						</tbody>
 					</table>
+					</div>
+					<div class="btn-place">
+						<button type="submit" class="btn">수정</button>
 					</div>
 			</div>
 				<center>
@@ -191,7 +249,7 @@ table{
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrID() %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrTITLE() %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrDATE() %></td>
-					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= ptDAO.prusername(pr.getUserID()) %></td>
+					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= prDAO.prusername(pr.getUserID()) %></td>
 					      <% } } %>
 					    </tbody>
 					  </table>
