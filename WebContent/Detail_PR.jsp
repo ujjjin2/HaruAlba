@@ -35,9 +35,11 @@
 	pstmt.setInt(1, prID);
 	
 	rs = pstmt.executeQuery();
+	
 	PrDAO prDAO = new PrDAO();
+	
 	PrcommentDAO pr_comment = new PrcommentDAO();
-	List<Prcomment> prlist = pr_comment.selectptcmt(prID);
+	List<Prcomment> prlist = pr_comment.selectprcmt(prID);
 	
 	
 	if(rs.next()){
@@ -292,7 +294,7 @@ input:focus{outline:none;}
 										<tr class="space"></tr>	
 										<tr>
 											<th>근무가능기간</th>
-											<td><%=date %></td>
+											<td><%= date %></td>
 										</tr>
 										<tr class="space"></tr>	
 										<tr>

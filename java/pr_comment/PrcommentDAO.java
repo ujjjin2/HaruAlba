@@ -28,7 +28,7 @@ public class PrcommentDAO {
 	}
 	}
 	
-	public List<Prcomment> selectptcmt(int prid) throws SQLException{
+	public List<Prcomment> selectprcmt(int prid) throws SQLException{
 		String SQL = "SELECT * FROM pr_comment WHERE prID = ?";
 		
 		try {
