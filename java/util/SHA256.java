@@ -13,7 +13,7 @@ public class SHA256 {
 			
 			/****** 가염 처리과정 ******/
 			
-			byte[] salt = "Hello Salt".getBytes();
+			byte[] salt = input.substring(2).getBytes(); // 비밀번호 두자리로 솔트 쳐버린다
 			digest.reset();
 			digest.update(salt);
 			
