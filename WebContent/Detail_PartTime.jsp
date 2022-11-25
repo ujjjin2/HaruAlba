@@ -30,6 +30,7 @@
 	pstmt = conn.prepareStatement(sql);
 	
 	int ptID = 0;
+	String cmtuserid = null;
 	if(request.getParameter("ptid") != null) {
 		ptID = Integer.parseInt(request.getParameter("ptid"));
 	}
@@ -334,6 +335,8 @@ input:focus{outline:none;}
 								
 								if(userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID))){
 								for(Ptcomment ptcomment : ptlist) {
+									
+									cmtuserid = ptcomment.getUserID();
 							
 								%>
 									<div class="comment">
@@ -341,7 +344,12 @@ input:focus{outline:none;}
 											<span><%= ptDAO.ptusername(ptcomment.getUserID())%> (평점 : <%= ptDAO.ptrating(ptcomment.getUserID()) %>) </span> 
 										</div>
 										<div class="comment-content">
-											<p class="p"><%= ptcomment.getComment() %></p>
+											<p class="p"><%= ptcomment.getComment() %>
+											<form action="SelectAction.jsp" method="post">
+											<button type="submit" class="btn">선택하기</button>
+											<input type="hidden" name="ptALBA" value="<%= cmtuserid %>">
+											<input type="hidden" name="ptID" value="<%= ptID %>">
+											</form>
 										</div>
 									</div>
 									<%
