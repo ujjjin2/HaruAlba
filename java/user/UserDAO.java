@@ -218,6 +218,40 @@ public class UserDAO {
 	}
 	}
 	
+	public String findRATING(String userID) {  // 특정 유저 평점 셀렉트
+		String rating = null;
+		
+		try {
+			String SQL = "SELECT userRATING FROM user WHERE userID= ? ";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rating = rs.getString("userRATING");
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rating;
+	}
+	
+	public int changeRATING(String userID, String userRATING) { // 특정 유저 평점 수정
+		
+		try {
+			String SQL = "update user set userRATING=?, WHERE userID= ? ";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userRATING);
+			pstmt.setString(2, userID);
+			
+			return pstmt.executeUpdate(); // 수정되면 1 나옴
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // DB오류
+	}
 	
 	//이후 기능 구현
 }
