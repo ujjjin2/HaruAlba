@@ -86,7 +86,7 @@ public class PtDAO {
 	
 	// 글쓰기 기능
 	public int writePT(Pt pt) {
-		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,null)";
 		
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -140,6 +140,38 @@ public class PtDAO {
 	}finally {
 		//여기 뭐 넣어야함? ㅋㅋ
 	}
+	}
+	
+	public String checkALBA(String ptID) {     //pt테이블 외래키 userNAME, rating , userPHONE select
+		String SQL = "SELECT ptSTATE FROM pt where ptID = ? ";
+		
+		try {
+		pstmt = conn.prepareStatement(SQL);
+		pstmt.setString(1, ptID); 
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			  return rs.getString(1);
+		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public int selectALBA(String ptID, String ptALBA) { // pt 내용
+		try {
+			String SQL = "update pt set ptSTATE = ?, ptALBA = ? WHERE ptID= ? ";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, "모집완료");
+			pstmt.setString(2, ptALBA);
+			pstmt.setString(3, ptID);
+			
+			pstmt.executeUpdate();
+			return 1;	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // DB오류
 	}
 	
 	
