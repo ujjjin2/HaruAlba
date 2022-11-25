@@ -30,7 +30,9 @@
 	pstmt = conn.prepareStatement(sql);
 	
 	int ptID = 0;
+	String ptstate = null;
 	String cmtuserid = null;
+	
 	if(request.getParameter("ptid") != null) {
 		ptID = Integer.parseInt(request.getParameter("ptid"));
 	}
@@ -333,7 +335,9 @@ input:focus{outline:none;}
 								<li>
 								<%
 								
-								if(userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID))){
+								ptstate = ptDAO.ptSTATE(ptID);
+								
+								if(userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID)) && ptstate.equals("모집중") ){
 								for(Ptcomment ptcomment : ptlist) {
 									
 									cmtuserid = ptcomment.getUserID();
@@ -361,12 +365,11 @@ input:focus{outline:none;}
 									</div>
 									<%
 										}
-								}else{
+								}else if (userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID)) && ptstate.equals("모집완료") ){
 									%>
 									<div class="comment-not">
-										<div>지원 내용은 작성자만 확인할 수 있습니다.</div>						
+										<div>이미 처리된 구인글 입니다.</div>						
 									</div>
-							
 									<%
 									}
 									%>
@@ -377,7 +380,7 @@ input:focus{outline:none;}
 					</div> <!-- 댓글 창 끝 -->
 					<%
 					
-					if(!userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID))){
+					if(!userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID)) && ptstate.equals("모집중") ){
 							
 					%>
 					<!-- 댓글 입력 창 -->
@@ -391,9 +394,14 @@ input:focus{outline:none;}
 						</form>
 					</div>
 					<%
+					}else if(!userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID)) && ptstate.equals("모집완료") ){
+					%>
+					<div class="comment-not">
+						<div>모집 완료된 글입니다.</div>						
+					</div>
+					<%
 					}
 					%>
-
 			</div> <!-- 흰색 끝 --> 
 			
 		</div>

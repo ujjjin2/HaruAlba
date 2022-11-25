@@ -83,6 +83,24 @@ public class PtDAO {
 		return null;
 	}
 	
+	public String ptSTATE(int ptID) {     // pt 상태 뽑아오기
+		String SQL = "SELECT ptSTATE FROM pt where ptID = ? ";
+		
+		try {
+		pstmt = conn.prepareStatement(SQL);
+		pstmt.setInt(1, ptID); 
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			  return rs.getString(1);
+		}
+		conn.close();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	// 글쓰기 기능
 	public int writePT(Pt pt) {
