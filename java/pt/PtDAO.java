@@ -47,6 +47,43 @@ public class PtDAO {
 		return null;
 	}
 	
+	public String ptidname(int ptID) { //ptID로 유저이름 뽑기
+		String SQL = "SELECT userNAME FROM user,pt where  pt.userID = user.userID AND ptID = ? ";
+		
+		try {
+		pstmt = conn.prepareStatement(SQL);
+		pstmt.setInt(1, ptID); 
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			  return rs.getString(1);
+		}
+		conn.close();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String ptrating(String userID) {     //pt테이블 외래키 userNAME, rating , userPHONE select
+		String SQL = "SELECT userRATING FROM user where userID = ? ";
+		
+		try {
+		pstmt = conn.prepareStatement(SQL);
+		pstmt.setString(1, userID); 
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			  return rs.getString(1);
+		}
+		conn.close();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 	// 글쓰기 기능
 	public int writePT(Pt pt) {
 		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

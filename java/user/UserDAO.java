@@ -97,6 +97,23 @@ public class UserDAO {
 		return -1; //DB 오류 
 	}
 
+	
+	public String sessionnameonly(String userid) {
+		String SQL = "SELECT userNAME FROM user WHERE userID = ?";
+		
+			try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid); 
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				  return rs.getString(1);
+			}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+	
 	public String sessionname(String userid) {
 		String SQL = "SELECT userNAME, userID FROM user WHERE userID = ?";
 		
@@ -133,6 +150,8 @@ public class UserDAO {
 		}
 		return userid;
 	}
+	
+	
 	
 	public String findPW(String userID, String userPHONE, String userNAME) { // 정보가 맞는지에 대한 검증
 		String userpw = null;

@@ -1,4 +1,5 @@
 <%@page import="pt.PtDAO"%>
+<%@page import="user.UserDAO"%>
 <%@page import="pt_comment.Ptcomment"%>
 <%@page import="java.util.List"%>
 <%@page import="pt_comment.PtcommentDAO"%>
@@ -40,6 +41,8 @@
 	PtDAO ptDAO = new PtDAO();
 	PtcommentDAO pt_comment = new PtcommentDAO();
 	List<Ptcomment> ptlist = pt_comment.selectptcmt(ptID);
+	
+	UserDAO userDAO = new UserDAO();
 	
 	if(rs.next()){
 		String userName = rs.getString("userNAME");
@@ -318,22 +321,24 @@ input:focus{outline:none;}
 					
 					<div class="comment-wrap" style="background: #FFFFFF">
 						<div class="comment-header" style="background: #EDF0F4" >
-							<div class="comment-title">댓글</div>
+							<div class="comment-title">지원</div>
 						</div>
 						
-						 
+						
 						<div>
 							
 							
 							<ul class="ul">
 								<li>
 								<%
+								
+								if(userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID))){
 								for(Ptcomment ptcomment : ptlist) {
 							
 								%>
 									<div class="comment">
 										<div class="comment-name">
-											<span><%= ptDAO.ptusername(ptcomment.getUserID())%></span>
+											<span><%= ptDAO.ptusername(ptcomment.getUserID())%> (평점 : <%= ptDAO.ptrating(ptcomment.getUserID()) %>) </span> 
 										</div>
 										<div class="comment-content">
 											<p class="p"><%= ptcomment.getComment() %></p>
@@ -344,28 +349,43 @@ input:focus{outline:none;}
 										if(ptlist.size() == 0) {
 									%>
 									<div class="comment-not">
-										<div>댓글이 없습니다.</div>						
+										<div>지원이 없습니다.</div>						
 									</div>
 									<%
 										}
+								}else{
+									%>
+									<div class="comment-not">
+										<div>지원 내용은 작성자만 확인할 수 있습니다.</div>						
+									</div>
+							
+									<%
+									}
 									%>
 								</li>
 							</ul>
 			
 						</div>	
 					</div> <!-- 댓글 창 끝 -->
+					<%
 					
+					if(!userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID))){
+							
+					%>
 					<!-- 댓글 입력 창 -->
 					<div class="write-wrap">
 						<form action="Comment_PT_Action.jsp" method="post">
 							<div class="ex">
-								<input type="text"  class="comment-write" name="comment" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
+								<input type="text"  class="comment-write" name="comment" placeholder="연락받을 번호와 간단한 동기를 적어주세요!" style="background: #EDF0F4">
 								<input type="hidden" name="ptID" value=<%=ptID %>>
-								<button type="submit" class="btn">글쓰기</button>
+								<button type="submit" class="btn">지원하기</button>
 							</div>
 						</form>
 					</div>
-			
+					<%
+					}
+					%>
+
 			</div> <!-- 흰색 끝 --> 
 			
 		</div>
