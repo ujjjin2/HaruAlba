@@ -247,6 +247,11 @@ th, td {
 					      <tr>
 					      <% 
 					      if(role.equals("사장")){
+					    	  
+					    	  //끝난 알바 리스트 + 점수 기입 + 버튼 = > 그 아이디의 사용자 평점 올라가게  + 평점 기입은 한번만 되게끔
+					    	  
+					    	  
+					    	
 					      	for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
@@ -254,6 +259,14 @@ th, td {
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
 					     </tr>
 					      <% 	} }else if(role.equals("알바")){
+					    	  
+					    	  
+					    	  //끝난 알바 리스트 + 점수 기입 + 버튼 = > 평점 오르게
+					    			  
+					    			  // 테이블 하나 만들어서 외래키로 평점 연결해서 해야함 / 평점 올라가게 + 평점 기입은 한번만 되게끔
+					    			  
+					    	  // 자기가 지원한 댓글 확인 + pt_comment <a>ptid로 넘기면 바로 누르면 글로 간다! -> (낙방)
+					    	  
 					    	  		for(Pr pr : list3) { %>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrID() %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrTITLE() %></td>
