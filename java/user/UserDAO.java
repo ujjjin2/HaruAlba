@@ -134,14 +134,15 @@ public class UserDAO {
 		return userid;
 	}
 	
-	public String findPW(String userID, String userPHONE) { // 검증으로 쓰고
+	public String findPW(String userID, String userPHONE, String userNAME) { // 정보가 맞는지에 대한 검증
 		String userpw = null;
 		
 		try {
-			String SQL = "SELECT userPASSWORD FROM user WHERE userID= ? and userPHONE= ? ";
+			String SQL = "SELECT userPASSWORD FROM user WHERE userID= ? and userPHONE= ? and userNAME = ? ";
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			pstmt.setString(2, userPHONE);
+			pstmt.setString(3, userNAME);
 			
 			rs = pstmt.executeQuery();
 			
@@ -159,13 +160,13 @@ public class UserDAO {
 	public int changePW(String userID, String userPASSWORD) { // PW 수정
 		
 		try {
-			String SQL = "update user set userPASSWORD=?, WHERE userID= ? ";
+			String SQL = "update user set userPASSWORD=? WHERE userID= ? ";
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, sha256.getSHA256(userPASSWORD));
 			pstmt.setString(2, userID);
 			
-			return pstmt.executeUpdate();
-				
+			pstmt.executeUpdate();
+			return 1;	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

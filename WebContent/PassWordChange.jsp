@@ -48,19 +48,24 @@
 					</A>
 			</center>
 				<div class="jumbotron jumbotron-fluid" style="background-color:#FFFFFF;padding-top:30px;height:70%;align:center; margin: 5% 10% 5% 10%">
-					<form method="post" action="PassWordCheckResult.jsp">
+					<form method="post" action="PassWordChange2.jsp">
 						<div class="form-group" class="find-name">
 							<p style="line-height:1;color:#525CDE;font-size:12px;margin-bottom:3%;font-size: 20px">아이디</p>
 							<input type="text" class="form-control" placeholder="ID"
 							name="userID" maxlength="10" style="height: 50px; font-size: 20px">
+							
+							<p style="line-height:1;color:#525CDE;font-size:12px;margin-bottom:3%;font-size: 20px">이름</p>
+							<input type="text" class="form-control" placeholder="NAME"
+								name="userNAME" maxlength="20" style="height: 50px; font-size: 20px">
+					
 						</div>
 						<div class="form-group" class="find-phone" style="margin: 10% 0 40% 0">
 							<p style="line-height:1;color:#525CDE;font-size:12px;margin-bottom:3%;font-size: 20px">전화번호</p>
 							<input type="text" class="form-control" placeholder="-를 제외하고 작성"
 								name="userPHONE" maxlength="20" style="height: 50px; font-size: 20px">
 						</div>
-			
-				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="비밀번호 찾기">
+
+				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="비밀번호 수정">
 				<input type="button" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:100px;font-size: 20px" class="btn btn-primary form-control" onclick="history.back()" value="취소">
 				</form>
 		</div>

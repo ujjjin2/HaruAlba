@@ -62,7 +62,7 @@
 					</div>
 						<div style="float:right; margin: 10% 0 3% 0%">
 						<a href="IdCheck.jsp" style="font-weight:bold;height:30px;font-size:12px;margin-right:10px;font-size: 17px">아이디 찾기</a>
-							<a href="PassWordCheck.jsp" style="font-weight:bold;height:30px;font-size:12px;font-size: 17px">비밀번호 찾기</a>
+							<a href="PassWordChange.jsp" style="font-weight:bold;height:30px;font-size:12px;font-size: 17px">비밀번호 변경</a>
 						</div>
 					<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold; font-size: 25px" class="btn btn-primary form-control" value="로그인">
 					</form>
