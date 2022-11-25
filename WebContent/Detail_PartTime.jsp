@@ -337,7 +337,7 @@ input:focus{outline:none;}
 								
 								ptstate = ptDAO.ptSTATE(ptID);
 								
-								if(userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID)) && ptstate.equals("모집중") ){
+								if(userid.equals(ptDAO.ptiduserid(ptID)) && ptstate.equals("모집중") ){
 								for(Ptcomment ptcomment : ptlist) {
 									
 									cmtuserid = ptcomment.getUserID();
@@ -365,7 +365,7 @@ input:focus{outline:none;}
 									</div>
 									<%
 										}
-								}else if (userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID)) && ptstate.equals("모집완료") ){
+								}else if (userid.equals(ptDAO.ptiduserid(ptID)) && ptstate.equals("모집완료") ){
 									%>
 									<div class="comment-not">
 										<div>이미 처리된 구인글 입니다.</div>						
@@ -380,7 +380,7 @@ input:focus{outline:none;}
 					</div> <!-- 댓글 창 끝 -->
 					<%
 					
-					if(!userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID)) && ptstate.equals("모집중") ){
+					if(!userid.equals(ptDAO.ptiduserid(ptID)) && ptstate.equals("모집중") ){
 							
 					%>
 					<!-- 댓글 입력 창 -->
@@ -394,7 +394,7 @@ input:focus{outline:none;}
 						</form>
 					</div>
 					<%
-					}else if(!userDAO.sessionnameonly(userid).equals(ptDAO.ptidname(ptID)) && ptstate.equals("모집완료") ){
+					}else if(!userid.equals(ptDAO.ptiduserid(ptID)) && ptstate.equals("모집완료") ){
 					%>
 					<div class="comment-not">
 						<div>모집 완료된 글입니다.</div>						

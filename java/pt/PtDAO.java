@@ -47,8 +47,8 @@ public class PtDAO {
 		return null;
 	}
 	
-	public String ptidname(int ptID) { //ptID로 유저이름 뽑기
-		String SQL = "SELECT userNAME FROM user,pt where  pt.userID = user.userID AND ptID = ? ";
+	public String ptiduserid(int ptID) { //ptID로 유저이름 뽑기
+		String SQL = "SELECT userID FROM pt where  ptID = ? ";
 		
 		try {
 		pstmt = conn.prepareStatement(SQL);
