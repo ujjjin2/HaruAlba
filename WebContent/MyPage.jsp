@@ -17,6 +17,7 @@
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
+
 %>
 
 <html>
@@ -167,60 +168,68 @@ th, td {
 				<div class="my-info-title">
 					마이페이지
 				</div>
+				<form action="MyPageAction.jsp" method="post">
 				<div class="main-info">
 				<div class="info-edit">개인정보 수정</div>
-				<table class="type03">
-						<tbody>
-						<% for(User user : list) { // 리스트 객체를 꺼내서 user dto에 너어주겠다 %>
-							<tr>
-								<th>이름</th>
-								<td bgcolor="#FFFFFF"><%= user.getUserNAME() %></td>
-								<th>성별</th>
-								<td bgcolor="#FFFFFF"><%= user.getUserGENDER() %></td>
-							</tr>
-							<tr>
-								<th>역할</th>
-								<td bgcolor="#FFFFFF"><%= user.getRole() %></td>
-								<th bgcolor="#FFFFFF"></th>
-								<td bgcolor="#FFFFFF"></td>
-							</tr>
-							<tr>
-								<th>위치</th>
-								<td bgcolor="#FFFFFF"><select name="userLOCATION" style="border: 1px solid #EDEFF1; width:200px;height:40px;color:gray" >
-               						<option selected disabled><%= user.getUserLOCATION() %></option>
-                					<option value="서울">서울</option>
-                					<option value="인천">인천</option>
-               						<option value="경기">경기</option>
-            					</select></td>
-            					<th bgcolor="#FFFFFF"></th>
-								<td bgcolor="#FFFFFF"></td>
-							</tr>
-							<tr>
-								<th>나이</th>
-								<td bgcolor="#FFFFFF"><input type="text" name="age" style="border: 1px solid #EDEFF1;" value=<%= user.getUserAGE() %>></td>
-								<th bgcolor="#FFFFFF"></th>
-								<td bgcolor="#FFFFFF"></td>
-							</tr>
-							<tr>
-								<th>전화번호</th>
-								<td bgcolor="#FFFFFF"><input type="text" class="form-control" placeholder="-를 제외하고 작성"
-								name="userPHONE" maxlength="20" value="<%= user.getUserPHONE() %>" style="border: 1px solid #EDEFF1; font-size: 20px; height: 5% "></td>
-								<th bgcolor="#FFFFFF"></th>
-								<td bgcolor="#FFFFFF"></td>
-							</tr>
-							<tr>
-								<th>나의 평점</th>
-								<td bgcolor="#FFFFFF"><%= user.getUserRATING() %></td>
-								<th bgcolor="#FFFFFF"></th>
-								<td bgcolor="#FFFFFF"></td>
-							</tr>
-							<% } %>
-						</tbody>
+					<table class="type03">
+							<tbody>
+							<% for(User user : list) { // 리스트 객체를 꺼내서 user dto에 너어주겠다 %>
+								<tr>
+									<th>이름</th>
+									<td bgcolor="#FFFFFF"><%= user.getUserNAME() %></td>
+									<th>성별</th>
+									<td bgcolor="#FFFFFF"><%= user.getUserGENDER() %></td>
+								</tr>
+								<tr>
+									<th>닉네임</th>
+									<td bgcolor="#FFFFFF"><input type="text" name="userNICKNAME" value="<%= user.getUserNICKNAME() %>" style="border: 1px solid #EDEFF1;"></td>
+									<th bgcolor="#FFFFFF"></th>
+									<td bgcolor="#FFFFFF"></td>
+								</tr>
+								<tr>
+									<th>역할</th>
+									<td bgcolor="#FFFFFF"><%= user.getRole() %></td>
+									<th bgcolor="#FFFFFF"></th>
+									<td bgcolor="#FFFFFF"></td>
+								</tr>
+								<tr>
+									<th>위치</th>
+									<td bgcolor="#FFFFFF"><select name="userLOCATION" style="border: 1px solid #EDEFF1; width:200px;height:40px;color:gray" >
+	               						<option selected disabled><%= user.getUserLOCATION() %></option>
+	                					<option value="서울">서울</option>
+	                					<option value="인천">인천</option>
+	               						<option value="경기">경기</option>
+	            					</select></td>
+	            					<th bgcolor="#FFFFFF"></th>
+									<td bgcolor="#FFFFFF"></td>
+								</tr>
+								<tr>
+									<th>나이</th>
+									<td bgcolor="#FFFFFF"><input type="text" name="userAGE" style="border: 1px solid #EDEFF1;" value=<%= user.getUserAGE() %>></td>
+									<th bgcolor="#FFFFFF"></th>
+									<td bgcolor="#FFFFFF"></td>
+								</tr>
+								<tr>
+									<th>전화번호</th>
+									<td bgcolor="#FFFFFF"><input type="text" class="form-control" placeholder="-를 제외하고 작성"
+									name="userPHONE" maxlength="20" value="<%= user.getUserPHONE() %>" style="border: 1px solid #EDEFF1; font-size: 20px; height: 5% "></td>
+									<th bgcolor="#FFFFFF"></th>
+									<td bgcolor="#FFFFFF"></td>
+								</tr>
+								<tr>
+									<th>나의 평점</th>
+									<td bgcolor="#FFFFFF"><%= user.getUserRATING() %></td>
+									<th bgcolor="#FFFFFF"></th>
+									<td bgcolor="#FFFFFF"></td>
+								</tr>
+								<% } %>
+							</tbody>
 					</table>
-					</div>
-					<div class="btn-place">
-						<button type="submit" class="btn">수정</button>
-					</div>
+				</div>
+				<div class="btn-place">
+					<button type="submit" class="btn">수정</button>
+				</div>
+			</form>
 			</div>
 				<center>
 	    			<div class="container" style="width: 85%; height: 50%;">

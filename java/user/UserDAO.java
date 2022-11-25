@@ -212,7 +212,7 @@ public class UserDAO {
 	}
 	
 	public List<User> selectall(String userid) throws SQLException{
-		String SQL = "SELECT userNAME, userLOCATION, userAGE, userGENDER, userPHONE, userRATING, role FROM user WHERE userID = ?";
+		String SQL = "SELECT userNAME, userLOCATION, userAGE, userGENDER, userPHONE, userRATING, role, userNICKNAME FROM user WHERE userID = ?";
 		
 		try {
 		pstmt = conn.prepareStatement(SQL);
@@ -230,6 +230,7 @@ public class UserDAO {
 			user.setUserPHONE(rs.getString("userPHONE"));
 			user.setUserRATING(rs.getInt("userRATING"));
 			user.setRole(rs.getString("role"));
+			user.setUserNICKNAME(rs.getString("userNICKNAME"));
 			list.add(user);
 		}
 		return list;
@@ -260,7 +261,7 @@ public class UserDAO {
 	public int changeRATING(String userID, String userRATING) { // 특정 유저 평점 수정
 		
 		try {
-			String SQL = "update user set userRATING=?, WHERE userID= ? ";
+			String SQL = "update user set userRATING=? WHERE userID= ? ";
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userRATING);
 			pstmt.setString(2, userID);
@@ -273,6 +274,22 @@ public class UserDAO {
 		return -1; // DB오류
 	}
 	
+	public int changeUserInfo(String userID, String userLOCATION, int userAGE, String userPHONE, String userNCIKNAME) {
+		try {
+			String SQL = "UPDATE user set userLOCATION=?, userAGE=?, userPHONE=?, userNICKNAME=? WHERE userID=?";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userLOCATION);
+			pstmt.setInt(2, userAGE);
+			pstmt.setString(3,userPHONE);
+			pstmt.setString(4,userNCIKNAME);
+			pstmt.setString(5, userID);
+			
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 	//이후 기능 구현
 }
 
