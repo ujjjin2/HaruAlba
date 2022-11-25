@@ -79,25 +79,11 @@
 								name="userPASSWORD2" id="userPASSWORD2" maxlength="20" style="font-size: 20px; height: 5%">
 								<input type="hidden" name="userID" value="<%=userID%>">
 								
-							    <input type="submit" onclick="pwtest()"style="background-color:#FA4E29;height:60px;font-weight:bold; margin:25% 30% 0 0%;font-size: 20px"
+							    <input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold; margin:25% 30% 0 0%;font-size: 20px"
 							    class="btn btn-primary form-control" value="비밀번호 변경하기 ">
 					        </div>				
 						</div>
 				</form>
-<script type="text/javascript">
-  
-    function pwtest() {
-      var p1 = document.getElementById('userPASSWORD').value;
-      var p2 = document.getElementById('userPASSWORD2').value;
-      if( p1 != p2 ) {
-        alert("비밀번호가 일치 하지 않습니다.");
-        return false;
-      } else{
-        return true;
-      }
-    }
-  </script>
-				
 			</div>
 		</div>
 			<!-- 흰색 부분 끝나는 div -->

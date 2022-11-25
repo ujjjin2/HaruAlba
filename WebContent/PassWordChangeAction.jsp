@@ -16,6 +16,12 @@
 </head>
 <body>
 <%
+
+	String userPASSWORD = request.getParameter("userPASSWORD");
+	String userPASSWORD2 = request.getParameter("userPASSWORD2");
+	
+	if(userPASSWORD.equals(userPASSWORD2)){
+
 	UserDAO userDAO = new UserDAO();
 	int result = userDAO.changePW(user.getUserID(), user.getUserPASSWORD());
 	if (result ==1){
@@ -30,8 +36,17 @@
         script.println("alert('DB 오류가 발생했습니다.')");
         script.println("history.back()"); 
         script.println("</script>");
+		}
+	}else if(!userPASSWORD.equals(userPASSWORD2)){
+        PrintWriter script = response.getWriter();
+        script.println("<script>");
+        script.println("alert('비밀번호가 일치하지 않습니다.')");
+        script.println("history.back()");
+        script.println("</script>");
 	}
-
+	
+	
+	
 %>
 
 </body>
