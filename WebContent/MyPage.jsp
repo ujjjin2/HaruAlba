@@ -27,13 +27,16 @@ response.setHeader("Cache-Control", "no-store");
 <style type="text/css">
 .parent {
     display: flex;
+    overflow: auto;
 }
 .background {
     flex: 1;
+    overflow: auto;
 }
 .center {
     flex: 3;
-    
+    width: 100%;
+    height: 100%;
 }
 
 .my-info{
@@ -115,6 +118,7 @@ th, td {
 	font-family: 'Jua', sans-serif;
 }
 
+
 </style>
 <meta charset="UTF-8">
 <title>마이페이지</title>
@@ -146,11 +150,13 @@ th, td {
 	List<Pt> list2 = ptDAO.mypt(userid);
 	PrDAO prDAO = new PrDAO();
 	List<Pr> list3 = prDAO.mypr(userid);
+	List<Pt> list4 = ptDAO.endpt(userid);
+	List<Pt> list5 = ptDAO.joinpt(userid);
 	
 	
 %>
 
-	<div class="parent" style="width: 100%; height: 930px; background: #585858;">
+	<div class="parent" style="width: 100%; height: 100%; background: #585858;">
 	    <div class="background" style="background: #525CDE;"></div>
 
 	    <div class="center" style="background: #ffffff;">
@@ -233,7 +239,45 @@ th, td {
 			</div>
 				<center>
 	    			<div class="container" style="width: 85%; height: 50%;">
-					<b style="float: left; margin: 5% 0 0 0;">내가 작성한 글</b>
+					
+					      <% 
+					      if(role.equals("사장")){ %>
+					    	  
+					    	 <!-- 끝난 알바 리스트 + 점수 기입 + 버튼 = > 그 아이디의 사용자 평점 올라가게  + 평점 기입은 한번만 되게끔 -->
+					    	  
+				    	  <b style="float: left; margin: 5% 0 0 0;">내가 작성한 글</b>
+					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 5% 0" >
+					    <thead>
+					      <tr>
+					        <th style="text-align: center">글번호</th>
+					        <th style="text-align: center">제목</th>
+					        <th style="text-align: center">일시</th>
+					        <th style="text-align: center">작성자</th>
+					        <th style="text-align: center">상태</th>
+					        <th style="text-align: center">평점주기</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					    	
+					      	<%for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
+					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE() %></td>
+				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감")){ %>disabled><%}%></td>
+					     </tr>
+					      <% 	} }else if(role.equals("알바")){ %>
+					    	  
+					    	  
+					    	  <!--  //끝난 알바 리스트 + 점수 기입 + 버튼 = > 평점 오르게
+					    			  
+					    	  // 테이블 하나 만들어서 외래키로 평점 연결해서 해야함 / 평점 올라가게 + 평점 기입은 한번만 되게끔
+					    			  
+					    	  // 자기가 지원한 댓글 확인 + pt_comment <a>ptid로 넘기면 바로 누르면 글로 간다! -> (낙방) -->
+					    	  <b style="float: left; margin: 5% 0 0 0;">내가 작성한 글</b>
 					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
@@ -245,36 +289,65 @@ th, td {
 					    </thead>
 					    <tbody>
 					      <tr>
-					      <% 
-					      if(role.equals("사장")){
 					    	  
-					    	  //끝난 알바 리스트 + 점수 기입 + 버튼 = > 그 아이디의 사용자 평점 올라가게  + 평점 기입은 한번만 되게끔
-					    	  
-					    	  
-					    	
-					      	for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
-					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
-					     </tr>
-					      <% 	} }else if(role.equals("알바")){
-					    	  
-					    	  
-					    	  //끝난 알바 리스트 + 점수 기입 + 버튼 = > 평점 오르게
-					    			  
-					    			  // 테이블 하나 만들어서 외래키로 평점 연결해서 해야함 / 평점 올라가게 + 평점 기입은 한번만 되게끔
-					    			  
-					    	  // 자기가 지원한 댓글 확인 + pt_comment <a>ptid로 넘기면 바로 누르면 글로 간다! -> (낙방)
-					    	  
-					    	  		for(Pr pr : list3) { %>
+					    		<%for(Pr pr : list3) { %>
+					    	 <tr>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrID() %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrTITLE() %></td>
 					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrDATE() %></td>
 					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= prDAO.prusername(pr.getUserID()) %></td>
-					      <% } } %>
+					      	</tr>
+					      <% } %>
 					    </tbody>
-					  </table>
+					   </table>
+   					  <b style="float: left; margin: 5% 0 0 0;">내가 지원한 알바</b>
+					   <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
+					    <thead>
+					      <tr>
+					        <th style="text-align: center">글번호</th>
+					        <th style="text-align: center">제목</th>
+					        <th style="text-align: center">일시</th>
+					        <th style="text-align: center">작성자</th>
+					        <th style="text-align: center">상태</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    	<tr><%for(Pt pt : list5) { %>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
+					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td>
+					    	</tr>
+					    	<%} %>
+					    </tbody>
+					    </table>
+ 						<b style="float: left; margin: 5% 0 0 0;">내가 참여한 알바</b>
+					   <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 5% 0" >
+					    <thead>
+					      <tr>
+					        <th style="text-align: center">글번호</th>
+					        <th style="text-align: center">제목</th>
+					        <th style="text-align: center">일시</th>
+					        <th style="text-align: center">작성자</th>
+					        <th style="text-align: center">상태</th>
+					        <th style="text-align: center">평점주기</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    	<tr><%for(Pt pt : list4) { %>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
+					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td>
+				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감")){ %>disabled><%}%></td>
+					    	</tr>
+					    	<%} }%>
+					    </tbody>
+					    </table>
 					</div>
 	    		</center>
 	   		</div>

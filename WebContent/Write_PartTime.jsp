@@ -119,7 +119,7 @@
 								     <div>
 								      <select style="width: 100%;height: 10%; font-size: 18px" name="ptSTATE">
 								      		<option>모집중</option>
-								      		<option>모집 완료</option>
+								      		<option>마감</option>
 								      </select>
 								      
 								    </div>

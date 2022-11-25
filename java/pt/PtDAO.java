@@ -160,6 +160,68 @@ public class PtDAO {
 	}
 	}
 	
+	public List<Pt> endpt(String userid) throws SQLException{
+		String SQL = "SELECT * FROM pt WHERE ptALBA= ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			
+			ArrayList<Pt> list3 = new ArrayList<Pt>();
+			
+			while(rs.next()) {
+				Pt pt = new Pt();
+				pt.setPtID(rs.getInt("ptID"));
+				pt.setUserID(rs.getString("userID"));
+				pt.setPtTITLE(rs.getString("ptTITLE"));
+				pt.setPtINFO(rs.getString("ptINFO"));
+				pt.setPtROLE(rs.getString("ptROLE"));
+				pt.setPtSDAY(rs.getString("ptSDAY"));
+				pt.setPtEDAY(rs.getString("ptEDAY"));
+				pt.setPtMONEY(rs.getString("ptMONEY"));
+				pt.setPtGIVE(rs.getString("ptGIVE"));
+				pt.setPtCONTENT(rs.getString("ptCONTENT"));
+				pt.setPtSTATE(rs.getString("ptSTATE"));
+				list3.add(pt);
+				
+			}
+			return list3; 
+		}finally {
+			
+		}
+	}
+	
+	public List<Pt> joinpt(String userid) throws SQLException {
+		String SQL = "SELECT * FROM pt where ptID IN (SELECT ptID FROM pt_comment WHERE userID=?) "; // in 대신 =으로 하면 에러
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			
+			ArrayList<Pt> list4 = new ArrayList<Pt>();
+			
+			while(rs.next()) {
+				Pt pt = new Pt();
+				pt.setPtID(rs.getInt("ptID"));
+				pt.setUserID(rs.getString("userID"));
+				pt.setPtTITLE(rs.getString("ptTITLE"));
+				pt.setPtINFO(rs.getString("ptINFO"));
+				pt.setPtROLE(rs.getString("ptROLE"));
+				pt.setPtSDAY(rs.getString("ptSDAY"));
+				pt.setPtEDAY(rs.getString("ptEDAY"));
+				pt.setPtMONEY(rs.getString("ptMONEY"));
+				pt.setPtGIVE(rs.getString("ptGIVE"));
+				pt.setPtCONTENT(rs.getString("ptCONTENT"));
+				pt.setPtSTATE(rs.getString("ptSTATE"));
+				list4.add(pt);
+				
+			}return list4;
+		} finally {
+			
+		}
+	}
+	
+	
 	public String checkALBA(String ptID) {     //pt테이블 외래키 userNAME, rating , userPHONE select
 		String SQL = "SELECT ptSTATE FROM pt where ptID = ? ";
 		
