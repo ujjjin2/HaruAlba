@@ -37,7 +37,7 @@ public class UserDAO {
 			pstmt.setString(1, userID); 
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString(1).equals(sha256.getSHA256(userPASSWORD))) // rs.getString(1) : select된 첫번째 컬럼
+				if (rs.getString(1).equals(sha256.getSHA256(userPASSWORD))) //로그인 할때도 사용자가 입력한 암호를 해쉬로 변환하여 대조
 					return 1; //로그인 성공
 				else
 					return 0; // 비밀번호 틀림
@@ -55,7 +55,7 @@ public class UserDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD()));
+			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD())); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후 DB에 저장
 			pstmt.setString(3, user.getUserNAME());
 			pstmt.setString(4, user.getUserLOCATION());
 			pstmt.setInt(5, user.getUserAGE());
@@ -79,7 +79,7 @@ public class UserDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD()));
+			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD())); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후 DB에 저장
 			pstmt.setString(3, user.getUserNAME());
 			pstmt.setString(4, user.getUserLOCATION());
 			pstmt.setInt(5, user.getUserAGE());
