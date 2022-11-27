@@ -16,7 +16,8 @@
     <% // 스크립트릿
     
         UserDAO userDAO = new UserDAO();
-        int result = userDAO.login(user.getUserID(), user.getUserPASSWORD());
+    	String saltresult = userDAO.checksalt(user.getUserID());
+        int result = userDAO.login(user.getUserID(), user.getUserPASSWORD(),saltresult);
         String role = userDAO.findrole(user.getUserID());
         // ID가 사장 OR 알바
         if (result ==1){

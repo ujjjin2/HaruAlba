@@ -1,3 +1,4 @@
+<%@page import="util.SALT"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -23,7 +24,9 @@
 	if(userPASSWORD.equals(userPASSWORD2)){
 
 	UserDAO userDAO = new UserDAO();
-	int result = userDAO.changePW(user.getUserID(), user.getUserPASSWORD());
+	SALT salt = new SALT();
+	String saltresult = salt.makeSALT();
+	int result = userDAO.changePW(user.getUserID(), user.getUserPASSWORD(), saltresult);
 	if (result ==1){
         PrintWriter script = response.getWriter();
         script.println("<script>");

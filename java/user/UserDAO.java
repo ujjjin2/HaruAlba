@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList; 
 import java.util.List;
 
+import util.SALT;
 import util.SHA256;
 
 public class UserDAO {
@@ -17,6 +18,7 @@ public class UserDAO {
 	private ResultSet rs; // db 결과를 담는 객체
 	
 	SHA256 sha256 = new SHA256();
+	SALT salt = new SALT();
 	
 	public UserDAO() { // dao 생성자에서 db connection 
 		try {
@@ -29,15 +31,32 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public String checksalt(String userID) { // ID의 솔트 셀렉트
+		String SQL = "SELECT salt FROM user WHERE userID = ?";
+		
+			try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID); 
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				  return rs.getString(1);
+			}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+	
 	// 로그인 기능 
-	public int login(String userID, String userPASSWORD) {
+	public int login(String userID, String userPASSWORD, String saltresult) {
 		String SQL = "SELECT userPASSWORD FROM user WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID); 
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString(1).equals(sha256.getSHA256(userPASSWORD))) //로그인 할때도 사용자가 입력한 암호를 해쉬로 변환하여 대조
+				if (rs.getString(1).equals(sha256.getSHA256(userPASSWORD, saltresult))) //로그인 할때도 사용자가 입력한 암호를 해쉬로 변환하여 대조
 					return 1; //로그인 성공
 				else
 					return 0; // 비밀번호 틀림
@@ -51,11 +70,14 @@ public class UserDAO {
 	}
 	
 	public int joinEmployer(User user) {
+		
+		String saltresult = salt.makeSALT();
+		
 		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD())); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후 DB에 저장
+			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD(), saltresult)); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후 DB에 저장
 			pstmt.setString(3, user.getUserNAME());
 			pstmt.setString(4, user.getUserLOCATION());
 			pstmt.setInt(5, user.getUserAGE());
@@ -66,6 +88,7 @@ public class UserDAO {
 			pstmt.setString(10, "사장");
 			pstmt.setInt(11, 0);
 			pstmt.setInt(12, 0);
+			pstmt.setString(13, saltresult);
 			
 			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
 			
@@ -77,11 +100,14 @@ public class UserDAO {
 	}
 	
 	public int joinEmployee(User user) {
-		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		String saltresult = salt.makeSALT();
+		
+		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD())); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후 DB에 저장
+			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD(), saltresult)); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후 DB에 저장
 			pstmt.setString(3, user.getUserNAME());
 			pstmt.setString(4, user.getUserLOCATION());
 			pstmt.setInt(5, user.getUserAGE());
@@ -92,6 +118,7 @@ public class UserDAO {
 			pstmt.setString(10, "알바");
 			pstmt.setInt(11, 0);
 			pstmt.setInt(12, 0);
+			pstmt.setString(13, saltresult);
 			
 			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
 		}catch(Exception e) {
@@ -155,38 +182,38 @@ public class UserDAO {
 		return userid;
 	}
 	
-	
-	
 	public String findPW(String userID, String userPHONE, String userNAME) { // 정보가 맞는지에 대한 검증
-		String userpw = null;
-		
-		try {
-			String SQL = "SELECT userPASSWORD FROM user WHERE userID= ? and userPHONE= ? and userNAME = ? ";
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userID);
-			pstmt.setString(2, userPHONE);
-			pstmt.setString(3, userNAME);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				userpw = rs.getString("userPASSWORD");
-				
-			}
-				
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return sha256.getSHA256(userpw);
-	}
+        String userpw = null;
+
+        try {
+            String SQL = "SELECT userPASSWORD FROM user WHERE userID= ? and userPHONE= ? and userNAME = ? ";
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, userID);
+            pstmt.setString(2, userPHONE);
+            pstmt.setString(3, userNAME);
+
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                userpw = rs.getString("userPASSWORD");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userpw;
+    }
 	
-	public int changePW(String userID, String userPASSWORD) { // PW 수정
+	
+	public int changePW(String userID, String userPASSWORD, String saltresult) { // PW 수정
 		
 		try {
-			String SQL = "update user set userPASSWORD=? WHERE userID= ? ";
+			String SQL = "update user set userPASSWORD=? , salt=? WHERE userID= ? ";
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, sha256.getSHA256(userPASSWORD));
-			pstmt.setString(2, userID);
+			pstmt.setString(1, sha256.getSHA256(userPASSWORD, saltresult));
+			pstmt.setString(2, saltresult);
+			pstmt.setString(3, userID);
 			
 			pstmt.executeUpdate();
 			return 1;	

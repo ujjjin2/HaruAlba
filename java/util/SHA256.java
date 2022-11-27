@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 public class SHA256 {
 	
-	public String getSHA256(String input) {
+	public String getSHA256(String input, String saltresult) {
 		StringBuffer result = new StringBuffer();
 		try {
         		// input 값에 해쉬함수를 적용하는 과정
@@ -12,11 +12,13 @@ public class SHA256 {
 			//메시지다이제스트 클래스를 이용하여 digest 값을 갱신시키기 위해 SHA-256 방식으로 변수 생성
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 			
-			// 사용자가 input으로 넣은 비밀번호 앞 두자리를 가염처리 문자열로 이용하기 위해서 바이트로 변환하여 저장
-			byte[] salt = input.substring(2).getBytes();
+			// 받아온 랜덤 값을 바이트로 변환
+			byte[] salt = saltresult.getBytes();
+			
 			//digest를 사용하기 전 리셋
 			digest.reset();
-			//가염처리를 위해 데이터를 해쉬
+			
+			//가염처리를 통해 데이터를 해쉬
 			digest.update(salt);
 			
 			//input을 바이트로 변환 후 해쉬를 반환하여 chars에 저장
