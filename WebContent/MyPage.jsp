@@ -351,6 +351,7 @@ th, td {
 				      			<input type="hidden" value="<%=pt.getPtTITLE() %>" name="ptTITLE">
 				      			<input type="hidden" value="<%=pt.getPtROLE() %>" name="ptROLE">
 				      			<input type="hidden" value="<%=pt.getPtMONEY() %>" name="ptMONEY">
+				      			<input type="hidden" value="<%=pt.getUserID() %>" name="userID">
 					    	</tr>
 					    	<%} }%>
 					    </tbody>
@@ -364,8 +365,6 @@ th, td {
 	    
 	    <div class="background" style="background: #525CDE;"></div>
 	</div>
-	
-	
 	
 </body>
 </html>

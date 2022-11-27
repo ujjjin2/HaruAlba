@@ -228,7 +228,7 @@ public class UserDAO {
 			user.setUserAGE(rs.getInt("userAGE"));
 			user.setUserGENDER(rs.getString("userGENDER"));
 			user.setUserPHONE(rs.getString("userPHONE"));
-			user.setUserRATING(rs.getInt("userRATING"));
+			user.setUserRATING(rs.getFloat("userRATING"));
 			user.setRole(rs.getString("role"));
 			user.setUserNICKNAME(rs.getString("userNICKNAME"));
 			list.add(user);
@@ -291,5 +291,51 @@ public class UserDAO {
 		return -1;
 	}
 	//이후 기능 구현
+	public int addEval(String userID) {
+		String SQL = "UPDATE user SET userEVAL = userEVAL + 1 WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			
+			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return -1; //DB 오류 
+	}
+	
+	
+	public int addTotal(float rating, String userID) {
+		String SQL = "UPDATE user SET userTOTAL = userTOTAL + ? WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setFloat(1, rating);
+			pstmt.setString(2, userID);
+			
+			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return -1; //DB 오류 
+	}
+	
+	public int addRating(String userID) {
+		String SQL = "UPDATE user SET userRATING = TRUNCATE(userTOTAL/userEVAL, 1) WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			
+			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return -1; //DB 오류 
+	}
+	
+
+	
 }
 

@@ -10,7 +10,7 @@ public class User {
 	private String userGENDER;
 	private String userPHONE;
 	private String userNICKNAME;
-	private int userRATING;
+	private Float userRATING;
 	private String role;
 	
 	
@@ -62,10 +62,11 @@ public class User {
 	public void setUserNICKNAME(String userNICKNAME) {
 		this.userNICKNAME = userNICKNAME;
 	}
-	public int getUserRATING() {
+
+	public Float getUserRATING() {
 		return userRATING;
 	}
-	public void setUserRATING(int userRATING) {
+	public void setUserRATING(Float userRATING) {
 		this.userRATING = userRATING;
 	}
 	public String getRole() {

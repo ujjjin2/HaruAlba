@@ -1,3 +1,4 @@
+<%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -7,6 +8,7 @@
 <jsp:setProperty name="pt" property="ptTITLE"/>
 <jsp:setProperty name="pt" property="ptROLE"/>
 <jsp:setProperty name="pt" property="ptMONEY"/>
+<jsp:setProperty name="pt" property="userID"/>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -54,20 +56,21 @@
 					</A>
 			</center>
 				<div class="jumbotron jumbotron-fluid" style="background-color:#FFFFFF;padding-top:30px;height:70%;align:center; margin: 5% 10% 5% 10%">
-					<form method="post" action="IdCheckResult.jsp">
+					<form method="post" action="PTratingAction.jsp">
 						
 			<!-- 평점 주는 별점 모양 -->
 <div class="star-rating space-x-4 mx-auto">
-	<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+	<input type="radio" id="5-stars" name="userRATING" value=5 v-model="ratings"/>
 	<label for="5-stars" class="star pr-4">★</label>
-	<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+	<input type="radio" id="4-stars" name="userRATING" value=4 v-model="ratings"/>
 	<label for="4-stars" class="star">★</label>
-	<input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+	<input type="radio" id="3-stars" name="userRATING" value=3 v-model="ratings"/>
 	<label for="3-stars" class="star">★</label>
-	<input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+	<input type="radio" id="2-stars" name="userRATING" value=2 v-model="ratings"/>
 	<label for="2-stars" class="star">★</label>
-	<input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+	<input type="radio" id="1-star" name="userRATING" value=1 v-model="ratings" />
 	<label for="1-star" class="star">★</label>
+	<input type="hidden" value="<%= pt.getUserID()%>" name="userID">
 </div>
 				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="평점 기입하기">
 				<input type="button" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:100px;font-size: 20px" class="btn btn-primary form-control" onclick="history.back()" value="돌아가기">
