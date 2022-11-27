@@ -51,7 +51,7 @@ public class UserDAO {
 	}
 	
 	public int joinEmployer(User user) {
-		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
@@ -62,8 +62,10 @@ public class UserDAO {
 			pstmt.setString(6, user.getUserGENDER());
 			pstmt.setString(7, user.getUserPHONE());
 			pstmt.setString(8, user.getUserNICKNAME());
-			pstmt.setInt(9, 36);
+			pstmt.setFloat(9, 0);
 			pstmt.setString(10, "사장");
+			pstmt.setInt(11, 0);
+			pstmt.setInt(12, 0);
 			
 			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
 			
@@ -75,7 +77,7 @@ public class UserDAO {
 	}
 	
 	public int joinEmployee(User user) {
-		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
@@ -86,8 +88,10 @@ public class UserDAO {
 			pstmt.setString(6, user.getUserGENDER());
 			pstmt.setString(7, user.getUserPHONE());
 			pstmt.setString(8, user.getUserNICKNAME());
-			pstmt.setInt(9, 36);
+			pstmt.setFloat(9, 0);
 			pstmt.setString(10, "알바");
+			pstmt.setInt(11, 0);
+			pstmt.setInt(12, 0);
 			
 			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
 		}catch(Exception e) {
