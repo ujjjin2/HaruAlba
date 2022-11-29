@@ -365,7 +365,7 @@ input:focus{outline:none;}
 									</div>
 									<%
 										}
-								}else if (userid.equals(ptDAO.ptiduserid(ptID)) && ptstate.equals("모집완료") ){
+								}else if (userid.equals(ptDAO.ptiduserid(ptID)) && ptstate.equals("마감") ){
 									%>
 									<div class="comment-not">
 										<div>이미 처리된 구인글 입니다.</div>						
@@ -394,7 +394,7 @@ input:focus{outline:none;}
 						</form>
 					</div>
 					<%
-					}else if(!userid.equals(ptDAO.ptiduserid(ptID)) && ptstate.equals("모집완료") ){
+					}else if(!userid.equals(ptDAO.ptiduserid(ptID)) && ptstate.equals("마감") ){
 					%>
 					<div class="comment-not">
 						<div>모집 완료된 글입니다.</div>						

@@ -14,6 +14,8 @@ public class Pt {
 	private String ptGIVE;
 	private String ptCONTENT;
 	private String ptSTATE;
+	private String ptWriteALBA;
+	private String ptWriteSAJANG;
 	
 	public int getPtID() {
 		return ptID;
@@ -82,5 +84,19 @@ public class Pt {
 	public void setPtEDAY(String ptEDAY) {
 		this.ptEDAY = ptEDAY;
 	}
+	public String getPtWriteALBA() {
+		return ptWriteALBA;
+	}
+	public void setPtWriteALBA(String ptWriteALBA) {
+		this.ptWriteALBA = ptWriteALBA;
+	}
+	public String getPtWriteSAJANG() {
+		return ptWriteSAJANG;
+	}
+	public void setPtWriteSAJANG(String ptWriteSAJANG) {
+		this.ptWriteSAJANG = ptWriteSAJANG;
+	}
+
+	
 	
 }

@@ -338,20 +338,21 @@ th, td {
 					        <th style="text-align: center">평점주기</th>
 					      </tr>
 					    </thead>
-					    <form>
+					    <%for(Pt pt : list4) { %>
 					    <tbody>
-					    	<tr><%for(Pt pt : list4) { %>
+					    	<tr>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
 					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td>
-				      		<td><input type="submit" class="btn" value="평점주러가기"> <input type="hidden" value="<%=pt.getPtID()%>" name="ptID"><%if(!pt.getPtSTATE().equals("마감")){ %><disabled><%}%></td>
+				      		<td><input type="submit" class="btn" value="평점주러가기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteALBA().equals("1")){ %>disabled<%} %>> </td>
 				      			<input type="hidden" value="<%=pt.getPtTITLE() %>" name="ptTITLE">
 				      			<input type="hidden" value="<%=pt.getPtROLE() %>" name="ptROLE">
 				      			<input type="hidden" value="<%=pt.getPtMONEY() %>" name="ptMONEY">
 				      			<input type="hidden" value="<%=pt.getUserID() %>" name="userID">
+				      			<input type="hidden" value="<%=pt.getPtID() %>" name="ptID">
 					    	</tr>
 					    	<%} }%>
 					    </tbody>

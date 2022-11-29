@@ -1,20 +1,22 @@
 package util;
 
+import java.security.SecureRandom;
+
 public class SALT {
 	
 	public String makeSALT() {
 		
-		String result = "";
+		SecureRandom sr = new SecureRandom();
+		byte[] salt = new byte[16];
 		
-		      char ch1 = (char) ((Math.random() * 26) + 97); // 랜덤 알파벳 생성
-		      char ch2 = (char) ((Math.random() * 26) + 97); // 랜덤 알파벳 생성
-
+		sr.nextBytes(salt);
 		
-		 result += ch1 ;
-		 result += ch2 ;
+		StringBuffer sb = new StringBuffer();
+		for(int i = 0; i<salt.length; i++) {
+			sb.append(String.format("%02x", salt[i]));
+		};
 		
-		return result; // 문자열 반환
-
+		return sb.toString(); // 문자열 반환
 }
 
 }

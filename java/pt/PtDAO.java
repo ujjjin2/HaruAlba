@@ -104,7 +104,7 @@ public class PtDAO {
 	
 	// 글쓰기 기능
 	public int writePT(Pt pt) {
-		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,null)";
+		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, null, null)";
 		
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -182,6 +182,7 @@ public class PtDAO {
 				pt.setPtGIVE(rs.getString("ptGIVE"));
 				pt.setPtCONTENT(rs.getString("ptCONTENT"));
 				pt.setPtSTATE(rs.getString("ptSTATE"));
+				pt.setPtWriteALBA(rs.getString("ptWriteALBA"));
 				list3.add(pt);
 				
 			}
@@ -242,7 +243,7 @@ public class PtDAO {
 		try {
 			String SQL = "update pt set ptSTATE = ?, ptALBA = ? WHERE ptID= ? ";
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, "모집완료");
+			pstmt.setString(1, "마감");
 			pstmt.setString(2, ptALBA);
 			pstmt.setString(3, ptID);
 			
@@ -252,6 +253,36 @@ public class PtDAO {
 			e.printStackTrace();
 		}
 		return -1; // DB오류
+	}
+	
+	public int checkRatingALBA(int ptID) {
+		try {
+			String SQL = "UPDATE pt set ptWriteALBA = ? WHERE ptID = ?";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, "1");
+			pstmt.setInt(2, ptID);
+			
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public int checkRatingSAJANG(int ptID) {
+		try {
+			String SQL = "UPDATE pt set ptWriteSAJANG = ? WHERE ptID = ?";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, 1);
+			pstmt.setInt(2, ptID);
+			
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 	
 	
