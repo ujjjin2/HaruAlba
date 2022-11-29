@@ -16,7 +16,7 @@ public class PtcommentDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs; // db 결과를 담는 객체
 	
-	public PtcommentDAO() {
+	public PtcommentDAO() { 
 		try {
 		String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC";
 		String dbID = "haru"; //계정
@@ -53,7 +53,7 @@ public class PtcommentDAO {
 	}
 	}
 	
-	public int joincomment(Ptcomment ptcomment) {
+	public int joincomment(Ptcomment ptcomment) { // PT 댓글 달기
 		String SQL = "INSERT INTO pt_comment VALUES(null, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);

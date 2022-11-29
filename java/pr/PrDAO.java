@@ -27,7 +27,7 @@ public class PrDAO {
 		}
 	}
 	
-	public Date getDate() {
+	public Date getDate() { //현재 시간 가져오기
 		String SQL = "SELECT NOW()";
 		
 		try {
@@ -42,7 +42,7 @@ public class PrDAO {
 		return getDate();
 	}
 	
-	public int getNext() {
+	public int getNext() { 
 		String SQL = "SELECT MAX(prID) FROM pr";
 		
 		try {
@@ -84,7 +84,7 @@ public class PrDAO {
 		}return -1;
 	}
 	
-	public List<Pr> mypr(String userid) throws SQLException{
+	public List<Pr> mypr(String userid) throws SQLException{ //PR 리스트 뽑아오기
 		String SQL = "SELECT * FROM pr WHERE userID = ?";
 		
 		try {

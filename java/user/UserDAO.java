@@ -69,7 +69,7 @@ public class UserDAO {
 		return -2; //DB 오류 
 	}
 	
-	public int joinEmployer(User user) {
+	public int joinEmployer(User user) { // 사장 가입
 		
 		String saltresult = salt.makeSALT();
 		
@@ -99,7 +99,7 @@ public class UserDAO {
 		return -1; //DB 오류 
 	}
 	
-	public int joinEmployee(User user) {
+	public int joinEmployee(User user) { // 알바 가입
 		
 		String saltresult = salt.makeSALT();
 		
@@ -129,7 +129,7 @@ public class UserDAO {
 	}
 
 	
-	public String sessionnameonly(String userid) {
+	public String sessionnameonly(String userid) { // 세션아이디로 이름 뽑아오기
 		String SQL = "SELECT userNAME FROM user WHERE userID = ?";
 		
 			try {
@@ -145,7 +145,7 @@ public class UserDAO {
 			return null;
 		}
 	
-	public String sessionname(String userid) {
+	public String sessionname(String userid) { // 이름이랑 ID 뽑아오기
 		String SQL = "SELECT userNAME, userID FROM user WHERE userID = ?";
 		
 			try {
@@ -223,7 +223,7 @@ public class UserDAO {
 		return -1; // DB오류
 	}
 	
-	public String findrole(String userID) { 
+	public String findrole(String userID) {  // 역할 찾기
 		String userrole = null;
 		
 		try {
@@ -242,7 +242,7 @@ public class UserDAO {
 		return userrole;
 	}
 	
-	public List<User> selectall(String userid) throws SQLException{
+	public List<User> selectall(String userid) throws SQLException{ // 유저 정보 뽑아오기
 		String SQL = "SELECT userNAME, userLOCATION, userAGE, userGENDER, userPHONE, userRATING, role, userNICKNAME FROM user WHERE userID = ?";
 		
 		try {
@@ -305,7 +305,7 @@ public class UserDAO {
 		return -1; // DB오류
 	}
 	
-	public int changeUserInfo(String userID, String userLOCATION, int userAGE, String userPHONE, String userNCIKNAME) {
+	public int changeUserInfo(String userID, String userLOCATION, int userAGE, String userPHONE, String userNCIKNAME) { // 유저 정보 수정
 		try {
 			String SQL = "UPDATE user set userLOCATION=?, userAGE=?, userPHONE=?, userNICKNAME=? WHERE userID=?";
 			pstmt = conn.prepareStatement(SQL);
@@ -321,8 +321,9 @@ public class UserDAO {
 		}
 		return -1;
 	}
-	//이후 기능 구현
-	public int addEval(String userID) {
+
+	
+	public int addEval(String userID) {           // 평점 기입 횟수 수정
 		String SQL = "UPDATE user SET userEVAL = userEVAL + 1 WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -337,7 +338,7 @@ public class UserDAO {
 	}
 	
 	
-	public int addTotal(float rating, String userID) {
+	public int addTotal(float rating, String userID) {           // 평점 추가하기
 		String SQL = "UPDATE user SET userTOTAL = userTOTAL + ? WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -352,7 +353,7 @@ public class UserDAO {
 		return -1; //DB 오류 
 	}
 	
-	public int addRating(String userID) {
+	public int addRating(String userID) {          // 평점 변환하기
 		String SQL = "UPDATE user SET userRATING = TRUNCATE(userTOTAL/userEVAL, 1) WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);

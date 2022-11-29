@@ -11,7 +11,7 @@ import java.util.List;
 import pt_comment.Ptcomment;
 
 public class PrcommentDAO {
-	// 작성, 보이게하는거랑
+
 		private Connection conn; //db 접근 객체 
 		private PreparedStatement pstmt;
 		private ResultSet rs; // db 결과를 담는 객체
@@ -28,7 +28,7 @@ public class PrcommentDAO {
 	}
 	}
 	
-	public List<Prcomment> selectprcmt(int prid) throws SQLException{
+	public List<Prcomment> selectprcmt(int prid) throws SQLException{ // PR댓글 리스트 뽑아오기
 		String SQL = "SELECT * FROM pr_comment WHERE prID = ?";
 		
 		try {
@@ -52,7 +52,7 @@ public class PrcommentDAO {
 	}
 	}
 	
-	public int joincomment(Prcomment prcomment) {
+	public int joincomment(Prcomment prcomment) { // 댓글달기 
 		String SQL = "INSERT INTO pr_comment VALUES(null, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);

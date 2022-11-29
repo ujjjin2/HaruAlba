@@ -103,7 +103,7 @@ public class PtDAO {
 	
 	
 	// 글쓰기 기능
-	public int writePT(Pt pt) {
+	public int writePT(Pt pt) { //PT 글쓰기
 		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, null, null)";
 		
 		try {
@@ -129,7 +129,7 @@ public class PtDAO {
 	}
 	
 	
-	public List<Pt> mypt(String userid) throws SQLException{
+	public List<Pt> mypt(String userid) throws SQLException{  //PT 리스트 뽑아오기 
 		String SQL = "SELECT * FROM pt WHERE userID = ?";
 		
 		try {
@@ -160,7 +160,7 @@ public class PtDAO {
 	}
 	}
 	
-	public List<Pt> endpt(String userid) throws SQLException{
+	public List<Pt> endpt(String userid) throws SQLException{ // 자신이 지원한 PT 
 		String SQL = "SELECT * FROM pt WHERE ptALBA= ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -255,7 +255,7 @@ public class PtDAO {
 		return -1; // DB오류
 	}
 	
-	public int checkRatingALBA(int ptID) {
+	public int checkRatingALBA(int ptID) { // 알바 레이팅 업데이트
 		try {
 			String SQL = "UPDATE pt set ptWriteALBA = ? WHERE ptID = ?";
 			pstmt = conn.prepareStatement(SQL);
@@ -270,7 +270,7 @@ public class PtDAO {
 		return -1;
 	}
 	
-	public int checkRatingSAJANG(int ptID) {
+	public int checkRatingSAJANG(int ptID) { // 사장 레이팅 업데이트
 		try {
 			String SQL = "UPDATE pt set ptWriteSAJANG = ? WHERE ptID = ?";
 			pstmt = conn.prepareStatement(SQL);
