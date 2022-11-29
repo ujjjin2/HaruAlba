@@ -32,7 +32,7 @@
             script.println("</script>");
     	}else{
     		UserDAO userDAO = new UserDAO(); // 성공
-            int result = userDAO.joinEmployee(user);
+            int result = userDAO.joinEmployee(user);	// 회원가입 기능 시작
             if (result == -1){ // 회원가입 실패
                 PrintWriter script = response.getWriter();
                 script.println("<script>");

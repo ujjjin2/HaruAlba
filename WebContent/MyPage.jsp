@@ -326,7 +326,6 @@ th, td {
 					    </tbody>
 					    </table>
  						<b style="float: left; margin: 5% 0 0 0;">내가 참여한 알바</b>
- 						<form action="PTrating.jsp" method="post"> <!-- 평점 주러가기 폼 -->
 					   <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 5% 0" >
 					    <thead>
 					      <tr>
@@ -338,8 +337,8 @@ th, td {
 					        <th style="text-align: center">평점주기</th>
 					      </tr>
 					    </thead>
-					    <%for(Pt pt : list4) { %>
 					    <tbody>
+					    <%for(Pt pt : list4) { %>
 					    	<tr>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
@@ -347,6 +346,7 @@ th, td {
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
 					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td>
+ 						<form action="PTrating.jsp" method="post"> <!-- 평점 주러가기 폼 -->
 				      		<td><input type="submit" class="btn" value="평점주러가기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteALBA().equals("1")){ %>disabled<%} %>> </td>
 				      			<input type="hidden" value="<%=pt.getPtTITLE() %>" name="ptTITLE">
 				      			<input type="hidden" value="<%=pt.getPtROLE() %>" name="ptROLE">
@@ -354,10 +354,10 @@ th, td {
 				      			<input type="hidden" value="<%=pt.getUserID() %>" name="userID">
 				      			<input type="hidden" value="<%=pt.getPtID() %>" name="ptID">
 					    	</tr>
+					    </form>
 					    	<%} }%>
 					    </tbody>
 					    </table>
-					    </form>
 					</div>
 	    		</center>
 	   		</div>

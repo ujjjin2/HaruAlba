@@ -11,10 +11,7 @@
 <jsp:setProperty name="pt" property="ptROLE"/>
 <jsp:setProperty name="pt" property="ptMONEY"/>
 <jsp:setProperty name="pt" property="userID"/>
-<%
-	String ptid = request.getParameter("ptID");
-	int ptid2 = Integer.parseInt(ptid); 
-%>
+<jsp:setProperty name="pt" property="ptID"/>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -77,9 +74,9 @@
 	<input type="radio" id="1-star" name="userRATING" value=1 v-model="ratings" />
 	<label for="1-star" class="star">★</label>
 	<input type="hidden" value="<%= pt.getUserID()%>" name="userID">
-	<input type="hidden" value="<%= ptid2 %>" name="ptID">
+	<input type="hidden" value="<%= pt.getPtID() %>" name="ptID">
 </div>
-				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="평점 기입하기<%=ptid2%>">
+				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="평점 기입하기">
 				<input type="button" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:100px;font-size: 20px" class="btn btn-primary form-control" onclick="history.back()" value="돌아가기">
 				</form>
 		</div>

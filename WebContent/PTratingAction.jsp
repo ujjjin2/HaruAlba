@@ -35,7 +35,7 @@
 	if(result == 1){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-	    script.println("alert('평점이 반영되었습니다.')" + pt.getPtID());
+	    script.println("alert('평점이 반영되었습니다.')");
 	    script.println("location.href = 'MyPage.jsp'");
 	    script.println("</script>");
 	} else if( result == -1) {

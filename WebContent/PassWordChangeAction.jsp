@@ -17,9 +17,9 @@
 </head>
 <body>
 <%
-
-	String userPASSWORD = request.getParameter("userPASSWORD");
-	String userPASSWORD2 = request.getParameter("userPASSWORD2");
+	
+	String userPASSWORD = request.getParameter("userPASSWORD");		// 비밀번호입력
+	String userPASSWORD2 = request.getParameter("userPASSWORD2");	// 비밀번호확인
 	
 	if(userPASSWORD.equals(userPASSWORD2)){
 
