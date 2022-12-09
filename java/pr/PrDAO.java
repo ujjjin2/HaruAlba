@@ -11,64 +11,62 @@ import java.util.List;
 
 import pt.Pt;
 
-
 public class PrDAO {
-	private Connection conn; //db 접근 객체 
+	private Connection conn; // db 접근 객체
 	private PreparedStatement pstmt;
 	private ResultSet rs; // db 결과를 담는 객체
-	
+
 	public PrDAO() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
-			String dbID = "haru"; //계정
-			String dbPassword = "haru"; //비밀번호
-			Class.forName("com.mysql.cj.jdbc.Driver"); //mysql에 접속을 도와주는 라이브러리 
+			String dbID = "haru"; // 계정
+			String dbPassword = "haru"; // 비밀번호
+			Class.forName("com.mysql.cj.jdbc.Driver"); // mysql에 접속을 도와주는 라이브러리
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public Date getDate() { //현재 시간 가져오기
+
+	public Date getDate() { // 현재 시간 가져오기
 		String SQL = "SELECT NOW()";
-		
+
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				return rs.getDate(1);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return getDate();
 	}
-	
-	public int getNext() { 
+
+	public int getNext() {
 		String SQL = "SELECT MAX(prID) FROM pr";
-		
+
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				return rs.getInt("max(prID)") + 1;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return -1;
-		
+
 	}
 
-	
 	// 글쓰기 기능
 	public int writePR(Pr pr) {
 		String SQL = "INSERT INTO pr VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
+
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			
+
 			pstmt.setString(1, pr.getUserID());
 			pstmt.setString(2, pr.getPrTITLE());
 			pstmt.setString(3, pr.getPrRESUME());
@@ -78,57 +76,28 @@ public class PrDAO {
 			pstmt.setString(7, pr.getPrDAY());
 			pstmt.setString(8, pr.getPrMONEY());
 			return pstmt.executeUpdate();
-			
-		} catch(SQLException e) {
+
+		} catch (SQLException e) {
 			System.out.println("글쓰기 실패");
 			e.printStackTrace();
-			
-		}return -1;
-	}
-	
-	public List<Pr> mypr(String userid) throws SQLException{ //PR 리스트 뽑아오기
-		String SQL = "SELECT * FROM pr WHERE userID = ?";
-		
-		try {
-		pstmt = conn.prepareStatement(SQL);
-		pstmt.setString(1, userid); 
-		rs = pstmt.executeQuery();
-		
-		ArrayList<Pr> list3 = new ArrayList<Pr>();
-		
-		while(rs.next()) {
-			Pr pr = new Pr();
-			pr.setPrID(rs.getInt("prID"));
-			pr.setUserID(rs.getString("userID"));
-			pr.setPrTITLE(rs.getString("prTITLE"));
-			pr.setPrRESUME(rs.getString("prRESUME"));
-			pr.setPrCONTENT(rs.getString("prCONTENT"));
-			pr.setPrJOB(rs.getString("prJOB"));
-			pr.setPrDATE(rs.getTimestamp("prDATE"));
-			pr.setPrDAY(rs.getString("prDAY"));
-			pr.setPrMONEY(rs.getString("prMONEY"));			
-			list3.add(pr);
+
 		}
-		return list3;
-	}finally {
-		//여기 뭐 넣어야함? ㅋㅋ
+		return -1;
 	}
-	}
-	
-	public ArrayList<Pr> getSearch(String searchField, String searchText){ // PR 검색
-	      ArrayList<Pr> list = new ArrayList<Pr>();
-	      
-	      if(searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select
 
-	    	  String SQL2 = "SELECT * FROM pr";
-	  		
-	  		try {
-	  		pstmt = conn.prepareStatement(SQL2);
-	  		rs = pstmt.executeQuery();
+	public List<Pr> mypr(String userid) throws SQLException { // PR 리스트 뽑아오기
+		String SQL = "SELECT * FROM pr WHERE userID = ?";
 
-	  		while(rs.next()) {
-	  			Pr pr = new Pr();
-	  			pr.setPrID(rs.getInt("prID"));
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+
+			ArrayList<Pr> list3 = new ArrayList<Pr>();
+
+			while (rs.next()) {
+				Pr pr = new Pr();
+				pr.setPrID(rs.getInt("prID"));
 				pr.setUserID(rs.getString("userID"));
 				pr.setPrTITLE(rs.getString("prTITLE"));
 				pr.setPrRESUME(rs.getString("prRESUME"));
@@ -136,30 +105,29 @@ public class PrDAO {
 				pr.setPrJOB(rs.getString("prJOB"));
 				pr.setPrDATE(rs.getTimestamp("prDATE"));
 				pr.setPrDAY(rs.getString("prDAY"));
-				pr.setPrMONEY(rs.getString("prMONEY"));			
-	  			list.add(pr);
-	  		}
-	      } catch(Exception e) {
-		         e.printStackTrace();
-		      }
-	      		}
-	  		else {
-	    	  String SQL = "select * from pr WHERE "+searchField.trim();
-	    	  
-		      try {
-		            if(searchText != null && !searchText.equals("") ){
-		                SQL +=" LIKE '%"+searchText.trim()+"%' order by prID desc";
-		            }else {
-		            	SQL = "SELECT * FROM pr";
-		            }
-		            
-		            System.out.println(SQL);
-		            
-		            pstmt = conn.prepareStatement(SQL);
-					rs= pstmt.executeQuery(); 
-		         while(rs.next()) {
-		            Pr pr = new Pr();
-		  			pr.setPrID(rs.getInt("prID"));
+				pr.setPrMONEY(rs.getString("prMONEY"));
+				list3.add(pr);
+			}
+			return list3;
+		} finally {
+			// 여기 뭐 넣어야함? ㅋㅋ
+		}
+	}
+
+	public ArrayList<Pr> getSearch(String searchField, String searchText) { // PR 검색
+		ArrayList<Pr> list = new ArrayList<Pr>();
+
+		if (searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select
+
+			String SQL2 = "SELECT * FROM pr";
+
+			try {
+				pstmt = conn.prepareStatement(SQL2);
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					Pr pr = new Pr();
+					pr.setPrID(rs.getInt("prID"));
 					pr.setUserID(rs.getString("userID"));
 					pr.setPrTITLE(rs.getString("prTITLE"));
 					pr.setPrRESUME(rs.getString("prRESUME"));
@@ -167,28 +135,58 @@ public class PrDAO {
 					pr.setPrJOB(rs.getString("prJOB"));
 					pr.setPrDATE(rs.getTimestamp("prDATE"));
 					pr.setPrDAY(rs.getString("prDAY"));
-					pr.setPrMONEY(rs.getString("prMONEY"));			
-		  			list.add(pr);
-		         }         
-		      } catch(Exception e) {
-		         e.printStackTrace();
-		      }
-	      }
-	      return list; 
-	   }
-	
-	public String prusername(String userID) { //pr테이블 외래키 userNAME select
-		String SQL = "SELECT userNAME FROM user where userID = ? ";
-		
-		try {
-		pstmt = conn.prepareStatement(SQL);
-		pstmt.setString(1, userID); 
-		rs = pstmt.executeQuery();
-		while(rs.next()) {
-			  return rs.getString(1);
+					pr.setPrMONEY(rs.getString("prMONEY"));
+					list.add(pr);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			String SQL = "select * from pr WHERE " + searchField.trim();
+
+			try {
+				if (searchText != null && !searchText.equals("")) {
+					SQL += " LIKE '%" + searchText.trim() + "%' order by prID desc";
+				} else {
+					SQL = "SELECT * FROM pr";
+				}
+
+				System.out.println(SQL);
+
+				pstmt = conn.prepareStatement(SQL);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					Pr pr = new Pr();
+					pr.setPrID(rs.getInt("prID"));
+					pr.setUserID(rs.getString("userID"));
+					pr.setPrTITLE(rs.getString("prTITLE"));
+					pr.setPrRESUME(rs.getString("prRESUME"));
+					pr.setPrCONTENT(rs.getString("prCONTENT"));
+					pr.setPrJOB(rs.getString("prJOB"));
+					pr.setPrDATE(rs.getTimestamp("prDATE"));
+					pr.setPrDAY(rs.getString("prDAY"));
+					pr.setPrMONEY(rs.getString("prMONEY"));
+					list.add(pr);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		conn.close();
-		}catch (Exception e) {
+		return list;
+	}
+
+	public String prusername(String userID) { // pr테이블 외래키 userNAME select
+		String SQL = "SELECT userNAME FROM user where userID = ? ";
+
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				return rs.getString(1);
+			}
+			conn.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
