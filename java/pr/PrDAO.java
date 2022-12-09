@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import pt.Pt;
+
 
 public class PrDAO {
 	private Connection conn; //db 접근 객체 
@@ -113,6 +115,67 @@ public class PrDAO {
 	}
 	}
 	
+	public ArrayList<Pr> getSearch(String searchField, String searchText){ // PR 검색
+	      ArrayList<Pr> list = new ArrayList<Pr>();
+	      
+	      if(searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select
+
+	    	  String SQL2 = "SELECT * FROM pr";
+	  		
+	  		try {
+	  		pstmt = conn.prepareStatement(SQL2);
+	  		rs = pstmt.executeQuery();
+
+	  		while(rs.next()) {
+	  			Pr pr = new Pr();
+	  			pr.setPrID(rs.getInt("prID"));
+				pr.setUserID(rs.getString("userID"));
+				pr.setPrTITLE(rs.getString("prTITLE"));
+				pr.setPrRESUME(rs.getString("prRESUME"));
+				pr.setPrCONTENT(rs.getString("prCONTENT"));
+				pr.setPrJOB(rs.getString("prJOB"));
+				pr.setPrDATE(rs.getTimestamp("prDATE"));
+				pr.setPrDAY(rs.getString("prDAY"));
+				pr.setPrMONEY(rs.getString("prMONEY"));			
+	  			list.add(pr);
+	  		}
+	      } catch(Exception e) {
+		         e.printStackTrace();
+		      }
+	      		}
+	  		else {
+	    	  String SQL = "select * from pr WHERE "+searchField.trim();
+	    	  
+		      try {
+		            if(searchText != null && !searchText.equals("") ){
+		                SQL +=" LIKE '%"+searchText.trim()+"%' order by prID desc";
+		            }else {
+		            	SQL = "SELECT * FROM pr";
+		            }
+		            
+		            System.out.println(SQL);
+		            
+		            pstmt = conn.prepareStatement(SQL);
+					rs= pstmt.executeQuery(); 
+		         while(rs.next()) {
+		            Pr pr = new Pr();
+		  			pr.setPrID(rs.getInt("prID"));
+					pr.setUserID(rs.getString("userID"));
+					pr.setPrTITLE(rs.getString("prTITLE"));
+					pr.setPrRESUME(rs.getString("prRESUME"));
+					pr.setPrCONTENT(rs.getString("prCONTENT"));
+					pr.setPrJOB(rs.getString("prJOB"));
+					pr.setPrDATE(rs.getTimestamp("prDATE"));
+					pr.setPrDAY(rs.getString("prDAY"));
+					pr.setPrMONEY(rs.getString("prMONEY"));			
+		  			list.add(pr);
+		         }         
+		      } catch(Exception e) {
+		         e.printStackTrace();
+		      }
+	      }
+	      return list; 
+	   }
 	
 	public String prusername(String userID) { //pr테이블 외래키 userNAME select
 		String SQL = "SELECT userNAME FROM user where userID = ? ";
