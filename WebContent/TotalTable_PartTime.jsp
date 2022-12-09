@@ -29,6 +29,7 @@ response.setHeader("Cache-Control", "no-store");
 	if(searchText == null){
 		searchText = "";
 	}
+
 	
 	ArrayList<Pt> list = ptDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
 
@@ -139,6 +140,7 @@ text-align: center;
 										<tr>
 											<td><select class="form-control" name="searchField">
 													<option value="ptTITLE">제목</option>
+													<option value="userID">작성자</option>
 													<option value="ptCONTENT">내용</option>
 											</select></td>
 											<td><input type="text" class="form-control"

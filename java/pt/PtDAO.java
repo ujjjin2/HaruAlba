@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pr.Pr;
+import user.UserDAO;
 
 public class PtDAO {
 	private Connection conn; //db 접근 객체 
@@ -190,7 +191,47 @@ public class PtDAO {
 		         e.printStackTrace();
 		      }
 	      		}
-	  		else {
+	        else  if(searchField.equals("userID")) {
+	        	
+		   
+		    	  String SQL = "select * from pt WHERE "+searchField.trim();
+		    	  
+			      try {
+			            if(searchText != null && !searchText.equals("") ){
+			            	
+					    	  UserDAO userDAO = new UserDAO();
+					    	  String userid = userDAO.finduserId(searchText);
+			            	
+			                SQL +=" LIKE '%"+userid.trim()+"%' order by ptID desc";
+			            }else {
+			            	SQL = "SELECT * FROM pt";
+			            }
+			            
+			            System.out.println(SQL);
+			            
+			            pstmt = conn.prepareStatement(SQL);
+						rs= pstmt.executeQuery(); 
+			         while(rs.next()) {
+			            Pt pt = new Pt();
+						pt.setPtID(rs.getInt("ptID"));
+						pt.setUserID(rs.getString("userID"));
+						pt.setPtTITLE(rs.getString("ptTITLE"));
+						pt.setPtINFO(rs.getString("ptINFO"));
+						pt.setPtROLE(rs.getString("ptROLE"));
+						pt.setPtSDAY(rs.getString("ptSDAY"));
+						pt.setPtEDAY(rs.getString("ptEDAY"));
+						pt.setPtMONEY(rs.getString("ptMONEY"));
+						pt.setPtGIVE(rs.getString("ptGIVE"));
+						pt.setPtCONTENT(rs.getString("ptCONTENT"));
+						pt.setPtSTATE(rs.getString("ptSTATE"));
+						list4.add(pt);
+			         }         
+			      } catch(Exception e) {
+			         e.printStackTrace();
+			      }		    	  
+		    	  
+	        	
+	        }else {
 	    	  String SQL = "select * from pt WHERE "+searchField.trim();
 	    	  
 		      try {

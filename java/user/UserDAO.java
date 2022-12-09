@@ -182,6 +182,26 @@ public class UserDAO {
 		return userid;
 	}
 	
+	public String finduserId(String userNAME) { // ID 찾기 메서드
+		String userid = null;
+		
+		try {
+			String SQL = "SELECT userID FROM user WHERE userNAME= ?";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userNAME);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userid = rs.getString("userID");
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userid;
+	}
+	
 	public String findPW(String userID, String userPHONE, String userNAME) { // 정보가 맞는지에 대한 검증
         String userpw = null;
 
