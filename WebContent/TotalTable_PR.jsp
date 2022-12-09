@@ -1,3 +1,6 @@
+<%@page import="pr.Pr"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="pr.PrDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -8,25 +11,24 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
 <!DOCTYPE html>
-
+<% request.setCharacterEncoding("UTF-8"); %>
 <% // 로그아웃 버튼 후 캐시 삭제
 
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
+	PrDAO prDAO = new PrDAO();
+	String searchField = request.getParameter("searchField");
+	String searchText = request.getParameter("searchText");
 	
-	Class.forName("com.mysql.jdbc.Driver");
-	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT * FROM pr ORDER BY prid DESC";
-	pstmt = conn.prepareStatement(sql);
-	int prid = 0;
-	String prtitle ="";
-	String prday ="";
-	String userid_1 = "";
-	rs = pstmt.executeQuery();
+	if(searchField == null){
+		searchField = "";
+	}
+	if(searchText == null){
+		searchText = "";
+	}
+	
+	ArrayList<Pr> list = prDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
 
 %>
 
@@ -126,63 +128,54 @@ text-align: center;
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
 					  	<h3 style="margin: 5% 0 0 0;"><b>자기 자신을 PR하세요</b></h3>
-					  	<a href="Write_PR.jsp">					  		
-					  		<!-- 글쓰기 버튼  -->
-					   		<img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
-					  		</a>	
-					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
-					    <thead>
-					      <tr>
-					        <th  style="text-align: center">글번호</th>
-					        <th style="text-align: center">제목</th>
-					        <th style="text-align: center">일시</th>
-					        <th style="text-align: center">작성자</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					    <%
-					    	while(rs.next()){
+						<div>
+							<div>
+								<form method="post" action="TotalTable_PR.jsp">
+									<table class="pull-right">
+										<tr>
+											<td><select class="form-control" name="searchField">
+													<option value="prTITLE">제목</option>
+													<option value="prCONTENT">내용</option>
+											</select></td>
+											<td><input type="text" class="form-control"
+												placeholder="검색어 입력" name="searchText" maxlength="100"></td>
+											<td><button type="submit" class="btn btn-success">검색</button></td>
+										</tr>
+									</table>
+								</form>
+								<a href="Write_PR.jsp"> <!-- 글쓰기 버튼  --> <img
+									src="images/write.png"
+									style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">
+								</a>
+							</div>
+						</div>
+						<table class="table table-striped"
+									style="background: #ffffff; text-align: center;">
+									<thead>
+										<tr>
+											<th style="text-align: center">글번호</th>
+											<th style="text-align: center">제목</th>
+											<th style="text-align: center">일시</th>
+											<th style="text-align: center">작성자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<%
+							for(Pr pr : list) {
 					    %>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getInt("prid") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prtitle") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prday") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("userid") %></td>
-					      </tr>
-					      <%
+							<tr>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrID() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrTITLE() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrDATE() %></td>
+					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= prDAO.prusername(pr.getUserID()) %></td>
+					      	</tr>
+							<%
 					    	}
-					      %>
-					      <!--
-					      <tr>
-					        <td id="t2">Mary</td>
-					        <td>Moe</td>
-					        <td>mary@example.com</td>
-					        <td>존</td>
-					      </tr>
-					      <tr>
-					        <td id="t3">July</td>
-					        <td>Dooley</td>
-					        <td>july@example.com</td>
-					        <td>으</td>
-					      </tr>
-					      <tr>
-					        <td id="t4">Dully</td>
-					        <td>Dooley</td>
-					        <td>jsdf@example.com</td>
-					        <td>잉</td>
-					      </tr>
-					      <tr>
-					        <td id="t5">Dully2</td>
-					        <td>Dooley2</td>
-					        <td>jsdf22@example.com</td>
-					        <td>잉</td>
-					      </tr>
-					      -->
-					  
-					    </tbody>
-					  </table>
-					</div>
-	    		</center>
+					     	 %>
+
+									</tbody>
+								</table>
+							</div></center>
 	    		
 	    		
 	   		 </div>
