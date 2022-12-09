@@ -160,6 +160,73 @@ public class PtDAO {
 	}
 	}
 	
+	public ArrayList<Pt> getSearch(String searchField, String searchText){ // PT 검색
+	      ArrayList<Pt> list4 = new ArrayList<Pt>();
+	      
+	      if(searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select
+
+	    	  String SQL2 = "SELECT * FROM pt";
+	  		
+	  		try {
+	  		pstmt = conn.prepareStatement(SQL2);
+	  		rs = pstmt.executeQuery();
+
+	  		while(rs.next()) {
+	  			Pt pt = new Pt();
+	  			pt.setPtID(rs.getInt("ptID"));
+	  			pt.setUserID(rs.getString("userID"));
+	  			pt.setPtTITLE(rs.getString("ptTITLE"));
+	  			pt.setPtINFO(rs.getString("ptINFO"));
+	  			pt.setPtROLE(rs.getString("ptROLE"));
+	  			pt.setPtSDAY(rs.getString("ptSDAY"));
+	  			pt.setPtEDAY(rs.getString("ptEDAY"));
+	  			pt.setPtMONEY(rs.getString("ptMONEY"));
+	  			pt.setPtGIVE(rs.getString("ptGIVE"));
+	  			pt.setPtCONTENT(rs.getString("ptCONTENT"));
+	  			pt.setPtSTATE(rs.getString("ptSTATE"));
+	  			list4.add(pt);
+	  		}
+	      } catch(Exception e) {
+		         e.printStackTrace();
+		      }
+	      		}
+	  		else {
+	    	  String SQL = "select * from pt WHERE "+searchField.trim();
+	    	  
+		      try {
+		            if(searchText != null && !searchText.equals("") ){
+		                SQL +=" LIKE '%"+searchText.trim()+"%' order by ptID desc";
+		            }else {
+		            	SQL = "SELECT * FROM pt";
+		            }
+		            
+		            System.out.println(SQL);
+		            
+		            pstmt = conn.prepareStatement(SQL);
+					rs= pstmt.executeQuery(); 
+		         while(rs.next()) {
+		            Pt pt = new Pt();
+					pt.setPtID(rs.getInt("ptID"));
+					pt.setUserID(rs.getString("userID"));
+					pt.setPtTITLE(rs.getString("ptTITLE"));
+					pt.setPtINFO(rs.getString("ptINFO"));
+					pt.setPtROLE(rs.getString("ptROLE"));
+					pt.setPtSDAY(rs.getString("ptSDAY"));
+					pt.setPtEDAY(rs.getString("ptEDAY"));
+					pt.setPtMONEY(rs.getString("ptMONEY"));
+					pt.setPtGIVE(rs.getString("ptGIVE"));
+					pt.setPtCONTENT(rs.getString("ptCONTENT"));
+					pt.setPtSTATE(rs.getString("ptSTATE"));
+					list4.add(pt);
+		         }         
+		      } catch(Exception e) {
+		         e.printStackTrace();
+		      }
+	      }
+	      return list4; 
+	   }
+
+	
 	public List<Pt> endpt(String userid) throws SQLException{ // 자신이 지원한 PT 
 		String SQL = "SELECT * FROM pt WHERE ptALBA= ?";
 		try {

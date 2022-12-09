@@ -1,3 +1,6 @@
+<%@page import="pt.Pt"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="pt.PtDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -9,25 +12,25 @@
 <%@ page import = "user.UserDAO" %>
 <!DOCTYPE html>
 
+<% request.setCharacterEncoding("UTF-8"); %>
 <% // 로그아웃 버튼 후 캐시 삭제
 
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
+
+	PtDAO ptDAO = new PtDAO();
+	String searchField = request.getParameter("searchField");
+	String searchText = request.getParameter("searchText");
 	
-	Class.forName("com.mysql.jdbc.Driver");
-	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT * FROM pt ORDER BY ptid DESC";
-	pstmt = conn.prepareStatement(sql);
-	int ptid = 0;
-	String pttitle ="";
-	String userid_1 = "";
-	String ptperiod ="";
-	String ptstate = "";
-	rs = pstmt.executeQuery();
+	if(searchField == null){
+		searchField = "";
+	}
+	if(searchText == null){
+		searchText = "";
+	}
+	
+	ArrayList<Pt> list = ptDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
 
 %>
 
@@ -128,13 +131,31 @@ text-align: center;
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
 					  	<h3 style="margin: 5% 0 5% 0;"><b>단기알바구인</b></h3>
-					  	
-					  	<% if(role.equals("사장")){ %>
+
+						<div>
+							<div>
+								<form method="post" action="TotalTable_PartTime.jsp">
+									<table class="pull-right">
+										<tr>
+											<td><select class="form-control" name="searchField">
+													<option value="ptTITLE">제목</option>
+													<option value="ptCONTENT">내용</option>
+											</select></td>
+											<td><input type="text" class="form-control"
+												placeholder="검색어 입력" name="searchText" maxlength="100"></td>
+											<td><button type="submit" class="btn btn-success">검색</button></td>
+										</tr>
+									</table>
+								</form>
+
+						<% if(role.equals("사장")){ %>
+					   <!-- 글쓰기 버튼  -->
                        <a href="Write_PartTime.jsp">                       
-                       <!-- 글쓰기 버튼  -->
                         <img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
                        </a>
                     <%} %>   
+                     </div>
+                      </div>
 					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
 					    <thead>
 					      <tr>
@@ -147,50 +168,18 @@ text-align: center;
 					    </thead>
 					    <tbody>
 					    	<%
-					    	while(rs.next()){
-					    	%>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getInt("ptid") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("pttitle") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("ptSDAY") %> ~ <%= rs.getString("ptEDAY") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("userid") %></td>
-					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs.getInt("ptid")%>'"> <%= rs.getString("ptstate") %></td>
-					      </tr>
-					      <%
-					    	}
+						      	for(Pt pt : list) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
+						      		<tr>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
+							      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
+							      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
+							      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE() %></td>
+							     </tr>
+							      <%
+					    	  }
 					      %>
-						 <!--
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'"">John</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Doe</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">john@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">돈</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Mary</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Moe</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">mary@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">존</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">July</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">july@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">으</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dully</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
-					      </tr>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dully2</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">Dooley2</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">jsdf22@example.com</td>
-					        <td onclick="location.href='Detail_PartTime.jsp'">잉</td>
-					      </tr>
-					      -->
 					    </tbody>
 					  </table>
 					</div>
