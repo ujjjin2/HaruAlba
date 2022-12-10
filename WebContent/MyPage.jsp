@@ -258,7 +258,7 @@ th, td {
 					      </tr>
 					    </thead>
 					    <tbody>
-					      <tr>
+				      	<tr>
 					    	
 					      	<%for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
@@ -267,8 +267,15 @@ th, td {
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
 					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE() %></td>
-				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감")){ %>disabled><%}%></td>
-					     </tr>
+			      		<form action="PTrating.jsp" method="post"> <!-- 알바생 평점 주러가기 폼 -->
+				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteSAJANG().equals("1")){ %>disabled><%}%></td>
+		      				<input type="hidden" value="<%=pt.getPtTITLE() %>" name="ptTITLE">
+			      			<input type="hidden" value="<%=pt.getPtROLE() %>" name="ptROLE">
+			      			<input type="hidden" value="<%=pt.getPtMONEY() %>" name="ptMONEY">
+			      			<input type="hidden" value="<%=pt.getPtALBA() %>" name="ptALBA">
+			      			<input type="hidden" value="<%=pt.getPtID() %>" name="ptID">
+				     	 </tr>
+			    		 </form>
 					      <% 	} }else if(role.equals("알바")){ %>
 					    	  
 					    	  </tbody>

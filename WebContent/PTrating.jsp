@@ -12,6 +12,7 @@
 <jsp:setProperty name="pt" property="ptMONEY"/>
 <jsp:setProperty name="pt" property="userID"/>
 <jsp:setProperty name="pt" property="ptID"/>
+<jsp:setProperty name="pt" property="ptALBA"/>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -74,6 +75,7 @@
 	<input type="radio" id="1-star" name="userRATING" value=1 v-model="ratings" />
 	<label for="1-star" class="star">★</label>
 	<input type="hidden" value="<%= pt.getUserID()%>" name="userID">
+	<input type="hidden" value="<%= pt.getPtALBA()%>" name="ptALBA">
 	<input type="hidden" value="<%= pt.getPtID() %>" name="ptID">
 </div>
 				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="평점 기입하기">

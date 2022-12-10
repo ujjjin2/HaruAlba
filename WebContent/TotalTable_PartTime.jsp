@@ -131,7 +131,7 @@ text-align: center;
 			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
-					  	<h3 style="margin: 5% 0 5% 0;"><b>단기알바구인</b></h3>
+					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_PartTime.jsp" style="text-decoration: none; color: black">단기알바구인</a></h3>
 
 						<div>
 							<div>

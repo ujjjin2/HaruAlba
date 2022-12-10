@@ -16,7 +16,14 @@ public class Pt {
 	private String ptSTATE;
 	private String ptWriteALBA;
 	private String ptWriteSAJANG;
+	private String ptALBA;
 	
+	public String getPtALBA() {
+		return ptALBA;
+	}
+	public void setPtALBA(String ptALBA) {
+		this.ptALBA = ptALBA;
+	}
 	public int getPtID() {
 		return ptID;
 	}

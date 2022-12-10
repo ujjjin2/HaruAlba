@@ -102,7 +102,7 @@ public class PtDAO {
 
 	// 글쓰기 기능
 	public int writePT(Pt pt) { // PT 글쓰기
-		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, null, null)";
+		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, ?, ?)";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -117,6 +117,9 @@ public class PtDAO {
 			pstmt.setString(8, pt.getPtGIVE());
 			pstmt.setString(9, pt.getPtCONTENT());
 			pstmt.setString(10, pt.getPtSTATE());
+			pstmt.setString(11, "0");
+			pstmt.setString(12, "0");
+			
 			return pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -150,6 +153,9 @@ public class PtDAO {
 				pt.setPtGIVE(rs.getString("ptGIVE"));
 				pt.setPtCONTENT(rs.getString("ptCONTENT"));
 				pt.setPtSTATE(rs.getString("ptSTATE"));
+				pt.setPtALBA(rs.getString("ptALBA"));
+				pt.setPtWriteSAJANG(rs.getString("ptWriteSAJANG"));
+				
 				list2.add(pt);
 			}
 			return list2;
