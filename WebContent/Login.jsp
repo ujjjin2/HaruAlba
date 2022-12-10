@@ -39,7 +39,7 @@
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 1145px; background: #585858;">
-	    <div class="background" style="background: #2933AC;"></div>
+	    <div class="background" style="background: #FFF2BE;"></div>
 	    
 	    <div class="center" style="background: #FFF2BE;">
 	    	<div class="color_white" style="width: 60%; height:75%; background:#FFFFFF; margin: 15% 20% 17% 20%;box-shadow: 7px 7px #9E9E9E;">
@@ -75,7 +75,7 @@
 		</div>
 			<!-- 흰색 부분 끝나는 div -->
 	    
-	    <div class="background" style="background: #2933AC;"></div>
+	    <div class="background" style="background: #FFF2BE"></div>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
