@@ -267,7 +267,7 @@ th, td {
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
 					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE() %></td>
-			      		<form action="PTrating.jsp" method="post"> <!-- 알바생 평점 주러가기 폼 -->
+			      		<form action="PTrating_SAJANG.jsp" method="post"> <!-- 알바생 평점 주러가기 폼 -->
 				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteSAJANG().equals("1")){ %>disabled><%}%></td>
 		      				<input type="hidden" value="<%=pt.getPtTITLE() %>" name="ptTITLE">
 			      			<input type="hidden" value="<%=pt.getPtROLE() %>" name="ptROLE">
@@ -353,7 +353,7 @@ th, td {
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
 					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td>
- 						<form action="PTrating.jsp" method="post"> <!-- 평점 주러가기 폼 -->
+ 						<form action="PTrating_ALBA.jsp" method="post"> <!-- 평점 주러가기 폼 -->
 				      		<td><input type="submit" class="btn" value="평점주러가기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteALBA().equals("1")){ %>disabled<%} %>> </td>
 				      			<input type="hidden" value="<%=pt.getPtTITLE() %>" name="ptTITLE">
 				      			<input type="hidden" value="<%=pt.getPtROLE() %>" name="ptROLE">

@@ -11,7 +11,6 @@
 <jsp:setProperty name="user" property="userRATING"/>
 <jsp:setProperty name="user" property="userID"/>
 <jsp:setProperty name="pt" property="ptID"/>
-<jsp:setProperty name="pt" property="ptALBA"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,15 +26,9 @@
 	userDAO.addEval(user.getUserID());
 	userDAO.addTotal(user.getUserRATING(), user.getUserID());
 	
-	user.setUserID(pt.getPtALBA());
-	userDAO.addEval(pt.getPtALBA());
-	userDAO.addTotal(user.getUserRATING(), pt.getPtALBA());
-	
 	pt.setPtID(pt.getPtID());
+	
 	ptDAO.checkRatingALBA(pt.getPtID());
-	ptDAO.checkRatingSAJANG(pt.getPtID());
-
-	out.println(pt.getPtID());
 	
 	int result = userDAO.addRating(user.getUserID());
 	if(result == 1){
@@ -51,6 +44,10 @@
         script.println("history.back()"); 
         script.println("</script>");
 	}
+
+
+	
+
 %>
 
 </body>

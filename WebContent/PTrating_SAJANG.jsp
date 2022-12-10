@@ -10,9 +10,8 @@
 <jsp:setProperty name="pt" property="ptTITLE"/>
 <jsp:setProperty name="pt" property="ptROLE"/>
 <jsp:setProperty name="pt" property="ptMONEY"/>
-<jsp:setProperty name="pt" property="userID"/>
-<jsp:setProperty name="pt" property="ptID"/>
 <jsp:setProperty name="pt" property="ptALBA"/>
+<jsp:setProperty name="pt" property="ptID"/>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -60,7 +59,7 @@
 					</A>
 			</center>
 				<div class="jumbotron jumbotron-fluid" style="background-color:#FFFFFF;padding-top:30px;height:70%;align:center; margin: 5% 10% 5% 10%">
-					<form method="post" action="PTratingAction.jsp">
+					<form method="post" action="PTratingAction_SAJANG.jsp">
 						
 			<!-- 평점 주는 별점 모양 -->
 <div class="star-rating space-x-4 mx-auto">
@@ -74,8 +73,7 @@
 	<label for="2-stars" class="star">★</label>
 	<input type="radio" id="1-star" name="userRATING" value=1 v-model="ratings" />
 	<label for="1-star" class="star">★</label>
-	<input type="hidden" value="<%= pt.getUserID()%>" name="userID">
-	<input type="hidden" value="<%= pt.getPtALBA()%>" name="ptALBA">
+	<input type="hidden" value="<%= pt.getPtALBA()%>" name="ptALBA"> <!-- 알바가 사장한테 평점 줄 때 -->
 	<input type="hidden" value="<%= pt.getPtID() %>" name="ptID">
 </div>
 				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="평점 기입하기">
