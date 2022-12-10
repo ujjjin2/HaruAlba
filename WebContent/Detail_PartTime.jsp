@@ -96,7 +96,7 @@
 }
 
 .article-state{
-    font-size: 14px;
+    font-size: 18px;
     color: #0F52FC;
     font-weight: bold;
 }
@@ -106,7 +106,8 @@
 }
 
 .article-info{
-	padding: 24px 16px 0px 16px;
+	padding: 30px 16px 10px 16px;
+	font-size: 16px;
 }
 .article-content{
     width: 100%;
@@ -120,11 +121,13 @@
 
 .article-user{
 	float: left;
+	font-size: 15px;
 }
 
 .article-location{
 	float: right;
 	color: #7b858e;
+	font-size: 15px;
 }
 
 .comment-wrap{
@@ -231,8 +234,12 @@
 }
 
 .space {
-  border-bottom: 10px solid #ffffff;
+  border-bottom: 20px solid #ffffff;
 }
+*{
+	font-family: 'Jua', sans-serif;
+}
+
 
 .ex{
 	height: 100%;
@@ -242,6 +249,9 @@
 input:focus{outline:none;}
 
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>상세정보_단기알바</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -260,20 +270,21 @@ input:focus{outline:none;}
 		<div class="background" style="background: #525CDE;"></div>
 		
 		<!-- 노란색 -->
-		<div class="center" style="background: #FFF2BE;">
+		<div class="center" style="background: #FFF2BE;height: 1200px">
 		<!-- 흰색 -->
-			<div class="center_write" style="background: #FFFFFF">
+			<div class="center_write" style="background: #FFFFFF;height: 85%">
 					<div class="header">
 						<center>
 							<a href="Main.jsp">
-								<img src="images/harulogo.png" style="width: 150px; height: 150px;">
+								<img src="images/harulogo.png" style="width: 170px; height: 170px;">
 							</a>
 						</center>
 					</div>
 					<!-- 세부사항 내용 -->
 					<div class="article" style="background: #ffffff">
 						<div class="article-header">
-							<div class="article-state"><%=state %></div>
+							<div class="article-state" <%if(state.equals("마감")){ %>style="color: #D11E35;vertical-align: middle; font-size: 17px"<%}
+					      		else {%> style="color: #0F52FC;vertical-align: middle; font-size: 17px"<%} %>> <%= state %></div>
 							<div class="article-title"><%=title %></div>
 							<div class="article-user"><%=userName %></div>
 							<div class="article-location"><%=location%></div>

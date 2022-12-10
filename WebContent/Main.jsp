@@ -117,8 +117,8 @@ table{
 	    
 	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
 	    <div class="center" style="background: #ffffff;">
-				<nav id="menu">
-		            <ul id = "top_menu">
+				<nav id="menu" >
+		            <ul id = "top_menu" style="margin: 10px 0 5px 0">
 		                <li>
 		                <% 		                
 		                UserDAO userDAO = new UserDAO();
@@ -128,13 +128,13 @@ table{
         				%>
         				</li><li>|</li>
 		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
-		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">logout</a></li>
+		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
 		            </ul>
 		        </nav>
 			<div class="header"> 
 				<center>
 					<A href="Main.jsp">
-						<img src="images/harulogo.png" style="width: 150px; height: 150px;">
+						<img src="images/harulogo.png" style="width: 170px; height: 170px; margin-bottom: 2%">
 					</A>
 				</center>
 			</div>
@@ -146,21 +146,21 @@ table{
 			<center>
 	    			<div class="container" style="width: 85%; height: 50%;">
 	    			
-					<b style="float: left; margin: 5% 0 0 0;font-size: 20px">단기 알바 구인 </b>
+					<b style="float: left; margin: 6% 0 0 0;font-size: 20px;">단기 알바 구인 </b>
 					  		<a href="TotalTable_PartTime.jsp">
 					  		
 					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
+					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 6% 0 0 0;">       
 					  		</a>
 					  		
 					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
-					        <th style="text-align: center">글번호</th>
-					        <th style="text-align: center">제목</th>
-					        <th style="text-align: center">일시</th>
-					        <th style="text-align: center">작성자</th>
-					        <th style="text-align: center">상태</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%">글번호</th>
+					        <th style="text-align: center;font-size: 18px;width: 25%">제목</th>
+					        <th style="text-align: center;font-size: 18px;width: 30%">일시</th>
+					        <th style="text-align: center;font-size: 18px;width: 15%">작성자</th>
+					        <th style="text-align: center;font-size: 18px;width: 15%">상태</th>
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -168,10 +168,10 @@ table{
 					    	while(rs2.next()){
 					    	%>
 					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getInt("ptid") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("pttitle") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= rs2.getString("ptSDAY") %> ~ <%=rs2.getString("ptEDAY") %></td>
-							<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'"> <%= ptDAO.ptusername(rs2.getString("userid")) %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= rs2.getInt("ptid") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= rs2.getString("pttitle") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= rs2.getString("ptSDAY") %> ~ <%=rs2.getString("ptEDAY") %></td>
+							<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= ptDAO.ptusername(rs2.getString("userid")) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" <%if(rs2.getString("ptstate").equals("마감")){ %>style="color: #D11E35;"<%}
 					      		else {%> style="color: #0F52FC;"<%} %>> <%= rs2.getString("ptstate") %></td>
 					      </tr>
@@ -188,20 +188,20 @@ table{
 			<center>
 	    			<div class="container" style="width: 85%; height: 50%;">
 	    			
-					<b style="float: left; margin: 5% 0 0 0;font-size: 20px">자기 PR</b>
+					<b style="float: left; margin: 6% 0 0 0;font-size: 20px">자기 PR</b>
 					  		<a href="TotalTable_PR.jsp">
 					  		
 					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 5% 0 0 0;">       
+					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 6% 0 0 0;">       
 					  		</a>
 					  		
 					  <table class="table table-striped"   style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
-					        <th  style="text-align: center">글번호</th>
-					        <th style="text-align: center">제목</th>
-					        <th style="text-align: center">일시</th>
-					        <th style="text-align: center">작성자</th>
+					        <th  style="text-align: center;font-size: 18px; width: 20%">글번호</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%">제목</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%">일시</th>
+					        <th style="text-align: center;font-size: 18px; width: 20%">작성자</th>
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -209,10 +209,10 @@ table{
 					     while(rs.next()){
 					    %>
 					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%=rs.getInt("prid") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prtitle") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= rs.getString("prday")%></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'"><%= prDAO.prusername(rs.getString("userid")) %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%=rs.getInt("prid") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= rs.getString("prtitle") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= rs.getString("prday")%></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= prDAO.prusername(rs.getString("userid")) %></td>
 					      </tr>
 					      <%
 					    	 }

@@ -66,7 +66,9 @@ table{
 	margin:auto;
 	text-align: center;
 }
-
+*{
+	font-family: 'Jua', sans-serif;
+}
 
 table > thead > tr > td{
 text-align: center;
@@ -81,6 +83,9 @@ text-align: center;
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
 <!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#525CDE">
@@ -105,7 +110,7 @@ text-align: center;
 	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
 	    <div class="center" style="background: #ffffff;">
 				<nav id="menu">
-		            <ul id = "top_menu">
+		            <ul id = "top_menu" style="margin: 10px 0 5px 0">
 		                <li>
 		                <% 		                
 		                UserDAO userDAO = new UserDAO();
@@ -114,13 +119,13 @@ text-align: center;
         				%>
         				</li><li>|</li>
 		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black">마이페이지</a></li><li>|</li>
-		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">logout</a></li>
+		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
 		            </ul>
 		        </nav>
 			<div class="header"> 
 				<center>
 					<A href="Main.jsp">
-						<img src="images/harulogo.png" style="width: 150px; height: 150px;">
+						<img src="images/harulogo.png" style="width: 170px; height: 170px;margin-bottom: 2%">
 					</A>
 				</center>
 			</div>
@@ -131,12 +136,12 @@ text-align: center;
 			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 85%; height: 100%;">
-					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_PartTime.jsp" style="text-decoration: none; color: black">단기알바구인</a></h3>
+					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_PartTime.jsp" style="text-decoration: none; color: black;font-size: 30px">단 기 알 바 구 인</a></h3>
 
 						<div>
 							<div>
 								<form method="post" action="TotalTable_PartTime.jsp">
-									<table class="pull-right">
+									<table class="pull-left">
 										<tr>
 											<td><select class="form-control" name="searchField">
 													<option value="ptTITLE">제목</option>
@@ -158,14 +163,14 @@ text-align: center;
                     <%} %>   
                      </div>
                       </div>
-					  <table class="table table-striped" style="background: #ffffff; text-align: center;" >
+					  <table class="table table-striped" style="background: #ffffff; text-align: center;margin-top: 10%" >
 					    <thead>
 					      <tr>
-					        <th style="text-align: center">글번호</th>
-					        <th style="text-align: center">제목</th>
-					        <th style="text-align: center">일시</th>
-					        <th style="text-align: center">작성자</th>
-					        <th style="text-align: center">상태</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%">글번호</th>
+					        <th style="text-align: center;font-size: 18px; width: 25%">제목</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%">일시</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%">작성자</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%">상태</th>
 					      </tr>
 					    </thead>
 					    <tbody>

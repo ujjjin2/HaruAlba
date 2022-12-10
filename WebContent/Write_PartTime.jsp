@@ -42,12 +42,17 @@
 	height: 5%;
 	margin-top: 3%;
 }
-
+*{
+	font-family: 'Jua', sans-serif;
+}
 
 </style>
 
 
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <title>글쓰기</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -78,22 +83,22 @@
 								 <form action="Write_PartTime_Action.jsp" method="get" accept-charset="utf8">
 								  <!-- 제목 div -->
 								    <div class="form-group">
-								      <label for="title" style="float: left; margin: 1% 0 2% 0 ">제목 </label>
+								      <label for="title" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">제목 </label>
 								      <input type="text" class="form-control" id="ptTITLE" placeholder="제목을 입력해주세요" name="ptTITLE" >
 								    </div>
 								  <!-- 매장정보 div -->
 								     <div class="form-group">
-								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">매장정보 </label>
+								      <label for="category" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">매장정보 </label>
 								      <input type="text" class="form-control" id="ptINFO" placeholder="매장정보를 적어주세요" name="ptINFO" >
 								    </div>
 								   <!-- 역할 div -->
 								     <div class="form-group">
-								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">역할</label>
+								      <label for="category" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">역할</label>
 								      <input type="text" class="form-control" id="ptROLE" placeholder="역할을 적어주세요" name="ptROLE" >
 								    </div>
 								   <!-- 일시 div -->
 								     <div class="form-group">
-								      <label for="date" style="float: left; margin: 1% 0 2% 0 ">일시 </label>
+								      <label for="date" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">일시 </label>
 								      <div class="form-date" style="display: inlin-block;">
 								      	<input type="date" name="ptSDAY" value="시작일" style="width: 100%; height: 5%;">
 								      	<input type="date" name="ptEDAY" value="종료일" style="width: 100%; height: 5%;">
@@ -101,23 +106,23 @@
 								    </div>
 								  <!-- 시급  div -->
 								    <div class="form-group">
-								      <label for="pay" style="float: left; margin: 1% 0 2% 0 ">시급 </label>
+								      <label for="pay" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">시급 </label>
 								      <input type="text" class="form-control" placeholder="시급을 적어주세요" name="ptMONEY" >
 								    </div>
 								   <!-- 지급방법 div -->
 								     <div class="form-group" style="height: ">
-								      <label for="category" style="float: left; margin: 1% 0 1% 0 ">지급 방법 </label>
+								      <label for="category" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">지급 방법 </label>
 								     <div>
-								      <select style="width: 100%;height: 5%; font-size: 18px" name="ptGIVE">
+								      <select style="width: 100%;height: 30px; font-size: 17px" name="ptGIVE">
 								      		<option>당일 지급</option>
 								      		<option>추후 지급</option>
 								      </select>
 								    </div>
 								   <!-- 모집중 div -->
 								     <div class="form-group">
-								      <label for="category" style="float: left; margin: 2% 0 1% 0 ">모집상황 </label>
+								      <label for="category" style="float: left; margin: 2% 0 2% 0;font-size: 18px;color:#525CDE">모집상황 </label>
 								     <div>
-								      <select style="width: 100%;height: 10%; font-size: 18px" name="ptSTATE">
+								      <select style="width: 100%;height: 30px; font-size: 17px" name="ptSTATE">
 								      		<option>모집중</option>
 								      		<option>마감</option>
 								      </select>
@@ -125,10 +130,10 @@
 								    </div>
 								    <!-- 내용 -->
 								    <div class="form-group" style="display: inline-block;">
-								      <label for="self_PR" style="float: left; margin: 3% 0 3% 0 ">매장 업무 관련 내용</label>
-								      <textarea class="form-control" name="ptCONTENT" id="ptCONTENT" rows="4" cols="1000" placeholder="내용을 입력해주세요"></textarea> 
+								      <label for="self_PR" style="float: left; margin: 3% 0 1% 0;font-size: 18px;color:#525CDE">매장 업무 관련 내용</label>
+								      <textarea class="form-control" name="ptCONTENT" id="ptCONTENT" rows="4" cols="1000" placeholder="내용을 입력해주세요" style="font-size: 18px"></textarea> 
 								    </div>
-								    <button type="submit" class="btn">글쓰기</button>
+								    <button type="submit" class="btn" style="font-size: 20px;width: 100%">글쓰기</button>
 								  </form>
 							</div>
 						</center>
