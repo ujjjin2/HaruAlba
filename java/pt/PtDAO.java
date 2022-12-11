@@ -169,7 +169,7 @@ public class PtDAO {
 
 		if (searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select
 
-			String SQL2 = "SELECT * FROM pt";
+			String SQL2 = "SELECT * FROM pt order by ptID desc";
 
 			try {
 				pstmt = conn.prepareStatement(SQL2);
@@ -206,10 +206,10 @@ public class PtDAO {
 					if(userid != null) {
 						SQL += " LIKE '%" + userid.trim() + "%' order by ptID desc";
 					}else {
-						SQL = "SELECT * FROM pt";
+						SQL = "SELECT * FROM pt order by ptID desc";
 					}
 				} else {
-					SQL = "SELECT * FROM pt";
+					SQL = "SELECT * FROM pt order by ptID desc";
 				}
 
 				System.out.println(SQL);
@@ -242,7 +242,7 @@ public class PtDAO {
 				if (searchText != null && !searchText.equals("")) {
 					SQL += " LIKE '%" + searchText.trim() + "%' order by ptID desc";
 				} else {
-					SQL = "SELECT * FROM pt";
+					SQL = "SELECT * FROM pt order by ptID desc";
 				}
 
 				System.out.println(SQL);
@@ -276,7 +276,7 @@ public class PtDAO {
 	
 	
 	public List<Pt> endpt(String userid) throws SQLException { // 자신이 지원한 PT
-		String SQL = "SELECT * FROM pt WHERE ptALBA= ?";
+		String SQL = "SELECT * FROM pt WHERE ptALBA= ? desc";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userid);
@@ -401,16 +401,18 @@ public class PtDAO {
 	}
 
 	
-	public ArrayList<Pt> getLocationSearch(String searchField, String searchText, String location) { // PT 검색
+	public ArrayList<Pt> getLocationSearch(String searchField, String searchText, String info) { // PT 검색
 		ArrayList<Pt> list4 = new ArrayList<Pt>();
 
 		if (searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select
 
-			String SQL2 = "SELECT * FROM pt WHERE ptLOCATION = ? ";
+			String SQL2 = "SELECT * FROM pt WHERE ptINFO LIKE'%"+ info.trim() + "%' order by ptID desc";
 
 			try {
+				
+				System.out.println(SQL2);
+				
 				pstmt = conn.prepareStatement(SQL2);
-				pstmt.setString(1, location.trim());
 				rs = pstmt.executeQuery();
 
 				while (rs.next()) {
@@ -444,10 +446,10 @@ public class PtDAO {
 					if(userid != null) {
 						SQL += " LIKE '%" + userid.trim() + "%' order by ptID desc";
 					}else {
-						SQL = "SELECT * FROM pt";
+						SQL = "SELECT * FROM pt order by ptID desc";
 					}
 				} else {
-					SQL = "SELECT * FROM pt";
+					SQL = "SELECT * FROM pt order by ptID desc";
 				}
 
 				System.out.println(SQL);
@@ -480,7 +482,7 @@ public class PtDAO {
 				if (searchText != null && !searchText.equals("")) {
 					SQL += " LIKE '%" + searchText.trim() + "%' order by ptID desc";
 				} else {
-					SQL = "SELECT * FROM pt";
+					SQL = "SELECT * FROM pt order by ptID desc";
 				}
 
 				System.out.println(SQL);

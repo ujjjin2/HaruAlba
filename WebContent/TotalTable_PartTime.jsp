@@ -276,6 +276,7 @@ footer{
 													<option value="ptTITLE">제목</option>
 													<option value="userID">작성자</option>
 													<option value="ptCONTENT">내용</option>
+													<option value="ptINFO">지역</option>
 											</select></td>
 											<td><input type="text" class="form-control"
 												placeholder="검색어 입력" name="searchText" maxlength="100"></td>
