@@ -270,13 +270,13 @@ footer{
 
 						<div>
 							<div>
-								<form method="post" action="TotalTable_PartTime.jsp">
+								<form method="post" action="TotalTable_review_Alba.jsp">
 									<table class="pull-left">
 										<tr>
 											<td><select class="form-control" name="searchField">
-													<option value="ptTITLE">제목</option>
+													<option value="rTITLE">제목</option>
 													<option value="userID">작성자</option>
-													<option value="ptCONTENT">내용</option>
+													<option value="rCONTENT">내용</option>
 											</select></td>
 											<td><input type="text" class="form-control"
 												placeholder="검색어 입력" name="searchText" maxlength="100"></td>
@@ -287,7 +287,7 @@ footer{
 
 						<% if(role.equals("사장")){ %>
 					   <!-- 글쓰기 버튼  -->
-                       <a href="Write_Review_Alba.jsp">                       
+                       <a href="Write_PR.jsp">                       
                         <img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
                        </a>
                     <%} %>   
@@ -307,7 +307,7 @@ footer{
 						      	for(Review_A review_A : list) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
 						      		<tr>
 							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review_A.getrID() %></td>
-							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review_A.getrCONTENT() %></td>
+							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review_A.getrTITLE() %></td>
 							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review_A.getrDATE() %></td>
 							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review.prusername(review_A.getUserID()) %></td>
 							     </tr>

@@ -31,7 +31,8 @@ response.setHeader("Cache-Control", "no-store");
 	if(searchText == null){
 		searchText = "";
 	}
-	ArrayList<Review_S> list = review.getSearch(searchField, searchText);
+	
+	ArrayList<Review_S> list = review.getSearch(searchField,searchText);
 %>
 
 <html>
@@ -259,20 +260,20 @@ footer{
   
   <div class="mainfunction" style="background:#ffffff; width: 100%; height: 100%;">
 			
-			<!-- 단기 알바 구인 테이블 부분  -->
+
 			<center>
 	    			<div class="container" style="width: 70%; height: 100%;">
 					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_review_Sajang.jsp" style="text-decoration: none; color: black;font-size: 30px">사 장 후 기</a></h3>
 
 						<div>
 							<div>
-								<form method="post" action="TotalTable_PartTime.jsp">
+								<form method="post" action="TotalTable_review_Sajang.jsp">
 									<table class="pull-left">
 										<tr>
 											<td><select class="form-control" name="searchField">
-													<option value="ptTITLE">제목</option>
+													<option value="rTITLE">제목</option>
 													<option value="userID">작성자</option>
-													<option value="ptCONTENT">내용</option>
+													<option value="rCONTENT">내용</option>
 											</select></td>
 											<td><input type="text" class="form-control"
 												placeholder="검색어 입력" name="searchText" maxlength="100"></td>
@@ -303,7 +304,7 @@ footer{
 						      	for(Review_S review_S : list) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
 						      		<tr>
 							        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review_S.getrID() %></td>
-							        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review_S.getrCONTENT() %></td>
+							        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review_S.getrTITLE() %></td>
 							        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review_S.getrDATE() %></td>
 							      	<td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review.prusername(review_S.getUserID()) %></td>
 							     </tr>

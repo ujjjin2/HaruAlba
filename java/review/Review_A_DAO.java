@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pt.Pt;
+import user.UserDAO;
 
 public class Review_A_DAO {
 	private Connection conn; // db 접근 객체
@@ -132,14 +133,24 @@ public class Review_A_DAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
-			String SQL = "select * from pr WHERE " + searchField.trim();
+		} else if(searchField.equals("userID")){
+			
+			String SQL = "select * from reviewA WHERE " + searchField.trim();
 
 			try {
 				if (searchText != null && !searchText.equals("")) {
-					SQL += " LIKE '%" + searchText.trim() + "%' order by rID desc";
-				} else {
-					SQL = "SELECT * FROM reviewA";
+					
+					UserDAO userDAO = new UserDAO();
+					String userid = userDAO.finduserId(searchText);
+					
+				
+					if(userid != null) {	
+					SQL += " LIKE '%" + userid.trim() + "%' order by rID desc";
+					}else {
+					SQL = "SELECT * FROM reviewA order by rID desc";
+					}
+				}else {
+					SQL = "SELECT * FROM reviewA order by rID desc";
 				}
 
 				System.out.println(SQL);
@@ -153,6 +164,36 @@ public class Review_A_DAO {
 					review.setrTITLE(rs.getString("rTITLE"));
 					review.setrCONTENT(rs.getString("rCONTENT"));
 					review.setrVIEW(rs.getString("rVIEW"));
+					review.setrDATE(rs.getTimestamp("rDATE"));
+					list.add(review);
+				}
+			
+		}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else {
+			
+			String SQL = "select * from reviewA WHERE " + searchField.trim();
+
+			try {
+				if (searchText != null && !searchText.equals("")) {
+					SQL += " LIKE '%" + searchText.trim() + "%' order by rID desc";
+				} else {
+					SQL = "SELECT * FROM reviewA order by rID desc";
+				}
+
+				System.out.println(SQL);
+
+				pstmt = conn.prepareStatement(SQL);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					Review_A review = new Review_A();
+					review.setrID(rs.getInt("rID"));
+					review.setUserID(rs.getString("userID"));
+					review.setrTITLE(rs.getString("rTITLE"));
+					review.setrCONTENT(rs.getString("rCONTENT"));
+					review.setrVIEW(rs.getString("rVIEW"));
+					review.setrDATE(rs.getTimestamp("rDATE"));
 					list.add(review);
 				}
 			} catch (Exception e) {
