@@ -276,7 +276,7 @@ public class PtDAO {
 	
 	
 	public List<Pt> endpt(String userid) throws SQLException { // 자신이 지원한 PT
-		String SQL = "SELECT * FROM pt WHERE ptALBA= ? desc";
+		String SQL = "SELECT * FROM pt WHERE ptALBA= ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userid);
