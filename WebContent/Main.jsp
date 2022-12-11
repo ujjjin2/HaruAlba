@@ -114,7 +114,8 @@
 	
 	.menubar a {
 	  color: #fff;
-	  font-size: 20px
+	  font-size: 20px;
+	  text-decoration: none;
 	}
 	
 	.submenu > li {
@@ -216,10 +217,10 @@ footer{
         	<div>
 			<input type="text" name="search_main" style="margin: 6% 0 0 10%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
 			<input type="submit" value="검색" style="margin: 4% 0 0 -20px;height: 50px; width: 6%;font-size: 20px;border: 3px solid #F29000; color: #FFFFFF; background: #FF9B09">
-			<a href="#" style="margin: 10% 0 0% 11%" >단기알바</a>
+			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 11%" >단기알바</a>
         	<a href="#" style="margin: 10% 0 0% 20px">시급</a>
-        	<a href="#" style="margin: 10% 0 0% 20px">서울알바</a>
-        	<a href="#" style="margin: 10% 0 0% 20px">인천알바</a>
+        	<a href="TotalTable_Location_detail.jsp?_location=서울" style="margin: 10% 0 0% 20px">서울알바</a>
+        	<a href="TotalTable_Location_detail.jsp?_location=인천" style="margin: 10% 0 0% 20px">인천알바</a>
 			</div>
 		</form>
         
@@ -229,7 +230,7 @@ footer{
   	<div class = "header">
   		 <ul class="menubar">
 	      <li>
-	        <a href="TotalTable_PartTime.jsp">단기 알바</a>
+	        <a href="#">단기 알바</a>
 	        <ul class="submenu">
 	          <li><a href="TotalTable_PartTime.jsp">단기알바 목록</a></li>
 	          <li><a href="Write_PartTime.jsp">단기알바 글쓰기</a></li>
@@ -238,13 +239,13 @@ footer{
 	      <li>
 	        <a href="#">지역별 알바</a>
 	        <ul class="submenu">
-	          <li><a href="#">서울</a></li>
-	          <li><a href="#">인천</a></li>
-	          <li><a href="#">경기도</a></li>
+	          <li><a href="TotalTable_Location_detail.jsp?_location=서울">서울</a></li>
+	          <li><a href="TotalTable_Location_detail.jsp?_location=인천">인천</a></li>
+	          <li><a href="TotalTable_Location_detail.jsp?_location=경기도">경기도</a></li>
 	        </ul>
 	      </li>
 	      <li>
-	        <a href="TotalTable_PR.jsp">자기 PR</a>
+	        <a href="#">자기 PR</a>
 	        <ul class="submenu">
 	          <li><a href="TotalTable_PR.jsp">자기PR 목록</a></li>
 	          <li><a href="Write_PR.jsp">자기PR 글쓰기</a></li>
@@ -295,11 +296,11 @@ footer{
 					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
 					    <thead>
 					      <tr>
-					        <th style="text-align: center;font-size: 18px; width: 15%">글번호</th>
-					        <th style="text-align: center;font-size: 18px;width: 25%">제목</th>
-					        <th style="text-align: center;font-size: 18px;width: 30%">일시</th>
-					        <th style="text-align: center;font-size: 18px;width: 15%">작성자</th>
-					        <th style="text-align: center;font-size: 18px;width: 15%">상태</th>
+					        <th style="text-align: center;font-size: 17px; width: 15%; background: #ffb955;color:white;">글번호</th>
+					        <th style="text-align: center;font-size: 18px;width: 25%;background: #ffb955;color:white;">제목</th>
+					        <th style="text-align: center;font-size: 18px;width: 30%;background: #ffb955;color:white;">일시</th>
+					        <th style="text-align: center;font-size: 18px;width: 15%;background: #ffb955;color:white;">작성자</th>
+					        <th style="text-align: center;font-size: 18px;width: 15%;background: #ffb955;color:white;">상태</th>
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -307,7 +308,7 @@ footer{
 					    	while(rs2.next()){
 					    	%>
 					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= rs2.getInt("ptid") %></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px; "> <%= rs2.getInt("ptid") %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= rs2.getString("pttitle") %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= rs2.getString("ptSDAY") %> ~ <%=rs2.getString("ptEDAY") %></td>
 							<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= ptDAO.ptusername(rs2.getString("userid")) %></td>
@@ -327,20 +328,20 @@ footer{
 			<center>
 	    			<div class="container" style="width: 70%; height: 50%;">
 	    			
-					<b style="float: left; margin: 6% 0 0 0;font-size: 20px">자기 PR</b>
+					<b style="float: left; margin: 4% 0 0 0;font-size: 20px">자기 PR</b>
 					  		<a href="TotalTable_PR.jsp">
 					  		
 					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 6% 0 0 0;">       
+					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 4% 0 0 0;">       
 					  		</a>
 					  		
-					  <table class="table table-striped"   style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
+					  <table class="table table-striped"   style="background: #ffffff; text-align: center; margin:5% 0 1% 0" >
 					    <thead>
 					      <tr>
-					        <th  style="text-align: center;font-size: 18px; width: 20%">글번호</th>
-					        <th style="text-align: center;font-size: 18px; width: 30%">제목</th>
-					        <th style="text-align: center;font-size: 18px; width: 30%">일시</th>
-					        <th style="text-align: center;font-size: 18px; width: 20%">작성자</th>
+					        <th  style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">글번호</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">제목</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">일시</th>
+					        <th style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">작성자</th>
 					      </tr>
 					    </thead>
 					    <tbody>

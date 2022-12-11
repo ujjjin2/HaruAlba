@@ -1,6 +1,6 @@
-<%@page import="pr.Pr"%>
+<%@page import="pt.Pt"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="pr.PrDAO"%>
+<%@page import="pt.PtDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -11,13 +11,14 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
 <!DOCTYPE html>
-<% request.setCharacterEncoding("UTF-8"); %>
+
 <% // 로그아웃 버튼 후 캐시 삭제
 
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
-	PrDAO prDAO = new PrDAO();
+
+	PtDAO ptDAO = new PtDAO();
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
 	
@@ -27,8 +28,9 @@ response.setHeader("Cache-Control", "no-store");
 	if(searchText == null){
 		searchText = "";
 	}
+
 	
-	ArrayList<Pr> list = prDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
+	ArrayList<Pt> list = ptDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
 
 %>
 
@@ -39,7 +41,7 @@ response.setHeader("Cache-Control", "no-store");
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
-<title>자기 PR 목록</title>
+<title>단기 알바 목록</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -174,7 +176,7 @@ footer{
         script.println("</script>");
 	}
 	
-
+	String location = request.getParameter("_location");
 	
 %>
 <body>
@@ -257,18 +259,20 @@ footer{
   
   <div class="mainfunction" style="background:#ffffff; width: 100%; height: 100%;">
 			
-			<!-- 자기 PR 테이블 부분  -->
+			<!-- 테이블 부분  -->
 			<center>
-	    			<div class="container" style="width: 85%; height: 100%;">
-					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_PR.jsp" style="text-decoration: none; color: black;font-size: 30px">자기 자신을 PR하세요</b></h3>
+	    			<div class="container" style="width: 70%; height: 100%;">
+					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_Location_detail.jsp?_location=<%=location %>" style="text-decoration: none; color: black;font-size: 30px">지 역 별 알 바 - <%=location %> </a></h3>
+
 						<div>
 							<div>
-								<form method="post" action="TotalTable_PR.jsp">
+								<form method="post" action="TotalTable_Location_detail.jsp?_location=<%=location %>">
 									<table class="pull-left">
 										<tr>
 											<td><select class="form-control" name="searchField">
-													<option value="prTITLE">제목</option>
-													<option value="prCONTENT">내용</option>
+													<option value="ptTITLE">제목</option>
+													<option value="userID">작성자</option>
+													<option value="ptCONTENT">내용</option>
 											</select></td>
 											<td><input type="text" class="form-control"
 												placeholder="검색어 입력" name="searchText" maxlength="100"></td>
@@ -276,40 +280,43 @@ footer{
 										</tr>
 									</table>
 								</form>
-								<a href="Write_PR.jsp"> <!-- 글쓰기 버튼  --> <img
-									src="images/write.png"
-									style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">
-								</a>
-							</div>
-						</div>
-						<table class="table table-striped"
-									style="background: #ffffff; text-align: center;">
-									<thead>
-										<tr>
-											<th  style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">글번호</th>
-									        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">제목</th>
-									        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">일시</th>
-									        <th style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">작성자</th>
-										</tr>
-									</thead>
-									<tbody>
-										<%
-							for(Pr pr : list) {
-					    %>
-							<tr>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrID() %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrTITLE() %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrDATE() %></td>
-					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= prDAO.prusername(pr.getUserID()) %></td>
-					      	</tr>
-							<%
-					    	}
-					     	 %>
 
-									</tbody>
-								</table>
-							</div>
-						</center>
+						<% if(role.equals("사장")){ %>
+					   <!-- 글쓰기 버튼  -->
+                       <a href="Write_PartTime.jsp">                       
+                        <img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
+                       </a>
+                    <%} %>   
+                     </div>
+                      </div>
+					  <table class="table table-striped" style="background: #ffffff; text-align: center;margin-top: 10%" >
+					    <thead>
+					      <tr>
+					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">글번호</th>
+					        <th style="text-align: center;font-size: 18px; width: 25%;background: #ffb955;color:white;">제목</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">일시</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">작성자</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">상태</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    	<%
+						      	for(Pt pt : list) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
+						      		<tr>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
+							      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
+							      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
+							      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE() %></td>
+							     </tr>
+							      <%
+					    	  }
+					      %>
+					    </tbody>
+					  </table>
+					</div>
+	    		</center>
 	    		
   
   
