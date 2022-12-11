@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pr.Pr;
+
 import user.UserDAO;
 
 public class PtDAO {

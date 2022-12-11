@@ -1,8 +1,8 @@
-package pr_comment;
+package review_comment;
 
-public class Prcomment {
+public class Review_Cmt {
 	int cmt_id;
-	int prID;
+	int rID;
 	String userID;
 	String comment;
 	
@@ -12,11 +12,11 @@ public class Prcomment {
 	public void setCmt_id(int cmt_id) {
 		this.cmt_id = cmt_id;
 	}
-	public int getPrID() {
-		return prID;
+	public int getrID() {
+		return rID;
 	}
-	public void setPrID(int prID) {
-		this.prID = prID;
+	public void setrID(int rID) {
+		this.rID = rID;
 	}
 	public String getUserID() {
 		return userID;
@@ -30,6 +30,5 @@ public class Prcomment {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
 	
 }

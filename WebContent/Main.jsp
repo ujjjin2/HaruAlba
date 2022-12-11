@@ -1,4 +1,4 @@
-<%@page import="pr.PrDAO"%>
+<%@page import="review.ReviewDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -9,10 +9,13 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
 <%@ page import = "pt.PtDAO" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 
-<% // 로그아웃 버튼 후 캐시 삭제
+<%
+// 로그아웃 버튼 후 캐시 삭제
 
 	response.setHeader("Pragma", "no-cache"); 
 	response.setHeader("Cache-Control", "no-store"); 
@@ -25,7 +28,7 @@
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT * FROM pr ORDER BY prid DESC LIMIT 5";
+	String sql = "SELECT * FROM reviewA ORDER BY rID DESC LIMIT 5";
 	String sql2 = "SELECT * FROM pt ORDER BY ptid DESC LIMIT 5";
 	pstmt = conn.prepareStatement(sql);
 	pstmt2 = conn.prepareStatement(sql2);
@@ -43,7 +46,6 @@
 	
 	rs = pstmt.executeQuery(sql);
 	rs2 = pstmt2.executeQuery(sql2);
-
 %>
 
 <html>
@@ -237,7 +239,8 @@ footer{
 
   </style>
 </head>
-<% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄 and 사장님일 경우 다른 페이지 이동
+<%
+//세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄 and 사장님일 경우 다른 페이지 이동
 	String userid = (String)session.getAttribute("userid");
 	String role = (String)session.getAttribute("role");
 
@@ -248,9 +251,6 @@ footer{
         script.println("location.href='Login.jsp'");    
         script.println("</script>");
 	}
-	
-
-	
 %>
 <body>
 <header>
@@ -263,12 +263,12 @@ footer{
         <nav id="menu">
            <ul id = "top_menu" style="margin: 3% 0 5% 0">
 		                <li>
-		                <% 		                
+		                <%
 		                UserDAO userDAO = new UserDAO();
-		                PtDAO ptDAO = new PtDAO();
-		                PrDAO prDAO = new PrDAO();
-		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
-        				%>
+		                		                PtDAO ptDAO = new PtDAO();
+		                		                ReviewDAO prDAO = new ReviewDAO();
+		                		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
+		                %>
         				</li><li>|</li>
 		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
@@ -318,7 +318,7 @@ footer{
 	      <li>
 	        <a href="#">후기</a>
 	        <ul class="submenu">
-	          <li><a href="TotalTable_review_Alba.jsp">알바 후기</a></li>
+	          <li><a href="TotalTable_review_Alba.jsp">알바 썰</a></li>
 	          <li><a href="TotalTable_review_Sajang.jsp">사장 후기</a></li>
 	        </ul>
 	      </li>
@@ -401,7 +401,7 @@ footer{
 			<center>
 	    			<div class="container" style="width: 70%; height: 50%;">
 	    			
-					<b style="float: left; margin: 4% 0 0 0;font-size: 20px">자기 PR</b>
+					<b style="float: left; margin: 4% 0 0 0;font-size: 20px">알바 썰</b>
 					  		<a href="TotalTable_PR.jsp">
 					  		
 					  		<!-- +버튼  -->
@@ -413,8 +413,6 @@ footer{
 					      <tr>
 					        <th  style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">글번호</th>
 					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">제목</th>
-					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">일시</th>
-					        <th style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">작성자</th>
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -422,10 +420,8 @@ footer{
 					     while(rs.next()){
 					    %>
 					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%=rs.getInt("prid") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= rs.getString("prtitle") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= rs.getString("prday")%></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= prDAO.prusername(rs.getString("userid")) %></td>
+					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%=rs.getInt("rId") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%= rs.getString("rTITLE") %></td>
 					      </tr>
 					      <%
 					    	 }

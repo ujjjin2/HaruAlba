@@ -8,17 +8,18 @@
 <%@ page import = "user.User" %>
 <%@ page import = "pt.PtDAO" %>
 <%@ page import = "pt.Pt" %>
-<%@ page import = "pr.PrDAO" %>
-<%@ page import = "pr.Pr" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%@ page import = "review.ReviewDAO" %>
+<%@ page import = "review.Review_A" %>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 
-<% // 로그아웃 버튼 후 캐시 삭제
+<%
+// 로그아웃 버튼 후 캐시 삭제
 
 response.setHeader("Pragma", "no-cache"); 
-response.setHeader("Cache-Control", "no-store"); 
-
-
+response.setHeader("Cache-Control", "no-store");
 %>
 
 <html>
@@ -149,7 +150,8 @@ th, td {
 
 <body style="background-color:#525CDE">
 
-<% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄
+<%
+//세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄
 
 	String userid = (String)session.getAttribute("userid");
 	String role = (String)session.getAttribute("role");
@@ -166,12 +168,10 @@ th, td {
 	List<User> list = userDAO.selectall(userid);
 	PtDAO ptDAO = new PtDAO();
 	List<Pt> list2 = ptDAO.mypt(userid);
-	PrDAO prDAO = new PrDAO();
-	List<Pr> list3 = prDAO.mypr(userid);
+	ReviewDAO prDAO = new ReviewDAO();
+	List<Review_A> list3 = prDAO.myreview(userid);
 	List<Pt> list4 = ptDAO.endpt(userid);
 	List<Pt> list5 = ptDAO.joinpt(userid);
-	
-	
 %>
 
 	<div class="parent" style="width: 100%; height: 100%; background: #585858;">
@@ -197,29 +197,31 @@ th, td {
 				<div class="info-edit">개인정보 수정</div>
 					<table class="type03">
 							<tbody>
-							<% for(User user : list) { // 리스트 객체를 꺼내서 user dto에 너어주겠다 %>
+							<%
+							for(User user : list) { // 리스트 객체를 꺼내서 user dto에 너어주겠다
+							%>
 								<tr>
 									<th>이름</th>
-									<td bgcolor="#FFFFFF"><%= user.getUserNAME() %></td>
+									<td bgcolor="#FFFFFF"><%=user.getUserNAME()%></td>
 									<th>성별</th>
-									<td bgcolor="#FFFFFF"><%= user.getUserGENDER() %></td>
+									<td bgcolor="#FFFFFF"><%=user.getUserGENDER()%></td>
 								</tr>
 								<tr>
 									<th>닉네임</th>
-									<td bgcolor="#FFFFFF"><input type="text" name="userNICKNAME" value="<%= user.getUserNICKNAME() %>" style="border: 1px solid #EDEFF1;"></td>
+									<td bgcolor="#FFFFFF"><input type="text" name="userNICKNAME" value="<%=user.getUserNICKNAME()%>" style="border: 1px solid #EDEFF1;"></td>
 									<th bgcolor="#FFFFFF"></th>
 									<td bgcolor="#FFFFFF"></td>
 								</tr>
 								<tr>
 									<th>역할</th>
-									<td bgcolor="#FFFFFF"><%= user.getRole() %></td>
+									<td bgcolor="#FFFFFF"><%=user.getRole()%></td>
 									<th bgcolor="#FFFFFF"></th>
 									<td bgcolor="#FFFFFF"></td>
 								</tr>
 								<tr>
 									<th>위치</th>
 									<td bgcolor="#FFFFFF"><select name="userLOCATION" style="border: 1px solid #EDEFF1; width:200px;height:40px;color:gray" >
-	               						<option selected disabled><%= user.getUserLOCATION() %></option>
+	               						<option selected disabled><%=user.getUserLOCATION()%></option>
 	                					<option value="서울">서울</option>
 	                					<option value="인천">인천</option>
 	               						<option value="경기">경기</option>
@@ -229,24 +231,26 @@ th, td {
 								</tr>
 								<tr>
 									<th>나이</th>
-									<td bgcolor="#FFFFFF"><input type="text" name="userAGE" style="border: 1px solid #EDEFF1;" value=<%= user.getUserAGE() %>></td>
+									<td bgcolor="#FFFFFF"><input type="text" name="userAGE" style="border: 1px solid #EDEFF1;" value=<%=user.getUserAGE()%>></td>
 									<th bgcolor="#FFFFFF"></th>
 									<td bgcolor="#FFFFFF"></td>
 								</tr>
 								<tr>
 									<th>전화번호</th>
 									<td bgcolor="#FFFFFF"><input type="text" class="form-control" placeholder="-를 제외하고 작성"
-									name="userPHONE" maxlength="20" value="<%= user.getUserPHONE() %>" style="border: 1px solid #EDEFF1; font-size: 17px; height: 5% "></td>
+									name="userPHONE" maxlength="20" value="<%=user.getUserPHONE()%>" style="border: 1px solid #EDEFF1; font-size: 17px; height: 5% "></td>
 									<th bgcolor="#FFFFFF"></th>
 									<td bgcolor="#FFFFFF"></td>
 								</tr>
 								<tr>
 									<th>나의 평점</th>
-									<td bgcolor="#FFFFFF"><%= user.getUserRATING() %></td>
+									<td bgcolor="#FFFFFF"><%=user.getUserRATING()%></td>
 									<th bgcolor="#FFFFFF"></th>
 									<td bgcolor="#FFFFFF"></td>
 								</tr>
-								<% } %>
+								<%
+								}
+								%>
 							</tbody>
 					</table>
 				</div>
@@ -258,8 +262,9 @@ th, td {
 				<center>
 	    			<div class="container" style="width: 91%; height: 50%;">
 					
-					      <% 
-					      if(role.equals("사장")){ %>
+					      <%
+										      if(role.equals("사장")){
+										      %>
 					    	  
 					    	 <!-- 끝난 알바 리스트 + 점수 기입 + 버튼 = > 그 아이디의 사용자 평점 올라가게  + 평점 기입은 한번만 되게끔 -->
 					    	  
@@ -278,23 +283,29 @@ th, td {
 					    <tbody>
 				      	<tr>
 					    	
-					      	<%for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle; font-size: 17px"> <%= pt.getPtID() %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle; font-size: 17px"> <%= pt.getPtTITLE() %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle; font-size: 17px"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
-					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle; font-size: 17px"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
-					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" <%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;vertical-align: middle; font-size: 17px"<%}
-					      		else {%> style="color: #0F52FC;vertical-align: middle; font-size: 17px"<%} %>> <%= pt.getPtSTATE() %></td>
+					      	<%
+					    						      	for(Pt pt : list2) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다
+					    						      	%>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle; font-size: 17px"> <%=pt.getPtID()%></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle; font-size: 17px"> <%=pt.getPtTITLE()%></td>
+					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle; font-size: 17px"> <%=pt.getPtSDAY() + "~" + pt.getPtEDAY()%></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle; font-size: 17px"> <%=ptDAO.ptusername(pt.getUserID())%></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" <%if(pt.getPtSTATE().equals("마감")){%>style="color: #D11E35;vertical-align: middle; font-size: 17px"<%}
+					      		else {%> style="color: #0F52FC;vertical-align: middle; font-size: 17px"<%}%>> <%=pt.getPtSTATE()%></td>
 			      		<form action="PTrating_SAJANG.jsp" method="post"> <!-- 알바생 평점 주러가기 폼 -->
-				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteSAJANG().equals("1")){ %>disabled><%}%></td>
-		      				<input type="hidden" value="<%=pt.getPtTITLE() %>" name="ptTITLE">
-			      			<input type="hidden" value="<%=pt.getPtROLE() %>" name="ptROLE">
-			      			<input type="hidden" value="<%=pt.getPtMONEY() %>" name="ptMONEY">
-			      			<input type="hidden" value="<%=pt.getPtALBA() %>" name="ptALBA">
-			      			<input type="hidden" value="<%=pt.getPtID() %>" name="ptID">
+				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteSAJANG().equals("1")){%>disabled><%
+				      		}
+				      		%></td>
+		      				<input type="hidden" value="<%=pt.getPtTITLE()%>" name="ptTITLE">
+			      			<input type="hidden" value="<%=pt.getPtROLE()%>" name="ptROLE">
+			      			<input type="hidden" value="<%=pt.getPtMONEY()%>" name="ptMONEY">
+			      			<input type="hidden" value="<%=pt.getPtALBA()%>" name="ptALBA">
+			      			<input type="hidden" value="<%=pt.getPtID()%>" name="ptID">
 				     	 </tr>
 			    		 </form>
-					      <% 	} }else if(role.equals("알바")){ %>
+					      <%
+					      } }else if(role.equals("알바")){
+					      %>
 					    	  
 					    	  </tbody>
 					    	  </table>
@@ -317,12 +328,14 @@ th, td {
 					    <tbody>
 					      <tr>
 					    	  
-					    		<%for(Pr pr : list3) { %>
+					    		<%
+					    	  					    		for(Review_A review : list3) {
+					    	  					    		%>
 					    	 <tr>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrID() %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrTITLE() %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrDATE() %></td>
-					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= prDAO.prusername(pr.getUserID()) %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= review.getrID() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= review.getrTITLE() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= review.getrDATE() %></td>
+					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= prDAO.prusername(review.getUserID()) %></td>
 					      	</tr>
 					      <% } %>
 					    </tbody>
