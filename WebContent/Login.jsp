@@ -43,11 +43,11 @@
 	    <div class="background" style="background: #ffb955;"></div>
 	    
 	    <div class="center" style="background: #ffb955;">
-	    	<div class="color_white" style="width: 60%; height:75%; background:#FFFFFF; margin: 15% 20% 17% 20%;box-shadow: 7px 7px #9E9E9E;">
+	    	<div class="color_white" style="width: 60%; height:75%; background:#FFFFFF; margin: 15% 20% 17% 20%;box-shadow: 10px 10px 20px gray;">
 				<div class="jumbotron jumbotron-fluid" style="background-color:#FFFFFF;width: 100%;height:100%; ">
 				<center>
 					<A href="Login.jsp">
-						<img src="images/harulogo.png" style="margin: 6% 0 10% 0; width: 220px; height: 220px" >
+						<img src="images/harulogo.png" style="margin: 6% 0 10% 0; width: 210px; height: 210px" >
 					</A>
 				</center>
 				<form method="post" action="LoginAction.jsp" style="margin: 4% 17% 0 17%">

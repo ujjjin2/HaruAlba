@@ -36,13 +36,13 @@
 </head>
 
 <!-- 2022-11-06 허유진 파란 배경색  -->
-<body style="background-color:#525CDE">
+<body style="background-color:#ffb955">
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 1145px; background: #585858;">
-	    <div class="background" style="background: #525CDE;"></div>
-	    <div class="center" style="background: #FFF2BE;">
-	    	<div class="color_white" style="width: 60%; height:80%; background:#FFFFFF; margin: 12% 20% 17% 20%;box-shadow: 7px 7px #9E9E9E;">
+	    <div class="background" style="background: #ffb955;"></div>
+	    <div class="center" style="background: #ffb955;">
+	    	<div class="color_white" style="width: 60%; height:80%; background:#FFFFFF; margin: 12% 20% 17% 20%;box-shadow: 10px 10px 20px gray;">
 	    	<center>
 					<A href="Login.jsp">
 						<img src="images/harulogo.png" style="margin: 5% 0 5% 0; width: 150px; height: 150px">
@@ -69,7 +69,7 @@
 		</div>
 			<!-- 흰색 부분 끝나는 div -->
 	    
-	    <div class="background" style="background: #525CDE;"></div>
+	    <div class="background" style="background: #ffb955;"></div>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

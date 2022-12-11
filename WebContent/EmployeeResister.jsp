@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8"); %>
+    <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,30 +27,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <link rel="stylesheet" href="./css/bootstrap.css">
-<title>EmployeeResister</title>
+<title>EmployerResister</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 <!--파란 배경색  -->
-<body style="background-color:#525CDE">
+<body style="background-color:#ffb955">
 
 	<div class="parent" style="width: 100%; height: 1145px; background: #585858;">
-	    <div class="background" style="background: #525CDE;"></div>
+	    <div class="background" style="background: #ffb955;"></div>
 	    
 	    <!-- 노란새센터 부분 -->
-	    <div class="center" style="background: #FFF2BE;">
-	    		<center>
+	    <div class="center" style="background: #ffb955;">
+	    		
+			<div class="color_white" style="width: 80%; height:80%; background:#FFFFFF;border-radius:10px; margin: 3% 10% 10% 10%;">
+				<div class="jumbotron"
+				style="background-color: #FFFFFF; padding-top: 30px; width: 100%; align: center;border-radius:20px;box-shadow: 15px 15px 20px gray;">
+				<div>
+				<center>
 					<A href="Login.jsp">
-						<img src="images/harulogo.png" style="width: 15%; height: 15%; margin: 3% 0 3% 0">
+						<img src="images/harulogo.png" style="width: 15%; height: 15%; margin: 3% 0 1% 0">
 					</A>
 				</center>
-			<div class="color_white" style="width: 80%; height:73%; background:#FFFFFF; margin: 0% 10% 10% 10%;">
-				<div class="jumbotron"
-				style="background-color: #FFFFFF; padding-top: 30px; width: 100%; align: center">
-				<div>
 					<form style="display:inline;" method="post" action="EmployeeAction.jsp">
-						<div class="form-group" style="width:80%; margin:5% 10% 2% 10%">
+						<div class="form-group" style="width:80%; margin:2% 10% 2% 10%">
 							<p style="line-height:1;color:#525CDE;;font-size:20px;margin-bottom:2%;"><b>아이디</b></p>
 							<input type="text" class="form-control" placeholder="abcde" 
 								name="userID" maxlength="25" style="font-size: 20px; height: 5%;">
@@ -102,7 +103,7 @@
 			</div>
 	    </div>
 	    
-	    <div class="background" style="background: #525CDE;"></div>
+	    <div class="background" style="background: #ffb955;"></div>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
