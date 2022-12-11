@@ -1,4 +1,6 @@
-<%@page import="pr.PrDAO"%>
+<%@page import="pt.Pt"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="pt.PtDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -8,40 +10,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
-<%@ page import = "pt.PtDAO" %>
 <!DOCTYPE html>
 
 <% // 로그아웃 버튼 후 캐시 삭제
 
-	response.setHeader("Pragma", "no-cache"); 
-	response.setHeader("Cache-Control", "no-store"); 
+response.setHeader("Pragma", "no-cache"); 
+response.setHeader("Cache-Control", "no-store"); 
+
+
+	PtDAO ptDAO = new PtDAO();
+	String searchField = request.getParameter("searchField");
+	String searchText = request.getParameter("searchText");
 	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	PreparedStatement pstmt2 = null;
-	ResultSet rs = null;
-	ResultSet rs2 = null;
+	if(searchField == null){
+		searchField = "";
+	}
+	if(searchText == null){
+		searchText = "";
+	}
+
 	
-	Class.forName("com.mysql.jdbc.Driver");
-	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT * FROM pr ORDER BY prid DESC LIMIT 5";
-	String sql2 = "SELECT * FROM pt ORDER BY ptid DESC LIMIT 5";
-	pstmt = conn.prepareStatement(sql);
-	pstmt2 = conn.prepareStatement(sql2);
-	int prid = 0;
-	String prtitle ="";
-	String prday ="";
-	String userid_1 = "";
-	
-	int ptid = 0;
-	String pttitle ="";
-	String ptperiod ="";
-	String ptstate = "";
-	
-	String sqlPartTime = "SELECT * FROM ";
-	
-	rs = pstmt.executeQuery(sql);
-	rs2 = pstmt2.executeQuery(sql2);
+	ArrayList<Pt> list = ptDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
 
 %>
 
@@ -52,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
-<title>하루 알바 메인</title>
+<title>단기 알바 목록</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -115,7 +104,7 @@
 	.menubar a {
 	  color: #fff;
 	  font-size: 20px;
-	  text-decoration: none;
+	   text-decoration: none;
 	}
 	
 	.submenu > li {
@@ -203,8 +192,6 @@ footer{
 		                <li>
 		                <% 		                
 		                UserDAO userDAO = new UserDAO();
-		                PtDAO ptDAO = new PtDAO();
-		                PrDAO prDAO = new PrDAO();
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
         				%>
         				</li><li>|</li>
@@ -270,99 +257,69 @@ footer{
   </div>
   </nav>
   
-  <img src="https://apple.contentsfeed.com/RealMedia/ads/Creatives/jobkorea/221128_handon_al_mt/221128_handon_570110.png"
-  style="margin: 2% 0 0 16%;float: left;width: 35%;height: 170px;">
-  
-  <div style="float: left; margin: 2% 5% 2% 1%;  border: 1px solid #747474;width : 33%; height: 170px; border-radius: 10px">
-  	<a href="TotalTable_PartTime.jsp"><img src="images\PT.png" style="height: 70%; weight:20%; margin: 5% 5% 5% 5%"></a>
-  	<a href="TotalTable_PR.jsp"><img src="images\PR.png" style="height: 70%; weight:20%; margin: 5% 5% 5% 5%"></a>
-  	<a href="#"><img src="images\AlbaReview.png" style="height: 70%; weight:20%; margin: 5% 5% 5% 5%"></a>
-  	<a href="#"><img src="images\sajangReview.png" style="height: 70%; weight:20%;margin: 5% 5% 5% 5%"></a>
-  </div>
-  
   <div class="mainfunction" style="background:#ffffff; width: 100%; height: 100%;">
 			
 			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
-	    			<div class="container" style="width: 70%; height: 50%;">
-	    			
-					<b style="float: left; margin: 4% 0 0 0;font-size: 20px;">단기 알바 구인 </b>
-					  		<a href="TotalTable_PartTime.jsp">
-					  		
-					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 4% 0 0 0;">       
-					  		</a>
-					  		
-					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
+	    			<div class="container" style="width: 70%; height: 100%;">
+					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_review_Sajang.jsp" style="text-decoration: none; color: black;font-size: 30px">사 장 후 기</a></h3>
+
+						<div>
+							<div>
+								<form method="post" action="TotalTable_PartTime.jsp">
+									<table class="pull-left">
+										<tr>
+											<td><select class="form-control" name="searchField">
+													<option value="ptTITLE">제목</option>
+													<option value="userID">작성자</option>
+													<option value="ptCONTENT">내용</option>
+											</select></td>
+											<td><input type="text" class="form-control"
+												placeholder="검색어 입력" name="searchText" maxlength="100"></td>
+											<td><button type="submit" class="btn btn-success">검색</button></td>
+										</tr>
+									</table>
+								</form>
+
+						<% if(role.equals("사장")){ %>
+					   <!-- 글쓰기 버튼  -->
+                       <a href="Write_Review_Sajang.jsp">                       
+                        <img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
+                       </a>
+                    <%} %>   
+                     </div>
+                      </div>
+					  <table class="table table-striped" style="background: #ffffff; text-align: center;margin-top: 10%" >
 					    <thead>
 					      <tr>
-					        <th style="text-align: center;font-size: 17px; width: 15%; background: #ffb955;color:white;">글번호</th>
-					        <th style="text-align: center;font-size: 18px;width: 25%;background: #ffb955;color:white;">제목</th>
-					        <th style="text-align: center;font-size: 18px;width: 30%;background: #ffb955;color:white;">일시</th>
-					        <th style="text-align: center;font-size: 18px;width: 15%;background: #ffb955;color:white;">작성자</th>
-					        <th style="text-align: center;font-size: 18px;width: 15%;background: #ffb955;color:white;">상태</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">글번호</th>
+					        <th style="text-align: center;font-size: 18px; width: 25%;background: #ffb955;color:white;">제목</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">일시</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">작성자</th>
+					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">상태</th>
 					      </tr>
 					    </thead>
 					    <tbody>
-					    <%
-					    	while(rs2.next()){
-					    	%>
-					      <tr>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px; "> <%= rs2.getInt("ptid") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= rs2.getString("pttitle") %></td>
-					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= rs2.getString("ptSDAY") %> ~ <%=rs2.getString("ptEDAY") %></td>
-							<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" style="font-size: 15px"> <%= ptDAO.ptusername(rs2.getString("userid")) %></td>
-					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=rs2.getInt("ptid")%>'" <%if(rs2.getString("ptstate").equals("마감")){ %>style="color: #D11E35; font-size: 15px"<%}
-					      		else {%> style="color: #0F52FC;font-size: 15px"<%} %>> <%= rs2.getString("ptstate") %></td>
-					      </tr>
-					      <%
-					    	}
+					    	<%
+						      	for(Pt pt : list) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
+						      		<tr>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
+							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
+							      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
+							      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
+							      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE() %></td>
+							     </tr>
+							      <%
+					    	  }
 					      %>
-					   
 					    </tbody>
 					  </table>
 					</div>
 	    		</center>
 	    		
-	    		<!-- 자기 PR 테이블 부분  -->
-			<center>
-	    			<div class="container" style="width: 70%; height: 50%;">
-	    			
-					<b style="float: left; margin: 4% 0 0 0;font-size: 20px">자기 PR</b>
-					  		<a href="TotalTable_PR.jsp">
-					  		
-					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 4% 0 0 0;">       
-					  		</a>
-					  		
-					  <table class="table table-striped"   style="background: #ffffff; text-align: center; margin:5% 0 1% 0" >
-					    <thead>
-					      <tr>
-					        <th  style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">글번호</th>
-					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">제목</th>
-					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">일시</th>
-					        <th style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">작성자</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					    <%
-					     while(rs.next()){
-					    %>
-					      <tr>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%=rs.getInt("prid") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= rs.getString("prtitle") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= rs.getString("prday")%></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=rs.getInt("prid")%>'" style="font-size: 15px"><%= prDAO.prusername(rs.getString("userid")) %></td>
-					      </tr>
-					      <%
-					    	 }
-					      %>
-					    </tbody>
-					  </table>
-					</div>
-	    		</center>
-	   		 </div>
-	   		 
+  
+  
 	   		 <footer>
     <div class="box" style="">
         <nav id="bottom_menu">
