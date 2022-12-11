@@ -197,7 +197,6 @@ footer{
     #detail_summary{
         color: black;
         font-size: 20px;
-        
     }
 
   </style>
