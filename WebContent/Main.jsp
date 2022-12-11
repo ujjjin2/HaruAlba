@@ -139,7 +139,7 @@ request.setCharacterEncoding("UTF-8");
     }
     .box{
       width: 100%;
-      height: 2000px;
+      height: 100%;
       margin: 0 auto;
     }
     #logo{
@@ -169,7 +169,7 @@ request.setCharacterEncoding("UTF-8");
 	}
 	
 	.menubar > li {
-	  width: 20%; /*20*5=100%*/
+	  width: 25%; /*20*5=100%*/
 	  float: left;
 	  text-align: center;
 	  line-height: 40px;
@@ -265,9 +265,9 @@ footer{
 		                <li>
 		                <%
 		                UserDAO userDAO = new UserDAO();
-		                		                		                		                		                PtDAO ptDAO = new PtDAO();
-		                		                		                		                		                Review_A_DAO prDAO = new Review_A_DAO();
-		                		                		                		                		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
+		                PtDAO ptDAO = new PtDAO();
+		                Review_A_DAO prDAO = new Review_A_DAO();
+		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
 		                %>
         				</li><li>|</li>
 		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
@@ -280,7 +280,7 @@ footer{
 			<input type="text" name="search_main" style="margin: 6% 0 0 10%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
 			<input type="submit" value="검색" style="margin: 4% 0 0 -20px;height: 50px; width: 6%;font-size: 20px;border: 3px solid #F29000; color: #FFFFFF; background: #FF9B09">
 			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 11%" >단기알바</a>
-        	<a href="#" style="margin: 10% 0 0% 20px">시급</a>
+        	<a href="Question.jsp" style="margin: 10% 0 0% 20px">시급</a>
         	<a href="TotalTable_Location_detail.jsp?_location=서울" style="margin: 10% 0 0% 20px">서울알바</a>
         	<a href="TotalTable_Location_detail.jsp?_location=인천" style="margin: 10% 0 0% 20px">인천알바</a>
 			</div>
@@ -324,7 +324,7 @@ footer{
 	    </ul>
   </div>
   </nav>
-  <div style="margin: 2% 0 0 16%; float: left;">
+  <div style="margin: -1% 0 0 16%; float: left;">
   	<div class="banner">
   		<ul>
   			<li><img src="https://apple.contentsfeed.com/RealMedia/ads/Creatives/jobkorea/221128_handon_al_mt/221128_handon_570110.png"
@@ -338,10 +338,10 @@ footer{
   </div>
   
   <div style="float: left; margin: 2% 5% 2% 1%;  border: 1px solid #747474;width : 33%; height: 170px; border-radius: 10px">
-  	<a href="TotalTable_PartTime.jsp"><img src="images\PT.png" style="height: 70%; weight:20%; margin: 5% 5% 5% 5%"></a>
-  	<a href="TotalTable_PR.jsp"><img src="images\PR.png" style="height: 70%; weight:20%; margin: 5% 5% 5% 5%"></a>
-  	<a href="#"><img src="images\AlbaReview.png" style="height: 70%; weight:20%; margin: 5% 5% 5% 5%"></a>
-  	<a href="#"><img src="images\sajangReview.png" style="height: 70%; weight:20%;margin: 5% 5% 5% 5%"></a>
+  	<a href="TotalTable_PartTime.jsp"><img src="images\PT.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 7%"></a>
+  	<a href="TotalTable_PR.jsp"><img src="images\PR.png" style="height: 70%; weight:20%; margin: 5% 2% 5% 3%"></a>
+  	<a href="#"><img src="images\AlbaReview.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 3%"></a>
+  	<a href="#"><img src="images\sajangReview.png" style="height: 70%; weight:20%;margin: 5% 5% 5% 2%"></a>
   </div>
   
   <div class="mainfunction" style="background:#ffffff; width: 100%; height: 100%;">
@@ -350,11 +350,11 @@ footer{
 			<center>
 	    			<div class="container" style="width: 70%; height: 50%;">
 	    			
-					<b style="float: left; margin: 4% 0 0 0;font-size: 20px;">단기 알바 구인 </b>
+					<b style="float: left; margin: 1% 0 0 0;font-size: 20px;">단기 알바 구인 </b>
 					  		<a href="TotalTable_PartTime.jsp">
 					  		
 					  		<!-- +버튼  -->
-					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 4% 0 0 0;">       
+					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 1% 0 0 0;">       
 					  		</a>
 					  		
 					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:10% 0 1% 0" >
@@ -399,7 +399,7 @@ footer{
 					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 4% 0 0 0;">       
 					  		</a>
 					  		
-					  <table class="table table-striped"   style="background: #ffffff; text-align: center; margin:5% 0 1% 0" >
+					  <table class="table table-striped"   style="background: #ffffff; text-align: center; margin:6% 0 1% 0" >
 					    <thead>
 					      <tr>
 					        <th  style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">글번호</th>

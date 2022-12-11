@@ -98,7 +98,7 @@
 	}
 	
 	.menubar > li {
-	  width: 20%; /*20*5=100%*/
+	  width: 25%; /*20*5=100%*/
 	  float: left;
 	  text-align: center;
 	  line-height: 40px;
@@ -199,11 +199,11 @@ footer{
         <nav id="menu">
            <ul id = "top_menu" style="margin: 3% 0 5% 0">
 		                <li>
-		                <% 		                
+		                <%
 		                UserDAO userDAO = new UserDAO();
 		                PtDAO ptDAO = new PtDAO();
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
-        				%>
+		                %>
         				</li><li>|</li>
 		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
@@ -215,7 +215,7 @@ footer{
 			<input type="text" name="search_main" style="margin: 6% 0 0 10%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
 			<input type="submit" value="검색" style="margin: 4% 0 0 -20px;height: 50px; width: 6%;font-size: 20px;border: 3px solid #F29000; color: #FFFFFF; background: #FF9B09">
 			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 11%" >단기알바</a>
-        	<a href="#" style="margin: 10% 0 0% 20px">시급</a>
+        	<a href="Question.jsp" style="margin: 10% 0 0% 20px">시급</a>
         	<a href="TotalTable_Location_detail.jsp?_location=서울" style="margin: 10% 0 0% 20px">서울알바</a>
         	<a href="TotalTable_Location_detail.jsp?_location=인천" style="margin: 10% 0 0% 20px">인천알바</a>
 			</div>
@@ -244,23 +244,16 @@ footer{
 	        </ul>
 	      </li>
 	      <li>
-	        <a href="#">자기 PR</a>
-	        <ul class="submenu">
-	          <li><a href="TotalTable_PR.jsp">자기PR 목록</a></li>
-	          <li><a href="Write_PR.jsp">자기PR 글쓰기</a></li>
-	        </ul>
-	      </li>
-	      <li>
 	        <a href="#">후기</a>
 	        <ul class="submenu">
-	          <li><a href="TotalTable_review_Alba.jsp">알바 후기</a></li>
+	          <li><a href="TotalTable_review_Alba.jsp">알바 썰</a></li>
 	          <li><a href="TotalTable_review_Sajang.jsp">사장 후기</a></li>
 	        </ul>
 	      </li>
 	      <li>
 	        <a href="#">고객센터</a>
 	        <ul class="submenu">
-	          <li><a href="#">문의사항</a></li>
+	          <li><a href="Question.jsp">문의사항</a></li>
 	        </ul>
 	      </li>
 	    </ul>
@@ -319,7 +312,7 @@ footer{
 								사장/알바 회원님은 가입하신 아이디, 이름, 전화번호가 일치하면 새로운 비밀번호를 설정할 수 있습니다.<p> 
 							</details>
 							<p>
-							<details style="font-size: 15px;color: gray;padding-top: 10px">>
+							<details style="font-size: 15px;color: gray;padding-top: 10px">
 								<summary id="detail_summary">▶ 아르바이트 회원으로 가입하면 단기 알바 구인구직을 올릴 수 없나요?</summary>
 								해당 (주)하루알바는 아르바이트 회원으로 단기 알바 구인 구직을 할 수 있는 기능을 제공하지 않습니다.
 								사장 회원으로 회원가입을 하여 진행해 주세요.
