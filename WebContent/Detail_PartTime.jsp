@@ -261,18 +261,18 @@ input:focus{outline:none;}
 </head>
 
 <!-- 파란색 배경 -->
-<body style="background-color:#525CDE">
+<body style="background-color:#ffb955">
 
 
 
 	<!-- 헤더 -->
 	<div class="parent" style="width: 100%; height: 100%; background: #585858;">
-		<div class="background" style="background: #525CDE;"></div>
+		<div class="background" style="background: #ffb955;"></div>
 		
 		<!-- 노란색 -->
-		<div class="center" style="background: #FFF2BE;height: 1200px">
+		<div class="center" style="background: #ffb955;height: 1200px">
 		<!-- 흰색 -->
-			<div class="center_write" style="background: #FFFFFF;height: 85%">
+			<div class="center_write" style="background: #FFFFFF;height: 85%; box-shadow: 10px 10px 20px gray;">
 					<div class="header">
 						<center>
 							<a href="Main.jsp">
@@ -418,7 +418,7 @@ input:focus{outline:none;}
 		</div>
 		<!--  노란색  -->
 		
-		<div class="background" style="background: #525CDE;"></div>
+		<div class="background" style="background: #ffb955;"></div>
 	
 	</div>
 
