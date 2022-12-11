@@ -59,9 +59,9 @@ request.setCharacterEncoding("UTF-8");
 <style type="text/css">
 <!--
 	/* banner */
-	.banner {position: relative; width: 600px; height: 170px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position: relative; width: 680px; height: 170px; top: 50px;  margin:0 0 0 -3%; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 600px; height: 170px; margin:0; padding:0;}
+	.banner ul li {float: left; width: 680px; height: 170px; margin:0; padding:0;}
 
 //-->
 </style>
@@ -337,18 +337,17 @@ footer{
   	</div>
   </div>
   
-  <div style="float: left; margin: 2% 5% 2% 1%;  border: 1px solid #747474;width : 33%; height: 170px; border-radius: 10px">
-  	<a href="TotalTable_PartTime.jsp"><img src="images\PT.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 7%"></a>
-  	<a href="TotalTable_PR.jsp"><img src="images\PR.png" style="height: 70%; weight:20%; margin: 5% 2% 5% 3%"></a>
-  	<a href="#"><img src="images\AlbaReview.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 3%"></a>
-  	<a href="#"><img src="images\sajangReview.png" style="height: 70%; weight:20%;margin: 5% 5% 5% 2%"></a>
+  <div style="float: left; margin: 2% 5% 2% 0%;  border: 1px solid #747474;width : 27.5%; height: 172px; border-radius: 10px">
+  	<a href="TotalTable_PartTime.jsp"><img src="images\PT.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 10%"></a>
+  	<a href="#"><img src="images\AlbaReview.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 5%"></a>
+  	<a href="#"><img src="images\sajangReview.png" style="height: 70%; weight:20%;margin: 5% 5% 5% 5%"></a>
   </div>
   
   <div class="mainfunction" style="background:#ffffff; width: 100%; height: 100%;">
 			
 			<!-- 단기 알바 구인 테이블 부분  -->
 			<center>
-	    			<div class="container" style="width: 70%; height: 50%;">
+	    			<div class="container" style="width: 72%; height: 50%;">
 	    			
 					<b style="float: left; margin: 1% 0 0 0;font-size: 20px;">단기 알바 구인 </b>
 					  		<a href="TotalTable_PartTime.jsp">
@@ -390,7 +389,7 @@ footer{
 	    		
 	    		<!-- 자기 PR 테이블 부분  -->
 			<center>
-	    			<div class="container" style="width: 70%; height: 50%;">
+	    			<div class="container" style="width: 72%; height: 50%;">
 	    			
 					<b style="float: left; margin: 4% 0 0 0;font-size: 20px">알바 썰</b>
 					  		<a href="TotalTable_PR.jsp">
