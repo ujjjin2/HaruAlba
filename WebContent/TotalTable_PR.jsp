@@ -1,6 +1,6 @@
-<%@page import="pr.Pr"%>
+<%@page import="review.Review_A"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="pr.PrDAO"%>
+<%@page import="review.ReviewDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -11,13 +11,16 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
 <!DOCTYPE html>
-<% request.setCharacterEncoding("UTF-8"); %>
-<% // 로그아웃 버튼 후 캐시 삭제
+<%
+request.setCharacterEncoding("UTF-8");
+%>
+<%
+// 로그아웃 버튼 후 캐시 삭제
 
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
-	PrDAO prDAO = new PrDAO();
+	ReviewDAO reviewDAO = new ReviewDAO();
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
 	
@@ -28,8 +31,7 @@ response.setHeader("Cache-Control", "no-store");
 		searchText = "";
 	}
 	
-	ArrayList<Pr> list = prDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
-
+	ArrayList<Review_A> list = reviewDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
 %>
 
 <html>
@@ -162,7 +164,8 @@ footer{
 
   </style>
 </head>
-<% //세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄 and 사장님일 경우 다른 페이지 이동
+<%
+//세션 설정 + 정보 없이 출입 시 다시 로그인으로 보냄 and 사장님일 경우 다른 페이지 이동
 	String userid = (String)session.getAttribute("userid");
 	String role = (String)session.getAttribute("role");
 
@@ -173,9 +176,6 @@ footer{
         script.println("location.href='Login.jsp'");    
         script.println("</script>");
 	}
-	
-
-	
 %>
 <body>
 <header>
@@ -188,10 +188,10 @@ footer{
         <nav id="menu">
            <ul id = "top_menu" style="margin: 3% 0 5% 0">
 		                <li>
-		                <% 		                
+		                <%
 		                UserDAO userDAO = new UserDAO();
-		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
-        				%>
+		                		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
+		                %>
         				</li><li>|</li>
 		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
@@ -218,9 +218,13 @@ footer{
 	        <a href="#">단기 알바</a>
 	        <ul class="submenu">
 	          <li><a href="TotalTable_PartTime.jsp">단기알바 목록</a></li>
-	          <%if(role.equals("사장")) {%>	<!-- 사장님한테만 글쓰기 보이게 -->
+	          <%
+	          if(role.equals("사장")) {
+	          %>	<!-- 사장님한테만 글쓰기 보이게 -->
 	          <li><a href="Write_PartTime.jsp">단기알바 글쓰기</a></li>
-	          <%} %>
+	          <%
+	          }
+	          %>
 	        </ul>
 	      </li>
 	      <li>
@@ -296,13 +300,11 @@ footer{
 									</thead>
 									<tbody>
 										<%
-							for(Pr pr : list) {
-					    %>
+										for(Review_A review : list) {
+										%>
 							<tr>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrID() %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrTITLE() %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= pr.getPrDATE() %></td>
-					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=pr.getPrID()%>'"> <%= prDAO.prusername(pr.getUserID()) %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= review.getrID() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= review.getrTITLE() %></td>
 					      	</tr>
 							<%
 					    	}

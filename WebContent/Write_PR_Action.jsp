@@ -5,39 +5,25 @@
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "pr.PrDAO" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%@ page import = "review.ReviewDAO" %>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 <%@ page import = "java.io.PrintWriter" %>
 
-<jsp:useBean id="pr" class="pr.Pr" scope="page"></jsp:useBean>
-<jsp:setProperty name="pr" property="prTITLE"/>
-<jsp:setProperty name="pr" property="prRESUME"/>
-<jsp:setProperty name="pr" property="prCONTENT"/>
-<jsp:setProperty name="pr" property="prJOB"/>
-<jsp:setProperty name="pr" property="prDAY"/>
-<jsp:setProperty name="pr" property="prMONEY"/>
+<jsp:useBean id="review" class="review.Review_A" scope="page"></jsp:useBean>
+<jsp:setProperty name="review" property="rTITLE"/>
+<jsp:setProperty name="review" property="rCONTENT"/>
 <%
-	String userid = (String)session.getAttribute("userid");
+
+String userid = (String)session.getAttribute("userid");
 	String role = (String)session.getAttribute("role");
 	
 	request.setCharacterEncoding("UTF-8"); 
 
-	String [] prDAY = request.getParameterValues("prDAY");
-	String prday = new String();
-	
-	for(int i=0; i<prDAY.length;i++){
-		prday += prDAY[i] + " "; 
-	}
-%>
-
-
-<%
-	pr.setPrDAY(prday);
-	pr.setUserID(userid);
-		
+	review.setUserID(userid);
 	Timestamp date = new Timestamp(System.currentTimeMillis());
-	pr.setPrDATE(date);
-	
+	review.setrDATE(date);
 %>
 
 <!DOCTYPE html>
@@ -48,8 +34,8 @@
 </head>
 <body>
 <%
-	PrDAO prDAO = new PrDAO();
-    int result = prDAO.writePR(pr);
+	ReviewDAO ReviewDAO = new ReviewDAO();
+    int result = ReviewDAO.writeReview(review);
     if (result == -1){ // 회원가입 실패
         PrintWriter script = response.getWriter();
         script.println("<script>");

@@ -77,46 +77,14 @@
 								  <!-- 제목 div -->
 								    <div class="form-group">
 								      <label for="title" style="float: left; margin: 1% 0 2% 0 ">제목 </label>
-								      <input type="text" class="form-control" id="prTITLE" placeholder="제목을 입력해주세요" name="prTITLE" >
-								    </div>
-								  <!-- 업직종 div -->
-								     <div class="form-group">
-								      <label for="category" style="float: left; margin: 1% 0 2% 0 ">업직종 </label>
-								      <input type="text" class="form-control" id="prJOB" placeholder="원하는 직종을 적어주세요" name="prJOB" >
-								    </div>
-								  <!-- 시급  div -->
-								    <div class="form-group">
-								      <label for="pay" style="float: left; margin: 1% 0 2% 0 ">시급 </label>
-								      <input type="text" class="form-control" id="prMONEY" placeholder="원하시는 시급을 적어주세요" name="prMONEY" >
-								    </div>
-								  <!-- 근무가능 요일  div -->
-								    <div class="form-group" style="display: block;  width:100%; float: left">
-								      <label for="date" style="float: left; margin: 2% 0 3% 0 ">근무 가능 요일 </label>
-									      <div class="from-checkbox" >
-										      <div class="checkbox" style="margin: 10% 0 0 0;">
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="월" name="prDAY">월</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="화 " name="prDAY">화</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="수 " name="prDAY">수</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="목 " name="prDAY">목</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="금 " name="prDAY">금</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="토 " name="prDAY">토</label>
-											      <label style="margin: 0 5% 0 0"><input type="checkbox" value="일 " name="prDAY">일</label>
-											    </div>
-										</div>
+								      <input type="text" class="form-control" id="rTITLE" placeholder="제목을 입력해주세요" name="rTITLE" >
 								    </div>
 								    <!-- 자기 PR -->
 								    <div class="form-group" style="display: inline-block;">
-								      <label for="self_PR" style="float: left; margin: 1% 0 3% 0 ">자기 PR</label>
-								      <textarea class="form-control" name="prCONTENT" id="prCONTENT" rows="4" cols="100" placeholder="자기소개를 해주세요"></textarea> 
-								    </div>
-								     <!-- 간편 이력서 -->
-								    <div class="form-group">
-								      <label for="simpleresume" style="float: left; margin: 1% 0 3% 0 ">간편 이력서</label>
-								      <textarea class="form-control" name="prRESUME" id="prRESUME" rows="4" cols="100" placeholder="지금까지 했던 경력을 적어주세요"></textarea>
-								      
+								      <label for="self_PR" style="float: left; margin: 1% 0 3% 0 ">내용</label>
+								      <textarea class="form-control" name="rCONTENT" id="rCONTENT" rows="4" cols="100" placeholder="내용을 작성해주세요"></textarea> 
 								    </div>
 								    
-								     
 								    <button type="submit" class="btn">글쓰기</button>
 								  </form>
 							</div>

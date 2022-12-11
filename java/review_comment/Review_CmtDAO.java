@@ -1,4 +1,4 @@
-package pr_comment;
+package review_comment;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,13 +10,13 @@ import java.util.List;
 
 import pt_comment.Ptcomment;
 
-public class PrcommentDAO {
+public class Review_CmtDAO {
 
 	private Connection conn; // db 접근 객체
 	private PreparedStatement pstmt;
 	private ResultSet rs; // db 결과를 담는 객체
 
-	public PrcommentDAO() {
+	public Review_CmtDAO() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC";
 			String dbID = "haru"; // 계정
@@ -28,20 +28,20 @@ public class PrcommentDAO {
 		}
 	}
 
-	public List<Prcomment> selectprcmt(int prid) throws SQLException { // PR댓글 리스트 뽑아오기
-		String SQL = "SELECT * FROM pr_comment WHERE prID = ?";
+	public List<Review_Cmt> selectprcmt(int prid) throws SQLException { // PR댓글 리스트 뽑아오기
+		String SQL = "SELECT * FROM reviewA_cmt WHERE rID = ?";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, prid);
 			rs = pstmt.executeQuery();
 
-			ArrayList<Prcomment> prlist = new ArrayList<Prcomment>();
+			ArrayList<Review_Cmt> prlist = new ArrayList<Review_Cmt>();
 
 			while (rs.next()) {
-				Prcomment prcomment = new Prcomment();
+				Review_Cmt prcomment = new Review_Cmt();
 				prcomment.setCmt_id(rs.getInt("cmt_id"));
-				prcomment.setPrID(rs.getInt("prID"));
+				prcomment.setrID(rs.getInt("rID"));
 				prcomment.setUserID(rs.getString("userID"));
 				prcomment.setComment(rs.getString("comment"));
 				prlist.add(prcomment);
@@ -52,11 +52,11 @@ public class PrcommentDAO {
 		}
 	}
 
-	public int joincomment(Prcomment prcomment) { // 댓글달기
-		String SQL = "INSERT INTO pr_comment VALUES(null, ?, ?, ?)";
+	public int joincomment(Review_Cmt prcomment) { // 댓글달기
+		String SQL = "INSERT INTO reviewA_cmt VALUES(null, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, prcomment.getPrID());
+			pstmt.setInt(1, prcomment.getrID());
 			pstmt.setString(2, prcomment.getUserID());
 			pstmt.setString(3, prcomment.getComment());
 			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공

@@ -1,13 +1,15 @@
 <%@page import="java.io.PrintWriter"%>
-<%@page import="pr_comment.PrcommentDAO"%>
+<%@page import="review_comment.Review_CmtDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% request.setCharacterEncoding("UTF-8"); %>
+    <%
+    request.setCharacterEncoding("UTF-8");
+    %>
 <!DOCTYPE html>
 
-<jsp:useBean id="prcomment" class="pr_comment.Prcomment" scope="page"></jsp:useBean>
-<jsp:setProperty name="prcomment" property="comment"/>
-<jsp:setProperty name="prcomment" property="prID"/>
+<jsp:useBean id="rcomment" class="review_comment.Review_Cmt" scope="page"></jsp:useBean>
+<jsp:setProperty name="rcomment" property="comment"/>
+<jsp:setProperty name="rcomment" property="rID"/>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -15,12 +17,12 @@
 </head>
 <body>
 <%
-	String userid = (String)session.getAttribute("userid");
-	PrcommentDAO pr_comment = new PrcommentDAO();
-	prcomment.setUserID(userid);
+String userid = (String)session.getAttribute("userid");
+	Review_CmtDAO pr_comment = new Review_CmtDAO();
+	rcomment.setUserID(userid);
 
 	
-int result = pr_comment.joincomment(prcomment);
+int result = pr_comment.joincomment(rcomment);
 	
     if (result == -1){ // 회원가입 실패
         PrintWriter script = response.getWriter();
@@ -32,7 +34,7 @@ int result = pr_comment.joincomment(prcomment);
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('댓글작성이 이 완료되었습니다.')");
-        script.println("location.href = 'Detail_PR.jsp?prid="+prcomment.getPrID()+"'");    // 메인 페이지로 이동
+        script.println("location.href = 'Detail_PR.jsp?rid="+rcomment.getrID()+"'");    // 메인 페이지로 이동
         script.println("</script>");
     }
 %>

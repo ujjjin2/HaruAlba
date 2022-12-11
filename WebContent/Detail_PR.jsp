@@ -1,7 +1,7 @@
-<%@page import="pr_comment.Prcomment"%>
+<%@page import="review_comment.Review_Cmt"%>
 <%@page import="java.util.List"%>
-<%@page import="pr_comment.PrcommentDAO"%>
-<%@page import="pr.PrDAO"%>
+<%@page import="review_comment.Review_CmtDAO"%>
+<%@page import="review.ReviewDAO"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -9,10 +9,13 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <% request.setCharacterEncoding("UTF-8"); %>
+ <%
+ request.setCharacterEncoding("UTF-8");
+ %>
 <!DOCTYPE html>
 
-<% // 로그아웃 버튼 후 캐시 삭제
+<%
+// 로그아웃 버튼 후 캐시 삭제
 	
 	String userid = (String)session.getAttribute("userid");
 	response.setHeader("Pragma", "no-cache"); 
@@ -26,35 +29,27 @@
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT userNAME, prDATE, userAGE, userLOCATION, prTITLE, prRESUME, prCONTENT, prJOB, prDAY, prMONEY FROM pr, user where pr.userID = user.userID AND prID = ? ";
+	String sql = "SELECT userNAME, rTITLE, rCONTENT FROM reviewA, user where reviewA.userID = user.userID AND rID = ? ";
 	pstmt = conn.prepareStatement(sql);
 	
-	int prID = 0;
-	if(request.getParameter("prid") != null) {
-		prID = Integer.parseInt(request.getParameter("prid"));
+	int rID = 0;
+	if(request.getParameter("rid") != null) {
+		rID = Integer.parseInt(request.getParameter("rid"));
 	}
-	pstmt.setInt(1, prID);
+	pstmt.setInt(1, rID);
 	
 	rs = pstmt.executeQuery();
 	
-	PrDAO prDAO = new PrDAO();
+	ReviewDAO prDAO = new ReviewDAO();
 	
-	PrcommentDAO pr_comment = new PrcommentDAO();
-	List<Prcomment> prlist = pr_comment.selectprcmt(prID);
+	Review_CmtDAO pr_comment = new Review_CmtDAO();
+	List<Review_Cmt> prlist = pr_comment.selectprcmt(rID);
 	
 	
 	if(rs.next()){
 		String userID = rs.getString("userNAME");
-		Integer age = rs.getInt("userAGE");
-		String location = rs.getString("userLOCATION");
-		String title = rs.getString("prTITLE");
-		String resume = rs.getString("prRESUME");
-		String content = rs.getString("prCONTENT");
-		String job = rs.getString("prJOB");
-		String day = rs.getString("prDAY");
-		String money = rs.getString("prMONEY");
-		String date = String.valueOf(rs.getDate("prDATE"));
-	
+		String title = rs.getString("rTITLE");
+		String content = rs.getString("rCONTENT");
 %>
 
 <html>
@@ -272,63 +267,16 @@ input:focus{outline:none;}
 					<div class="article" style="background: #ffffff">
 
 						<div class="article-header">
-							<div class="article-title"><%= title %></div>
-							<div class="article-user"><%= userID %></div>
-							<div class="article-location"><%= location %></div>
+							<div class="article-title"><%=title%></div>
+							<div class="article-user"><%=userID%></div>
 						</div>	
 						<div class="article-content-wrap">
-							<div class="article-info">
-								<table>
-								<colgroup>
-									<col style="width: 120px;">
-								</colgroup>
-									<tbody>
-										<tr>
-											<th>나이</th>
-											<td><%= age %></td>
-										</tr>
-										<tr class="space"></tr>										
-										<tr>
-											<th>업직종</th>
-											<td><%= job %></td>
-										</tr>
-										<tr class="space"></tr>	
-										<tr>
-											<th>근무가능기간</th>
-											<td><%= date %></td>
-										</tr>
-										<tr class="space"></tr>	
-										<tr>
-											<th>근무가능 요일</th>
-											<td><%=day%></td>
-										</tr>
-										<tr class="space"></tr>	
-											<th>시급</th>
-											<td><%=money%></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div class="content-title">
-								<h4 class="bold-title">
-									간편이력서
-								</h4>
-							</div>
 							<div class="article-content">
-								<p><%=resume%>
-								</p>							
-							</div>
-							<div class="content-title">
-								<h4 class="bold-title">
-									자기PR
-								</h4>
-							</div>
-							<div class="article-content">
-								<p><%=content%></p>							
+								<p style="margin: 10px 0 10px 0"><%=content%></p>							
 							</div>
 						</div>
 						<%
-							}
+						}
 						%>
 					</div>
 					
@@ -344,8 +292,7 @@ input:focus{outline:none;}
 							<ul class="ul">
 								<li>
 								<%
-								for(Prcomment prcomment : prlist) {
-									
+								for(Review_Cmt prcomment : prlist) {
 								%>
 									<div class="comment">
 										<div class="comment-name">
@@ -377,7 +324,7 @@ input:focus{outline:none;}
 						<form action="Comment_PR_Action.jsp" method="post">
 							<div class="ex">
 								<input type="text"  class="comment-write" name="comment" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
-								<input type="hidden" name="prID" value=<%= prID %>>
+								<input type="hidden" name="rID" value=<%= rID %>>
 								<button type="submit" class="btn">글쓰기</button>
 							</div>
 						</form>
