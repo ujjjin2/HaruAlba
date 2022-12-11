@@ -218,7 +218,9 @@ footer{
 	        <a href="#">단기 알바</a>
 	        <ul class="submenu">
 	          <li><a href="TotalTable_PartTime.jsp">단기알바 목록</a></li>
+	          <%if(role.equals("사장")) {%>	<!-- 사장님한테만 글쓰기 보이게 -->
 	          <li><a href="Write_PartTime.jsp">단기알바 글쓰기</a></li>
+	          <%} %>
 	        </ul>
 	      </li>
 	      <li>
