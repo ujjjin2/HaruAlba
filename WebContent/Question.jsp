@@ -369,7 +369,7 @@ footer{
 							<details style="font-size: 15px;color: gray;padding-top: 10px">
 								<summary id="detail_summary">▶ 평점은 어떤 기준으로 작성되는 건가요?</summary>
 								평점은 지금 까지 집계된 평점들의 평균들을 표시 한 것입니다. <p>
-								평점은 사장님과 아르바이생 회원간의 쌍방향 평가로 주관적일수 있다는 점 주의 바랍니다. 
+								평점은 사장님과 아르바이생 회원간의 쌍방향 평가로 주관적일수 있다는 점 주의 바랍니다.  
 							</details>
 						
 					</div>
