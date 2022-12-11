@@ -16,33 +16,6 @@
 	response.setHeader("Pragma", "no-cache"); 
 	response.setHeader("Cache-Control", "no-store"); 
 	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	PreparedStatement pstmt2 = null;
-	ResultSet rs = null;
-	ResultSet rs2 = null;
-	
-	Class.forName("com.mysql.jdbc.Driver");
-	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT * FROM pr ORDER BY prid DESC LIMIT 5";
-	String sql2 = "SELECT * FROM pt ORDER BY ptid DESC LIMIT 5";
-	pstmt = conn.prepareStatement(sql);
-	pstmt2 = conn.prepareStatement(sql2);
-	int prid = 0;
-	String prtitle ="";
-	String prday ="";
-	String userid_1 = "";
-	
-	int ptid = 0;
-	String pttitle ="";
-	String ptperiod ="";
-	String ptstate = "";
-	
-	String sqlPartTime = "SELECT * FROM ";
-	
-	rs = pstmt.executeQuery(sql);
-	rs2 = pstmt2.executeQuery(sql2);
-
 %>
 
 <html>
