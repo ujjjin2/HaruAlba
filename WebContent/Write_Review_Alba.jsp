@@ -86,10 +86,10 @@
 								      <label for="title" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">제목 </label>
 								      <input type="text" class="form-control" id="ptTITLE" placeholder="제목을 입력해주세요" name="ptTITLE" >
 								    </div>
-								  <!-- 매장정보 div -->
+								  <!-- 알바 정보 div -->
 								     <div class="form-group">
 								      <label for="category" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">알바 정보 </label>
-								      <input type="text" class="form-control" id="ptINFO" placeholder="알바했던 정보를 적어주세요" name="ptINFO" >
+								      <input type="text" class="form-control" id="ptINFO" placeholder="알바에 대해 적어주세요" name="ptINFO" >
 								    </div>
 								   <!-- 역할 div -->
 								     <div class="form-group">
@@ -109,30 +109,22 @@
 								      <label for="pay" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">시급 </label>
 								      <input type="text" class="form-control" placeholder="시급을 적어주세요" name="ptMONEY" >
 								    </div>
-								   <!-- 지급방법 div -->
+								   <!-- 알바 소감 div -->
 								     <div class="form-group" style="height: ">
-								      <label for="category" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">지급 방법 </label>
-								     <div>
-								      <select style="width: 100%;height: 30px; font-size: 17px" name="ptGIVE">
-								      		<option>당일 지급</option>
-								      		<option>추후 지급</option>
-								      </select>
+								      <label for="category" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">알바 소감</label>
+								      <textarea class="form-control" name="prCONTENT" id="prCONTENT" rows="4" cols="100" placeholder="알바에 대한 소감을 적어주세요"></textarea> 
 								    </div>
-								   <!-- 모집중 div -->
+								     <!-- 추천div -->
 								     <div class="form-group">
-								      <label for="category" style="float: left; margin: 2% 0 2% 0;font-size: 18px;color:#525CDE">모집상황 </label>
-								     <div>
-								      <select style="width: 100%;height: 30px; font-size: 17px" name="ptSTATE">
-								      		<option>모집중</option>
-								      		<option>마감</option>
-								      </select>
-								      
+								      <label for="category" style="float: left; margin: 1% 0 2% 0;font-size: 18px;color:#525CDE">추천</label>
+								     	<div>
+										      <select style="width: 100%;height: 30px; font-size: 17px" name="ptGIVE">
+										      		<option>추천</option>
+										      		<option>별로</option>
+										      </select>
+								    	</div>
 								    </div>
-								    <!-- 내용 -->
-								    <div class="form-group" style="display: inline-block;">
-								      <label for="self_PR" style="float: left; margin: 3% 0 1% 0;font-size: 18px;color:#525CDE">매장 업무 관련 내용</label>
-								      <textarea class="form-control" name="ptCONTENT" id="ptCONTENT" rows="4" cols="1000" placeholder="내용을 입력해주세요" style="font-size: 18px"></textarea> 
-								    </div>
+								   
 								    <button type="submit" class="btn" style="font-size: 20px;width: 100%">글쓰기</button>
 								  </form>
 							</div>
