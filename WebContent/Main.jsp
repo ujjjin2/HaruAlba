@@ -325,8 +325,6 @@ footer{
 	      <li>
 	        <a href="#">고객센터</a>
 	        <ul class="submenu">
-	          <li><a href="#">공지사항</a></li>
-	          <li><a href="#">신고하기 </a></li>
 	          <li><a href="Question.jsp">문의사항</a></li>
 	        </ul>
 	      </li>

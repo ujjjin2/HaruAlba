@@ -1,4 +1,3 @@
-<%@page import="pr.PrDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -230,7 +229,6 @@ footer{
 		                <% 		                
 		                UserDAO userDAO = new UserDAO();
 		                PtDAO ptDAO = new PtDAO();
-		                PrDAO prDAO = new PrDAO();
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
         				%>
         				</li><li>|</li>
