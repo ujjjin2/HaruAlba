@@ -309,13 +309,6 @@ footer{
 	        </ul>
 	      </li>
 	      <li>
-	        <a href="#">자기 PR</a>
-	        <ul class="submenu">
-	          <li><a href="TotalTable_PR.jsp">자기PR 목록</a></li>
-	          <li><a href="Write_PR.jsp">자기PR 글쓰기</a></li>
-	        </ul>
-	      </li>
-	      <li>
 	        <a href="#">후기</a>
 	        <ul class="submenu">
 	          <li><a href="TotalTable_review_Alba.jsp">알바 썰</a></li>
