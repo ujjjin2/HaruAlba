@@ -1,4 +1,4 @@
-<%@page import="review.ReviewDAO"%>
+<%@page import="review.Review_A_DAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -265,9 +265,9 @@ footer{
 		                <li>
 		                <%
 		                UserDAO userDAO = new UserDAO();
-		                		                PtDAO ptDAO = new PtDAO();
-		                		                ReviewDAO prDAO = new ReviewDAO();
-		                		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
+		                		                		                		                		                PtDAO ptDAO = new PtDAO();
+		                		                		                		                		                Review_A_DAO prDAO = new Review_A_DAO();
+		                		                		                		                		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
 		                %>
         				</li><li>|</li>
 		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
@@ -327,7 +327,7 @@ footer{
 	        <ul class="submenu">
 	          <li><a href="#">공지사항</a></li>
 	          <li><a href="#">신고하기 </a></li>
-	          <li><a href="#">문의사항</a></li>
+	          <li><a href="Question.jsp">문의사항</a></li>
 	        </ul>
 	      </li>
 	    </ul>

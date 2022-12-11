@@ -11,12 +11,12 @@ import java.util.List;
 
 import pt.Pt;
 
-public class ReviewDAO {
+public class Review_A_DAO {
 	private Connection conn; // db 접근 객체
 	private PreparedStatement pstmt;
 	private ResultSet rs; // db 결과를 담는 객체
 
-	public ReviewDAO() {
+	public Review_A_DAO() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
 			String dbID = "haru"; // 계정
@@ -83,7 +83,7 @@ public class ReviewDAO {
 	}
 
 	public List<Review_A> myreview(String userid) throws SQLException { // PR 리스트 뽑아오기
-		String SQL = "SELECT * FROM pr WHERE userID = ?";
+		String SQL = "SELECT * FROM reviewA WHERE userID = ?";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -99,6 +99,7 @@ public class ReviewDAO {
 				review.setrTITLE(rs.getString("rTITLE"));
 				review.setrCONTENT(rs.getString("rCONTENT"));
 				review.setrVIEW(rs.getString("rVIEW"));
+				review.setrDATE(rs.getTimestamp("rDATE"));
 				list3.add(review);
 			}
 			return list3;
@@ -125,6 +126,7 @@ public class ReviewDAO {
 					review.setrTITLE(rs.getString("rTITLE"));
 					review.setrCONTENT(rs.getString("rCONTENT"));
 					review.setrVIEW(rs.getString("rVIEW"));
+					review.setrDATE(rs.getTimestamp("rDATE"));
 					list.add(review);
 				}
 			} catch (Exception e) {
@@ -135,9 +137,9 @@ public class ReviewDAO {
 
 			try {
 				if (searchText != null && !searchText.equals("")) {
-					SQL += " LIKE '%" + searchText.trim() + "%' order by prID desc";
+					SQL += " LIKE '%" + searchText.trim() + "%' order by rID desc";
 				} else {
-					SQL = "SELECT * FROM pr";
+					SQL = "SELECT * FROM reviewA";
 				}
 
 				System.out.println(SQL);

@@ -1,5 +1,5 @@
 <%@page import="review.Review_A"%>
-<%@page import="review.ReviewDAO"%>
+<%@page import="review.Review_A_DAO"%>
 <%@page import="pt.Pt"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="pt.PtDAO"%>
@@ -12,15 +12,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 
-<% // 로그아웃 버튼 후 캐시 삭제
+<%
+// 로그아웃 버튼 후 캐시 삭제
 
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
-	ReviewDAO review = new ReviewDAO();
+	Review_A_DAO review = new Review_A_DAO();
 	
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
@@ -33,7 +36,6 @@ response.setHeader("Cache-Control", "no-store");
 	}
 	
 	ArrayList<Review_A> list = review.getSearch(searchField,searchText); // 검색 결과 리스트 반환
-
 %>
 
 <html>
@@ -296,6 +298,8 @@ footer{
 					      <tr>
 					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">글번호</th>
 					        <th style="text-align: center;font-size: 18px; width: 25%;background: #ffb955;color:white;">제목</th>
+					        <th style="text-align: center;font-size: 18px; width: 25%;background: #ffb955;color:white;">작성일시</th>
+					        <th style="text-align: center;font-size: 18px; width: 25%;background: #ffb955;color:white;">작성자</th>
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -304,6 +308,8 @@ footer{
 						      		<tr>
 							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review_A.getrID() %></td>
 							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review_A.getrCONTENT() %></td>
+							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review_A.getrDATE() %></td>
+							        <td onclick="location.href='Detail_PR.jsp?rid=<%=review_A.getrID()%>'"> <%= review.prusername(review_A.getUserID()) %></td>
 							     </tr>
 							      <%
 					    	  }

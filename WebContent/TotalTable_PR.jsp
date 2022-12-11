@@ -1,6 +1,6 @@
 <%@page import="review.Review_A"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="review.ReviewDAO"%>
+<%@page import="review.Review_A_DAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -12,15 +12,17 @@
 <%@ page import = "user.UserDAO" %>
 <!DOCTYPE html>
 <%
+
 request.setCharacterEncoding("UTF-8");
 %>
 <%
+
 // 로그아웃 버튼 후 캐시 삭제
 
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
-	ReviewDAO reviewDAO = new ReviewDAO();
+	Review_A_DAO reviewDAO = new Review_A_DAO();
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
 	
@@ -31,7 +33,7 @@ response.setHeader("Cache-Control", "no-store");
 		searchText = "";
 	}
 	
-	ArrayList<Review_A> list = reviewDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
+	ArrayList<Review_A> list = reviewDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반
 %>
 
 <html>

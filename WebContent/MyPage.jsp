@@ -8,7 +8,7 @@
 <%@ page import = "user.User" %>
 <%@ page import = "pt.PtDAO" %>
 <%@ page import = "pt.Pt" %>
-<%@ page import = "review.ReviewDAO" %>
+<%@ page import = "review.Review_A_DAO" %>
 <%@ page import = "review.Review_A" %>
 <%
 request.setCharacterEncoding("UTF-8");
@@ -168,7 +168,7 @@ th, td {
 	List<User> list = userDAO.selectall(userid);
 	PtDAO ptDAO = new PtDAO();
 	List<Pt> list2 = ptDAO.mypt(userid);
-	ReviewDAO prDAO = new ReviewDAO();
+	Review_A_DAO prDAO = new Review_A_DAO();
 	List<Review_A> list3 = prDAO.myreview(userid);
 	List<Pt> list4 = ptDAO.endpt(userid);
 	List<Pt> list5 = ptDAO.joinpt(userid);
@@ -329,13 +329,13 @@ th, td {
 					      <tr>
 					    	  
 					    		<%
-					    	  					    		for(Review_A review : list3) {
-					    	  					    		%>
+ 	  					    		for(Review_A review : list3) {
+	  					    	%>
 					    	 <tr>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= review.getrID() %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= review.getrTITLE() %></td>
-					        <td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= review.getrDATE() %></td>
-					      	<td onclick="location.href='Detail_PR.jsp?prid=<%=review.getrID()%>'"> <%= prDAO.prusername(review.getUserID()) %></td>
+					        <td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'"> <%= review.getrID() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'"> <%= review.getrTITLE() %></td>
+					        <td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'"> <%= review.getrDATE() %></td>
+					      	<td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'"> <%= prDAO.prusername(review.getUserID()) %></td>
 					      	</tr>
 					      <% } %>
 					    </tbody>

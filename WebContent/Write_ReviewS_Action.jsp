@@ -1,3 +1,4 @@
+<%@page import="review.Review_S_DAO"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
@@ -36,8 +37,8 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 <%
-	Review_A_DAO ReviewDAO = new Review_A_DAO();
-    int result = ReviewDAO.writeReview(review);
+	Review_S_DAO reviewDAO = new Review_S_DAO();
+    int result = reviewDAO.writeReview(review);
     if (result == -1){ // 회원가입 실패
         PrintWriter script = response.getWriter();
         script.println("<script>");
@@ -48,7 +49,7 @@ request.setCharacterEncoding("UTF-8");
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('작성이 완료되었습니다.')");
-        script.println("location.href = 'TotalTable_PR.jsp'");    // 메인 페이지로 이동
+        script.println("location.href = 'TotalTable_review_Sajang.jsp'");    // 메인 페이지로 이동
         script.println("</script>");
         
     }

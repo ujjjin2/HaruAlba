@@ -1,3 +1,5 @@
+<%@page import="review_comment.ReviewS_CmtDAO"%>
+<%@page import="review.Review_S_DAO"%>
 <%@page import="review_comment.Review_Cmt"%>
 <%@page import="java.util.List"%>
 <%@page import="review_comment.Review_CmtDAO"%>
@@ -31,7 +33,7 @@
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection("jdbc:mysql://localhost/haru?serverTimezone=UTC", "haru", "haru");
-	String sql = "SELECT userNAME, rTITLE, rCONTENT FROM reviewA, user where reviewA.userID = user.userID AND rID = ? ";
+	String sql = "SELECT userNAME, rTITLE, rCONTENT FROM reviewS, user where reviewS.userID = user.userID AND rID = ? ";
 	pstmt = conn.prepareStatement(sql);
 	
 	int rID = 0;
@@ -42,9 +44,9 @@
 	
 	rs = pstmt.executeQuery();
 	
-	Review_A_DAO prDAO = new Review_A_DAO();
+	Review_S_DAO prDAO = new Review_S_DAO();
 	
-	Review_CmtDAO pr_comment = new Review_CmtDAO();
+	ReviewS_CmtDAO pr_comment = new ReviewS_CmtDAO();
 	List<Review_Cmt> prlist = pr_comment.selectprcmt(rID);
 	
 	
@@ -323,7 +325,7 @@ input:focus{outline:none;}
 					
 					<!-- 댓글 입력 창 -->
 					<div class="write-wrap">
-						<form action="Comment_PR_Action.jsp" method="post">
+						<form action="Comment_ReviewS_Action.jsp" method="post">
 							<div class="ex">
 								<input type="text"  class="comment-write" name="comment" placeholder="댓글을 입력해주세요." style="background: #EDF0F4">
 								<input type="hidden" name="rID" value=<%= rID %>>

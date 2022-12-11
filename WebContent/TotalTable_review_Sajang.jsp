@@ -1,3 +1,4 @@
+<%@page import="review.Review_S_DAO"%>
 <%@page import="pt.Pt"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="pt.PtDAO"%>
@@ -6,6 +7,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.io.PrintWriter"%>
+<%@page import="review.Review_S" %>
 <%@page import="com.sun.org.apache.xpath.internal.functions.Function"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -18,8 +20,8 @@
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
-
-	PtDAO ptDAO = new PtDAO();
+	Review_S_DAO review = new Review_S_DAO();
+	
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
 	
@@ -29,10 +31,7 @@ response.setHeader("Cache-Control", "no-store");
 	if(searchText == null){
 		searchText = "";
 	}
-
-	
-	ArrayList<Pt> list = ptDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
-
+	ArrayList<Review_S> list = review.getSearch(searchField, searchText);
 %>
 
 <html>
@@ -295,21 +294,18 @@ footer{
 					      <tr>
 					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">글번호</th>
 					        <th style="text-align: center;font-size: 18px; width: 25%;background: #ffb955;color:white;">제목</th>
-					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">일시</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">작성일시</th>
 					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">작성자</th>
-					        <th style="text-align: center;font-size: 18px; width: 15%;background: #ffb955;color:white;">상태</th>
 					      </tr>
 					    </thead>
 					    <tbody>
 					    	<%
-						      	for(Pt pt : list) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
+						      	for(Review_S review_S : list) { // 리스트 객체를 꺼내서 pt dto에 너어주겠다 %>
 						      		<tr>
-							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtID() %></td>
-							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtTITLE() %></td>
-							        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
-							      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
-							      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;"<%}
-							      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE() %></td>
+							        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review_S.getrID() %></td>
+							        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review_S.getrCONTENT() %></td>
+							        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review_S.getrDATE() %></td>
+							      	<td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_S.getrID()%>'"> <%= review.prusername(review_S.getUserID()) %></td>
 							     </tr>
 							      <%
 					    	  }
