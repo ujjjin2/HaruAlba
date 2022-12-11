@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; c harset=UTF-8">
+<% request.setCharacterEncoding("UTF-8"); %>
 <title>SelectAction</title>
 </head>
 <body>

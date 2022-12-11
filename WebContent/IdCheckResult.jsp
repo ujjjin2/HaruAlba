@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
 <%@ page import = "java.io.PrintWriter" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,6 @@
 <!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#525CDE">
 <%
-	request.setCharacterEncoding("UTF-8");
 
 	String userNAME = request.getParameter("userNAME");
 	String userPHONE = request.getParameter("userPHONE");

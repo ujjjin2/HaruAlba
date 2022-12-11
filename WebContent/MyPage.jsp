@@ -10,6 +10,7 @@
 <%@ page import = "pt.Pt" %>
 <%@ page import = "pr.PrDAO" %>
 <%@ page import = "pr.Pr" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 
 <% // 로그아웃 버튼 후 캐시 삭제

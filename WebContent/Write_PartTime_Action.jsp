@@ -2,6 +2,7 @@
 <%@page import="pt.PtDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
     
 <jsp:useBean id="pt" class="pt.Pt" scope="page"></jsp:useBean>
 <jsp:setProperty name="pt" property="ptTITLE"/>

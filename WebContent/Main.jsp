@@ -9,6 +9,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
 <%@ page import = "pt.PtDAO" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 
 <% // 로그아웃 버튼 후 캐시 삭제

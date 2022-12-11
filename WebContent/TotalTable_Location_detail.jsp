@@ -10,6 +10,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "user.UserDAO" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 
 <% // 로그아웃 버튼 후 캐시 삭제
@@ -17,6 +18,7 @@
 response.setHeader("Pragma", "no-cache"); 
 response.setHeader("Cache-Control", "no-store"); 
 
+	String location = request.getParameter("_location");
 
 	PtDAO ptDAO = new PtDAO();
 	String searchField = request.getParameter("searchField");
@@ -29,8 +31,9 @@ response.setHeader("Cache-Control", "no-store");
 		searchText = "";
 	}
 
+
 	
-	ArrayList<Pt> list = ptDAO.getSearch(searchField,searchText); // 검색 결과 리스트 반환
+	ArrayList<Pt> list = ptDAO.getLocationSearch(searchField, searchText, location); // 검색 결과 리스트 반환
 
 %>
 
@@ -176,7 +179,6 @@ footer{
         script.println("</script>");
 	}
 	
-	String location = request.getParameter("_location");
 	
 %>
 <body>
@@ -273,6 +275,7 @@ footer{
 													<option value="ptTITLE">제목</option>
 													<option value="userID">작성자</option>
 													<option value="ptCONTENT">내용</option>
+													<option value="ptLOCATION">지역</option>
 											</select></td>
 											<td><input type="text" class="form-control"
 												placeholder="검색어 입력" name="searchText" maxlength="100"></td>
