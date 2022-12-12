@@ -62,20 +62,69 @@
 					<form method="post" action="PTratingAction_ALBA.jsp">
 						
 			<!-- 평점 주는 별점 모양 -->
+<div>
+1. 사장님이 친절한가요?
 <div class="star-rating space-x-4 mx-auto">
-	<input type="radio" id="5-stars" name="userRATING" value=5 v-model="ratings"/>
+	<input type="radio" id="5-stars" name="RATE1" value=5 v-model="ratings"/>
 	<label for="5-stars" class="star pr-4">★</label>
-	<input type="radio" id="4-stars" name="userRATING" value=4 v-model="ratings"/>
+	<input type="radio" id="4-stars" name="RATE1" value=4 v-model="ratings"/>
 	<label for="4-stars" class="star">★</label>
-	<input type="radio" id="3-stars" name="userRATING" value=3 v-model="ratings"/>
+	<input type="radio" id="3-stars" name="RATE1" value=3 v-model="ratings"/>
 	<label for="3-stars" class="star">★</label>
-	<input type="radio" id="2-stars" name="userRATING" value=2 v-model="ratings"/>
+	<input type="radio" id="2-stars" name="RATE1" value=2 v-model="ratings"/>
 	<label for="2-stars" class="star">★</label>
-	<input type="radio" id="1-star" name="userRATING" value=1 v-model="ratings" />
+	<input type="radio" id="1-star" name="RATE1" value=1 v-model="ratings" />
 	<label for="1-star" class="star">★</label>
+</div>
+</div>
+<div>
+2. 알바 시간은 합의된 내용과 같았나요?
+<div class="star-rating space-x-4 mx-auto">
+	<input type="radio" id="10-stars" name="RATE2" value=5 v-model="ratings"/>
+	<label for="10-stars" class="star pr-4">★</label>
+	<input type="radio" id="9-stars" name="RATE2" value=4 v-model="ratings"/>
+	<label for="9-stars" class="star">★</label>
+	<input type="radio" id="8-stars" name="RATE2" value=3 v-model="ratings"/>
+	<label for="8-stars" class="star">★</label>
+	<input type="radio" id="7-stars" name="RATE2" value=2 v-model="ratings"/>
+	<label for="7-stars" class="star">★</label>
+	<input type="radio" id="6-star" name="RATE2" value=1 v-model="ratings" />
+	<label for="6-star" class="6-star">★</label>
+</div>
+</div>
+<div>
+3. 시급은 제대로 지급 받았나요?
+<div class="star-rating space-x-4 mx-auto">
+	<input type="radio" id="15-stars" name="RATE3" value=5 v-model="ratings"/>
+	<label for="15-stars" class="star pr-4">★</label>
+	<input type="radio" id="14-stars" name="RATE3" value=4 v-model="ratings"/>
+	<label for="14-stars" class="star">★</label>
+	<input type="radio" id="13-stars" name="RATE3" value=3 v-model="ratings"/>
+	<label for="13-stars" class="star">★</label>
+	<input type="radio" id="12-stars" name="RATE3" value=2 v-model="ratings"/>
+	<label for="12-stars" class="star">★</label>
+	<input type="radio" id="11-star" name="RATE3" value=1 v-model="ratings" />
+	<label for="11-star" class="star">★</label>
+</div>
+</div>
+<div>
+4. 다음에도 해당 공고가 올라왔을때 이용할 것인가요?
+<div class="star-rating space-x-4 mx-auto">
+	<input type="radio" id="20-stars" name="RATE4" value=5 v-model="ratings"/>
+	<label for="20-stars" class="star pr-4">★</label>
+	<input type="radio" id="19-stars" name="RATE4" value=4 v-model="ratings"/>
+	<label for="19-stars" class="star">★</label>
+	<input type="radio" id="18-stars" name="RATE4" value=3 v-model="ratings"/>
+	<label for="18-stars" class="star">★</label>
+	<input type="radio" id="17-stars" name="RATE4" value=2 v-model="ratings"/>
+	<label for="17-stars" class="star">★</label>
+	<input type="radio" id="16-star" name="RATE4" value=1 v-model="ratings" />
+	<label for="16-star" class="star">★</label>
+</div>
+</div>
+
 	<input type="hidden" value="<%= pt.getUserID()%>" name="userID"> <!-- 알바가 사장한테 평점 줄 때 -->
 	<input type="hidden" value="<%= pt.getPtID() %>" name="ptID">
-</div>
 				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="평점 기입하기">
 				<input type="button" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:100px;font-size: 20px" class="btn btn-primary form-control" onclick="history.back()" value="돌아가기">
 				</form>

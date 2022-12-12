@@ -19,34 +19,41 @@
 </head>
 <body>
 <%
+	String rate1 = request.getParameter("RATE1");
+	String rate2 = request.getParameter("RATE2");
+	String rate3 = request.getParameter("RATE3");
+	String rate4 = request.getParameter("RATE4");
+
+	Float rate = (Float.parseFloat(rate1) + Float.parseFloat(rate2) + Float.parseFloat(rate3) + Float.parseFloat(rate4)) / 4;
+
+	user.setUserRATING(rate);	
+	
 	UserDAO userDAO = new UserDAO();
 	PtDAO ptDAO = new PtDAO();
-	
+
 	pt.setPtALBA(pt.getPtALBA());
 	user.setUserID(pt.getPtALBA());
 	out.println(pt.getPtALBA());
 	userDAO.addEval(pt.getPtALBA());
 	userDAO.addTotal(user.getUserRATING(), pt.getPtALBA());
-	
+
 	pt.setPtID(pt.getPtID());
 	ptDAO.checkRatingSAJANG(pt.getPtID());
-	
+
 	int result = userDAO.addRating(pt.getPtALBA());
-	if(result == 1){
+	if (result == 1) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-	    script.println("alert('평점이 반영되었습니다.')");
-	    script.println("location.href = 'MyPage.jsp'");
-	    script.println("</script>");
-	} else if( result == -1) {
-        PrintWriter script = response.getWriter();
-        script.println("<script>");
-        script.println("alert('DB 오류가 발생했습니다.')");
-        script.println("history.back()"); 
-        script.println("</script>");
+		script.println("alert('평점이 반영되었습니다.')");
+		script.println("location.href = 'MyPage.jsp'");
+		script.println("</script>");
+	} else if (result == -1) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('DB 오류가 발생했습니다.')");
+		script.println("history.back()");
+		script.println("</script>");
 	}
-	
-
 %>
 
 </body>
