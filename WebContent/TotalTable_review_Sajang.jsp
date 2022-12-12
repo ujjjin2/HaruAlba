@@ -65,12 +65,12 @@ response.setHeader("Cache-Control", "no-store");
     }
     .box{
       width: 100%;
-      height: 2000px;
+      height: 100%;
       margin: 0 auto;
     }
     #logo{
       float: left;
-      margin: 3% 0 0 17%;
+      margin: 3% 0 0 20%;
     }
     #menu{
       float: right ;
@@ -95,7 +95,7 @@ response.setHeader("Cache-Control", "no-store");
 	}
 	
 	.menubar > li {
-	  width: 20%; /*20*5=100%*/
+	  width: 25%; /*20*5=100%*/
 	  float: left;
 	  text-align: center;
 	  line-height: 40px;
@@ -191,10 +191,11 @@ footer{
         <nav id="menu">
            <ul id = "top_menu" style="margin: 3% 0 5% 0">
 		                <li>
-		                <% 		                
+		                <%
 		                UserDAO userDAO = new UserDAO();
+		                PtDAO ptDAO = new PtDAO();
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
-        				%>
+		                %>
         				</li><li>|</li>
 		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
@@ -203,10 +204,10 @@ footer{
         <!-- 수정해야됨 -->
         <form class="search_main" method="post" action="TotalTable_PartTime.jsp">
         	<div>
-			<input type="text" name="search_main" style="margin: 6% 0 0 10%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
-			<input type="submit" value="검색" style="margin: 4% 0 0 -20px;height: 50px; width: 6%;font-size: 20px;border: 3px solid #F29000; color: #FFFFFF; background: #FF9B09">
-			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 11%" >단기알바</a>
-        	<a href="#" style="margin: 10% 0 0% 20px">시급</a>
+			<input type="text" name="search_main" style="margin: 6% 0 0 8%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
+			<input type="submit" value="검색" style="margin: 2% 0 0 -20px;height: 51px; width: 6%;font-size: 20px;border: 3px solid #FF9B09; color: #FFFFFF; background: #FF9B09">
+			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 9%" >단기알바</a>
+        	<a href="Question.jsp" style="margin: 10% 0 0% 20px">시급</a>
         	<a href="TotalTable_Location_detail.jsp?_location=서울" style="margin: 10% 0 0% 20px">서울알바</a>
         	<a href="TotalTable_Location_detail.jsp?_location=인천" style="margin: 10% 0 0% 20px">인천알바</a>
 			</div>
@@ -221,7 +222,9 @@ footer{
 	        <a href="#">단기 알바</a>
 	        <ul class="submenu">
 	          <li><a href="TotalTable_PartTime.jsp">단기알바 목록</a></li>
+	          <%if(role.equals("사장")) {%>
 	          <li><a href="Write_PartTime.jsp">단기알바 글쓰기</a></li>
+	          <%} %>
 	        </ul>
 	      </li>
 	      <li>
@@ -233,25 +236,16 @@ footer{
 	        </ul>
 	      </li>
 	      <li>
-	        <a href="#">자기 PR</a>
-	        <ul class="submenu">
-	          <li><a href="TotalTable_PR.jsp">자기PR 목록</a></li>
-	          <li><a href="Write_PR.jsp">자기PR 글쓰기</a></li>
-	        </ul>
-	      </li>
-	      <li>
 	        <a href="#">후기</a>
 	        <ul class="submenu">
-	          <li><a href="TotalTable_review_Alba.jsp">알바 후기</a></li>
+	          <li><a href="TotalTable_review_Alba.jsp">알바 썰</a></li>
 	          <li><a href="TotalTable_review_Sajang.jsp">사장 후기</a></li>
 	        </ul>
 	      </li>
 	      <li>
 	        <a href="#">고객센터</a>
 	        <ul class="submenu">
-	          <li><a href="#">공지사항</a></li>
-	          <li><a href="#">신고하기 </a></li>
-	          <li><a href="#">문의사항</a></li>
+	          <li><a href="Question.jsp">문의사항</a></li>
 	        </ul>
 	      </li>
 	    </ul>

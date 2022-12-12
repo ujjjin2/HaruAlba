@@ -144,7 +144,7 @@ request.setCharacterEncoding("UTF-8");
     }
     #logo{
       float: left;
-      margin: 3% 0 0 17%;
+      margin: 3% 0 0 20%;
     }
     #menu{
       float: right ;
@@ -277,9 +277,9 @@ footer{
         <!-- 수정해야됨 -->
         <form class="search_main" method="post" action="TotalTable_PartTime.jsp">
         	<div>
-			<input type="text" name="search_main" style="margin: 6% 0 0 10%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
-			<input type="submit" value="검색" style="margin: 4% 0 0 -20px;height: 50px; width: 6%;font-size: 20px;border: 3px solid #F29000; color: #FFFFFF; background: #FF9B09">
-			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 11%" >단기알바</a>
+			<input type="text" name="search_main" style="margin: 6% 0 0 8%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
+			<input type="submit" value="검색" style="margin: 2% 0 0 -20px;height: 51px; width: 6%;font-size: 20px;border: 3px solid #FF9B09; color: #FFFFFF; background: #FF9B09">
+			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 9%" >단기알바</a>
         	<a href="Question.jsp" style="margin: 10% 0 0% 20px">시급</a>
         	<a href="TotalTable_Location_detail.jsp?_location=서울" style="margin: 10% 0 0% 20px">서울알바</a>
         	<a href="TotalTable_Location_detail.jsp?_location=인천" style="margin: 10% 0 0% 20px">인천알바</a>
@@ -327,7 +327,7 @@ footer{
   <div style="margin: -1% 0 0 16%; float: left;">
   	<div class="banner">
   		<ul>
-  			<li><img src="https://apple.contentsfeed.com/RealMedia/ads/Creatives/jobkorea/221128_handon_al_mt/221128_handon_570110.png"
+  			<li><img src="http://image.alba.kr/adbanner/PC_MainTop/20221123_government_624x126.png"
  				 style="width: 100%;height: 100%;"></li>
    			<li><img src="https://apple.contentsfeed.com/RealMedia/ads/Creatives/jobkorea/221116_jobaba_al_mt/221114_gif_570x110.png"
  				 style="width: 100%;height: 100%;"></li>
