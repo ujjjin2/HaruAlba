@@ -73,7 +73,7 @@
 						</center>
 						<center>
 							<div style="width: 80%; height: 80%; margin-top: 3%">
-								 <form action="Write_PR_Action.jsp" method="get" accept-charset="utf8">
+								 <form action="Write_ReviewA_Action.jsp" method="get" accept-charset="utf8">
 								  <!-- 제목 div -->
 								    <div class="form-group">
 								      <label for="title" style="float: left; margin: 1% 0 2% 0 ">제목 </label>

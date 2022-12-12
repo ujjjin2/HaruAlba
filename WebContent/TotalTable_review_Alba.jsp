@@ -287,7 +287,7 @@ footer{
 
 						<% if(role.equals("사장")){ %>
 					   <!-- 글쓰기 버튼  -->
-                       <a href="Write_PR.jsp">                       
+                       <a href="Write_Review_Alba.jsp">                       
                         <img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       
                        </a>
                     <%} %>   
