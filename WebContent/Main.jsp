@@ -339,8 +339,8 @@ footer{
   
   <div style="float: left; margin: 2% 5% 2% 0%;  border: 1px solid #747474;width : 27.5%; height: 172px; border-radius: 10px">
   	<a href="TotalTable_PartTime.jsp"><img src="images\PT.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 10%"></a>
-  	<a href="#"><img src="images\AlbaReview.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 5%"></a>
-  	<a href="#"><img src="images\sajangReview.png" style="height: 70%; weight:20%;margin: 5% 5% 5% 5%"></a>
+  	<a href="TotalTable_review_Alba.jsp"><img src="images\AlbaReview.png" style="height: 70%; weight:20%; margin: 5% 3% 5% 5%"></a>
+  	<a href="TotalTable_review_Sajang.jsp"><img src="images\sajangReview.png" style="height: 70%; weight:20%;margin: 5% 5% 5% 5%"></a>
   </div>
   
   <div class="mainfunction" style="background:#ffffff; width: 100%; height: 100%;">
