@@ -437,12 +437,7 @@ th, td {
 							</tbody>
 					</table>
 				</div>
-<script type="text/javascript">
-function del() {
-  if (confirm("정말 삭제하시겠습니까?"))
-    list_ok.submit();
- }
-</script>
+
 				<div class="btn-place">
 					<button type="submit" class="btn2">수정</button>
 				</div>
@@ -486,7 +481,8 @@ function del() {
 				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteSAJANG().equals("1")){%>disabled><%
 				      		}
 				      		%></td>
-				      		<td><a href="Delete_PT_Action.jsp?ptid=<%=pt.getPtID()%>" onclick="del();">삭제</a></td>
+								<script type="text/javascript">
+								</script><td><a href="Delete_PT_Action.jsp?ptid=<%=pt.getPtID()%>">삭제</a></td>
 		      				<input type="hidden" value="<%=pt.getPtTITLE()%>" name="ptTITLE">
 			      			<input type="hidden" value="<%=pt.getPtROLE()%>" name="ptROLE">
 			      			<input type="hidden" value="<%=pt.getPtMONEY()%>" name="ptMONEY">
@@ -521,7 +517,7 @@ function del() {
 					        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=review_s.getrTITLE()%></td>
 					        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=review_s.getrDATE()%></td>
 					      	<td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=ptDAO.ptusername(review_s.getUserID())%></td>
-					        <td><a href="Delete_ReviewS.jsp?rid=<%=review_s.getrID()%>" onclick="del();">삭제</a></td>
+					        <td><a href="Delete_ReviewS.jsp?rid=<%=review_s.getrID()%>">삭제</a></td>
 				     	 </tr>
 			    		 </form>
 					      <%
@@ -558,7 +554,7 @@ function del() {
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'" style="vertical-align: middle;"> <%= review.getrTITLE() %></td>
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'" style="vertical-align: middle;"> <%= review.getrDATE() %></td>
 					      	<td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'" style="vertical-align: middle;"> <%= prDAO.prusername(review.getUserID()) %></td>
-					        <td><a href="Delete_ReviewA.jsp?rid=<%=review.getrID()%>" onclick="del();">삭제</a></td>
+					        <td><a href="Delete_ReviewA.jsp?rid=<%=review.getrID()%>">삭제</a></td>
 					      	</tr>
 					      <% } %>
 					    </tbody>

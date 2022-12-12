@@ -22,6 +22,10 @@
 </head>
 <body>
 <%
+	
+	
+
+
 	PtcommentDAO ptcmtDAO = new PtcommentDAO();
 
 	int result = ptcmtDAO.deletePTCMT(ptID);
