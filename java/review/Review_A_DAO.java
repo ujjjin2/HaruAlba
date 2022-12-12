@@ -113,7 +113,7 @@ public class Review_A_DAO {
 
 		if (searchField.equals("") && searchText.equals("")) { 
 
-			String SQL2 = "SELECT * FROM reviewA";
+			String SQL2 = "SELECT * FROM reviewA ORDER BY rID DESC";
 
 			try {
 				pstmt = conn.prepareStatement(SQL2);
