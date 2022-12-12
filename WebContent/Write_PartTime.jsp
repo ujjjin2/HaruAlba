@@ -62,16 +62,16 @@
 </head>
 
 <!-- 2022-11-06 허유진 파란 배경색  -->
-<body style="background-color:#525CDE">
+<body style="background-color:#ffb955">
 
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 300%; background: #585858;">
-	    <div class="background" style="background: #525CDE;"></div>
+	    <div class="background" style="background: #ffb955;"></div>
 	    
 	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
-	    <div class="center" style="background: #FFF2BE;">
-				<div class="center_write" style="width: 80%; height:90%; background:#FFFFFF;">
+	    <div class="center" style="background: #ffb955;">
+				<div class="center_write" style="width: 80%; height:90%; background:#FFFFFF;box-shadow: 10px 10px 20px gray;">
 				<!-- 공간을 나눠줘야지만 그림의 센터값이 먹음/ 안하면 세로로 배치가 되서 왼쪽에만 붙어있음 -->
 					<div class="header">
 						<center>
@@ -134,7 +134,7 @@
 								      <label for="self_PR" style="float: left; margin: 3% 0 1% 0;font-size: 18px;color:#525CDE">매장 업무 관련 내용</label>
 								      <textarea class="form-control" name="ptCONTENT" id="ptCONTENT" rows="4" cols="1000" placeholder="내용을 입력해주세요" style="font-size: 18px"></textarea> 
 								    </div>
-								    <button type="submit" class="btn" style="font-size: 20px;width: 100%">글쓰기</button>
+								    <button type="submit" class="btn" style="font-size: 20px;width: 100%;margin-bottom: 20px">글쓰기</button>
 								  </form>
 							</div>
 						</center>
@@ -145,7 +145,7 @@
 			<!-- 흰색 부분 끝나는 div -->
 	    </div>
 	    
-	    <div class="background" style="background: #525CDE;"></div>
+	    <div class="background" style="background: #ffb955;"></div>
 	</div>
 	
 	
