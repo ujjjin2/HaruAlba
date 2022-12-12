@@ -12,23 +12,23 @@ import pt_comment.Ptcomment;
 
 public class Review_CmtDAO {
 
-	private Connection conn; // db 접근 객체
+	private Connection conn; 
 	private PreparedStatement pstmt;
-	private ResultSet rs; // db 결과를 담는 객체
+	private ResultSet rs; 
 
 	public Review_CmtDAO() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC";
-			String dbID = "haru"; // 계정
-			String dbPassword = "haru"; // 비밀번호
-			Class.forName("com.mysql.cj.jdbc.Driver"); // mysql에 접속을 도와주는 라이브러리
+			String dbID = "haru";
+			String dbPassword = "haru"; 
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public List<Review_Cmt> selectprcmt(int prid) throws SQLException { // PR댓글 리스트 뽑아오기
+	public List<Review_Cmt> selectprcmt(int prid) throws SQLException { // 알바 썰 댓글 뽑기
 		String SQL = "SELECT * FROM reviewA_cmt WHERE rID = ?";
 
 		try {
@@ -48,18 +48,18 @@ public class Review_CmtDAO {
 			}
 			return prlist;
 		} finally {
-			// 여기 뭐 넣어야함? ㅋㅋ
+
 		}
 	}
 
-	public int joincomment(Review_Cmt prcomment) { // 댓글달기
+	public int joincomment(Review_Cmt prcomment) { // 알바 썰 댓글 작성
 		String SQL = "INSERT INTO reviewA_cmt VALUES(null, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, prcomment.getrID());
 			pstmt.setString(2, prcomment.getUserID());
 			pstmt.setString(3, prcomment.getComment());
-			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공
+			return pstmt.executeUpdate(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

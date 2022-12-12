@@ -12,23 +12,23 @@ import java.util.List;
 import user.UserDAO;
 
 public class PtDAO {
-	private Connection conn; // db 접근 객체
+	private Connection conn; 
 	private PreparedStatement pstmt;
-	private ResultSet rs; // db 결과를 담는 객체
+	private ResultSet rs; 
 
 	public PtDAO() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
-			String dbID = "haru"; // 계정
-			String dbPassword = "haru"; // 비밀번호
-			Class.forName("com.mysql.cj.jdbc.Driver"); // mysql에 접속을 도와주는 라이브러리
+			String dbID = "haru"; 
+			String dbPassword = "haru"; 
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public String ptusername(String userID) { // pt테이블 외래키 userNAME select
+	public String ptusername(String userID) {  // 사용자 ID로 이름을 받아오기
 		String SQL = "SELECT userNAME FROM user where userID = ? ";
 
 		try {
@@ -46,7 +46,7 @@ public class PtDAO {
 		return null;
 	}
 
-	public String ptiduserid(int ptID) { // ptID로 유저이름 뽑기
+	public String ptiduserid(int ptID) { // PTID로 유저이름 뽑기
 		String SQL = "SELECT userID FROM pt where  ptID = ? ";
 
 		try {
@@ -64,7 +64,7 @@ public class PtDAO {
 		return null;
 	}
 
-	public String ptrating(String userID) { // pt테이블 외래키 userNAME, rating , userPHONE select
+	public String ptrating(String userID) { // PT 테이블 유저 ID로 유저의 평점 뽑기
 		String SQL = "SELECT userRATING FROM user where userID = ? ";
 
 		try {
@@ -82,7 +82,7 @@ public class PtDAO {
 		return null;
 	}
 
-	public String ptSTATE(int ptID) { // pt 상태 뽑아오기
+	public String ptSTATE(int ptID) { // 구인구직 현재 상태 뽑아오기
 		String SQL = "SELECT ptSTATE FROM pt where ptID = ? ";
 
 		try {
@@ -100,7 +100,6 @@ public class PtDAO {
 		return null;
 	}
 
-	// 글쓰기 기능
 	public int writePT(Pt pt) { // PT 글쓰기
 		String SQL = "INSERT INTO pt VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, ?, ?)";
 
@@ -130,7 +129,7 @@ public class PtDAO {
 		return -1;
 	}
 
-	public List<Pt> mypt(String userid) throws SQLException { // PT 리스트 뽑아오기
+	public List<Pt> mypt(String userid) throws SQLException { // 자신이 작성한 PT 뽑기
 		String SQL = "SELECT * FROM pt WHERE userID = ?";
 
 		try {
@@ -167,7 +166,7 @@ public class PtDAO {
 	public ArrayList<Pt> getSearch(String searchField, String searchText) { // PT 검색
 		ArrayList<Pt> list4 = new ArrayList<Pt>();
 
-		if (searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select
+		if (searchField.equals("") && searchText.equals("")) { // 검색내용이 없을 경우
 
 			String SQL2 = "SELECT * FROM pt order by ptID desc";
 
@@ -193,7 +192,7 @@ public class PtDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (searchField.equals("userID")) {
+		} else if (searchField.equals("userID")) { // 작성자 검색했을경우
 
 			String SQL = "select * from pt WHERE " + searchField.trim();
 
@@ -235,7 +234,7 @@ public class PtDAO {
 				e.printStackTrace();
 			}
 
-		} else {
+		} else { // 내용이 들어있을 경우
 			String SQL = "select * from pt WHERE " + searchField.trim();
 
 			try {
@@ -338,7 +337,7 @@ public class PtDAO {
 		}
 	}
 
-	public String checkALBA(String ptID) { // pt테이블 외래키 userNAME, rating , userPHONE select
+	public String checkALBA(String ptID) { // PT 알바 상황 확인
 		String SQL = "SELECT ptSTATE FROM pt where ptID = ? ";
 
 		try {
@@ -354,7 +353,7 @@ public class PtDAO {
 		return null;
 	}
 
-	public int selectALBA(String ptID, String ptALBA) { // pt 내용
+	public int selectALBA(String ptID, String ptALBA) { //PT 구인구직 할당
 		try {
 			String SQL = "update pt set ptSTATE = ?, ptALBA = ? WHERE ptID= ? ";
 			pstmt = conn.prepareStatement(SQL);
@@ -401,7 +400,7 @@ public class PtDAO {
 	}
 
 	
-	public ArrayList<Pt> getLocationSearch(String searchField, String searchText, String info) { // PT 검색
+	public ArrayList<Pt> getLocationSearch(String searchField, String searchText, String info) { // PT 지역 검색
 		ArrayList<Pt> list4 = new ArrayList<Pt>();
 
 		if (searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select

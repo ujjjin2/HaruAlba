@@ -1,7 +1,7 @@
 package pt;
 
 
-public class Pt {
+public class Pt { // 알바 구인구직 글 DTO
 
 	private int ptID;
 	private String userID;

@@ -2,7 +2,7 @@ package util;
 
 import java.security.SecureRandom;
 
-public class SALT {
+public class SALT { // 암호위한 SALT
 	
 	public String makeSALT() {
 		

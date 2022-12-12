@@ -1,6 +1,6 @@
 package review_comment;
 
-public class Review_Cmt {
+public class Review_Cmt { // 썰 댓글 DTO
 	int cmt_id;
 	int rID;
 	String userID;

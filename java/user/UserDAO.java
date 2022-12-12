@@ -13,26 +13,26 @@ import util.SALT;
 import util.SHA256;
 
 public class UserDAO {
-	private Connection conn; // db 접근 객체
+	private Connection conn;
 	private PreparedStatement pstmt;
-	private ResultSet rs; // db 결과를 담는 객체
+	private ResultSet rs; 
 
 	SHA256 sha256 = new SHA256();
 	SALT salt = new SALT();
 
-	public UserDAO() { // dao 생성자에서 db connection
+	public UserDAO() { 
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC";
-			String dbID = "haru"; // 계정
-			String dbPassword = "haru"; // 비밀번호
-			Class.forName("com.mysql.cj.jdbc.Driver"); // mysql에 접속을 도와주는 라이브러리
+			String dbID = "haru"; 
+			String dbPassword = "haru"; 
+			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public String checksalt(String userID) { // ID의 솔트 셀렉트
+	public String checksalt(String userID) { // ID의 SALT 받아오기
 		String SQL = "SELECT salt FROM user WHERE userID = ?";
 
 		try {
@@ -48,16 +48,15 @@ public class UserDAO {
 		return null;
 	}
 
-	// 로그인 기능
-	public int login(String userID, String userPASSWORD, String saltresult) {
+	public int login(String userID, String userPASSWORD, String saltresult) { // 아이디 비밀번호 + 사용자의 SALT 받아서 로그인
 		String SQL = "SELECT userPASSWORD FROM user WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString(1).equals(sha256.getSHA256(userPASSWORD, saltresult))) // 로그인 할때도 사용자가 입력한 암호를 해쉬로 변환하여
-																						// 대조
+				if (rs.getString(1).equals(sha256.getSHA256(userPASSWORD, saltresult))) // 로그인 할때도 사용자가 입력한 암호를 해쉬로 변환하여 대조
+																						
 					return 1; // 로그인 성공
 				else
 					return 0; // 비밀번호 틀림
@@ -78,8 +77,8 @@ public class UserDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD(), saltresult)); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후
-																						// DB에 저장
+			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD(), saltresult)); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후 DB 저장
+																						
 			pstmt.setString(3, user.getUserNAME());
 			pstmt.setString(4, user.getUserLOCATION());
 			pstmt.setInt(5, user.getUserAGE());
@@ -92,7 +91,7 @@ public class UserDAO {
 			pstmt.setInt(12, 0);
 			pstmt.setString(13, saltresult);
 
-			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공
+			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,8 +108,8 @@ public class UserDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD(), saltresult)); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후
-																						// DB에 저장
+			pstmt.setString(2, sha256.getSHA256(user.getUserPASSWORD(), saltresult)); // 회원가입할때 사용자가 입력한 비밀번호에 해쉬 적용 후 DB 저장
+																						
 			pstmt.setString(3, user.getUserNAME());
 			pstmt.setString(4, user.getUserLOCATION());
 			pstmt.setInt(5, user.getUserAGE());
@@ -123,7 +122,7 @@ public class UserDAO {
 			pstmt.setInt(12, 0);
 			pstmt.setString(13, saltresult);
 
-			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공
+			return pstmt.executeUpdate(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -131,7 +130,7 @@ public class UserDAO {
 		return -1; // DB 오류
 	}
 
-	public String sessionnameonly(String userid) { // 세션아이디로 이름 뽑아오기
+	public String sessionnameonly(String userid) {  // ID로 이름 뽑기
 		String SQL = "SELECT userNAME FROM user WHERE userID = ?";
 
 		try {
@@ -147,7 +146,7 @@ public class UserDAO {
 		return null;
 	}
 
-	public String sessionname(String userid) { // 이름이랑 ID 뽑아오기
+	public String sessionname(String userid) { // ID로 이름이랑 ID 형식 맞춰서 뽑기 
 		String SQL = "SELECT userNAME, userID FROM user WHERE userID = ?";
 
 		try {
@@ -163,7 +162,7 @@ public class UserDAO {
 		return null;
 	}
 
-	public String findId(String userNAME, String userPHONE) { // ID 찾기 메서드
+	public String findId(String userNAME, String userPHONE) { // ID 찾기
 		String userid = null;
 
 		try {
@@ -184,7 +183,7 @@ public class UserDAO {
 		return userid;
 	}
 
-	public String finduserId(String userNAME) { // ID 찾기 메서드
+	public String finduserId(String userNAME) { // 이름으로 ID 찾기
 		String userid = null;
 
 		try {
@@ -244,7 +243,7 @@ public class UserDAO {
 		return -1; // DB오류
 	}
 
-	public String findrole(String userID) { // 역할 찾기
+	public String findrole(String userID) { // 사용자 역할 찾기
 		String userrole = null;
 
 		try {
@@ -263,7 +262,7 @@ public class UserDAO {
 		return userrole;
 	}
 
-	public List<User> selectall(String userid) throws SQLException { // 유저 정보 뽑아오기
+	public List<User> selectall(String userid) throws SQLException { // 유저 정보 뽑기
 		String SQL = "SELECT userNAME, userLOCATION, userAGE, userGENDER, userPHONE, userRATING, role, userNICKNAME FROM user WHERE userID = ?";
 
 		try {
@@ -287,11 +286,11 @@ public class UserDAO {
 			}
 			return list;
 		} finally {
-			// 여기 뭐 넣어야함? ㅋㅋ
+			
 		}
 	}
 
-	public String findRATING(String userID) { // 특정 유저 평점 셀렉트
+	public String findRATING(String userID) { // 특정 유저 평점 뽑기
 		String rating = null;
 
 		try {
@@ -310,7 +309,7 @@ public class UserDAO {
 		return rating;
 	}
 
-	public int changeRATING(String userID, String userRATING) { // 특정 유저 평점 수정
+	public int changeRATING(String userID, String userRATING) { // 특정 유저 평점 변경
 
 		try {
 			String SQL = "update user set userRATING=? WHERE userID= ? ";
@@ -318,7 +317,7 @@ public class UserDAO {
 			pstmt.setString(1, userRATING);
 			pstmt.setString(2, userID);
 
-			return pstmt.executeUpdate(); // 수정되면 1 나옴
+			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -326,9 +325,9 @@ public class UserDAO {
 		return -1; // DB오류
 	}
 
-	public int changeUserInfo(String userID, String userLOCATION, int userAGE, String userPHONE, String userNCIKNAME) { // 유저
-																														// 정보
-																														// 수정
+	public int changeUserInfo(String userID, String userLOCATION, int userAGE, String userPHONE, String userNCIKNAME) { // 유저 정보 수정
+																														
+																														
 		try {
 			String SQL = "UPDATE user set userLOCATION=?, userAGE=?, userPHONE=?, userNICKNAME=? WHERE userID=?";
 			pstmt = conn.prepareStatement(SQL);
@@ -351,7 +350,7 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 
-			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공
+			return pstmt.executeUpdate(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -366,7 +365,7 @@ public class UserDAO {
 			pstmt.setFloat(1, rating);
 			pstmt.setString(2, userID);
 
-			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공
+			return pstmt.executeUpdate(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -380,7 +379,7 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 
-			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공
+			return pstmt.executeUpdate(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 
