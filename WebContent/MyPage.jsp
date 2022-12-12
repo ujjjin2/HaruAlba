@@ -557,7 +557,7 @@ th, td {
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle;"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle;"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;vertical-align: middle;"<%}
-					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td>
+					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td> 
  						<form action="PTrating_ALBA.jsp" method="post"> <!-- 평점 주러가기 폼 -->
 				      		<td><input type="submit" class="btn" value="평점주러가기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteALBA().equals("1")){ %>disabled<%} %>> </td>
 				      			<input type="hidden" value="<%=pt.getPtTITLE() %>" name="ptTITLE">
