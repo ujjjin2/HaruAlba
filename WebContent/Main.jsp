@@ -392,7 +392,7 @@ footer{
 	    			<div class="container" style="width: 72%; height: 50%;">
 	    			
 					<b style="float: left; margin: 4% 0 0 0;font-size: 20px">알바 썰</b>
-					  		<a href="TotalTable_PR.jsp">
+					  		<a href="TotalTable_review_Alba.jsp">
 					  		
 					  		<!-- +버튼  -->
 					   		<img src="images/pluse_button.png" style="width: 20px; height: 20px; float: right; margin: 4% 0 0 0;">       
@@ -403,6 +403,8 @@ footer{
 					      <tr>
 					        <th  style="text-align: center;font-size: 18px; width: 20%;background: #ffb955;color:white;">글번호</th>
 					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">제목</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">작성일시</th>
+					        <th style="text-align: center;font-size: 18px; width: 30%;background: #ffb955;color:white;">작성자</th>
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -412,6 +414,8 @@ footer{
 					      <tr>
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%=rs.getInt("rId") %></td>
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%= rs.getString("rTITLE") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%= rs.getString("rDATE") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%= rs.getString("userID") %></td>
 					      </tr>
 					      <%
 					    	 }

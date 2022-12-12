@@ -48,7 +48,7 @@ request.setCharacterEncoding("UTF-8");
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('작성이 완료되었습니다.')");
-        script.println("location.href = 'TotalTable_PR.jsp'");    // 메인 페이지로 이동
+        script.println("location.href = 'TotalTable_review_Alba.jsp'");    // 메인 페이지로 이동
         script.println("</script>");
         
     }
