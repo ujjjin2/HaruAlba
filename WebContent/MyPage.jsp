@@ -77,12 +77,12 @@ request.setCharacterEncoding("UTF-8");
     }
     #logo{
       float: left;
-      margin: 3% 0 0 17%;
+      margin: 3% 0 0 20%;
     }
     #menu{
       float: right ;
       text-align: right;
-      margin: 0 12% 0 0;
+      margin: 2% 12% 0 0;
     }
     #menu li{
       display: inline-block;
@@ -309,7 +309,7 @@ th, td {
 			</A>
         </div>
         <nav id="menu">
-           <ul id = "top_menu" style="margin: 3% 0 5% 0">
+           <ul id = "top_menu" style="margin: 0% 0 5% -1%">
 		                <li>
 		                <%
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
@@ -322,9 +322,15 @@ th, td {
         <!-- 수정해야됨 -->
         <form class="search_main" method="post" action="TotalTable_PartTime.jsp">
         	<div>
-			<input type="text" name="search_main" style="margin: 6% 0 0 10%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
-			<input type="submit" value="검색" style="margin: 4% 0 0 -20px;height: 50px; width: 6%;font-size: 20px;border: 3px solid #F29000; color: #FFFFFF; background: #FF9B09">
-			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 11%" >단기알바</a>
+					<select class="search_main" name="searchField" style="margin: 6% 0 0 4%;height: 50px;width: 5%; font-size: 20px; border: 3px solid #FF9B09;">
+						<option value="ptTITLE">제목</option>
+						<option value="userID">작성자</option>
+						<option value="ptCONTENT">내용</option>
+						<option value="ptINFO">지역</option>
+					</select> 
+			<input type="text" name="searchText" style="margin: 6% 0 0 -0.4%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
+			<input type="submit" value="검색" style="margin: 2% 0 0 -20px;height: 51px; width: 6%;font-size: 20px;border: 3px solid #FF9B09; color: #FFFFFF; background: #FF9B09">
+			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 9.8%" >단기알바</a>
         	<a href="Question.jsp" style="margin: 10% 0 0% 20px">시급</a>
         	<a href="TotalTable_Location_detail.jsp?_location=서울" style="margin: 10% 0 0% 20px">서울알바</a>
         	<a href="TotalTable_Location_detail.jsp?_location=인천" style="margin: 10% 0 0% 20px">인천알바</a>
@@ -575,7 +581,7 @@ th, td {
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle;"> <%= pt.getPtID() %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle;"> <%= pt.getPtTITLE() %></td>
 					        <td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle;"> <%= pt.getPtSDAY() + "~" + pt.getPtEDAY() %></td>
-					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle;"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
+					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle;"><%= ptDAO.ptusername(pt.getUserID()) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;vertical-align: middle;"<%}
 					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td>
 					      		
