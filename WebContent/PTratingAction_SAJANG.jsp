@@ -25,8 +25,6 @@
 	String rate4 = request.getParameter("RATE4");
 
 	Float rate = (Float.parseFloat(rate1) + Float.parseFloat(rate2) + Float.parseFloat(rate3) + Float.parseFloat(rate4)) / 4;
-
-	user.setUserRATING(rate);	
 	
 	UserDAO userDAO = new UserDAO();
 	PtDAO ptDAO = new PtDAO();
@@ -35,7 +33,7 @@
 	user.setUserID(pt.getPtALBA());
 	out.println(pt.getPtALBA());
 	userDAO.addEval(pt.getPtALBA());
-	userDAO.addTotal(user.getUserRATING(), pt.getPtALBA());
+	userDAO.addTotal(rate, pt.getPtALBA());
 
 	pt.setPtID(pt.getPtID());
 	ptDAO.checkRatingSAJANG(pt.getPtID());

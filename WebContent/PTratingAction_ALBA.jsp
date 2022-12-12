@@ -26,14 +26,12 @@
 	
 	Float rate = (Float.parseFloat(rate1) + Float.parseFloat(rate2) + Float.parseFloat(rate3) + Float.parseFloat(rate4)) / 4 ;
 	
-	user.setUserRATING(rate);
-
 	UserDAO userDAO = new UserDAO();
 	PtDAO ptDAO = new PtDAO();
 
 	user.setUserID(user.getUserID());
 	userDAO.addEval(user.getUserID());
-	userDAO.addTotal(user.getUserRATING(), user.getUserID());
+	userDAO.addTotal(rate, user.getUserID());
 
 	pt.setPtID(pt.getPtID());
 
