@@ -365,6 +365,7 @@ public class UserDAO {
 			pstmt.setFloat(1, rating);
 			pstmt.setString(2, userID);
 
+			
 			return pstmt.executeUpdate(); 
 		} catch (Exception e) {
 			e.printStackTrace();
