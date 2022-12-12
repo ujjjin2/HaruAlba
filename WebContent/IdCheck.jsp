@@ -42,7 +42,7 @@
 	<div class="parent" style="width: 100%; height: 1145px; background: #585858;">
 	    <div class="background" style="background: #ffb955;"></div>
 	    <div class="center" style="background: #ffb955;">
-	    	<div class="color_white" style="width: 60%; height:80%; background:#FFFFFF; margin: 12% 20% 17% 20%;box-shadow: 10px 10px 20px gray;">
+	    	<div class="color_white" style="width: 70%; height:75%; background:#FFFFFF; margin: 3% 20% 17% 15%;box-shadow: 10px 10px 20px gray;">
 	    	<center>
 					<A href="Login.jsp">
 						<img src="images/harulogo.png" style="margin: 5% 0 5% 0; width: 150px; height: 150px">

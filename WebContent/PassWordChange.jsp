@@ -39,10 +39,10 @@
 <body style="background-color:#ffb955">
 
 <!-- 2022-11-06 허유진 헤더 부분  -->
-	<div class="parent" style="width: 100%; height: 1145px; background: #585858;">
+	<div class="parent" style="width: 100%; height: 1120px; background: #585858;">
 	    <div class="background" style="background: #ffb955;"></div>
 	    <div class="center" style="background: #ffb955;">
-	    	<div class="color_white" style="width: 60%; height:80%; background:#FFFFFF; margin: 12% 20% 17% 20%;box-shadow: 10px 10px 20px gray;">
+	    	<div class="color_white" style="width: 70%; height:75%; background:#FFFFFF; margin: 3% 20% 17% 15%;box-shadow: 10px 10px 20px gray;">
 	    	<center>
 					<A href="Login.jsp">
 						<img src="images/harulogo.png" style="margin: 5% 0 5% 0; width: 150px; height: 150px">
@@ -63,10 +63,10 @@
 						<div class="form-group" class="find-phone" style="margin: 3% 0 40% 0">
 							<p style="line-height:1;color:#525CDE;font-size:12px;margin-bottom:3%;font-size: 20px">전화번호</p>
 							<input type="text" class="form-control" placeholder="-를 제외하고 작성"
-								name="userPHONE" maxlength="20" style="height: 50px; font-size: 20px;margin-bottom:150px;">
+								name="userPHONE" maxlength="20" style="height: 50px; font-size: 20px;margin-bottom:100px;">
 								
-				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:30px;font-size: 20px" class="btn btn-primary form-control" value="비밀번호 수정">
-				<input type="button" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:100px;font-size: 20px" class="btn btn-primary form-control" onclick="history.back()" value="취소">
+				<input type="submit" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:20px;font-size: 20px" class="btn btn-primary form-control" value="비밀번호 수정">
+				<input type="button" style="background-color:#FA4E29;height:60px;font-weight:bold;margin-bottom:80px;font-size: 20px" class="btn btn-primary form-control" onclick="history.back()" value="취소">
 						</div>
 
 				</form>

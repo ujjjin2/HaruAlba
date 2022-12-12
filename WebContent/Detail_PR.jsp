@@ -236,9 +236,15 @@
 	display: flex;
 	flex-direction: row;
 }
+*{
+	font-family: 'Jua', sans-serif;
+}
 input:focus{outline:none;}
-
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
 <meta charset="UTF-8">
 <title>상세정보_PR</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -248,20 +254,20 @@ input:focus{outline:none;}
 </head>
 
 <!-- 파란색 배경 -->
-<body style="background-color:#525CDE">
+<body style="background-color:#ffb955">
 	
 	<!-- 헤더 -->
-	<div class="parent" style="width: 100%; height: 100%; background: #585858;">
-		<div class="background" style="background: #525CDE;"></div>
+	<div class="parent" style="width: 100%; height: 100%; background: #ffb955;">
+		<div class="background" style="background: #ffb955;"></div>
 		
 		<!-- 노란색 -->
-		<div class="center" style="background: #FFF2BE;">
+		<div class="center" style="background: #ffb955;">
 		<!-- 흰색 -->
-			<div class="center_write" style="background: #FFFFFF">
+			<div class="center_write" style="background: #FFFFFF;box-shadow: 10px 10px 20px gray;">
 					<div class="header">
 						<center>
 							<a href="Main.jsp">
-								<img src="images/harulogo.png" style="width: 150px; height: 150px;">
+								<img src="images/harulogo.png" style="width: 140px; height: 140px;">
 							</a>
 						</center>
 					</div>
@@ -337,7 +343,7 @@ input:focus{outline:none;}
 		</div>
 		<!--  노란색  -->
 		
-		<div class="background" style="background: #525CDE;"></div>
+		<div class="background" style="background: #ffb955;"></div>
 	
 	</div>
 

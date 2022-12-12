@@ -25,9 +25,7 @@
     flex: 3;
     
 }
-.header{
-	margin: 80px 0 0 0px;
-}
+
 </style>
 </head>
 <body style="background-color:#525CDE">
@@ -43,15 +41,15 @@
 				<form style="display:inline;" method="post" action="EmployerResister.jsp" >
 						<center>
 							<button type="submit" 
-								style="background-color: #FEFFF2; width:40%; height: 800px;border:0;border-radius:30px;  margin: 13% 8% 0 0">
-									<img src="images/employer.png" style="width: 225px; height: 225px;">
+								style="background-color: #FEFFF2; width:40%; height: 800px;border:0;border-radius:30px;  margin: 3% 8% 0 0">
+									<img src="images/employer.png" style="width: 215px; height: 215px;">
 									<p style="font-size:40px;line-height:45px;text-align:center"><b>사장님</b></p>
 							</button>
 				</form>
 				<form style="display:inline;" method="post" action="EmployeeResister.jsp">
 							<button type="submit" 
 								style="background-color: #FEFFF2; width: 40%; height: 800px;border:0;border-radius:30px;">
-									<img src="images/employee.png" style="width: 200px; height: 200px;">
+									<img src="images/employee.png" style="width: 190px; height: 190px;">
 									<p style="font-size:40px;line-height:45px;text-align:center; margin: 10px 0 0 0"><b>아르바이트생</b></p>
 							</button>
 						</center>
