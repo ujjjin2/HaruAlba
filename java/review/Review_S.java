@@ -3,7 +3,7 @@ package review;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class Review_S {
+public class Review_S { // 사장 설 DTO
 	private int rID;
 	private String userID;
 	private String rTITLE;

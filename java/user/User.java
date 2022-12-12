@@ -1,6 +1,6 @@
 package user;
 
-public class User {
+public class User {  // 사용자 DTO 
 	
 	private String userID;
 	private String userPASSWORD;

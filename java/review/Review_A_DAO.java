@@ -13,23 +13,23 @@ import pt.Pt;
 import user.UserDAO;
 
 public class Review_A_DAO {
-	private Connection conn; // db 접근 객체
+	private Connection conn; 
 	private PreparedStatement pstmt;
-	private ResultSet rs; // db 결과를 담는 객체
+	private ResultSet rs; 
 
 	public Review_A_DAO() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
-			String dbID = "haru"; // 계정
-			String dbPassword = "haru"; // 비밀번호
-			Class.forName("com.mysql.cj.jdbc.Driver"); // mysql에 접속을 도와주는 라이브러리
+			String dbID = "haru";
+			String dbPassword = "haru"; 
+			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public Date getDate() { // 현재 시간 가져오기
+	public Date getDate() {  // 글 생성 시간 가져오기
 		String SQL = "SELECT NOW()";
 
 		try {
@@ -44,7 +44,7 @@ public class Review_A_DAO {
 		return getDate();
 	}
 
-	public int getNext() {
+	public int getNext() { // 댓글 개수 가져오기
 		String SQL = "SELECT MAX(prID) FROM pr";
 
 		try {
@@ -61,8 +61,7 @@ public class Review_A_DAO {
 
 	}
 
-	// 글쓰기 기능
-	public int writeReview(Review_A review) {
+	public int writeReview(Review_A review) {  // 글 작성하기
 		String SQL = "INSERT INTO reviewA VALUES (null, ?, ?, ?, ?, ?)";
 
 		try {
@@ -83,7 +82,7 @@ public class Review_A_DAO {
 		return -1;
 	}
 
-	public List<Review_A> myreview(String userid) throws SQLException { // PR 리스트 뽑아오기
+	public List<Review_A> myreview(String userid) throws SQLException { // 알바 썰 뽑기
 		String SQL = "SELECT * FROM reviewA WHERE userID = ?";
 
 		try {
@@ -105,14 +104,14 @@ public class Review_A_DAO {
 			}
 			return list3;
 		} finally {
-			// 여기 뭐 넣어야함? ㅋㅋ
+
 		}
 	}
 
-	public ArrayList<Review_A> getSearch(String searchField, String searchText) { // PR 검색
+	public ArrayList<Review_A> getSearch(String searchField, String searchText) { //알바 썰 검색
 		ArrayList<Review_A> list = new ArrayList<Review_A>();
 
-		if (searchField.equals("") && searchText.equals("")) { // 둘다 비었으면 그냥 select
+		if (searchField.equals("") && searchText.equals("")) { 
 
 			String SQL2 = "SELECT * FROM reviewA";
 
@@ -203,7 +202,7 @@ public class Review_A_DAO {
 		return list;
 	}
 
-	public String prusername(String userID) { // pr테이블 외래키 userNAME select
+	public String prusername(String userID) { // ID 받아서 이름 가져오기
 		String SQL = "SELECT userNAME FROM user where userID = ? ";
 
 		try {

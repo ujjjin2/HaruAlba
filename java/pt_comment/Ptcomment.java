@@ -1,6 +1,6 @@
 package pt_comment;
 
-public class Ptcomment {
+public class Ptcomment { // 알바 구인구직 댓글 DTO
 	int cmt_id;
 	int ptID;
 	String userID;

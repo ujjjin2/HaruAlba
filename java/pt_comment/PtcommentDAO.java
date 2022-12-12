@@ -11,25 +11,25 @@ import java.util.List;
 import user.User;
 
 public class PtcommentDAO {
-	// 작성, 보이게하는거랑
-	private Connection conn; //db 접근 객체 
+
+	private Connection conn; 
 	private PreparedStatement pstmt;
-	private ResultSet rs; // db 결과를 담는 객체
+	private ResultSet rs; 
 	
 	public PtcommentDAO() { 
 		try {
 		String dbURL = "jdbc:mysql://localhost:3306/haru?serverTimezone=UTC";
-		String dbID = "haru"; //계정
-		String dbPassword = "haru"; //비밀번호
-		Class.forName("com.mysql.cj.jdbc.Driver"); //mysql에 접속을 도와주는 라이브러리 
+		String dbID = "haru"; 
+		String dbPassword = "haru"; 
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		}catch(Exception e) {
 		e.printStackTrace();
 	}
 	}
 	
-	//리스트 뽑기
-	public List<Ptcomment> selectptcmt(int ptid) throws SQLException{
+
+	public List<Ptcomment> selectptcmt(int ptid) throws SQLException{ // 댓글 뽑기
 		String SQL = "SELECT * FROM pt_comment WHERE ptID = ?";
 		
 		try {
@@ -49,7 +49,7 @@ public class PtcommentDAO {
 		}
 		return ptlist;
 	}finally {
-		//여기 뭐 넣어야함? ㅋㅋ
+
 	}
 	}
 	
@@ -60,7 +60,7 @@ public class PtcommentDAO {
 			pstmt.setInt(1, ptcomment.getPtID());
 			pstmt.setString(2, ptcomment.getUserID());
 			pstmt.setString(3, ptcomment.getComment());
-			return pstmt.executeUpdate(); // 0이상 값이 return된 경우 성공 
+			return pstmt.executeUpdate(); 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

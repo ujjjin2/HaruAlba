@@ -3,7 +3,7 @@ package review;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class Review_A {
+public class Review_A { // 알바 썰 DTO
 	private int rID;
 	private String userID;
 	private String rTITLE;
