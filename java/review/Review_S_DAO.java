@@ -87,7 +87,7 @@ public class Review_S_DAO {
 	}
 
 	public List<Review_S> myreview(String userid) throws SQLException { // 내가 작성한 리뷰 뽑아오기
-		String SQL = "SELECT * FROM reviewS WHERE userID = ?";
+		String SQL = "SELECT * FROM reviewS WHERE userID = ? ORDER BY rID DESC";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);

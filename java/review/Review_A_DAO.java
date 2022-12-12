@@ -83,7 +83,7 @@ public class Review_A_DAO {
 	}
 
 	public List<Review_A> myreview(String userid) throws SQLException { // 알바 썰 뽑기
-		String SQL = "SELECT * FROM reviewA WHERE userID = ?";
+		String SQL = "SELECT * FROM reviewA WHERE userID = ? ORDER BY rID DESC";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);
