@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pt_comment.Ptcomment;
+import review.Review_A_DAO;
+import review.Review_S_DAO;
 
 public class Review_CmtDAO {
 
@@ -65,5 +67,30 @@ public class Review_CmtDAO {
 		}
 		return -1; // DB 오류
 	}
+	
+	public int deletecmt( String rID) { // 알바썰 댓글 지우기
+		
+		try {
+			String SQL = "DELETE FROM reviewa_cmt WHERE rID in (" + rID.trim() +")";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.executeUpdate();
+			
+			System.out.println(SQL);
+			
+			Review_A_DAO reviewcmt = new Review_A_DAO();
+			int result = reviewcmt.delete(rID);
+			
+			if(result==1) {
+				return 1;
+			}else {
+				return -1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
 
 }

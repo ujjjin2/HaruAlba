@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pt_comment.Ptcomment;
+import review.Review_S_DAO;
 
 public class ReviewS_CmtDAO {
 
@@ -65,5 +66,30 @@ public class ReviewS_CmtDAO {
 		}
 		return -1; // DB 오류
 	}
+	
+	public int deleteScmt( String rID) { // 사장썰 댓글 지우기
+		
+		try {
+			String SQL = "DELETE FROM reviews_cmt WHERE rID in (" + rID.trim() +")";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.executeUpdate();
+			
+			System.out.println(SQL);
+			
+			Review_S_DAO reviewcmt = new Review_S_DAO();
+			int result = reviewcmt.deleteS(rID);
+			
+			if(result==1) {
+				return 1;
+			}else {
+				return -1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
 
 }

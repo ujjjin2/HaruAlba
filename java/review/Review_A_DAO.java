@@ -218,5 +218,22 @@ public class Review_A_DAO {
 		}
 		return null;
 	}
+	
+	public int delete( String rID) { // 알바썰 지우기
+		
+		try {
+			String SQL = "DELETE FROM reviewa WHERE rID in (" + rID.trim() +")";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.executeUpdate();
+			
+			System.out.println(SQL);
+			
+			return 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 }

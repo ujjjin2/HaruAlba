@@ -269,6 +269,7 @@ th, td {
 	padding: 0px 16px 0px 16px;
 }
 
+
   </style>
 </head>
 <%
@@ -436,6 +437,12 @@ th, td {
 							</tbody>
 					</table>
 				</div>
+<script type="text/javascript">
+function del() {
+  if (confirm("정말 삭제하시겠습니까?"))
+    list_ok.submit();
+ }
+</script>
 				<div class="btn-place">
 					<button type="submit" class="btn2">수정</button>
 				</div>
@@ -460,6 +467,7 @@ th, td {
 					        <th style="text-align: center;background: #ffb955;color:white;">작성자</th>
 					        <th style="text-align: center;background: #ffb955;color:white;">상태</th>
 					        <th style="text-align: center;background: #ffb955;color:white;">평점주기</th>
+					        <th style="text-align: center;background: #ffb955;color:white;">삭제</th>
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -478,6 +486,7 @@ th, td {
 				      		<td><input type="submit" class="btn" value="평점주기" <%if(!pt.getPtSTATE().equals("마감") || pt.getPtWriteSAJANG().equals("1")){%>disabled><%
 				      		}
 				      		%></td>
+				      		<td><a href="Delete_PT_Action.jsp?ptid=<%=pt.getPtID()%>" onclick="del();">삭제</a></td>
 		      				<input type="hidden" value="<%=pt.getPtTITLE()%>" name="ptTITLE">
 			      			<input type="hidden" value="<%=pt.getPtROLE()%>" name="ptROLE">
 			      			<input type="hidden" value="<%=pt.getPtMONEY()%>" name="ptMONEY">
@@ -497,6 +506,9 @@ th, td {
 					        <th style="text-align: center;background: #ffb955;color:white;">제목</th>
 					        <th style="text-align: center;background: #ffb955;color:white;">일시</th>
 					        <th style="text-align: center;background: #ffb955;color:white;">작성자</th>
+					        
+					        <th style="text-align: center;background: #ffb955;color:white;">삭제</th>
+					        
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -509,6 +521,7 @@ th, td {
 					        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=review_s.getrTITLE()%></td>
 					        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=review_s.getrDATE()%></td>
 					      	<td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=ptDAO.ptusername(review_s.getUserID())%></td>
+					        <td><a href="Delete_ReviewS.jsp?rid=<%=review_s.getrID()%>" onclick="del();">삭제</a></td>
 				     	 </tr>
 			    		 </form>
 					      <%
@@ -531,6 +544,7 @@ th, td {
 					        <th style="text-align: center;background: #ffb955;color:white;">제목</th>
 					        <th style="text-align: center;background: #ffb955;color:white;">일시</th>
 					        <th style="text-align: center;background: #ffb955;color:white;">작성자</th>
+					        <th style="text-align: center;background: #ffb955;color:white;">삭제</th>
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -544,6 +558,7 @@ th, td {
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'" style="vertical-align: middle;"> <%= review.getrTITLE() %></td>
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'" style="vertical-align: middle;"> <%= review.getrDATE() %></td>
 					      	<td onclick="location.href='Detail_PR.jsp?rid=<%=review.getrID()%>'" style="vertical-align: middle;"> <%= prDAO.prusername(review.getUserID()) %></td>
+					        <td><a href="Delete_ReviewA.jsp?rid=<%=review.getrID()%>" onclick="del();">삭제</a></td>
 					      	</tr>
 					      <% } %>
 					    </tbody>
@@ -567,6 +582,7 @@ th, td {
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'" style="vertical-align: middle;"> <%= ptDAO.ptusername(pt.getUserID()) %></td>
 					      	<td onclick="location.href='Detail_PartTime.jsp?ptid=<%=pt.getPtID()%>'"<%if(pt.getPtSTATE().equals("마감")){ %>style="color: #D11E35;vertical-align: middle;"<%}
 					      		else {%> style="color: #0F52FC;"<%} %>> <%= pt.getPtSTATE()%></td>
+					      		
 					    	</tr>
 					    	<%} %>
 					    </tbody>

@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pt.Pt;
+import pt.PtDAO;
+import review_comment.ReviewS_CmtDAO;
+import review_comment.Review_CmtDAO;
 import user.UserDAO;
 
 public class Review_S_DAO {
@@ -217,6 +220,23 @@ public class Review_S_DAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public int deleteS( String rID) { // 사장썰 지우기
+		
+		try {
+			String SQL = "DELETE FROM reviews WHERE rID in (" + rID.trim() +")";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.executeUpdate();
+			
+			System.out.println(SQL);
+			
+			return 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 }

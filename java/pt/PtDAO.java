@@ -510,4 +510,22 @@ public class PtDAO {
 		return list4;
 	}
 	
+	public int deletePT(String ptID) { // PT 지우기
+		
+		try {
+			String SQL = "DELETE FROM pt WHERE ptID ="+ptID.trim();
+			pstmt = conn.prepareStatement(SQL);
+
+			pstmt.executeUpdate();
+			System.out.println(SQL);
+			return 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	
+	
 }

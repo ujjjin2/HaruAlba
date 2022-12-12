@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import user.User;
+import pt.Pt;
+import pt.PtDAO;
 
 public class PtcommentDAO {
 
@@ -67,7 +69,29 @@ public class PtcommentDAO {
 		return -1; //DB 오류 
 	}
 	
-	
+	public int deletePTCMT( String ptID) { // PT CMT 지우기
+		
+		try {
+			String SQL = "DELETE FROM pt_comment WHERE ptID in (" + ptID.trim() +")";
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.executeUpdate();
+			
+			System.out.println(SQL);
+			
+			PtDAO pt = new PtDAO();
+			int result = pt.deletePT(ptID);
+			
+			if(result==1) {
+				return 1;
+			}else {
+				return -1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 	
 }
 	
