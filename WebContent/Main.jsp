@@ -278,7 +278,13 @@ footer{
         <!-- 수정해야됨 -->
         <form class="search_main" method="post" action="TotalTable_PartTime.jsp">
         	<div>
-			<input type="text" name="search_main" style="margin: 6% 0 0 8%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
+					<select class="search_main" name="searchField" style="margin: 6% 0 0 0%;height: 50px;width: 5%; font-size: 20px; border: 3px solid #FF9B09;">
+						<option value="ptTITLE">제목</option>
+						<option value="userID">작성자</option>
+						<option value="ptCONTENT">내용</option>
+						<option value="ptINFO">지역</option>
+					</select> 
+			<input type="text" name="searchText" style="margin: 6% 0 0 8%;height: 50px;width: 25%; font-size: 20px; border: 3px solid #FF9B09;">
 			<input type="submit" value="검색" style="margin: 2% 0 0 -20px;height: 51px; width: 6%;font-size: 20px;border: 3px solid #FF9B09; color: #FFFFFF; background: #FF9B09">
 			<a href="TotalTable_PartTime.jsp" style="margin: 10% 0 0% 9%" >단기알바</a>
         	<a href="Question.jsp" style="margin: 10% 0 0% 20px">시급</a>
