@@ -72,7 +72,7 @@
 				<!-- 공간을 나눠줘야지만 그림의 센터값이 먹음/ 안하면 세로로 배치가 되서 왼쪽에만 붙어있음 -->
 					<div class="header">
 						<center>
-							<a href="Main.jsp">
+							<a href="Main.jsp"> 
 								<img src="images/harulogo.png" style="width: 150px; height: 150px;">
 							</a>
 						</center>
