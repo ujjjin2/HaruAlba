@@ -42,6 +42,7 @@ request.setCharacterEncoding("UTF-8");
 	String ptperiod ="";
 	String ptstate = "";
 	
+	Review_A_DAO review = new Review_A_DAO();
 	String sqlPartTime = "SELECT * FROM ";
 	
 	rs = pstmt.executeQuery(sql);
@@ -415,7 +416,7 @@ footer{
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%=rs.getInt("rId") %></td>
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%= rs.getString("rTITLE") %></td>
 					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%= rs.getString("rDATE") %></td>
-					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%= rs.getString("userID") %></td>
+					        <td onclick="location.href='Detail_PR.jsp?rid=<%=rs.getInt("rID")%>'" style="font-size: 15px"><%= review.prusername(rs.getString("userID")) %></td>
 					      </tr>
 					      <%
 					    	 }

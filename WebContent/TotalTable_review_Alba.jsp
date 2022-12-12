@@ -285,7 +285,7 @@ footer{
 									</table>
 								</form>
 
-						<% if(role.equals("사장")){ %>
+						<% if(role.equals("알바")){ %>
 					   <!-- 글쓰기 버튼  -->
                        <a href="Write_Review_Alba.jsp">                       
                         <img src="images/write.png" style="width: 30px; height: 30px; float: right; margin: 0 20px 10px 0">       

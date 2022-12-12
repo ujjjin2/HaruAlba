@@ -1,3 +1,6 @@
+<%@page import="review.Review_S"%>
+<%@page import="review.Review_S_DAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="pt.PtDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.io.PrintWriter"%>
@@ -286,8 +289,13 @@ th, td {
 	List<User> list = userDAO.selectall(userid);
 	PtDAO ptDAO = new PtDAO();
 	List<Pt> list2 = ptDAO.mypt(userid);
+	
 	Review_A_DAO prDAO = new Review_A_DAO();
+	Review_S_DAO s_DAO = new Review_S_DAO();
+	
 	List<Review_A> list3 = prDAO.myreview(userid);
+	List<Review_S> list6 = s_DAO.myreview(userid);
+	
 	List<Pt> list4 = ptDAO.endpt(userid);
 	List<Pt> list5 = ptDAO.joinpt(userid);
 %>
@@ -306,7 +314,7 @@ th, td {
 		                out.print(userDAO.sessionname(userid)); // 세션 ID로 이름/ID 출력
 		                %>
         				</li><li>|</li>
-		                <li><a href="MyPage2.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
+		                <li><a href="MyPage.jsp" style="text-decoration: none; color: black;">마이페이지</a></li><li>|</li>
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
 		    </ul>
         </nav> 
@@ -442,7 +450,7 @@ th, td {
 					    	  
 					    	 <!-- 끝난 알바 리스트 + 점수 기입 + 버튼 = > 그 아이디의 사용자 평점 올라가게  + 평점 기입은 한번만 되게끔 -->
 					    	  
-				    	  <b style="float: left; margin: 5% 0 0 0;font-size: 18px">내가 작성한 글</b>
+				    	  <b style="float: left; margin: 5% 0 0 0;font-size: 18px">내가 작성한 구인 글</b>
 					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:8% 0 5% 0" >
 					    <thead>
 					      <tr>
@@ -477,8 +485,34 @@ th, td {
 			      			<input type="hidden" value="<%=pt.getPtID()%>" name="ptID">
 				     	 </tr>
 			    		 </form>
+			    		 <%} %>
+			    		 </tbody>
+			    		 </table>
+			    		  <!--   -->
+			    		  <b style="float: left; margin: 5% 0 0 0;">내가 작성한 후기</b>
+					  <table class="table table-striped" id="shortTime" style="background: #ffffff; text-align: center; margin:8% 0 5% 0" >
+					    <thead>
+					      <tr>
+					        <th style="text-align: center;background: #ffb955;color:white;">글번호</th>
+					        <th style="text-align: center;background: #ffb955;color:white;">제목</th>
+					        <th style="text-align: center;background: #ffb955;color:white;">일시</th>
+					        <th style="text-align: center;background: #ffb955;color:white;">작성자</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+				      	<tr>
+					    	
+					      	<%
+					    	for(Review_S review_s : list6) { // 리스트 객체를 꺼내서 pt dto에 넣어주겠다
+					    	%>
+					        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=review_s.getrID()%></td>
+					        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=review_s.getrTITLE()%></td>
+					        <td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=review_s.getrDATE()%></td>
+					      	<td onclick="location.href='Detail_ReviewS.jsp?rid=<%=review_s.getrID()%>'" style="vertical-align: middle; font-size: 17px"> <%=ptDAO.ptusername(review_s.getUserID())%></td>
+				     	 </tr>
+			    		 </form>
 					      <%
-					      } }else if(role.equals("알바")){
+					    	} }else if(role.equals("알바")){
 					      %>
 					    	  
 					    	  </tbody>
@@ -570,6 +604,7 @@ th, td {
 					    	<%} }%>
 					    </tbody>
 					    </table>
+					    
 					</div>
 	    		</center>
 	   		</div>
