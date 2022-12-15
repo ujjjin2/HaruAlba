@@ -203,7 +203,6 @@ footer{
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
 		    </ul>
         </nav> 
-        <!-- 수정해야됨 -->
         <form class="search_main" method="post" action="TotalTable_PartTime.jsp">
         	<div>
 					<select class="search_main" name="searchField" style="margin: 6% 0 0 4%;height: 50px;width: 5%; font-size: 20px; border: 3px solid #FF9B09;">
@@ -262,7 +261,7 @@ footer{
   
   <div class="mainfunction" style="background:#ffffff; width: 100%; height: 100%;">
 			
-			<!-- 단기 알바 구인 테이블 부분  -->
+			<!-- 알바썰 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 70%; height: 100%;">
 					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_review_Alba.jsp" style="text-decoration: none; color: black;font-size: 30px">알 바 후 기</a></h3>

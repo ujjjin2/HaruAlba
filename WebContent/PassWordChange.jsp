@@ -35,10 +35,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 
-<!-- 2022-11-06 허유진 파란 배경색  -->
 <body style="background-color:#ffb955">
 
-<!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 1120px; background: #585858;">
 	    <div class="background" style="background: #ffb955;"></div>
 	    <div class="center" style="background: #ffb955;">

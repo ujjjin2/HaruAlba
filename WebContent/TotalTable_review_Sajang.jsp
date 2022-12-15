@@ -201,7 +201,6 @@ footer{
 		                <li><a href="Logout.jsp"  style="text-decoration: none; color: black">LOGOUT</a></li>
 		    </ul>
         </nav> 
-        <!-- 수정해야됨 -->
         <form class="search_main" method="post" action="TotalTable_PartTime.jsp">
         	<div>
 					<select class="search_main" name="searchField" style="margin: 6% 0 0 4%;height: 50px;width: 5%; font-size: 20px; border: 3px solid #FF9B09;">

@@ -336,7 +336,7 @@ footer{
   		<ul>
   			<li><img src="http://image.alba.kr/adbanner/PC_MainTop/20221123_government_624x126.png"
  				 style="width: 100%;height: 100%;"></li>
-   			<li><img src="https://apple.contentsfeed.com/RealMedia/ads/Creatives/jobkorea/221116_jobaba_al_mt/221114_gif_570x110.png"
+   			<li><img src="https://apple.contentsfeed.com/RealMedia/ads/Creatives/jobkorea/221116_good1_al_mt/221121_good1_570_110.jpg"
  				 style="width: 100%;height: 100%;"></li>
    			<li><img src="http://image.alba.kr/adbanner/PC_MainTop/20221206_event616_624x126.png"
  				 style="width: 100%;height: 100%;"></li>

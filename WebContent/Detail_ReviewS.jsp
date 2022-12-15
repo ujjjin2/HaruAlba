@@ -256,14 +256,11 @@ input:focus{outline:none;}
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<!-- 파란색 배경 -->
 <body style="background-color:#ffb955">
 	
-	<!-- 헤더 -->
 	<div class="parent" style="width: 100%; height: 100%; background: #ffb955;">
 		<div class="background" style="background: #ffb955;"></div>
 		
-		<!-- 노란색 -->
 		<div class="center" style="background: #ffb955;">
 		<!-- 흰색 -->
 			<div class="center_write" style="background: #FFFFFF;box-shadow: 10px 10px 20px gray;">

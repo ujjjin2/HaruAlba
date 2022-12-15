@@ -272,7 +272,7 @@ input:focus{outline:none;}
 		<!-- 노란색 -->
 		<div class="center" style="background: #ffb955;height: 1200px">
 		<!-- 흰색 -->
-			<div class="center_write" style="background: #FFFFFF;height: 85%; box-shadow: 10px 10px 20px gray;">
+			<div class="center_write" style="background: #FFFFFF;overflow:auto;height: 85%; box-shadow: 10px 10px 20px gray;">
 					<div class="header">
 						<center>
 							<a href="Main.jsp">

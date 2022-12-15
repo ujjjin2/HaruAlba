@@ -62,14 +62,11 @@
 <body style="background-color:#ffb955">
 
 
-<!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 300%; background: #585858;">
 	    <div class="background" style="background: #ffb955;"></div>
 	    
-	    <!-- 2022-11-06 허유진 헤더 부분의 흰색 센터 부분 -->
 	    <div class="center" style="background: #ffb955;">
 				<div class="center_write" style="width: 80%; height:100%; background:#FFFFFF;box-shadow: 10px 10px 20px gray;">
-				<!-- 공간을 나눠줘야지만 그림의 센터값이 먹음/ 안하면 세로로 배치가 되서 왼쪽에만 붙어있음 -->
 					<div class="header">
 						<center>
 							<a href="Main.jsp"> 
@@ -98,7 +95,6 @@
 				</div>
 			
 			
-			<!-- 흰색 부분 끝나는 div -->
 	    </div>
 	    
 	    <div class="background" style="background: #ffb955;"></div>

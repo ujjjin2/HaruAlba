@@ -260,7 +260,7 @@ footer{
   
   <div class="mainfunction" style="background:#ffffff; width: 100%; height: 100%;">
 			
-			<!-- 테이블 부분  -->
+			<!--지역 위치 테이블 부분  -->
 			<center>
 	    			<div class="container" style="width: 70%; height: 100%;">
 					  	<h3 style="margin: 5% 0 5% 0;"><a href="TotalTable_Location_detail.jsp?_location=<%=location %>" style="text-decoration: none; color: black;font-size: 30px">지 역 별 알 바 - <%=location %> </a></h3>

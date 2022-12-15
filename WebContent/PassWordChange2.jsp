@@ -57,7 +57,6 @@
 	}else{
 	
 	%>
-<!-- 2022-11-06 허유진 헤더 부분  -->
 	<div class="parent" style="width: 100%; height: 1120px; background: #585858;">
 	    <div class="background" style="background: #ffb955;"></div>
 	    

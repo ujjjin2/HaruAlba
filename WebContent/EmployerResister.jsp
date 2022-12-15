@@ -32,13 +32,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
-<!--파란 배경색  -->
 <body style="background-color:#ffb955">
 
 	<div class="parent" style="width: 100%; height: 1145px; background: #585858;">
 	    <div class="background" style="background: #ffb955;"></div>
 	    
-	    <!-- 노란새센터 부분 -->
 	    <div class="center" style="background: #ffb955;">
 	    		
 			<div class="color_white" style="width: 80%; height:80%; background:#FFFFFF;border-radius:10px; margin: 3% 10% 10% 10%;">
