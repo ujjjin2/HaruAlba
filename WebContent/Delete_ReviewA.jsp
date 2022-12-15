@@ -10,7 +10,6 @@
 	String rID = request.getParameter("rid");
 	
 %>
-    
 <!DOCTYPE html>
 <html>
 <head>
