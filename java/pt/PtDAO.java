@@ -130,7 +130,7 @@ public class PtDAO {
 	}
 
 	public List<Pt> mypt(String userid) throws SQLException { // 자신이 작성한 PT 뽑기
-		String SQL = "SELECT * FROM pt WHERE userID = ?";
+		String SQL = "SELECT * FROM pt WHERE userID = ? ORDER BY ptID DESC";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -275,7 +275,7 @@ public class PtDAO {
 	
 	
 	public List<Pt> endpt(String userid) throws SQLException { // 자신이 지원한 PT
-		String SQL = "SELECT * FROM pt WHERE ptALBA= ?";
+		String SQL = "SELECT * FROM pt WHERE ptALBA= ? ORDER BY ptID DESC";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userid);
@@ -307,7 +307,7 @@ public class PtDAO {
 	}
 
 	public List<Pt> joinpt(String userid) throws SQLException {
-		String SQL = "SELECT * FROM pt where ptID IN (SELECT ptID FROM pt_comment WHERE userID=?) ";
+		String SQL = "SELECT * FROM pt where ptID IN (SELECT ptID FROM pt_comment WHERE userID=?) ORDER BY ptID DESC";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userid);
