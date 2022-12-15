@@ -21,17 +21,17 @@
 	Review_CmtDAO reviewcmtDAO = new Review_CmtDAO();
 	int result = reviewcmtDAO.deletecmt(rID);
 	
-    if (result == -1){ // 삭제
+    if (result == -1){ // 삭제 실패
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('삭제 실패!')");
         script.println("location.href = 'MyPage.jsp");    // 이전 페이지로 사용자를 이동
         script.println("</script>");
-    }else{ // 
+    }else{ // 삭제 성공
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('삭제가 완료되었습니다.')");
-        script.println("location.href = 'MyPage.jsp'");    // 메인 페이지로 이동
+        script.println("location.href = 'MyPage.jsp'");    // 마이 페이지로 이동
         script.println("</script>");
     }
 	

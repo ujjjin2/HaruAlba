@@ -33,17 +33,17 @@
 <%
 	PtDAO ptDAO = new PtDAO();
 	int result = ptDAO.writePT(pt);
-    if (result == -1){ // 회원가입 실패
+    if (result == -1){ // 작성 실패
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('작성 실패')");
         script.println("history.back()");    // 이전 페이지로 사용자를 이동
         script.println("</script>");
-    }else{ // 
+    }else{ // 작성 완료
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('작성이 완료되었습니다.')");
-        script.println("location.href = 'TotalTable_PartTime.jsp'");    // 메인 페이지로 이동
+        script.println("location.href = 'TotalTable_PartTime.jsp'");    // 단기 알바 페이지로 이동
         script.println("</script>");
     }
 	

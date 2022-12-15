@@ -260,16 +260,13 @@ input:focus{outline:none;}
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<!-- 파란색 배경 -->
 <body style="background-color:#ffb955">
 
 
 
-	<!-- 헤더 -->
 	<div class="parent" style="width: 100%; height: 100%; background: #585858;">
 		<div class="background" style="background: #ffb955;"></div>
 		
-		<!-- 노란색 -->
 		<div class="center" style="background: #ffb955;height: 1200px">
 		<!-- 흰색 -->
 			<div class="center_write" style="background: #FFFFFF;overflow:auto;height: 85%; box-shadow: 10px 10px 20px gray;">
@@ -416,7 +413,6 @@ input:focus{outline:none;}
 			</div> <!-- 흰색 끝 --> 
 			
 		</div>
-		<!--  노란색  -->
 		
 		<div class="background" style="background: #ffb955;"></div>
 	
